@@ -9,12 +9,19 @@ unknot = [1]
 class Braid(object):
 	def __init__(self, braid):
 		self.braid = braid
+	## Takes in a braid _as a list_.
 	
 	def number_crossings(self):
 		return len(self.braid)
 	
 	def braid_index(self):
 		return max(abs(max(self.braid)), abs(min(self.braid)))+1
+		
+	def copy(self):
+		clone = Braid(self.braid)
+		return clone
+		
+
 		
 ## UP moves ##
 ##############
@@ -44,7 +51,7 @@ class Braid(object):
 ## Reidemeister II moves are special because they require an additional argument
 ####
 
-	R2_moves = [R2UpPlus, R2UpMinus]
+	R2_up_moves = [R2UpPlus, R2UpMinus]
 	
 ####
 
