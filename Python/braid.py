@@ -18,9 +18,7 @@ class Braid(object):
 		return max(abs(max(self.braid)), abs(min(self.braid)))+1
 		
 	def copy(self):
-		clone = Braid(self.braid)
-		return clone
-		
+		return Braid(self.braid)		
 
 		
 ## UP moves ##
