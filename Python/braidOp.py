@@ -15,33 +15,51 @@ def randomOp(upBias=1, horizontalBias=1, downBias=1):
 	## but can be attuned to multiply the likelihood of choosing an element from the
 	## corresponding list by exactly this factor.	
 	if randOp in R2_up_moves:
-		strand_index = 'undetermined'
+#		strand_index = 'undetermined'
+		return R2Up('undetermined')
 	else:
-		strand_index = None
-	return BraidOp(randOp, strand_index)
-
+#		strand_index = None
+#	return BraidOp(randOp, strand_index)
+		return BraidOp(randOp)
+		
 class BraidOp(object):
-	def __init__(self, op, strand_index=None):
+#	def __init__(self, op, strand_index=None):
+	def __init__(self, op):
 		self.op = op
-		self.strand_index = strand_index
+#		self.strand_index = strand_index
 		## Takes a string from the list opNames, and an optional positive integer 
 		## strand_index that defaults to None
 		## This is because the R2_up_moves require an additional parameter to be well-defined.
 		#### Special note: This parameter cannot be determined randomly here, because
 		#### the allowed values depend on the braid index of the braid being operated on.
-		
-		
+				
 	def copy(self):
-		return BraidOp(self.op, self.strand_index)
+#		return BraidOp(self.op, self.strand_index)
+		return BraidOp(self.op)
 		
 	def apply(self, braid):
-		if self.op in R2_up_moves:
-			print 'I am here now.'
-			if self.strand_index == 'undetermined':
-				self.strand_index = random.randint(1, braid.braid_index() - 1)
-			getattr(braid, self.op)(self.strand_index)
-		else:
-			getattr(braid, self.op)()
+#		if self.op in R2_up_moves:
+#			print 'I am here now.'
+#			if self.strand_index == 'undetermined':
+#				self.strand_index = random.randint(1, braid.braid_index() - 1)
+#			getattr(braid, self.op)(self.strand_index)
+#		else:
+#			getattr(braid, self.op)()
+		getattr(braid, self.op)()
+		
+class R2Up(BraidOp):
+	def __init__(self, op, strand_index):
+		BraidOp.__init__(self, op)
+		self.strand_index = strand_index
+		
+	def copy(self):
+		return R2Up(self.op, self.strand_index)
+		
+	def apply(self, braid):
+		if self.strand_index == 'undetermined':
+			self.strand_index = random.randint(1, braid.braid_index() - 1)
+		getattr(braid, self.op)(self.strand_index)
+		
 		
 	
 		
