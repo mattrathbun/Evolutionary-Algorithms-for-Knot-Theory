@@ -11,6 +11,18 @@ class Braid(object):
 		self.braid = braid
 	## Takes in a braid _as a list_.
 	
+	def __eq__(self,other):
+		if self.braid == other.braid:
+			return True
+		else:
+			return False
+			
+	def __neq__(self,other):
+		if self.braid != other.braid:
+			return True
+		else:
+			return False
+	
 	def number_crossings(self):
 		return len(self.braid)
 	
@@ -18,7 +30,10 @@ class Braid(object):
 		return max(abs(max(self.braid)), abs(min(self.braid)))+1
 		
 	def copy(self):
-		return Braid(self.braid)		
+		new_braid = []
+		for i in self.braid:
+			new_braid.append(i)
+		return Braid(new_braid)		
 
 		
 ## UP moves ##
@@ -30,19 +45,19 @@ class Braid(object):
 ####
 	def R2UpPlus(self, strand_index):
 		if (strand_index + 1) > self.braid_index() or strand_index < 1:
-			return self.braid
+			return Braid(self.braid)
 		else:
 			self.braid.append(strand_index)
 			self.braid.append(-strand_index)
-			return self.braid
+			return Braid(self.braid)
 			
 	def R2UpMinus(self, strand_index):
 		if (strand_index + 1) > self.braid_index():
-			return self.braid
+			return Braid(self.braid)
 		else:
 			self.braid.append(-strand_index)
 			self.braid.append(strand_index)
-			return self.braid
+			return Braid(self.braid)
 			
 ####
 
@@ -60,12 +75,12 @@ class Braid(object):
 	def M2UpPlus(self):
 		m = self.braid_index()
 		self.braid.append(m)
-		return self.braid
+		return Braid(self.braid)
 		
 	def M2UpMinus(self):
 		m = self.braid_index()
 		self.braid.append(-m)
-		return self.braid
+		return Braid(self.braid)
 		
 ####
 
@@ -82,10 +97,10 @@ class Braid(object):
 			for i in reversed( range(2, len(self.braid)) ):
 				if (self.braid[i] == self.braid[i-2]) & (abs(self.braid[i] - self.braid[i-1]) == 1):
 					self.braid[i],self.braid[i-1],self.braid[i-2] = self.braid[i-1],self.braid[i],self.braid[i-1]
-					return self.braid
-			return self.braid
+					return Braid(self.braid)
+			return Braid(self.braid)
 		else:
-			return self.braid	
+			return Braid(self.braid)	
 ####
 
 ## We will take MarkovI to cycle the last generator (crossing) to the beginning
@@ -94,13 +109,13 @@ class Braid(object):
 ####
 	def M1Forward(self):
 		self.braid.insert(0, self.braid.pop())
-		return self.braid
+		return Braid(self.braid)
 	
 ## We almost certainly don't need this, but it might be useful to have
 ## the reverse operation (for efficiency?)
 	def M1Backward(self):
 		self.braid.append(self.braid.pop(0))
-		return self.braid
+		return Braid(self.braid)
 ####
 
 ## S corresponds to sliding two crossings past one another.
@@ -111,8 +126,8 @@ class Braid(object):
 		for i in reversed(range(len(self.braid))):
 			if abs(abs(self.braid[i]) - abs(self.braid[i-1])) > 1:
 				self.braid[i],self.braid[i-1] = self.braid[i-1],self.braid[i]
-				return self.braid
-		return self.braid
+				return Braid(self.braid)
+		return Braid(self.braid)
 ####
 
 	horizontal_moves = [R3, M1Forward, M1Backward, S]
@@ -127,9 +142,9 @@ class Braid(object):
 	def M2Down(self):
 		if abs(self.braid[-1]) == (self.braid_index() - 1) & len(self.braid) > 1:
 			self.braid.pop()
-			return self.braid
+			return Braid(self.braid)
 		else:
-			return self.braid	
+			return Braid(self.braid)	
 ####
 
 ## R2Down looks only for the first instance (from the bottom of the braid) to cancel
@@ -142,10 +157,10 @@ class Braid(object):
 				if self.braid[i] == -self.braid[i-1]:
 					del self.braid[i-1]
 					del self.braid[i-1]
-					return self.braid
-			return self.braid
+					return Braid(self.braid)
+			return Braid(self.braid)
 		else:
-			return self.braid
+			return Braid(self.braid)
 ####
 
 	down_moves = [R2Down, M2Down]
