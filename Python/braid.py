@@ -12,16 +12,16 @@ class Braid(object):
 	## Takes in a braid _as a list_.
 	
 	def __eq__(self,other):
-		if self.braid == other.braid:
-			return True
+		if type(other) == type(self):
+			return self.__dict__ == other.__dict__
 		else:
 			return False
+						
+	def __ne__(self,other):
+		return not self.__eq__(other)
 			
-	def __neq__(self,other):
-		if self.braid != other.braid:
-			return True
-		else:
-			return False
+	def toList(self):
+		return self.braid
 	
 	def number_crossings(self):
 		return len(self.braid)

@@ -28,16 +28,16 @@ class BraidOp(object):
 		## Takes a string from the list opNames
 		
 	def __eq__(self,other):
-		if self.op == other.op:
-			return True
+		if type(other) == type(self):
+			return self.__dict__ == other.__dict__
 		else:
 			return False
+						
+	def __ne__(self,other):
+		return not self.__eq__(other)
 			
-	def __neq__(self,other):
-		if self.op != other.op:
-			return True
-		else:
-			return False
+	def toString(self):
+		return self.op
 			
 	def copy(self):
 		return BraidOp(self.op)
@@ -64,19 +64,7 @@ class R2UpBraidOp(BraidOp):
 	def __init__(self, op, strand_index):
 		BraidOp.__init__(self, op)
 		self.strand_index = strand_index
-		
-	def __eq__(self):
-		if (super(R2UpBraidOp, self).__eq__(self,other) & self.strand_index == other.strand_index):
-			return True
-		else:
-			return False
-			
-	def __neq__(self):
-		if (super(R2UpBraidOp, self).__neq__(self,other) | self.strand_index != other.strand_index):
-			return False
-		else:
-			return True
-		
+				
 	def copy(self):
 		return R2UpBraidOp(self.op, self.strand_index)
 		
