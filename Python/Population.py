@@ -40,7 +40,7 @@ class Population(object):
       while (i>0):
 	if random.random() <= i:
 	  pop2.append(ol.copy())
-        i--
+        i -= 1
     for i in range(len(pop2),len(pop1)):
       pop2.insert(0,pop1[0].copy())
     pop2 = pop2[:n]
