@@ -23,8 +23,8 @@ class Population(object):
     minf = 1000000
     for ol in pop1:
       fv = fit(ol)
-      maxf = (fv > maxf ? fv : maxf)
-      minf = (fv < minf ? fv : minf)
+      maxf = fv if fv > maxf else maxf
+      minf = fv if fv < maxf else minf
       tfv += fv
     afv = tfv/n
 
