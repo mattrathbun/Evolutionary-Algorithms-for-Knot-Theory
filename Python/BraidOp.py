@@ -71,8 +71,14 @@ class R2UpBraidOp(BraidOp):
 	def apply(self, braid):
 		if self.strand_index == 'undetermined':
 			self.strand_index = random.randint(1, braid.braid_index() - 1)
+#		getattr(braid, self.op)(self.strand_index)
+		effect = 0
+		old_braid = braid.copy()
 		getattr(braid, self.op)(self.strand_index)
-		
+		if braid != old_braid:
+			effect = 1
+		return effect
+			
 	def isR2Up(self):
 		return True	
 	
