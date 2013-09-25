@@ -49,7 +49,8 @@ class Population(object):
       BraidOpList.recombine(pop2[i],pop2[i+1])
 
     for i in range(len(pop2)):
-      pop2[i].mutate()
+      if (random.random() < mu):
+	pop2[i].mutate()
 
     pop2.sort(cmp = fcmp)
     self.oplists = pop2
