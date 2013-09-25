@@ -12,3 +12,5 @@ class Population(object):
   def size(self):
     return len(self.oplists)
 
+  def iterate(self, fit, mu = 0.05):
+
