@@ -1,5 +1,6 @@
 import BraidOpList
 import random
+import numpy
 
 
 class Population(object):
