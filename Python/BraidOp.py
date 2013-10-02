@@ -16,7 +16,7 @@ def randomOp(upBias=1, horizontalBias=1, downBias=1):
 	## corresponding list by exactly this factor.	
 	if randOp in R2_up_moves:
 #		strand_index = 'undetermined'
-		return R2Up('undetermined')
+		return R2UpBraidOp(randOp, 'undetermined')
 	else:
 #		strand_index = None
 #	return BraidOp(randOp, strand_index)

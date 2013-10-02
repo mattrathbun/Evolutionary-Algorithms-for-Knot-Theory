@@ -5,6 +5,18 @@ class BraidOpList(object):
 	def __init__(self, opList):
 		self.opList = opList
 		
+	def toList(self):
+		return self.opList
+	
+	def __eq__(self,other):
+		if type(other) == type(self):
+			return self.__dict__ == other.__dict__
+		else:
+			return False
+
+	def __ne__(self,other):
+		return not self.__eq__(other)		
+		
 	def copy(self):
 		ol = []
 		for i in self.opList:
