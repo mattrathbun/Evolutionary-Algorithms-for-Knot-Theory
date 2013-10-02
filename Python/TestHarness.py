@@ -5,7 +5,7 @@
 
 import Braid
 import Population
-import random
+from random import *
 import numpy
 
 print("test harness")
@@ -22,9 +22,9 @@ b.print_it();
 
 longlist = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 for i in range(0,10):
-    print(random.choice(longlist));
+    print(choice(longlist));
 
-print(random.sample(longlist,3))
+print(sample(longlist,3))
 
 print(map(lambda x:x*x, longlist))
 print(numpy.argmax(longlist))
