@@ -6,6 +6,8 @@ from sys import argv
 
 unknot = [1]
 
+# another comment by Colin just to test his understanding of git
+
 class Braid(object):
 	def __init__(self, braid):
 		self.braid = braid
