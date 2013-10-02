@@ -51,18 +51,18 @@ class Population(object):
 	  pop2.append(ol.copy())
           i -= 1
       
-      # do we need to do this?
-      # because we are overwriting all of pop2 later
-      for i in range(len(pop2),len(pop1)):
-        pop2.insert(0,pop1[0].copy())
-        pop2 = pop2[:n]
+    # do we need to do this?
+    # because we are overwriting all of pop2 later
+    for i in range(len(pop2),len(pop1)):
+      pop2.insert(0,pop1[0].copy())
+      pop2 = pop2[:n]
             
-  # recombination - the old way, this code can be deleted??
+    # recombination - the old way, this code can be deleted??
             
-  #   for i in range(0,len(pop2)-1,2):
-  #    BraidOpList.recombine(pop2[i],pop2[i+1])
+    #   for i in range(0,len(pop2)-1,2):
+    #    BraidOpList.recombine(pop2[i],pop2[i+1])
 
-  # recombination with tournament selection size 3
+    # recombination with tournament selection size 3
 
     for i in range(len(pop2)):
       for j in range(0,1):
@@ -73,7 +73,7 @@ class Population(object):
         
       pop2[i] = parent[0].BraidOpList.recombine(parent[1]);
 
-  # mutation
+    # mutation
 
     for i in range(len(pop2)):
       if (random.random() < mu):
@@ -81,5 +81,4 @@ class Population(object):
 
     pop2.sort(cmp = fcmp)
     self.oplists = pop2
-
 
