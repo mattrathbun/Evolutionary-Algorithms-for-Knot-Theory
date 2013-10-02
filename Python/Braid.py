@@ -6,8 +6,6 @@ from sys import argv
 
 unknot = [1]
 
-# another comment by Colin just to test his understanding of git
-
 class Braid(object):
 	def __init__(self, braid):
 		self.braid = braid
@@ -35,7 +33,10 @@ class Braid(object):
 		new_braid = []
 		for i in self.braid:
 			new_braid.append(i)
-		return Braid(new_braid)		
+		return Braid(new_braid)	
+
+	def print_it(self):
+		print(self.braid)
 
 		
 ## UP moves ##
