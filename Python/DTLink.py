@@ -1,3 +1,7 @@
+
+def normalise(i,m,M):
+  return (m if i < m else (M if i > M else i))
+
 class DTLink(object):
   def __init__(self,code):
     if isinstance(code,list):
@@ -31,10 +35,27 @@ class DTLink(object):
   def to_string(self):
     return " ".join(str(x) for x in self.code)
 
+  def triple(arc):
+    code = self.code
+    n = self.number_crossings()
+    arc = normalise(abs(arc),1,2*n)
+    if (arc % 2 == 1):
+      over = arc
+      idx = (arc - 1)/2
+      under = abs(code[idx])
+      sign = cmp(code[idx],0)
+      return [over,under,sign]
+    else:
+      under = abs(arc)
+      idx = [i for i,j in enumerate(code) if abs(j) == under]
+      over = 2 * idx + 1
+      sign = cmp(code[idx],0)
+      return [over,under,sign]
+
+
   def R1UpPlus(self,arc):
     n = self.number_crossings()
-    idx = (1 if arc < 1 else arc)
-    idx = (2*n if arc > 2*n else arc)
+    idx = normalise(arc,1,2*n)
     new_dt = []
     for i in range(n+1):
       over = 2*i+1
@@ -57,8 +78,7 @@ class DTLink(object):
 
   def R1UpMinus(self,arc):
     n = self.number_crossings()
-    idx = (1 if arc < 1 else arc)
-    idx = (2*n if arc > 2*n else arc)
+    idx = normalise(arc,1,2*n)
     new_dt = []
     for i in range(n+1):
       over = 2*i+1
@@ -81,8 +101,7 @@ class DTLink(object):
 
   def R1DownPlus(self,arc):
     n = self.number_crossings()
-    arc = (1 if arc < 1 else arc)
-    arc = (2*n if arc > 2*n else arc)
+    arc = normalise(arc,1,2*n)
     new_dt = []
     success = False
     mn = 0
@@ -104,8 +123,7 @@ class DTLink(object):
 
   def R1DownMinus(self,arc):
     n = self.number_crossings()
-    arc = (1 if arc < 1 else arc)
-    arc = (2*n if arc > 2*n else arc)
+    arc = normalise(arc,1,2*n)
     new_dt = []
     success = False
     mn = 0
