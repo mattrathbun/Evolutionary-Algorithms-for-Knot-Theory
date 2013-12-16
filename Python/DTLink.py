@@ -35,23 +35,22 @@ class DTLink(object):
   def to_string(self):
     return " ".join(str(x) for x in self.code)
 
-  def triple(arc):
+  def triple(self,arc):
     code = self.code
     n = self.number_crossings()
     arc = normalise(abs(arc),1,2*n)
     if (arc % 2 == 1):
-      over = arc
+      odd = arc
       idx = (arc - 1)/2
-      under = abs(code[idx])
+      even = abs(code[idx])
       sign = cmp(code[idx],0)
-      return [over,under,sign]
+      return [odd,even,sign]
     else:
-      under = abs(arc)
-      idx = [i for i,j in enumerate(code) if abs(j) == under]
-      over = 2 * idx + 1
+      even = arc
+      idx = [i for i,j in enumerate(code) if abs(j) == even][0]
+      odd = 2 * idx + 1
       sign = cmp(code[idx],0)
-      return [over,under,sign]
-
+      return [odd,even,sign]
 
   def R1UpPlus(self,arc):
     n = self.number_crossings()
