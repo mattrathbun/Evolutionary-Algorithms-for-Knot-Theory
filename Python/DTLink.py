@@ -1,7 +1,19 @@
+# Any benefit to encoding DT code as a dictionary {1:e_1, 3:e_3, ... } instead of a list?
 
+
+# Helper function. Takes three numbers: i, m, M. (m meant to be min and M max).
+# Returns i if i is between m and M. Otherwise, 
+#   if i is smaller than m, return m, larger than M, return M
 def normalise(i,m,M):
   return (m if i < m else (M if i > M else i))
+  
+# In case Matt forgets to use the British spelling.
+def normalize(i,m,M):
+  return normalise(i,m,M)
 
+# Main class. Encodes a knot diagram as a Dowker-Thistlewaite code.
+# DT-notation is represented by a list of even numbers, in correspondence with
+#  a list of ordered odd numbers. 
 class DTLink(object):
   def __init__(self,code):
     if isinstance(code,list):
@@ -23,6 +35,7 @@ class DTLink(object):
   def to_list(self):
     return self.code
 
+  # Number of crossings in the diagram is the length of the code.
   def number_crossings(self):
     return len(self.code)
 
@@ -35,46 +48,77 @@ class DTLink(object):
   def to_string(self):
     return " ".join(str(x) for x in self.code)
 
-  def triple(self,arc):
+  # Helper method. Given an integer arc, representing a number at one of the crossings in the diagram (even or odd),
+  #   returns a 3-element list of the odd number at the crossing, the absolute value of the even number at that crossing,
+  #   and a +1 or -1 depending on whether the even number is positive or negative (corresponding to whether
+  #   the even number belongs to overstrand or the understrand of the diagram, respectively.
+  #   !!!! CHECK THIS LAST LINE !!!!
+  def triple(arc):
     code = self.code
     n = self.number_crossings()
     arc = normalise(abs(arc),1,2*n)
     if (arc % 2 == 1):
-      odd = arc
+      over = arc
       idx = (arc - 1)/2
-      even = abs(code[idx])
+      under = abs(code[idx])
       sign = cmp(code[idx],0)
-      return [odd,even,sign]
+      return [over,under,sign]
     else:
-      even = arc
-      idx = [i for i,j in enumerate(code) if abs(j) == even][0]
-      odd = 2 * idx + 1
+      under = abs(arc)
+      # [0] added so that idx is an integer and not a list. (Else code[idx] does not work.)
+      idx = [i for i,j in enumerate(code) if abs(j) == under][0]
+      over = 2 * idx + 1
       sign = cmp(code[idx],0)
-      return [odd,even,sign]
+      return [over,under,sign]
 
+  # Method that performs a Reidemeister 1 Move, introducing a single positive twist at the location arc.
+  # arc is an integer corresponding to a label at one of the crossings of the diagram.
+  # The twist should be introduced in the arc that immediately PREcedes the label arc.
+  # Method mutates the DTLink object, and returns True if the move is successfully performed
+  #   (which it always should since an R1Up move has no obstruction).
   def R1UpPlus(self,arc):
     n = self.number_crossings()
     idx = normalise(arc,1,2*n)
     new_dt = []
     for i in range(n+1):
       over = 2*i+1
+      # Introduced indentation after the if, elif, and else statements.
+      # For (odd) over indices before the strand to be changed, leave the (even) code the same if it is also before the strand to be changed,
+      #   and change the (even) code by 2 if it is after the strand to be changed (arc/idx) (keeping the same sign).
       if (over < idx):
-	ci = self.code[i]
-	cis = cmp(ci,0)
-	cia = abs(ci)
-	new_dt.append(ci if cia < idx else ci+2*cis)
+        # code at position i
+	    ci = self.code[i]
+	    # code sign at position i
+	    cis = cmp(ci,0)
+	    # absolute value of code at position i
+	    cia = abs(ci)
+	    # !!!! Why is this ci+2*cis instead of (ci+2)*cis ? !!!!
+	    # I think it should be adding (even) numbers to the code with absolute value 2 greater
+	    # than the corresponding old label, and having the same sign as the old label.
+	    # This says change the label by +2 or -2.  
+	    new_dt.append(ci if cia < idx else ci+2*cis)
+	  # For over indices that equal the strand to be changed (necessarily odd), insert the next even number at that index in the code.
       elif (over == idx):
-	new_dt.append(idx+1)
+	    new_dt.append(idx+1)
+      # For over indices that are one more than the (even) strand to be changed, insert the (even) strand to be changed at that index in the code.
       elif (over == idx+1):
-	new_dt.append(idx)
+	    new_dt.append(idx)
+	  # For over indices after the strand to be changed, leave the (even) code the same if it is before the strand to be changed,
+	  #   and change the (even) code by 2 if it is after the strand to be changed (arc/idx) (keeping the same sign).
       else:
-	ci = self.code[i-1]
-	cis = cmp(ci,0)
-	cia = abs(ci)
-	new_dt.append(ci if cia < idx else ci+2*cis)
+        # Code index of the original code (shifted forward by one list position in the new code)
+	    ci = self.code[i-1]
+	    # Sign of the code in the original code (shifted forward by one list position in the new code)
+	    cis = cmp(ci,0)
+	    # Absolute value of the code index of the original code (shifted forward by one list position in the new code)
+	    cia = abs(ci)
+	    # !!!! Again, I think this should be (ci+2)*cis !!!!
+	    new_dt.append(ci if cia < idx else ci+2*cis)
     self.code = new_dt
     return True
 
+  # Method that performs a Reidemeister 1 Move, introducing a single negative twist at the location arc. (See R1UpPlus above).
+  # Method mutates the DTLink object, and returns True if move is successfully performed (which it should, because there is no obstruction).
   def R1UpMinus(self,arc):
     n = self.number_crossings()
     idx = normalise(arc,1,2*n)
