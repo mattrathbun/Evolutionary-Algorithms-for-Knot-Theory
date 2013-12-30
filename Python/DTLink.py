@@ -51,8 +51,7 @@ class DTLink(object):
   # Helper method. Given an integer arc, representing a number at one of the crossings in the diagram (even or odd),
   #   returns a 3-element list of the odd number at the crossing, the absolute value of the even number at that crossing,
   #   and a +1 or -1 depending on whether the even number is positive or negative (corresponding to whether
-  #   the even number belongs to overstrand or the understrand of the diagram, respectively.
-  #   !!!! CHECK THIS LAST LINE !!!!
+  #   the even number belongs to understrand or the overstrand of the diagram, respectively.
   def triple(arc):
     code = self.code
     n = self.number_crossings()
@@ -125,23 +124,29 @@ class DTLink(object):
     new_dt = []
     for i in range(n+1):
       over = 2*i+1
+      # Introduced indentation after the if, elif, and else statements.
       if (over < idx):
-	ci = self.code[i]
-	cis = cmp(ci,0)
-	cia = abs(ci)
-	new_dt.append(ci if cia < idx else ci+2*cis)
+	      ci = self.code[i]
+	      cis = cmp(ci,0)
+	      cia = abs(ci)
+	      # !!!! I think this should be (ci+2)*cis !!!!
+	      new_dt.append(ci if cia < idx else ci+2*cis)
       elif (over == idx):
-	new_dt.append(-idx-1)
+	      new_dt.append(-idx-1)
       elif (over == idx+1):
-	new_dt.append(-idx)
+	      new_dt.append(-idx)
       else:
-	ci = self.code[i-1]
-	cis = cmp(ci,0)
-	cia = abs(ci)
-	new_dt.append(ci if cia < idx else ci+2*cis)
+	      ci = self.code[i-1]
+	      cis = cmp(ci,0)
+	      cia = abs(ci)
+	      new_dt.append(ci if cia < idx else ci+2*cis)
     self.code = new_dt
     return True
 
+  # Method that performs a Reidemeister 1 Move, eliminating a single positive twist at the location arc.
+  # Method mutates the DTLink object, returns True if move is successfully performed
+  # (the move will be unsuccessful if the diagram does not contain a positive twist at the location arc, i.e. if 
+  #  a (positive) even number in the code corresponds to an adjacent (odd) number.)
   def R1DownPlus(self,arc):
     n = self.number_crossings()
     arc = normalise(arc,1,2*n)
@@ -151,16 +156,28 @@ class DTLink(object):
     for i in range(n):
       over = 2*i+1
       ci = self.code[i]
+      
+      # !!!! I believe that this does not remove a *positive* twist. Both a positive twist
+      # and a negative twist can be introduced with the same DT code (by twisting right or left,
+      # but either way having the even number correspond to the under-crossing. !!!!
+      
+      # !!!! In fact, more broadly, the DT notation does not uniquely determine a knot diagram,
+      # as any connect-sum component of a diagram can be replaced by its mirror image, without
+      # changing the DT code. For tabulating knots, this is not a problem, but for our purposes
+      # of manipulating diagrams, this could be troublesome. There is probably a way to overdetermine
+      # the code to eliminate this ambiguity? !!!!
+       
+      # Added indentation after the if and else statements.
       if ((arc == over) and (abs(over - ci) == 1)) or ((arc == ci) and abs(over - ci) == 1):
-	success = True
-	mn = min(over,ci)
+	      success = True
+	      mn = min(over,ci)
       else:
-	new_dt.append(ci)
-    for i in range(n-1):
-      ni = new_dt[i]
-      nis = cmp(ni,0)
-      nia = abs(ni)
-      new_dt[i] = (ni if nia < mn else ni-2*nis)
+	      new_dt.append(ci)
+          for i in range(n-1):
+            ni = new_dt[i]
+            nis = cmp(ni,0)
+            nia = abs(ni)
+            new_dt[i] = (ni if nia < mn else ni-2*nis)
     self.code = new_dt
     return success
 
