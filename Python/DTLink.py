@@ -170,7 +170,7 @@ class DTLink(object):
       # Added indentation after the if and else statements.
       if ((arc == over) and (abs(over - ci) == 1)) or ((arc == ci) and abs(over - ci) == 1):
 	      success = True
-	      mn = min(over,ci)
+	       mn = min(over,ci)
       else:
 	      new_dt.append(ci)
           for i in range(n-1):
