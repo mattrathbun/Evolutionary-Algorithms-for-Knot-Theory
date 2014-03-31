@@ -7,6 +7,14 @@ def normalise(i,m,M):
 # In case Matt forgets to use the British spelling.
 def normalize(i,m,M):
   return normalise(i,m,M)
+  
+# Helper function. Takes an even number, positive or negative, and returns
+# 	the index at which that even number shows up in a DT-code.
+def index(even, code):
+  if even % 2 == 0:
+    return [i for i,j in enumerate(code) if (abs(j) == abs(even))][0]
+  else:
+    raise TypeError("Only even numbers should be present in code.")
 
 # Main class. Encodes a knot diagram by a Dowker-Thistlewaite code, 
 #	augmented by extra data at each crossing as to whether the under-strand
@@ -74,35 +82,44 @@ class ADTLink(object):
     orientationsString = " ".join(str(x) for x in self.orientations)
     return codeString, orientationsString
 
+  # Helper method. Given an integer arc (odd or +/-even), returns a number between 1 and 2*n,
+  #	  with the appropriate modular identification.
+  def wrap(self, arc):
+    n = self.number_crossings()
+    if arc % (2*n) == 0:
+        return 2*n
+    else:
+        return arc % (2*n)
+        
   # Helper method. Given an integer arc, represented by a number at one of the crossings in the diagram (even or odd),
   #   returns a 4-element list of the odd number at the crossing; the absolute value of the even number at that crossing;
   #   and a +1 or -1 depending on whether the even number is positive or negative (corresponding to whether
   #   the even number belongs to under-strand or the over-strand of the diagram, respectively; and a +1 or -1 depending
   #	  on the orientation of the crossing.
-    def quad(arc):
-        code = self.code
-        orient = self.orientations
-        n = self.number_crossings()
-        arc = normalise(abs(arc),1,2*n)
-        if (arc % 2 == 1):
+  def quad(self, arc):
+    code = self.code
+    orient = self.orientations
+    n = self.number_crossings()
+    arc = normalise(abs(arc),1,2*n)
+    if (arc % 2 == 1):
 #      over = arc
-            idx = (arc - 1)/2
+        idx = (arc - 1)/2
 #      under = abs(code[idx])
-            even = abs(code[idx])
-            sign = cmp(code[idx],0)
+        even = abs(code[idx])
+        sign = cmp(code[idx],0)
 #      return [arc,under,sign]
-            return [arc, even, sign, orient[idx]]
-        else:
+        return [arc, even, sign, orient[idx]]
+    else:
 #      under = abs(arc)
-            even = abs(arc)
+        even = abs(arc)
       # [0] added so that idx is an integer and not a list. (Else code[idx] does not work.)
 #      idx = [i for i,j in enumerate(code) if abs(j) == under][0]
-            idx = [i for i,j in enumerate(code) if abs(j) == even][0]
+        idx = [i for i,j in enumerate(code) if abs(j) == even][0]
 #      over = 2 * idx + 1
-            odd = 2 * idx + 1
-            sign = cmp(code[idx],0)
+        odd = 2 * idx + 1
+        sign = cmp(code[idx],0)
 #      return [over,under,sign]
-            return [odd, even, sign, orient[idx]]
+        return [odd, even, sign, orient[idx]]
 
 ##### !!!!!
   # Methods that perform a Reidemeister 1 Move, introducing a single twist at the location arc.
@@ -312,7 +329,103 @@ class ADTLink(object):
         return True
     else:
         return False
-            
 
+  # Helper method that takes a point at a crossing (odd or +/- even) and returns the other
+  #		point at that crossing (+even or odd).
+  def jump(self, point):
+    n = self.number_crossings()
+    odd, even, sign, orient = self.quad(point)
+    if point % 2 == 1:
+        return even
+    elif point % 2 == 0:
+        return odd
+                          
+  # Helper method that takes in an 'arc' and a 'side' ("L" or "R"), and returns:
+  #		False and an empty list if the region to that side of arc is a monogon or bigon, 
+  #		True and a list of all other arcs which are
+  #			adjacent to the region on the side of the arc indicated by the arguments.
+  #		These returned arcs are represented as two-element lists, from vertex to vertex (with positive labels).
+  def R2Candidates(self, arc, side):
+    side = str(side).lower()
+    if side in ["l", "left", "0"]:
+        side = 0
+    elif side in ["r", "right", "1"]:
+        side = 1
+    else:
+        raise TypeError("Side should be l or r.")
+    forward = 0
+    once = 0
+    output = []
+    n = self.number_crossings()
+    arc = normalise(arc, 1, 2*n)
+#        odd, even, sign, orient = quad(arc)
+    tail = arc
+    head = self.wrap(arc + 1)
+    while True:
+        tail = self.jump(head)
+        odd, even, sign, orient = self.quad(tail)
+        if ((side + forward) % 2 == 0) and (tail % 2 == 1):
+            head = self.wrap(tail - sign*orient)
+        elif ((side + forward) % 2 == 0) and (tail % 2 == 0):
+            head = self.wrap(tail + sign*orient)
+        elif ((side + forward) % 2 == 1) and (tail % 2 == 1):
+            head = self.wrap(tail + sign*orient)
+        elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
+            head = self.wrap(tail - sign*orient)
+        if (tail == arc and head == self.wrap(arc + 1)):
+            break
+        output.append([tail, head])
+        if ((tail - head) % (2*n) == 1):
+            forward = 1
+        else:
+        	forward = 0
+    if len(output) > 1:
+        return True, output
+    else:
+        return False, []
+
+
+
+
+
+
+
+
+
+#    while (self.jump(head) != arc) or (once == 0):
+#        once += 1
+#        tail = self.jump(head)
+#        odd, even, sign, orient = self.quad(tail)
+#        if ((side + forward) % 2 == 0) and (tail % 2 == 1):
+#            head = self.wrap(tail - sign*orient)
+#            idx = index((arc+1) % n, self.code)
+#            output.append([self.code[idx] , 2*idx + 1 - cmp(self.code[idx], 0)*self.orientations[idx]])
+#        elif ((side + forward) % 2 == 0) and (tail % 2 == 0):
+#            head = self.wrap(tail + sign*orient)
+#        elif ((side + forward) % 2 == 1) and (tail % 2 == 1):
+#            head = self.wrap(tail + sign*orient)
+#        elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
+#            head = self.wrap(tail - sign*orient)
+#        output.append([tail, head])
+#        if ((tail - head) % (2*n) == 1):
+#            forward = 1
+#        else:
+#        	forward = 0
+#    if (self.jump(head) - head) % (2*n) in [-1, 1]:
+#        tail = self.jump(head)
+#        odd, even, sign, orient = self.quad(tail)
+#        if ((side + forward) % 2 == 0) and (tail % 2 == 1):
+#            head = self.wrap(tail - sign*orient)
+#        elif ((side + forward) % 2 == 0) and (tail % 2 == 0):
+#            head = self.wrap(tail + sign*orient)
+#        elif ((side + forward) % 2 == 1) and (tail % 2 == 1):
+#            head = self.wrap(tail + sign*orient)
+#        elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
+#            head = self.wrap(tail - sign*orient)
+#        output.append([tail, head])
+#    if len(output) > 1:
+#        return True, output
+#    else:
+#        return False, []
 
             
