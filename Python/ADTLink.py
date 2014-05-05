@@ -345,7 +345,46 @@ class ADTLink(object):
   #		True and a list of all other arcs which are
   #			adjacent to the region on the side of the arc indicated by the arguments.
   #		These returned arcs are represented as two-element lists, from vertex to vertex (with positive labels).
-  def R2Candidates(self, arc, side):
+#  def R2Candidates(self, arc, side):
+#    side = str(side).lower()
+#    if side in ["l", "left", "0"]:
+#        side = 0
+#    elif side in ["r", "right", "1"]:
+#        side = 1
+#    else:
+#        raise TypeError("Side should be l or r.")
+#    forward = 0
+#    once = 0
+#    output = []
+#    n = self.number_crossings()
+#    arc = normalise(arc, 1, 2*n)
+##        odd, even, sign, orient = quad(arc)
+#    tail = arc
+#    head = self.wrap(arc + 1)
+#    while True:
+#        tail = self.jump(head)
+#        odd, even, sign, orient = self.quad(tail)
+#        if ((side + forward) % 2 == 0) and (tail % 2 == 1):
+#            head = self.wrap(tail - sign*orient)
+#        elif ((side + forward) % 2 == 0) and (tail % 2 == 0):
+#            head = self.wrap(tail + sign*orient)
+#        elif ((side + forward) % 2 == 1) and (tail % 2 == 1):
+#            head = self.wrap(tail + sign*orient)
+#        elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
+#            head = self.wrap(tail - sign*orient)
+#        if (tail == arc and head == self.wrap(arc + 1)):
+#            break
+#        output.append([tail, head])
+#        if ((tail - head) % (2*n) == 1):
+#            forward = 1
+#        else:
+#        	forward = 0
+#    if len(output) > 1:
+#        return True, output
+#    else:
+#        return False, []
+
+  def regions(self, arc, side):
     side = str(side).lower()
     if side in ["l", "left", "0"]:
         side = 0
@@ -372,23 +411,293 @@ class ADTLink(object):
             head = self.wrap(tail + sign*orient)
         elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
             head = self.wrap(tail - sign*orient)
+        output.append([tail, head])
         if (tail == arc and head == self.wrap(arc + 1)):
             break
-        output.append([tail, head])
         if ((tail - head) % (2*n) == 1):
             forward = 1
         else:
         	forward = 0
-    if len(output) > 1:
-        return True, output
-    else:
-        return False, []
+#    print 'output of regions is: {}'.format(output)
+    return output
+
+  ##### !!!!!
+  # Methods that perform a Reidemeister 2 Move, introducing two additional crossings.
+  # arc -- is an integer corresponding to a label at one of the crossings of the diagram, indicating the edge
+  #   from arc to arc+1 (or rather, wrap(arc+1)).
+  # side -- is a choice of 'l' or 'r' to determine to which side of arc in the diagram arc will be 
+  #   perturbed to introduce the additional crossings with another strand. 
+  # edge -- is a two-element list [edge0, edge1].
+  # [edge0, edge1] -- is the other strand that arc will cross over or under.  
+  # Method mutates the ADTLink object, and returns True if the move is successfully performed
+##### !!!!!
+
+  # Note also, the parity of arc will be the same as the parity of edge0, if [edge0, edge1]
+  #   represents an edge adjacent to a region determined by arc.
+
+  def R2UpPlus(self, arc, side, edge):
+  	n = self.number_crossings()
+  	arc = normalise(arc, 1, 2*n)
+  	candidates = list(self.regions(arc, side))
+  	candidates.remove([arc, self.wrap(arc+1)])
+  	if not(edge in candidates):
+  		return False
+  	new_dt = []
+  	new_or = list(self.orientations)
+  	edge0, edge1 = edge
+  	if side in ['l', 'left', '0']:
+  		side = 1
+  	elif side in ['r', 'right', '1']:
+  		side = -1
+  	else:
+  		raise TypeError("Side should be l or r.")
+  	if arc % 2 == 0:
+  		if arc < edge0:
+			if edge1 == self.wrap(edge0 + 1):
+				for i in self.code:
+					if (abs(i) > arc) and (abs(i) > edge0):
+						new_dt.append(i + 4*cmp(i, 0))
+					elif (abs(i) > arc):
+						new_dt.append(i + 2*cmp(i, 0))
+					else: # abs(i) <= arc
+						new_dt.append(i)
+				new_dt.insert(arc/2, edge0 + 4)
+				new_or.insert(arc/2, side)
+				new_dt.insert(edge0/2 + 1, -(arc + 2))
+				new_or.insert(edge0/2 + 1, -side)
+			else: # edge0 == self.wrap(edge1 + 1)
+				for i in self.code:
+  					if (abs(i) > arc) and (abs(i) >= edge0):
+  						new_dt.append(i + 4*cmp(i, 0))
+  					elif (abs(i) > arc):
+  						new_dt.append(i + 2*cmp(i, 0))
+  					else: # abs(i) <= arc
+  						new_dt.append(i)
+  				new_dt.insert(arc/2, edge0 + 2)
+  				new_or.insert(arc/2, -side)
+  				new_dt.insert(edge0/2 + 1, -(arc + 2))
+  				new_or.insert(edge0/2 + 1, side)
+  		else: # edge0 < arc
+  			if edge1 == self.wrap(edge0 + 1):
+  				for i in self.code:
+  					if (abs(i) > arc):
+  						new_dt.append(i + 4*cmp(i, 0))
+  					elif (abs(i) > edge0): # but <= arc
+  						new_dt.append(i + 2*cmp(i, 0))
+  					else: # abs(i) <= edge0
+  						new_dt.append(i)
+  				new_dt.insert(edge0/2, -(arc + 4))
+  				new_or.insert(edge0/2, -side)
+  				new_dt.insert(arc/2 + 1, edge0 + 2)
+  				new_or.insert(arc/2 + 1, side)
+  			else: # edge1 < edge0
+  				for i in self.code:
+  					if (abs(i) > arc):
+  						new_dt.append(i + 4*cmp(i, 0))
+  					elif (abs(i) >= edge0): # but <= arc
+  						new_dt.append(i + 2*cmp(i, 0))
+  					else: # abs(i) < edge0
+  						new_dt.append(i)
+  				new_dt.insert(edge0/2, -(arc + 4))
+  				new_or.insert(edge0/2, side)
+  				new_dt.insert(arc/2 + 1, edge0)
+  				new_or.insert(arc/2 + 1, -side)
+  	else: # arc % 2 == 1
+  		if arc < edge0:
+  			if edge1 == self.wrap(edge0 + 1):
+  				for i in self.code:
+  					if abs(i) > edge0:
+  						new_dt.append(i + 4*cmp(i, 0))
+  					elif abs(i) > arc: # but <= edge0
+  						new_dt.append(i + 2*cmp(i, 0))
+  					else: # abs(i) <= arc
+  						new_dt.append(i)
+  				new_dt.insert((arc + 1)/2, edge1 + 2)
+  				new_or.insert((arc + 1)/2, -side)
+  				new_dt.insert(edge1/2 + 1, -(arc + 1))
+  				new_or.insert(edge1/2 + 1, side)
+  			else: # edge0 == self.wrap(edge1 + 1)
+  				for i in self.code:
+  					if abs(i) >= edge0:
+  						new_dt.append(i + 4*cmp(i, 0))
+  					elif abs(i) > arc: # but < edge0
+  						new_dt.append(i + 2*cmp(i, 0))
+  					else: # abs(i) <= arc
+  						new_dt.append(i)
+  				new_dt.insert((arc + 1)/2, edge1 + 4)
+  				new_or.insert((arc + 1)/2, side)
+  				new_dt.insert(edge1/2 + 1, -(arc + 1))
+  				new_or.insert(edge1/2 + 1, -side)
+  		else: # edge0 < arc
+  			if edge1 == self.wrap(edge0 + 1):
+  				for i in self.code:
+  					if abs(i) > arc:
+  						new_dt.append(i + 4*cmp(i, 0))
+  					elif abs(i) > edge0: # but <= arc
+  						new_dt.append(i + 2*cmp(i, 0))
+  					else: # abs(i) <= edge0
+  						new_dt.append(i)
+  				new_dt.insert(edge1/2, -(arc + 3))
+  				new_or.insert(edge1/2, side)
+  				new_dt.insert((arc + 1)/2 + 1, edge0 + 1)
+  				new_or.insert((arc + 1)/2 + 1, -side)
+  			else: # edge0 == self.wrap(edge1 + 1)
+  				for i in self.code:
+  					if abs(i) > arc:
+  						new_dt.append(i + 4*cmp(i, 0))
+  					elif abs(i) >= edge0: # but <= arc
+  						new_dt.append(i + 2*cmp(i, 0))
+  					else: # abs(i) < edge0
+  						new_dt.append(i)
+  				new_dt.insert(edge1/2, -(arc + 3))
+  				new_or.insert(edge1/2, -side)
+  				new_dt.insert((arc + 1)/2 + 1, edge0 + 1)
+  				new_or.insert((arc + 1)/2 + 1, side)
+  	self.code = new_dt
+  	self.orientations = new_or
+  	return True
+  	
+  				
+  				
+  				
+  				
+  				
+#   		if edge1 == self.wrap(edge0 + 1):
+#   			for i in self.code:
+#   				if abs(i) > min(arc, edge0) and abs(i) <= max(arc, edge0):
+#   					new_dt.append(i + 2*cmp(i, 0))
+#   				elif abs(i) > max(arc, edge0):
+#   					new_dt.append(i + 4*cmp(i, 0))
+#   				else:
+#   					new_dt.append(i)
+#   			new_dt.insert(min(arc, edge0)/2, -(max(arc, edge0) + 4))
+#   			new_or.insert(min(arc, edge0)/2, -1)
+#   			new_dt.insert(max(arc, edge0)/2 + 1, min(arc, edge0) + 2)
+#   			new_or.insert(max(arc, edge0)/2 + 1, 1)
+#   		else:
+#   			print "edge1 != self.wrap(edge0 + 1)"
+#   			if edge0 == min(arc, edge0):
+#   				for i in self.code:  				
+#   					print "arc = {}".format(arc)
+#   					print "edge0 = {}".format(edge0)
+#   					print "min(arc, edge0) = {}".format(min(arc, edge0))
+#   					if abs(i) > edge0 and abs(i) <= arc:
+#   						new_dt.append(i + 2*cmp(i, 0))
+#   					elif abs(i) > arc:
+#   						new_dt.append(i + 4*cmp(i, 0))
+#   					else:
+#   						new_dt.append(i)
+#   				new_dt.insert(edge0/2, -(arc + 4))
+#   				new_or.insert(edge0/2, 1)
+#   				new_dt.insert((arc/2) + 1, edge0)
+#   				new_or.insert((arc/2) + 1, -1)
+#   			else:
+#   				print "arc = {}".format(arc)
+#   				print "edge0 = {}".format(edge0)
+#   				print "min(arc, edge0) = {}".format(min(arc, edge0))
+#   				for i in self.code:
+#   					print "i = {}".format(i)
+#   					if abs(i) > arc and abs(i) < edge0:
+#   						new_dt.append(i + 2*cmp(i, 0))
+#   					elif abs(i) >= edge0:
+#   						new_dt.append(i + 4*cmp(i, 0))
+#   					else:
+#   						new_dt.append(i)
+#   				new_dt.insert(arc/2, edge0 + 2)
+#   				new_or.insert(arc/2, -1)
+#   				new_dt.insert((edge0/2) + 1, -(arc + 2))
+#   				new_or.insert((edge0/2) + 1, 1)
+#   	self.code = new_dt
+#   	self.orientations = new_or
+#   	return True
+  
+#   def R2UpPlus(self, arc, side, edge):
+#   	n = self.number_crossings()
+#   	arc = normalise(arc, 1, 2*n)
+#   	candidates = list(self.regions(arc, side))
+#   	candidates.remove([arc, self.wrap(arc+1)])
+#   	if not(edge in candidates):
+#   		return False
+#   	new_dt = []
+#   	new_or = list(self.orientations)
+#   	edge0, edge1 = edge
+#   	if side in ['l', 'left', '0']:
+#   		side = 1
+#   	elif side in ['r', 'right', '1']:
+#   		side = -1
+#   	else:
+#   		raise TypeError("Side should be l or r.")
+#   	if arc % 2 == 0:
+#   		if edge1 == self.wrap(edge0 + 1):
+#   			for i in self.code:
+#   				if abs(i) > min(arc, edge0) and abs(i) <= max(arc, edge0):
+#   					new_dt.append(i + 2*cmp(i, 0))
+#   				elif abs(i) > max(arc, edge0):
+#   					new_dt.append(i + 4*cmp(i, 0))
+#   				else:
+#   					new_dt.append(i)
+#   			new_dt.insert(min(arc, edge0)/2, -(max(arc, edge0) + 4))
+#   			new_or.insert(min(arc, edge0)/2, -1)
+#   			new_dt.insert(max(arc, edge0)/2 + 1, min(arc, edge0) + 2)
+#   			new_or.insert(max(arc, edge0)/2 + 1, 1)
+#   		else:
+#   			print "edge1 != self.wrap(edge0 + 1)"
+#   			if edge0 == min(arc, edge0):
+#   				for i in self.code:  				
+#   					print "arc = {}".format(arc)
+#   					print "edge0 = {}".format(edge0)
+#   					print "min(arc, edge0) = {}".format(min(arc, edge0))
+#   					if abs(i) > edge0 and abs(i) <= arc:
+#   						new_dt.append(i + 2*cmp(i, 0))
+#   					elif abs(i) > arc:
+#   						new_dt.append(i + 4*cmp(i, 0))
+#   					else:
+#   						new_dt.append(i)
+#   				new_dt.insert(edge0/2, -(arc + 4))
+#   				new_or.insert(edge0/2, 1)
+#   				new_dt.insert((arc/2) + 1, edge0)
+#   				new_or.insert((arc/2) + 1, -1)
+#   			else:
+#   				print "arc = {}".format(arc)
+#   				print "edge0 = {}".format(edge0)
+#   				print "min(arc, edge0) = {}".format(min(arc, edge0))
+#   				for i in self.code:
+#   					print "i = {}".format(i)
+#   					if abs(i) > arc and abs(i) < edge0:
+#   						new_dt.append(i + 2*cmp(i, 0))
+#   					elif abs(i) >= edge0:
+#   						new_dt.append(i + 4*cmp(i, 0))
+#   					else:
+#   						new_dt.append(i)
+#   				new_dt.insert(arc/2, edge0 + 2)
+#   				new_or.insert(arc/2, -1)
+#   				new_dt.insert((edge0/2) + 1, -(arc + 2))
+#   				new_or.insert((edge0/2) + 1, 1)
+#   	self.code = new_dt
+#   	self.orientations = new_or
+#   	return True
 
 
-
-
-
-
+# n = self.number_crossings()
+#     arc = normalise(arc,1,2*n)
+#     new_dt = []
+#     new_or = list(self.orientations)
+#     for i in self.code:
+#     	if abs(i) > arc:
+#     		new_dt.append(i + 2*cmp(i, 0))
+#     	else:
+#     		new_dt.append(i)
+#     if arc % 2 == 1:
+#         new_dt.insert((arc+1)/2, arc+1)
+#         new_or.insert((arc+1)/2, -1)
+#     else:
+#         new_dt.insert(arc/2, -(arc+2))
+#         new_or.insert(arc/2, -1)
+#     self.code = new_dt
+#     self.orientations = new_or
+#     return True	
+    
+    
 
 
 
