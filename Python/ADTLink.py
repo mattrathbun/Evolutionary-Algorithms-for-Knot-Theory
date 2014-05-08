@@ -737,4 +737,22 @@ class ADTLink(object):
 #    else:
 #        return False, []
 
-            
+  def phi(self,i,r):
+    if (i == r):
+      return 1
+    ar = self.jump(r)
+    ai = self.jump(i)
+    odd,even,sign,orient = self.quad(r)
+    rm1 = self.wrap(r-1)
+    phirm1 = self.phi(i,rm1)
+    if (ai > i):
+      if (ar >= i and ar <= ai):
+        return -phirm1
+      else:
+        return phirm1
+    else:
+      if (ar >= i and ar <= ai):
+        return phirm1
+      else:
+        return -phirm1
+
