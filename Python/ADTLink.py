@@ -738,11 +738,12 @@ class ADTLink(object):
 #        return False, []
 
   def phi(self,i,r):
+    r = abs(r)
+    i = abs(i)
     if (i == r):
       return 1
     ar = self.jump(r)
     ai = self.jump(i)
-    odd,even,sign,orient = self.quad(r)
     rm1 = self.wrap(r-1)
     phirm1 = self.phi(i,rm1)
     if (ai > i):
@@ -756,3 +757,36 @@ class ADTLink(object):
       else:
         return -phirm1
 
+  def f(self,i):
+    odd, even, sign, orient = self.quad(i)
+    if (i == odd):
+      return orient * sign
+    if (i == even):
+      return -orient * sign
+
+  def isrealisable(self):
+    n = self.number_crossings()
+    for i in range(1,2*n+1):
+      # print "i = %d" % i
+      for s in range(i+1,2*n+1):
+        # print "  s = %d" % s
+        a_i = self.jump(i)
+        a_s = self.jump(s)
+        if (i < a_i) and (a_i < s) and (a_s < s):
+          phisa = self.phi(i,s) * self.phi(i,a_s)
+          if (i <= a_s) and (a_s <= a_i):
+            fi = self.f(i)
+            fs = self.f(s)
+            if phisa * fi != fs:
+              # print "    phi_%d(%d) * phi_%d(%d) * f(%d) = %d * %d * %d = %d != %d = f(%d)" % (i, s, i, a_s, i, self.phi(i,s), self.phi(i,a_s), fi, phisa * fi, fs, s)
+              return False
+            # else:
+              # print "    phi_%d(%d) * phi_%d(%d) * f(%d) = %d * %d * %d = %d = %d = f(%d)" % (i, s, i, a_s, i, self.phi(i,s), self.phi(i,a_s), fi, phisa * fi, fs, s)
+          else:
+            phisa = self.phi(i,s) * self.phi(i,a_s)
+            if phisa != 1:
+              # print "    phi_%d(%d) * phi_%d(%d) = %d * %d = %d != 1" % (i, s, i, a_s, self.phi(i,s), self.phi(i,a_s), phisa)
+              return False
+            # else:
+              # print "    phi_%d(%d) * phi_%d(%d) = %d * %d = %d = 1" % (i, s, i, a_s, self.phi(i,s), self.phi(i,a_s), phisa)
+    return True
