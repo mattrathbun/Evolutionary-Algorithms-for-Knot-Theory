@@ -924,4 +924,59 @@ class ADTLink(object):
 #    else:
 #        return False, []
 
-            
+### phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
+### Says whether arc r is inside or outside the loop determined by arc i
+### and the under- or over-arc corresponding to arc i: returns -1 if
+### inside, and +1 if outside.
+
+  def phi(self,i,r):
+    r = abs(r)
+    i = abs(i)
+    if (i == r):
+      return 1
+    ar = self.jump(r)
+    ai = self.jump(i)
+    rm1 = self.wrap(r-1)
+    phirm1 = self.phi(i,rm1)
+    if (ai > i):
+      if (ar >= i and ar <= ai):
+        return -phirm1
+      else:
+        return phirm1
+    else:
+      if (ar >= i and ar <= ai):
+        return phirm1
+      else:
+        return -phirm1
+
+### f(i) as defined in [Dowker-Thistlethwaite, page 24]. 
+### Returns +1 if the other arc crosses from right to left, and -1 if it
+### crosses from left to right.
+
+  def f(self,i):
+    odd, even, sign, orient = self.quad(i)
+    if (i == odd):
+      return orient * sign
+    if (i == even):
+      return -orient * sign
+
+### Realisability check. This is Rule 2 from [Dowker-Thistlethwaite, page 25].
+
+  def isrealisable(self):
+    n = self.number_crossings()
+    for i in range(1,2*n+1):
+      for s in range(i+1,2*n+1):
+        a_i = self.jump(i)
+        a_s = self.jump(s)
+        if (i < a_i) and (a_i < s) and (a_s < s):
+          phisa = self.phi(i,s) * self.phi(i,a_s)
+          if (i <= a_s) and (a_s <= a_i):
+            fi = self.f(i)
+            fs = self.f(s)
+            if phisa * fi != fs:
+              return False
+          else:
+            phisa = self.phi(i,s) * self.phi(i,a_s)
+            if phisa != 1:
+              return False
+    return True
