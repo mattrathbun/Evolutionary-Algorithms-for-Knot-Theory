@@ -31,10 +31,12 @@ print "\n"
 print "Performing R2DownPlus(1, 'l') to L_1:"
 print L1.R2DownPlus(1, 'l')
 print L1.to_list()
+print "\n"
 
 print "Performing R2DownPlus(12, 'r') to L_2:"
 print L2.R2DownPlus(12, 'r')
 print L2.to_list()
+print "\n"
 
 print "Are L_1 and L_2 equal after these moves?"
 print L1 == L2
@@ -43,6 +45,11 @@ print "\n"
 print "L is {}".format(L.to_list())
 print "Performing R2DownPlus(10, 'l')"
 print L.R2DownPlus(10, 'l')
+print L.to_list()
+print "\n"
+
+print "Performing R2DownPlus(9, 'l')"
+print L.R2DownPlus(9, 'l')
 print L.to_list()
 print "\n"
 
@@ -63,7 +70,7 @@ print M.to_list()
 print "\n"
 
 print "Performing R2DownPlus(4, 'l')"
-M.R2DownPlus(4, 'l')
+print M.R2DownPlus(4, 'l')
 print M.to_list()
 print "\n"
 
@@ -73,6 +80,48 @@ print N.to_list()
 print "\n"
 
 print "Performing R2DownPlus(8, 'l')"
-N.R2DownPlus(8, 'l')
+print N.R2DownPlus(8, 'l')
 print N.to_list()
 print "\n"
+
+K = ADTLink.ADTLink([6, -8, 2, 4], [1, 1, 1, -1])
+print "K is:"
+print K.to_list()
+print "\n"
+
+print "Performing R2DownPlus(7, 'l')"
+print K.R2DownPlus(7, 'l')
+print K.to_list()
+print "\n"
+
+K = ADTLink.ADTLink([4, -6, -8, -2], [1, 1, -1, 1])
+print "K is:"
+print K.to_list()
+print "\n"
+
+print "Performing R2DownPlus(4, 'l')"
+print K.R2DownPlus(4, 'l')
+print K.to_list()
+print "\n"
+
+K = ADTLink.ADTLink([6, 8, -2, 4], [-1, 1, 1, 1])
+print "K is:"
+print K.to_list()
+print "\n"
+
+print "Performing R2DownPlus(1, 'l')"
+print K.R2DownPlus(1, 'l')
+print K.to_list()
+print "\n"
+
+K = ADTLink.ADTLink([-4, 6, -8, -2], [1, 1, 1, -1])
+print "K is:"
+print K.to_list()
+print "\n"
+
+print "Performing R2DownPlus(6, 'l')"
+print K.R2DownPlus(6, 'l')
+print K.to_list()
+print "\n"
+
+
