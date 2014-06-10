@@ -196,91 +196,152 @@ class ADTLink(object):
   # Method mutates the ADTLink object, and returns True if the move is successfully performed
   #   (which it always should since an R1Up move has no obstruction).
 ##### !!!!!
-  def R1UpPlusLeft(self,arc):
-    n = self.number_crossings()
-    arc = normalise(arc,1,2*n)
-    new_dt = []
-    new_or = list(self.orientations)
-    for i in self.code:
-    	if abs(i) > arc:
-    		new_dt.append(i + 2*cmp(i, 0))
-    	else:
-    		new_dt.append(i)
-    if arc % 2 == 1:
-        new_dt.insert((arc+1)/2, arc+1)
-        new_or.insert((arc+1)/2, 1)
-    else:
-        new_dt.insert(arc/2, -(arc+2))
-        new_or.insert(arc/2, 1)
-    self.code = new_dt
-    self.orientations = new_or
-    return True
-    
-  def R1UpPlusRight(self,arc):
-    n = self.number_crossings()
-    arc = normalise(arc,1,2*n)
-    new_dt = []
-    new_or = list(self.orientations)
-    for i in self.code:
-    	if abs(i) > arc:
-    		new_dt.append(i + 2*cmp(i, 0))
-    	else:
-    		new_dt.append(i)
-    if arc % 2 == 1:
-        new_dt.insert((arc+1)/2, -(arc+1))
-        new_or.insert((arc+1)/2, 1)
-    else:
-        new_dt.insert(arc/2, arc+2)
-        new_or.insert(arc/2, 1)
-    self.code = new_dt
-    self.orientations = new_or
-    return True
 
-  def R1UpMinusLeft(self,arc):
-    n = self.number_crossings()
-    arc = normalise(arc,1,2*n)
-    new_dt = []
-    new_or = list(self.orientations)
-    for i in self.code:
-    	if abs(i) > arc:
-    		new_dt.append(i + 2*cmp(i, 0))
-    	else:
-    		new_dt.append(i)
-    if arc % 2 == 1:
-        new_dt.insert((arc+1)/2, -(arc+1))
-        new_or.insert((arc+1)/2, -1)
-    else:
-        new_dt.insert(arc/2, arc+2)
-        new_or.insert(arc/2, -1)
-    self.code = new_dt
-    self.orientations = new_or
-    return True
-        
-  def R1UpMinusRight(self,arc):
-    n = self.number_crossings()
-    arc = normalise(arc,1,2*n)
-    new_dt = []
-    new_or = list(self.orientations)
-    for i in self.code:
-    	if abs(i) > arc:
-    		new_dt.append(i + 2*cmp(i, 0))
-    	else:
-    		new_dt.append(i)
-    if arc % 2 == 1:
-        new_dt.insert((arc+1)/2, arc+1)
-        new_or.insert((arc+1)/2, -1)
-    else:
-        new_dt.insert(arc/2, -(arc+2))
-        new_or.insert(arc/2, -1)
-    self.code = new_dt
-    self.orientations = new_or
-    return True	
+  def R1Up(self, arc, side, sign):
+  	if side == "L":
+  		side = 1
+  	elif side == "R"
+  		side = -1
+  	else:
+  		raise TypeError("Side should be 'L' or 'R'.")
+  	n = self.number_crossings()
+  	arc = normalise(arc,1,2*n)
+  	new_dt = []
+  	new_or = list(self.orientations)
+  	for i in self.code:
+  		if abs(i) > arc:
+  			new_dt.append(i + 2*cmp(i, 0))
+  		else:
+  			new_dt.append(i)
+  	if arc % 2 == 1:
+  		new_dt.insert((arc+1)/2, side*sign*(arc+1))
+  		new_or.insert((arc+1)/2, sign)
+  	else:
+  		new_dt.insert(arc/2, -side*sign*(arc+2))
+  		new_or.insert(arc/2, sign)
+  	self.code = new_dt
+  	self.orientations = new_or
+  	return True
+    
+    
+#   def R1UpPlusLeft(self,arc):
+#     n = self.number_crossings()
+#     arc = normalise(arc,1,2*n)
+#     new_dt = []
+#     new_or = list(self.orientations)
+#     for i in self.code:
+#     	if abs(i) > arc:
+#     		new_dt.append(i + 2*cmp(i, 0))
+#     	else:
+#     		new_dt.append(i)
+#     if arc % 2 == 1:
+#         new_dt.insert((arc+1)/2, arc+1)
+#         new_or.insert((arc+1)/2, 1)
+#     else:
+#         new_dt.insert(arc/2, -(arc+2))
+#         new_or.insert(arc/2, 1)
+#     self.code = new_dt
+#     self.orientations = new_or
+#     return True
+#     
+#   def R1UpPlusRight(self,arc):
+#     n = self.number_crossings()
+#     arc = normalise(arc,1,2*n)
+#     new_dt = []
+#     new_or = list(self.orientations)
+#     for i in self.code:
+#     	if abs(i) > arc:
+#     		new_dt.append(i + 2*cmp(i, 0))
+#     	else:
+#     		new_dt.append(i)
+#     if arc % 2 == 1:
+#         new_dt.insert((arc+1)/2, -(arc+1))
+#         new_or.insert((arc+1)/2, 1)
+#     else:
+#         new_dt.insert(arc/2, arc+2)
+#         new_or.insert(arc/2, 1)
+#     self.code = new_dt
+#     self.orientations = new_or
+#     return True
+# 
+#   def R1UpMinusLeft(self,arc):
+#     n = self.number_crossings()
+#     arc = normalise(arc,1,2*n)
+#     new_dt = []
+#     new_or = list(self.orientations)
+#     for i in self.code:
+#     	if abs(i) > arc:
+#     		new_dt.append(i + 2*cmp(i, 0))
+#     	else:
+#     		new_dt.append(i)
+#     if arc % 2 == 1:
+#         new_dt.insert((arc+1)/2, -(arc+1))
+#         new_or.insert((arc+1)/2, -1)
+#     else:
+#         new_dt.insert(arc/2, arc+2)
+#         new_or.insert(arc/2, -1)
+#     self.code = new_dt
+#     self.orientations = new_or
+#     return True
+#         
+#   def R1UpMinusRight(self,arc):
+#     n = self.number_crossings()
+#     arc = normalise(arc,1,2*n)
+#     new_dt = []
+#     new_or = list(self.orientations)
+#     for i in self.code:
+#     	if abs(i) > arc:
+#     		new_dt.append(i + 2*cmp(i, 0))
+#     	else:
+#     		new_dt.append(i)
+#     if arc % 2 == 1:
+#         new_dt.insert((arc+1)/2, arc+1)
+#         new_or.insert((arc+1)/2, -1)
+#     else:
+#         new_dt.insert(arc/2, -(arc+2))
+#         new_or.insert(arc/2, -1)
+#     self.code = new_dt
+#     self.orientations = new_or
+#     return True	
 
 
   # Methods that perform a Reidemeister 1 Move, eliminating a single twist at the location arc.
   # Method mutates the ADTLink object, returns True if move is successfully performed
   # (the move will be unsuccessful if the diagram does not contain a positive twist at the location arc, i.e. if 
   #  a (positive) even number in the code corresponds to an adjacent (odd) number.)
+  def R1Down(self, arc):
+  	if len(self.regions(arc, "L")) == 1:
+  		side = 1
+  	elif len(self.regions(arc, "R")) == 1:
+  		side = -1
+  	else:
+  		return False
+  	n = self.number_crossings()
+  	arc = normalise(arc, 1, 2*n)
+  	new_dt = []
+  	temp_dt = list(self.code)
+  	new_or = list(self.orientations)
+  	if arc % 2 == 1:
+    	temp_dt.pop(((arc-1)/2) % n)
+    	for i in temp_dt:
+        	if abs(i) > arc+1 :
+            	new_dt.append(i - 2*cmp(i, 0))
+        	else:
+            	new_dt.append(i) 
+    	self.code = new_dt
+    	self.orientations.pop(((arc-1)/2) % n)
+    	return True
+    elif arc % 2 == 0:
+        temp_dt.pop((arc/2) % n)
+        for i in temp_dt:
+            if abs(i) > arc:
+            	new_dt.append(i - 2*cmp(i,0))
+            else:
+                new_dt.append(i)
+        self.code = new_dt
+        self.orientations.pop((arc/2) % n)
+        return True  		
+
   def R1DownPlusLeft(self, arc):
     n = self.number_crossings()
     arc = normalise(arc, 1, 2*n)
