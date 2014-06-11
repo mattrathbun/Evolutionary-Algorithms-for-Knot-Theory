@@ -46,7 +46,7 @@ class ADTOp(object):
 		elif self.number == 1 and self.direction == "D":
 			return "1D({})".format(str(self.position))
 		elif self.number == 2 and self.direction == "U":
-			return "2U(pos={}, {}, target={}, sign={})".format(str(self.position), str(self.side), str.(self.target_position), str(self.crossing_sign))
+			return "2U(pos={}, {}, target={})".format(str(self.position), str(self.side), str.(self.target_position))
 		elif self.number == 2 and self.direction == "D":
 			return "2D({})".format(str(self.position))
 		elif self.number == 3:
@@ -61,7 +61,7 @@ class ADTOp(object):
 		elif self.number == 1 and self.direction == "D":
 			return knot.R1Down(self.position)
 		elif self.number == 2 and self.direction == "U":
-			return knot.R2Up(self.position, self.side, self.target_position, self.crossing_sign) ###########################################################
+			return knot.R2Up(self.position, self.side, self.target_position) ###########################################################
 		elif self.number == 2 and self.direction == "D":
 			return knot.R2Down(self.position) ###########################################################
 		elif self.number == 3:
