@@ -8,55 +8,64 @@ print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 1 to the right at [5, 4]"
-L.R2UpPlus(1, 'r', [5, 4])
+# L.R2UpPlus(1, 'r', [5, 4])
+L.R2Up(1, 'r', [5, 4])
 print L.to_list()
 print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 2 to the right at [4, 5]"
-L.R2UpPlus(2, 'r', [4, 5])
+# L.R2UpPlus(2, 'r', [4, 5])
+L.R2Up(2, 'r', [4, 5])
 print L.to_list()
 print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 2 to the right at [8, 7]"
-L.R2UpPlus(2, 'r', [8, 7])
+# L.R2UpPlus(2, 'r', [8, 7])
+L.R2Up(2, 'r', [8, 7])
 print L.to_list()
 print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 2 to the right at [7, 8]"
-L.R2UpPlus(2, 'r', [7, 8])
+# L.R2UpPlus(2, 'r', [7, 8])
+L.R2Up(2, 'r', [7, 8])
 print L.to_list()
 print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 6 to the right at [4, 3]"
-L.R2UpPlus(6, 'r', [4, 3])
+# L.R2UpPlus(6, 'r', [4, 3])
+L.R2Up(6, 'r', [4, 3])
 print L.to_list()
 print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 6 to the right at [8, 1]"
-L.R2UpPlus(6, 'r', [8, 1])
+# L.R2UpPlus(6, 'r', [8, 1])
+L.R2Up(6, 'r', [8, 1])
 print L.to_list()
 print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 3 to the right at [7, 8]"
-L.R2UpPlus(3, 'r', [7, 8])
+# L.R2UpPlus(3, 'r', [7, 8])
+L.R2Up(3, 'r', [7, 8])
 print L.to_list()
 print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 7 to the left at [3, 2]"
-L.R2UpPlus(7, 'l', [3, 2])
+# L.R2UpPlus(7, 'l', [3, 2])
+L.R2Up(7, 'l', [3, 2])
 print L.to_list()
 print "\n"
 
 L = K.copy()
 print "Here's an attempt at an R2UpPlus move on 7 to the right at [3, 4]"
-L.R2UpPlus(7, 'r', [3, 4])
+# L.R2UpPlus(7, 'r', [3, 4])
+L.R2Up(7, 'r', [3, 4])
 print L.to_list()
 print "\n"
 
