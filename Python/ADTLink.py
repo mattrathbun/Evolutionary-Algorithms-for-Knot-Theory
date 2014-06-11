@@ -200,7 +200,7 @@ class ADTLink(object):
   def R1Up(self, arc, side, sign):
   	if side == "L":
   		side = 1
-  	elif side == "R"
+  	elif side == "R":
   		side = -1
   	else:
   		raise TypeError("Side should be 'L' or 'R'.")
@@ -322,25 +322,25 @@ class ADTLink(object):
   	temp_dt = list(self.code)
   	new_or = list(self.orientations)
   	if arc % 2 == 1:
-    	temp_dt.pop(((arc-1)/2) % n)
-    	for i in temp_dt:
-        	if abs(i) > arc+1 :
-            	new_dt.append(i - 2*cmp(i, 0))
-        	else:
-            	new_dt.append(i) 
-    	self.code = new_dt
-    	self.orientations.pop(((arc-1)/2) % n)
-    	return True
-    elif arc % 2 == 0:
-        temp_dt.pop((arc/2) % n)
-        for i in temp_dt:
-            if abs(i) > arc:
-            	new_dt.append(i - 2*cmp(i,0))
-            else:
-                new_dt.append(i)
-        self.code = new_dt
-        self.orientations.pop((arc/2) % n)
-        return True  		
+  		temp_dt.pop(((arc-1)/2) % n)
+  		for i in temp_dt:
+  			if abs(i) > arc+1:
+  				new_dt.append(i - 2*cmp(i, 0))
+  			else:
+  				new_dt.append(i) 
+  		self.code = new_dt
+  		self.orientations.pop(((arc-1)/2) % n)
+  		return True
+  	elif arc % 2 == 0:
+  		temp_dt.pop((arc/2) % n)
+  		for i in temp_dt:
+  			if abs(i) > arc:
+  				new_dt.append(i - 2*cmp(i,0))
+  			else:
+  				new_dt.append(i)
+  		self.code = new_dt
+  		self.orientations.pop((arc/2) % n)
+  		return True  		
 
 #   def R1DownPlusLeft(self, arc):
 #     n = self.number_crossings()
@@ -746,9 +746,9 @@ class ADTLink(object):
   	n = self.number_crossings()
   	arc = normalise(arc, 1, 2*n)
   	candidates_left = list(self.regions(arc, 'L'))
+  	candidates_right = list(self.regions(arc, 'R'))
   	if len(candidates_left) == 2:
   		candidates = candidates_left
-  	candidates_right = list(self.regions(arc, 'R'))
   	elif len(candidates_right) == 2:
   		candidates = candidates_right
   	else:
