@@ -853,6 +853,82 @@ class ADTLink(object):
 #   	self.code = new_code
 #   	return True	
   	
+  #helper
+  def isOdd(self,arc):
+	  return arc%2==1
+
+  #helper
+  def isOverstrand(self,arc):
+	  if self.isOdd(arc) and self.quad(arc)[2]==-1:
+		  return False
+	  if self.isOdd(arc) and self.quad(arc)[2]==1:
+		  return True
+	  if not self.isOdd(arc) and self.quad(arc)[2]==-1:
+		  return True
+	  if not self.isOdd(arc) and self.quad(arc)[2]==1:
+		  return False  
+
+  #helper: returns the crossing to the right of the current arc
+  def right(self,arc):
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+		  return self.wrap(self.jump(arc)+1)
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+		  return self.wrap(self.jump(arc)-1)
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+		  return self.wrap(self.jump(arc)-1)
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+		  return self.wrap(self.jump(arc)+1)
+
+  #helper: returns the crossing to the right of the current arc and then one
+  def doubleRight(self,arc):
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+		  return self.wrap(self.jump(arc)+2)
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+		  return self.wrap(self.jump(arc)-2)
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+		  return self.wrap(self.jump(arc)-2)
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+		  return self.wrap(self.jump(arc)+2)
+
+  #helper: returns the crossing to the left of the current arc
+  def left(self,arc):
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+		  return self.wrap(self.jump(arc)-1)
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+		  return self.wrap(self.jump(arc)+1)
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+		  return self.wrap(self.jump(arc)+1)
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+		  return self.wrap(self.jump(arc)-1)
+
+### The R3 move
+
+##wibble: need to remember that there is a special case when
+## we go over the 2*n to 1.
+  def R3(self, arc, side):
+	  n = self.number_crossings()
+	  arc = normalise(arc,1,2*n)
+	  candidates = list(self.regions(arc, side))
+	  print candidates
+	  if not (len(candidates)==3):
+		  return False
+	  arcNext = self.wrap(arc+1)
+	  print "Here: ",arc,arcNext
+
+	  print "crossings: ",arc,self.quad(arc)[2],"   ",arcNext,self.quad(arcNext)[2]
+
+	  if self.quad(arc)[2]==self.quad(arcNext)[2]:
+		  ## not both over or undercrossings
+		  return False
+	  doubleOverstrand = self.isOverstrand(arc)
+	  print "DO: ",doubleOverstrand
+		  
+	  print "RR: ",self.right(arc),self.right(arcNext)
+          ### current working position (cwp)
+
+
+
+	  return True
 
 ### phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
 ### Says whether arc r is inside or outside the loop determined by arc i
