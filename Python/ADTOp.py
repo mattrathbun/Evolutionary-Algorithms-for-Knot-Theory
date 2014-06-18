@@ -2,7 +2,7 @@ from math import *
 import random
 
 class ADTOp(object):
-	def __init__(self, number, direction='H', position, side=None,
+	def __init__(self, number, position, direction='H', side=None,
 		crossing_sign=None, target_position=None):
 		self.number = number	# 1, 2, or 3 -- Reidemeister moves
 			# Necessary property for all Op objects
@@ -46,22 +46,23 @@ class ADTOp(object):
 		elif self.number == 1 and self.direction == "D":
 			return "1D({})".format(str(self.position))
 		elif self.number == 2 and self.direction == "U":
-			return "2U(pos={}, {}, target={})".format(str(self.position), str(self.side), str.(self.target_position))
+			return "2U(pos={}, {}, target={})".format(str(self.position), str(self.side), str(self.target_position))
 		elif self.number == 2 and self.direction == "D":
 			return "2D({})".format(str(self.position))
 		elif self.number == 3:
 			return "3H({})".format(str(self.position))
 						
 	def copy(self):
-		return ADTOp(self.number, self.direction, self.position, self.side, self.crossing_sign, self.target_position)
+		return ADTOp(number = self.number, direction = self.direction, position = self.position, 
+			side = self.side, crossing_sign = self.crossing_sign, target_position = self.target_position)
 		
 	def apply(self, knot):
 		if self.number == 1 and self.direction == "U":
-			return knot.R1Up(self.position, self.side, self.crossing_sign)
+			return knot.R1Up(arc = self.position, side = self.side, sign = self.crossing_sign)
 		elif self.number == 1 and self.direction == "D":
 			return knot.R1Down(self.position)
 		elif self.number == 2 and self.direction == "U":
-			return knot.R2Up(self.position, self.side, self.target_position) ###########################################################
+			return knot.R2Up(arc = self.position, side = self.side, target = self.target_position) ###########################################################
 		elif self.number == 2 and self.direction == "D":
 			return knot.R2Down(self.position) ###########################################################
 		elif self.number == 3:
