@@ -978,6 +978,7 @@ class ADTLink(object):
         # also we need to check that this doesn't change the orientations
         # this needs to be reworked so that it works from the left too
         # we don't currently use the overstrand/understrand information
+        # need to check that the 2*n->1 wrap works ok
 
         ### current working position (cwp)        
 
