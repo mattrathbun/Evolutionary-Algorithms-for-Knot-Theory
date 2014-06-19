@@ -901,34 +901,88 @@ class ADTLink(object):
 	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
 		  return self.wrap(self.jump(arc)-1)
 
+# Helper. Determines whether the arc going to the right of the specified
+#  arc is "pointing outwards" (away from the arc) or "inwards"
+  def rightOutwards(self,arc):
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+                  return True
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+                  return False
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+                  return False
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+                  return True
+
 ### The R3 move
 
 ##wibble: need to remember that there is a special case when
 ## we go over the 2*n to 1.
   def R3(self, arc, side):
-	  n = self.number_crossings()
-	  arc = normalise(arc,1,2*n)
-	  candidates = list(self.regions(arc, side))
-	  print candidates
-	  if not (len(candidates)==3):
-		  return False
-	  arcNext = self.wrap(arc+1)
-	  print "Here: ",arc,arcNext
+        n = self.number_crossings()
+        arc = normalise(arc,1,2*n)
+        candidates = list(self.regions(arc, side))
+        print candidates
+        if not (len(candidates)==3):
+                return False
+        arcNext = self.wrap(arc+1)
+        print "Here: ",arc,arcNext
+                
+        print "crossings: ",arc,self.quad(arc)[2],"   ",arcNext,self.quad(arcNext)[2]
+        
+        if self.quad(arc)[2]==self.quad(arcNext)[2]:
+                ## not both over or undercrossings
+                return False
+        doubleOverstrand = self.isOverstrand(arc)
+        print "DO: ",doubleOverstrand
+        
+        print "RR: ",self.right(arc),self.right(arcNext)
 
-	  print "crossings: ",arc,self.quad(arc)[2],"   ",arcNext,self.quad(arcNext)[2]
+        rewrite = {}
+  	if side in ['R', 'r', 'right', '1', 'Right']:
+                # rewrite the crossing
+                if self.rightOutwards(arc):
+                        rewrite.update({self.right(arc):self.right(arc)-1})
+                else:
+                        rewrite.update({self.right(arc):self.right(arc)+1})
+                if self.rightOutwards(arcNext):
+                        rewrite.update({self.right(arcNext):self.right(arcNext)-1})
+                else:
+                        rewrite.update({self.right(arcNext):self.right(arcNext)+1})
+                # rewrite the strand
+                if self.rightOutwards(arcNext):
+                        rewrite.update({self.jump(arc):self.jump(arcNext)+1})
+                else:
+                        rewrite.update({self.jump(arc):self.jump(arcNext)-1})
+                if self.rightOutwards(arc):
+                        rewrite.update({self.jump(arcNext):self.jump(arc)+1})
+                else:
+                        rewrite.update({self.jump(arcNext):self.jump(arc)-1})
+                      
+        print rewrite
+        # it helps that rewrite[even] = odd and vice versa
+        newCode = [0]*self.number_crossings()
+        pairs = []
+        for i in range(1,2*self.number_crossings(),2):
+                pairs.append(map(lambda x:(rewrite[x] if x in rewrite else x) if x > 0 else (-rewrite[-x] if -x in rewrite else x), [i,self.code[(i-1)/2]]))
+        for p in pairs:
+                print p
+                if self.isOdd(p[0]):
+                        print "case 1"
+                        newCode[(p[0]-1)/2] = p[1]
+                else:
+                        print "case 2"
+                        newCode[(p[1]-1)/2] = p[0]
+        self.code = newCode
 
-	  if self.quad(arc)[2]==self.quad(arcNext)[2]:
-		  ## not both over or undercrossings
-		  return False
-	  doubleOverstrand = self.isOverstrand(arc)
-	  print "DO: ",doubleOverstrand
-		  
-	  print "RR: ",self.right(arc),self.right(arcNext)
-          ### current working position (cwp)
+        # I am not convinced that the +ve/-ve values on the even numbers are right.
+        # also we need to check that this doesn't change the orientations
+        # this needs to be reworked so that it works from the left too
+        # we don't currently use the overstrand/understrand information
 
+        ### current working position (cwp)        
 
+        return True
 
-	  return True
 
 ### phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
 ### Says whether arc r is inside or outside the loop determined by arc i
