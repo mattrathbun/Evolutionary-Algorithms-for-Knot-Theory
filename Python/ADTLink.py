@@ -980,6 +980,10 @@ class ADTLink(object):
         # we don't currently use the overstrand/understrand information
         # need to check that the 2*n->1 wrap works ok
 
+	#if the two other arcs are opposite orientation then orientation needs to swp.
+	
+	#we always need to swap the sign of the crossed-over crossing
+
         ### current working position (cwp)        
 
         return True
