@@ -964,10 +964,11 @@ class ADTLink(object):
                 else:
                         rewrite.update({self.jump(arcNext):self.jump(arc)-1})
 
-        if (side in ['R', 'r', 'right', '1', 'Right']:
+        if (side in ['R', 'r', 'right', '1', 'Right']):
             # wibble: to be done - the left hand version
                       
-        print "\nfinal rewrite: ",rewrite,"\n"
+            print "\nfinal rewrite: ",rewrite,"\n"
+
         # it helps that rewrite[even] = odd and vice versa
         newCode = [0]*self.number_crossings()
         pairs = []
