@@ -988,7 +988,39 @@ class ADTLink(object):
         # might be sensible to strip out all of the -ve signs, store them, and restore them at the end
 
         return True
-
+        
+  def coarsePossibleMoves(self):
+  	possible_moves = ['R1Up']
+  	n = self.number_crossings()
+  	for i in range(1,n+1):
+  		if len(possible_moves) == 5:
+  			return possible_moves
+  		else:
+  			left_reg = len(self.regions(i, 'L'))
+  			right_reg = len(self.regions(i, 'R'))
+  			if ('R1Down' not in possible_moves) and (left_reg == 1 or right_reg == 1):
+  				possible_moves.append('R1Down')
+  			elif ('R2Up' not in possible_moves) and (left_reg > 1 or right_reg > 1):
+  				possible_moves.append('R2Up')
+  			elif ('R2Down' not in possible_moves):
+  				if left_reg == 2 and n > 1:
+  					candidates = self.regions(i, 'L').remove([i, self.wrap(i+1)])
+  				elif right_reg == 2 and n > 1:
+  					candidates = self.regions(i, 'R').remove([i, self.wrap(i+1)])
+  				else:
+  					continue
+  				i1 = index(i, self.code)
+  				i2 = index(self.wrap(i+1), self.code)
+  				I = max(i1, i2)
+  				i = min(i1, i2)
+  				o1 = self.orientations[i1]
+  				o2 = self.orientations[i2]
+  				if o1 == -o2:
+  					possible_moves.append('R2Down')
+  			elif ('R3' not in possible_moves) and (left_reg == 3 or right_reg == 3):
+  				if self.quad(arc)[2] == -self.quad(arcNext)[2]:
+  					possible_moves.append('R3')
+  	return possible_moves
 
 ### phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
 ### Says whether arc r is inside or outside the loop determined by arc i
