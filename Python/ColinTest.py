@@ -9,20 +9,35 @@ K = ADTLink.ADTLink([-6,10,12,-2,4,-8],[1,1,-1,1,1,1])
 #    print i,K.right(i),K.doubleRight(i)
 
 print "#############################################################"
+print "#### Colin's Original example"
+print "#############################################################"
 
 print K.to_list()
+print" " 
 K.R3(8,'r')
-print K.to_list()
-## I think this example is off by a single sign.
-## print "Should get ([-6, -8, 12, -2, 10, -4], [1, 1, -1, 1, 1, 1])."
+print" "
+print "We get    ",K.to_list()
+print "Should get ([-6, -8, 12, -2, 10, -4], [1, 1, -1, 1, 1, 1])."
 
+print " "
+print "#############################################################"
+print "#### Matt's example with the orientation at 3/10 changed to -ve"
 print "#############################################################"
 
 K = ADTLink.ADTLink([-6, -10, 12, -2, 4, -8], [1, -1, -1, 1, 1, 1])
 
 print K.to_list()
 K.R3(8, 'R')
-print K.to_list()
-print "Should get ([-6, -8, 12, -2, 10, 4], [1, 1, -1, 1, 1, -1])."
+print "We get    ",K.to_list()
+print "Should get ([-6, -8, 12, -2, 10, -4], [1, 1, -1, 1, 1, -1])."
 
 print "#############################################################"
+
+print " "
+print "#############################################################"
+print "#### This code should not be realizable."
+print "#############################################################"
+
+K = ADTLink.ADTLink([-6, -10, 12, -2, -4, -8], [1, -1, -1, 1, 1, 1])
+print K.isrealisable()
+print "Should be False."

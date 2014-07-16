@@ -923,31 +923,37 @@ class ADTLink(object):
         candidates = list(self.regions(arc, side))
         print candidates
         if not (len(candidates)==3):
+                print "Not three candidates"
                 return False
         arcNext = self.wrap(arc+1)
-        print "Here: ",arc,arcNext
+        # print "arc, arcNext: ",arc,arcNext
                 
-        print "crossings: ",arc,self.quad(arc)[2],"   ",arcNext,self.quad(arcNext)[2]
+        # print "crossings: ",arc,self.quad(arc)[2],"   ",arcNext,self.quad(arcNext)[2]
         
         if self.quad(arc)[2]==self.quad(arcNext)[2]:
                 ## not both over or undercrossings
+                print "Not both overcrossings or undercrossings"
                 return False
         doubleOverstrand = self.isOverstrand(arc)
         print "DO: ",doubleOverstrand
-        
+
         print "RR: ",self.right(arc),self.right(arcNext)
 
         rewrite = {}
   	if side in ['R', 'r', 'right', '1', 'Right']:
                 # rewrite the crossing
+                # the crossing is _always changed in sign
+
                 if self.rightOutwards(arc):
-                        rewrite.update({self.right(arc):self.right(arc)-1})
+                        rewrite.update({self.right(arc):-self.right(arc)+1})
                 else:
-                        rewrite.update({self.right(arc):self.right(arc)+1})
+                        rewrite.update({self.right(arc):-self.right(arc)-1})
+                        print "here",rewrite
                 if self.rightOutwards(arcNext):
-                        rewrite.update({self.right(arcNext):self.right(arcNext)-1})
+                        rewrite.update({self.right(arcNext):-self.right(arcNext)+1})
                 else:
-                        rewrite.update({self.right(arcNext):self.right(arcNext)+1})
+                        rewrite.update({self.right(arcNext):-self.right(arcNext)-1})
+                        print "and here",rewrite
                 # rewrite the strand
                 if self.rightOutwards(arcNext):
                         rewrite.update({self.jump(arc):self.jump(arcNext)+1})
@@ -957,34 +963,29 @@ class ADTLink(object):
                         rewrite.update({self.jump(arcNext):self.jump(arc)+1})
                 else:
                         rewrite.update({self.jump(arcNext):self.jump(arc)-1})
+
+        if (side in ['R', 'r', 'right', '1', 'Right']):
+            # wibble: to be done - the left hand version
                       
-        print rewrite
+            print "\nfinal rewrite: ",rewrite,"\n"
+
         # it helps that rewrite[even] = odd and vice versa
         newCode = [0]*self.number_crossings()
         pairs = []
         for i in range(1,2*self.number_crossings(),2):
                 pairs.append(map(lambda x:(rewrite[x] if x in rewrite else x) if x > 0 else (-rewrite[-x] if -x in rewrite else x), [i,self.code[(i-1)/2]]))
         for p in pairs:
-                print p
+                print "p is ",p[0]," ",p[1]
                 if self.isOdd(p[0]):
                         print "case 1"
-                        newCode[(p[0]-1)/2] = p[1]
+                        newCode[(abs(p[0])-1)/2] = p[1]
                 else:
                         print "case 2"
-                        newCode[(p[1]-1)/2] = p[0]
+                        newCode[(abs(p[1])-1)/2] = p[0]
         self.code = newCode
 
-        # I am not convinced that the +ve/-ve values on the even numbers are right.
-        # also we need to check that this doesn't change the orientations
-        # this needs to be reworked so that it works from the left too
-        # we don't currently use the overstrand/understrand information
-        # need to check that the 2*n->1 wrap works ok
-
-	#if the two other arcs are opposite orientation then orientation needs to swp.
-	
-	#we always need to swap the sign of the crossed-over crossing
-
-        ### current working position (cwp)        
+        # wibble: you need to check that the "abs" is not losing a -ve sign that should be there.
+        # might be sensible to strip out all of the -ve signs, store them, and restore them at the end
 
         return True
 
