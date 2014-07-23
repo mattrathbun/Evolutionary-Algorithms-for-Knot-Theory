@@ -1,3 +1,5 @@
+import ADTOp
+
 # Helper function. Takes three numbers: i, m, M. (m meant to be min and M max).
 # Returns i if i is between m and M. Otherwise, 
 #   if i is smaller than m, return m, larger than M, return M
@@ -1000,27 +1002,59 @@ class ADTLink(object):
   			right_reg = len(self.regions(i, 'R'))
   			if ('R1Down' not in possible_moves) and (left_reg == 1 or right_reg == 1):
   				possible_moves.append('R1Down')
-  			elif ('R2Up' not in possible_moves) and (left_reg > 1 or right_reg > 1):
+  			if ('R2Up' not in possible_moves) and (left_reg > 1 or right_reg > 1):
   				possible_moves.append('R2Up')
-  			elif ('R2Down' not in possible_moves):
-  				if left_reg == 2 and n > 1:
-  					candidates = self.regions(i, 'L').remove([i, self.wrap(i+1)])
-  				elif right_reg == 2 and n > 1:
-  					candidates = self.regions(i, 'R').remove([i, self.wrap(i+1)])
-  				else:
-  					continue
+  			if ('R2Down' not in possible_moves) and (left_reg == 2 or right_reg == 2) and n > 1:
   				i1 = index(i, self.code)
   				i2 = index(self.wrap(i+1), self.code)
-  				I = max(i1, i2)
-  				i = min(i1, i2)
   				o1 = self.orientations[i1]
   				o2 = self.orientations[i2]
   				if o1 == -o2:
   					possible_moves.append('R2Down')
-  			elif ('R3' not in possible_moves) and (left_reg == 3 or right_reg == 3):
-  				if self.quad(arc)[2] == -self.quad(arcNext)[2]:
+  			if ('R3' not in possible_moves) and (left_reg == 3 or right_reg == 3):
+  				if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
   					possible_moves.append('R3')
   	return possible_moves
+  	
+  def finePossibleMoves(self):
+  	possible_moves = []
+  	n = self.number_crossings()
+  	for i in range(1, n+1):
+  		possible_moves.append(ADTOp.ADTOp(1, i, 'U', side='L', crossing_sign='1'))
+  		possible_moves.append(ADTOp.ADTOp(1, i, 'U', side='L', crossing_sign='-1'))
+  		possible_moves.append(ADTOp.ADTOp(1, i, 'U', side='R', crossing_sign='1'))
+  		possible_moves.append(ADTOp.ADTOp(1, i, 'U', side='R', crossing_sign='-1'))
+  		left_reg = len(self.regions(i, 'L'))
+  		right_reg = len(self.regions(i, 'R'))
+  		if left_reg == 1 or right_reg == 1:
+  			possible_moves.append(ADTOp.ADTOp(1, i, 'D'))  			
+  		if left_reg > 1:
+  			candidates = list(self.regions(i, 'L'))
+  			candidates.remove([i, self.wrap(i+1)])
+  			for j in candidates:
+  				possible_moves.append(ADTOp.ADTOp(2, i, 'U', side = 'L', target_position = j))
+  		if right_reg > 1:
+  			candidates = list(self.regions(i, 'R'))
+  			candidates.remove([i, self.wrap(i+1)])
+  			for j in candidates:
+  				possible_moves.append(ADTOp.ADTOp(2, i, 'U', side = 'R', target_position = j))
+  		if (left_reg == 2 or right_reg == 2) and n > 1:
+  			i1 = index(i, self.code)
+  			i2 = index(self.wrap(i+1), self.code)
+  			o1 = self.orientations[i1]
+  			o2 = self.orientations[i2]
+  			if o1 == -o2:
+  				possible_moves.append(ADTOp.ADTOp(2, i, 'D')
+  		if left_reg == 3:
+  			if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
+  				possible_moves.append(ADTOp.ADTOp(3, i, 'H', side='L')
+  		if right_reg == 3:
+  			if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
+  				possible_moves.append(ADTOp.ADTOp(3, i, 'H', side='R')
+  	return possible_moves
+  			
+  					
+  					
 
 ### phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
 ### Says whether arc r is inside or outside the loop determined by arc i
