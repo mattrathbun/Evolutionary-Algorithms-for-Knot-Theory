@@ -1044,13 +1044,13 @@ class ADTLink(object):
   			o1 = self.orientations[i1]
   			o2 = self.orientations[i2]
   			if o1 == -o2:
-  				possible_moves.append(ADTOp.ADTOp(2, i, 'D')
+  				possible_moves.append(ADTOp.ADTOp(2, i, 'D'))
   		if left_reg == 3:
   			if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
-  				possible_moves.append(ADTOp.ADTOp(3, i, 'H', side='L')
+  				possible_moves.append(ADTOp.ADTOp(3, i, 'H', side='L'))
   		if right_reg == 3:
   			if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
-  				possible_moves.append(ADTOp.ADTOp(3, i, 'H', side='R')
+  				possible_moves.append(ADTOp.ADTOp(3, i, 'H', side='R'))
   	return possible_moves
   			
   					
