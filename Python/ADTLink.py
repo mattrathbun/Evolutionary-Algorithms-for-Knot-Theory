@@ -935,14 +935,13 @@ class ADTLink(object):
 			return False
 		doubleOverstrand = self.isOverstrand(arc)
 		print "DO: ",doubleOverstrand
-
 		print "RR: ",self.right(arc),self.right(arcNext)
 
+		
 		rewrite = {}
 		if side in ['R', 'r', 'right', '1', 'Right']:
 			# rewrite the crossing
-			# the crossing is _always changed in sign
-
+			# the crossing is _always_ changed in sign
 			if self.rightOutwards(arc):
 				rewrite.update({self.right(arc):-self.right(arc)+1})
 			else:
@@ -962,12 +961,13 @@ class ADTLink(object):
 				rewrite.update({self.jump(arcNext):self.jump(arc)+1})
 			else:
 				rewrite.update({self.jump(arcNext):self.jump(arc)-1})
+			crossedOverOrientation = self.rightOutwards(arc)==self.rightOutwards(arcNext)
+			print "Crossed Over orientation",crossedOverOrientation
 
 		if (side in ['L', 'l', 'left', '0', 'Left']):
 			# wibble: to be done - the left hand version
 			pass
 
-                      
 		print "\nfinal rewrite: ",rewrite,"\n"
 
 		# it helps that rewrite[even] = odd and vice versa
