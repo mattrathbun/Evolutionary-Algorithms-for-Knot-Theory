@@ -81,8 +81,8 @@ vbet = betweenness(g)[0]
 #pos = fruchterman_reingold_layout(g)
 #pos = arf_layout(g)
 pos = radial_tree_layout(g,0)
-graph_draw(g, pos=pos, vertex_fill_color=vbet, output_size=(2000,2000), \
-           output="trefoil.png")
-#graph_draw(g, pos=pos, vertex_fill_color=vbet)
+#graph_draw(g, pos=pos, vertex_fill_color=vbet, output_size=(2000,2000), \
+#           output="trefoil.png")
+graph_draw(g, pos=pos, vertex_fill_color=vbet)
 #graph_draw(g, vertex_fill_color=vbet)
 #graphviz_draw(g, pos=pos)
