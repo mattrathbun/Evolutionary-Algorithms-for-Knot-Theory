@@ -881,17 +881,6 @@ class ADTLink(object):
 	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
 		  return self.wrap(self.jump(arc)+1)
 
-  #helper: returns the crossing to the right of the current arc and then one
-  def doubleRight(self,arc):
-	  if self.isOverstrand(arc) and self.quad(arc)[3]==-1:
-		  return self.wrap(self.jump(arc)+2)
-	  if self.isOverstrand(arc) and self.quad(arc)[3]==+1:
-		  return self.wrap(self.jump(arc)-2)
-	  if not self.isOverstrand(arc) and self.quad(arc)[3]==-1:
-		  return self.wrap(self.jump(arc)-2)
-	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
-		  return self.wrap(self.jump(arc)+2)
-
   #helper: returns the crossing to the left of the current arc
   def left(self,arc):
 	  if self.isOverstrand(arc) and self.quad(arc)[3]==-1:
@@ -903,8 +892,8 @@ class ADTLink(object):
 	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
 		  return self.wrap(self.jump(arc)-1)
 
-# Helper. Determines whether the arc going to the right of the specified
-#  arc is "pointing outwards" (away from the arc) or "inwards"
+	# Helper. Determines whether the arc going to the right of the specified
+	#  arc is "pointing outwards" (away from the arc) or "inwards"
   def rightOutwards(self,arc):
 	  if self.isOverstrand(arc) and self.quad(arc)[3]==-1:
                   return True
@@ -913,6 +902,18 @@ class ADTLink(object):
 	  if not self.isOverstrand(arc) and self.quad(arc)[3]==-1:
                   return False
 	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+                  return True
+
+	# Helper. Determines whether the arc going to the right of the specified
+	#  arc is "pointing outwards" (away from the arc) or "inwards"
+  def leftOutwards(self,arc):
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+                  return True
+	  if self.isOverstrand(arc) and self.quad(arc)[3]==-1:
+                  return False
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==+1:
+                  return False
+	  if not self.isOverstrand(arc) and self.quad(arc)[3]==-1:
                   return True
 
 ### The R3 move
@@ -937,7 +938,6 @@ class ADTLink(object):
 		print "DO: ",doubleOverstrand
 		print "RR: ",self.right(arc),self.right(arcNext)
 
-		
 		rewrite = {}
 		if side in ['R', 'r', 'right', '1', 'Right']:
 			# rewrite the crossing
@@ -946,27 +946,48 @@ class ADTLink(object):
 				rewrite.update({self.right(arc):-self.right(arc)+1})
 			else:
 				rewrite.update({self.right(arc):-self.right(arc)-1})
-			print "here",rewrite
 			if self.rightOutwards(arcNext):
 				rewrite.update({self.right(arcNext):-self.right(arcNext)+1})
 			else:
 				rewrite.update({self.right(arcNext):-self.right(arcNext)-1})
-			print "and here",rewrite
-			# rewrite the strand
+			# rewrite the strand part 1
 			if self.rightOutwards(arcNext):
 				rewrite.update({self.jump(arc):self.jump(arcNext)+1})
 			else:
 				rewrite.update({self.jump(arc):self.jump(arcNext)-1})
+			# rewrite the strand part 2
 			if self.rightOutwards(arc):
 				rewrite.update({self.jump(arcNext):self.jump(arc)+1})
 			else:
 				rewrite.update({self.jump(arcNext):self.jump(arc)-1})
-			crossedOverOrientation = self.rightOutwards(arc)==self.rightOutwards(arcNext)
-			print "Crossed Over orientation",crossedOverOrientation
+			theCrossing = abs(self.right(arc))
+			if not self.isOdd(theCrossing):
+				theCrossing = abs(self.jump(self.right(arc)))
 
 		if (side in ['L', 'l', 'left', '0', 'Left']):
-			# wibble: to be done - the left hand version
-			pass
+			# rewrite the crossing
+			# the crossing is _always_ changed in sign
+			if self.leftOutwards(arc):
+				rewrite.update({self.left(arc):-self.left(arc)+1})
+			else:
+				rewrite.update({self.left(arc):-self.left(arc)-1})
+			if self.leftOutwards(arcNext):
+				rewrite.update({self.left(arcNext):-self.left(arcNext)+1})
+			else:
+				rewrite.update({self.left(arcNext):-self.left(arcNext)-1})
+			# rewrite the strand part 1
+			if self.leftOutwards(arcNext):
+				rewrite.update({self.jump(arc):self.jump(arcNext)+1})
+			else:
+				rewrite.update({self.jump(arc):self.jump(arcNext)-1})
+			# rewrite the strand part 2
+			if self.leftOutwards(arc):
+				rewrite.update({self.jump(arcNext):self.jump(arc)+1})
+			else:
+				rewrite.update({self.jump(arcNext):self.jump(arc)-1})
+			theCrossing = abs(self.left(arc))
+			if not self.isOdd(theCrossing):
+				theCrossing = abs(self.jump(self.left(arc)))
 
 		print "\nfinal rewrite: ",rewrite,"\n"
 
@@ -974,19 +995,25 @@ class ADTLink(object):
 		newCode = [0]*self.number_crossings()
 		pairs = []
 		for i in range(1,2*self.number_crossings(),2):
-			pairs.append(map(lambda x:(rewrite[x] if x in rewrite else x) if x > 0 else (-rewrite[-x] if -x in rewrite else x), [i,self.code[(i-1)/2]]))
+			pairs.append(map(lambda x:(rewrite[x] if x in rewrite else x) 
+											 if x > 0 else (-rewrite[-x] if -x in rewrite else x), [i,self.code[(i-1)/2]]))
+
 		for p in pairs:
-			print "p is ",p[0]," ",p[1]
+			crossingSign = 1
+			if p[0]<0 or p[1]<0:
+				crossingSign = -1
 			if self.isOdd(p[0]):
-				print "case 1"
-				newCode[(abs(p[0])-1)/2] = p[1]
+				newCode[(abs(p[0])-1)/2] = crossingSign*abs(p[1])
 			else:
-				print "case 2"
-				newCode[(abs(p[1])-1)/2] = p[0]
+				newCode[(abs(p[1])-1)/2] = crossingSign*abs(p[0])
 		self.code = newCode
 
-        # wibble: you need to check that the "abs" is not losing a -ve sign that should be there.
-        # might be sensible to strip out all of the -ve signs, store them, and restore them at the end
+		theNewCrossing = self.jump(rewrite[theCrossing])
+
+		#orientations
+		temp = self.orientations[index(theCrossing,self.code)]
+		self.orientations[index(theCrossing,self.code)] = self.orientations[index(theNewCrossing,self.code)]
+		self.orientations[index(theNewCrossing,self.code)] = temp
 
 		return True
         
