@@ -2,22 +2,10 @@ from math import *
 import random
 
 class ADTOp(object):
-	def __init__(self, number, position, direction='H', side=None,
-		crossing_sign=None, target_position=None):
-		self.number = number	# 1, 2, or 3 -- Reidemeister moves
-			# Necessary property for all Op objects
-		self.direction = direction	# U, D, or H -- Up, Down, or Horizontal
-			# Necessary property for all Op objects
-		self.position = position	# Indicating at which strand the move will be performed
-			# Necessary property for all Op objects
-		self.side = side	# L or R -- which side of the strand on which a move is meant to be performed
-			# Necessary only for R1Up and R2Up Ops
-		self.crossing_sign = crossing_sign	# 1 or -1 -- Indicating which types of crossings will be introduced
-			# Necessary only for R1Up and R2Up Ops
-		self.target_position = target_position	# a pair of numbers -- indicating which second strand will be involved in an R2U move
-			# Necessary only for R2Up Ops
-			
-		## Takes a string from the list opNames
+	def __init__(self, number, direction, data=None):
+		self.number = number
+		self.direction = direction
+		self.data = data			# data is meant to be a dictionary
 		
 	def __eq__(self,other):
 		if type(other) == type(self):
@@ -33,133 +21,160 @@ class ADTOp(object):
 	
 	def getDirection(self):
 		return self.direction
+		
+	def getData(self):
+		return self.data
 	
 	def getType(self):
 		return self.number, self.direction
+		
+	def getFullType(self):
+		return self.number, self.direction, self.data
 		
 	def getTypeString(self):
 		return str(self.number)+str(self.direction)
 	
 	def toString(self):
 		if self.number == 1 and self.direction == 'U':
-			return "1U(pos={}, {}, sign={}".format(str(self.position), str(self.side), str(self.crossing_sign))
+			if self.checkFullData():
+				return "1U(pos={}, {}, sign={}".format(str(self.data['arc']), str(self.data['side']), str(self.data['sign']))
+			else:
+				return "1U"
 		elif self.number == 1 and self.direction == "D":
-			return "1D({})".format(str(self.position))
+			if self.checkFullData():
+				return "1D({})".format(str(self.data['arc']))
+			else:
+				return "1D"
 		elif self.number == 2 and self.direction == "U":
-			return "2U(pos={}, {}, target={})".format(str(self.position), str(self.side), str(self.target_position))
+			if self.checkFullData():
+				return "2U(pos={}, {}, target={})".format(str(self.data['arc']), str(self.data['side']), str(self.data['target']))
+			else:
+				return "2U"
 		elif self.number == 2 and self.direction == "D":
-			return "2D({})".format(str(self.position))
+			if self.checkFullData():
+				return "2D({})".format(str(self.data['arc']))
+			else:
+				return "2D"
 		elif self.number == 3:
-			return "3H({})".format(str(self.position))
+			if self.checkFullData():
+				return "3H({})".format(str(self.data['arc']))
+			else:
+				return "3H"
 						
 	def copy(self):
-		return ADTOp(number = self.number, direction = self.direction, position = self.position, 
-			side = self.side, crossing_sign = self.crossing_sign, target_position = self.target_position)
+		return ADTOp(number = self.number, direction = self.direction, data = self.data)
 		
-	def apply(self, knot):
-		if self.number == 1 and self.direction == "U":
-			return knot.R1Up(arc = self.position, side = self.side, sign = self.crossing_sign)
-		elif self.number == 1 and self.direction == "D":
-			return knot.R1Down(self.position)
-		elif self.number == 2 and self.direction == "U":
-			return knot.R2Up(arc = self.position, side = self.side, target = self.target_position) ###########################################################
-		elif self.number == 2 and self.direction == "D":
-			return knot.R2Down(self.position) ###########################################################
+	def checkFullData(self):
+		if not self.data:
+			return False
+		if self.number == 1:
+			if self.direction == 'U':
+				if len(self.data) == 3 and all (k in self.data for k in ('arc', 'side', 'sign')):
+					return True
+				else:
+					return False
+			elif self.direction == 'D':
+				if len(self.data) == 1 and 'arc' in self.data:
+					return True
+				else:
+					return False
+			else:
+				return False
+		elif self.number == 2:
+			if self.direction == 'U':
+				if len(self.data) == 3 and all (k in self.data for k in ('arc', 'side', 'target')):
+					return True
+				else:
+					return False
+			elif self.direction == 'D':
+				if len(self.data) == 1 and 'arc' in self.data:
+					return True
+				else:
+					return False
+			else:
+				return False
 		elif self.number == 3:
-			return knot.R3(self.position) ###########################################################
+			if self.direction == 'H':
+				if len(self.data) == 2 and all (k in self.data for k in ('arc', 'side')):
+					return True
+				else:
+					return False
+			else:
+				return False
+		else:
+			return False
+							
+	def finePossibleMovesRequest(self, diagram):
+		return diagram.finePossibleMoves()
 		
-	def isUp(self):
-		return self.direction == "U"
-		
-	def isDown(self):
-		return self.direction == "D"
-		
-	def isHorizontal(self):
-		return self.direction == "H"
+	def coarsePossibleDataRequest(self, diagram):
+		if self.number == 1 and self.direction == 'U':
+			return diagram.possibleR1Up()
+		elif self.number == 1 and self.direction == 'D':
+			return diagram.possibleR1Down()
+		elif self.number == 2 and self.direction == 'U':
+			return diagram.possibleR2Up()
+		elif self.number == 2 and self.direction == 'D':
+			return diagram.possibleR2Down()
+		elif self.number == 3 and self.direction == 'H':
+			return diagram.possibleR3()
+		else:
+			raise TypeError('Unknown kind of Move.')
+			
+	def fillData(self, data):
+		if not self.checkFullData():
+			self.data = data
 
+	def randomData(self, knot):
+		if not self.checkFullData():
+			possible_data = self.coarsePossibleDataRequest(knot)
+			if possible_data == []:
+				pass
+			else:
+				self.fillData(random.choice(possible_data))			
 
-#R2_up_moves = ['R2UpPlus', 'R2UpMinus']
-#up_moves = ['R2UpPlus', 'R2UpMinus', 'M2UpPlus', 'M2UpMinus']
-#horizontal_moves = ['R3', 'M1Forward', 'M1Backward', 'S']
-#down_moves = ['R2Down', 'M2Down']
+	def apply(self, knot):
+		if not self.checkFullData():
+			self.randomData(knot)
+			if not self.checkFullData():
+				return False	
+		if self.number == 1 and self.direction == "U":
+			return knot.R1Up(arc = self.data['arc'], side = self.data['side'], sign = self.data['sign'])
+		elif self.number == 1 and self.direction == "D":
+			return knot.R1Down(arc = self.data['arc'])
+		elif self.number == 2 and self.direction == "U":
+			return knot.R2Up(arc = self.data['arc'], side = self.data['side'], target = self.data['target'])
+		elif self.number == 2 and self.direction == "D":
+			return knot.R2Down(arc = self.data['arc'])
+		elif self.number == 3:
+			return knot.R3(arc = self.data['arc'], side = self.data['side'])
+		else:
+			raise TypeError('What kind of move are you, and how did you get this far?')
 
-#opNames = ['R2UpPlus', 'R2UpMinus', 'M2UpPlus', 'M2UpMinus', 'R3', 'M1Forward',
-#	'M1Backward', 'S', 'R2Down', 'M2Down']
+coarse_up_moves = ['R1Up', 'R2Up']
+coarse_down_moves = ['R1Down', 'R2Down']
+coarse_horizontal_moves = ['R3']
 
-def randomOp(upBias=1, horizontalBias=1, downBias=1):
-	randOp = random.choice(upBias*up_moves+downBias*down_moves+horizontalBias*horizontal_moves)
+def coarseRandomOp(upBias=1, horizontalBias=1, downBias=1):
+	randOp = random.choice(upBias*coarse_up_moves+downBias*coarse_down_moves+horizontalBias*coarse_horizontal_moves)
 	## We introduce here the possibility for bias. The 3 optional parameters default to 1,
 	## but can be attuned to multiply the likelihood of choosing an element from the
 	## corresponding list by exactly this factor.	
-	if randOp in R2_up_moves:
-#		strand_index = 'undetermined'
-		return R2UpBraidOp(randOp, 'undetermined')
+	if randOp == 'R1Up':
+		return ADTOp(number = 1, direction = 'U', data = None)
+	elif randOp == 'R1Down':
+		return ADTOp(number = 1, direction = 'D', data = None)
+	elif randOp == 'R2Up':
+		return ADTOp(number = 2, direction = 'U', data = None)
+	elif randOp == 'R2Down':
+		return ADTOp(number = 2, direction = 'D', data = None)
+	elif randOp == 'R3':
+		return ADTOp(number = 3, direction = 'H', data = None)
 	else:
-#		strand_index = None
-#	return BraidOp(randOp, strand_index)
-		return BraidOp(randOp)
+		raise TypeError('Unknown kind of Move.')
 		
-class BraidOp(object):
-	def __init__(self, op):
-		self.op = op
-		## Takes a string from the list opNames
-		
-	def __eq__(self,other):
-		if type(other) == type(self):
-			return self.__dict__ == other.__dict__
-		else:
-			return False
-						
-	def __ne__(self,other):
-		return not self.__eq__(other)
-			
-	def toString(self):
-		return self.op
-			
-	def copy(self):
-		return BraidOp(self.op)
-		
-	def apply(self, braid):
-		effect = 0
-		old_braid = braid.copy()
-		getattr(braid, self.op)()
-		if braid != old_braid:
-			effect = 1
-		return effect
-		
-	def isUp(self):
-		return self.op in up_moves
-		
-	def isDown(self):
-		return self.op in down_moves
-		
-	def isHorizontal(self):
-		return self.op in horizontal_moves
-	
-		
-class R2UpBraidOp(BraidOp):
-	def __init__(self, op, strand_index):
-		BraidOp.__init__(self, op)
-		self.strand_index = strand_index
-				
-	def copy(self):
-		return R2UpBraidOp(self.op, self.strand_index)
-		
-	def apply(self, braid):
-		if self.strand_index == 'undetermined':
-			self.strand_index = random.randint(1, braid.braid_index() - 1)
-#		getattr(braid, self.op)(self.strand_index)
-		effect = 0
-		old_braid = braid.copy()
-		getattr(braid, self.op)(self.strand_index)
-		if braid != old_braid:
-			effect = 1
-		return effect
-			
-	def isR2Up(self):
-		return True	
-	
-		
-	
+def fineRandomOp(diagram):
+	possible_moves = diagram.finePossibleMoves()
+	move = random.choice(possible_moves)
+	return move
 
-		

@@ -96,7 +96,7 @@ class ADTLink(object):
             new_or.append(i)
         return ADTLink(new_dt, new_or)
 
-    def to_string(self):
+	def to_string(self):
         codeString = " ".join(str(x) for x in self.code)
         orientationsString = " ".join(str(x) for x in self.orientations)
         return codeString, orientationsString
@@ -171,24 +171,27 @@ class ADTLink(object):
         arc = normalise(arc, 1, 2 * n)
         tail = arc
         head = self.wrap(arc + 1)
+#        if n == 1:
+#        	output = [[tail, head], [head, tail]] ###############################
+#        else:
         while True:
-            tail = self.jump(head)
-            odd, even, sign, orient = self.quad(tail)
-            if ((side + forward) % 2 == 0) and (tail % 2 == 1):
-                head = self.wrap(tail - sign * orient)
-            elif ((side + forward) % 2 == 0) and (tail % 2 == 0):
-                head = self.wrap(tail + sign * orient)
-            elif ((side + forward) % 2 == 1) and (tail % 2 == 1):
-                head = self.wrap(tail + sign * orient)
-            elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
-                head = self.wrap(tail - sign * orient)
-            output.append([tail, head])
-            if (tail == arc and head == self.wrap(arc + 1)):
-                break
-            if ((tail - head) % (2 * n) == 1):
-                forward = 1
-            else:
-                forward = 0
+        	tail = self.jump(head)
+        	odd, even, sign, orient = self.quad(tail)
+        	if ((side + forward) % 2 == 0) and (tail % 2 == 1):
+        		head = self.wrap(tail - sign * orient)
+        	elif ((side + forward) % 2 == 0) and (tail % 2 == 0):
+        		head = self.wrap(tail + sign * orient)
+        	elif ((side + forward) % 2 == 1) and (tail % 2 == 1):
+        		head = self.wrap(tail + sign * orient)
+        	elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
+        		head = self.wrap(tail - sign * orient)
+        	output.append([tail, head])
+        	if (tail == arc and head == self.wrap(arc + 1)):
+        		break
+        	if ((tail - head) % (2 * n) == 1):
+        		forward = 1
+        	else:
+        		forward = 0
         return output
 
     # Methods that perform a Reidemeister 1 Move, introducing a single
@@ -274,20 +277,26 @@ class ADTLink(object):
     #   side -- is a choice of 'l' or 'r' to determine to which side of
     #     arc in the diagram arc will be perturbed to introduce the
     #     additional crossings with another strand.
-    #   edge -- is a two-element list [edge0, edge1].
-    #     [edge0, edge1] -- is the other strand that arc will cross over
+    #   target -- is a two-element list [tail, head].
+    #     [tail, head] -- is the other strand that arc will cross over
     #     or under.
     #
     # Method mutates the ADTLink object, and returns True if the move
     # is successfully performed.
 
-    # Note: The parity of arc will be the same as the parity of edge0,
-    # if [edge0, edge1] represents an edge adjacent to a region determined
+    # Note: The parity of arc will be the same as the parity of tail,
+    # if [tail, head] represents an edge adjacent to a region determined
     # by arc.
 
     # Note: Specifying the whether the new crossings should go over or
     # under is unnecessary as pushing (arc, arc+1) under (tail, head)
-    # is equivalent to pushing (tail, head) over (arc, arc+1).
+    # is equivalent to pushing (tail, head) over (arc, arc+1). We have arbitrarily chosen
+    # to push (arc, arc+1) OVER (tail, head).
+    
+    # Big Note: The regions method does not return the correct output on diagrams with
+    # a single crossing. As this only effects the outcome of the R2Up method, it appears
+    # to be easier to modify the behavior of R2Up in this special case instead of the
+    # regions method itself.
 
     def R2Up(self, arc, side, target):
         n = self.number_crossings()
@@ -666,73 +675,107 @@ class ADTLink(object):
 
         return True
 
-    def coarsePossibleMoves(self):
-        possible_moves = ['R1Up']
-        n = self.number_crossings()
-        for i in range(1, n + 1):
-            if len(possible_moves) == 5:
-                return possible_moves
-            else:
-                left_reg = len(self.regions(i, 'L'))
-                right_reg = len(self.regions(i, 'R'))
-                if ('R1Down' not in possible_moves) and (left_reg == 1 or right_reg == 1):
-                    possible_moves.append('R1Down')
-                if ('R2Up' not in possible_moves) and (left_reg > 1 or right_reg > 1):
-                    possible_moves.append('R2Up')
-                if ('R2Down' not in possible_moves) and (left_reg == 2 or right_reg == 2) and n > 1:
-                    i1 = index(i, self.code)
-                    i2 = index(self.wrap(i + 1), self.code)
-                    o1 = self.orientations[i1]
-                    o2 = self.orientations[i2]
-                    if o1 == -o2:
-                        possible_moves.append('R2Down')
-                if ('R3' not in possible_moves) and (left_reg == 3 or right_reg == 3):
-                    if self.quad(i)[2] == -self.quad(self.wrap(i + 1))[2]:
-                        possible_moves.append('R3')
-        return possible_moves
+### Generates a list of possible moves that can be performed on a diagram.
+	def finePossibleMoves(self):
+		possible_moves = []
+		n = self.number_crossings()
+		for i in range(1, 2*n + 1):
+			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'L', 'sign':1}))
+			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'L', 'sign':-1}))
+			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'R', 'sign':1}))
+			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'R', 'sign':-1}))
+			left_reg = len(self.regions(i, 'L'))
+			right_reg = len(self.regions(i, 'R'))
+			if left_reg == 1 or right_reg == 1:
+				possible_moves.append(ADTOp.ADTOp(1, 'D', {'arc':i}))
+			if left_reg > 1:
+				candidates = list(self.regions(i, 'L'))
+				candidates.remove([i, self.wrap(i+1)])
+				for j in candidates:
+					possible_moves.append(ADTOp.ADTOp(2, 'U', {'arc':i, 'side':'L', 'target':j}))
+			if right_reg > 1:
+				candidates = list(self.regions(i, 'R'))
+				candidates.remove([i, self.wrap(i+1)])
+				for j in candidates:
+					possible_moves.append(ADTOp.ADTOp(2, 'U', {'arc':i, 'side':'R', 'target':j}))
+			if (left_reg == 2 or right_reg == 2) and n > 1:
+				i1 = index(i, self.code)
+				i2 = index(self.wrap(i+1), self.code)
+				o1 = self.orientations[i1]
+				o2 = self.orientations[i2]
+				if o1 == -o2:
+					possible_moves.append(ADTOp.ADTOp(2, 'D', {'arc':i}))
+			if left_reg == 3:
+				if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
+					possible_moves.append(ADTOp.ADTOp(3, 'H', {'arc':i, 'side':'L'}))
+			if right_reg == 3:
+				if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
+					possible_moves.append(ADTOp.ADTOp(3, 'H', {'arc':i, 'side':'R'}))
+		return possible_moves
+		
+	def fineRandomMove(self):
+		possible_moves = self.finePossibleMoves()
+		move = random.choice(possible_moves)
+		return move
+		
+	def possibleR1Up(self):
+		possible_data = []
+		n = self.number_crossings()
+		for i in range(1, 2*n + 1):
+			for j in ['L', 'R']:
+				for k in [1, -1]:
+					possible_data.append({'arc':i, 'side':j, 'sign':k})
+		return possible_data
+		
+	def possibleR1Down(self):
+		possible_data = []
+		n = self.number_crossings()
+		for i in range(1, 2*n + 1):
+			if len(self.regions(i, 'L')) == 1 or len(self.regions(i, 'R')) == 1:
+				possible_data.append({'arc':i})
+		return possible_data
+		
+	def possibleR2Up(self):
+		possible_data = []
+		n = self.number_crossings()
+		for i in range(1, 2*n + 1):
+			if len(self.regions(i, 'L')) > 1:
+				left_reg = list(self.regions(i, 'L'))
+				left_reg.remove([i, self.wrap(i+1)])
+				for j in left_reg:
+					possible_data.append({'arc':i, 'side':'L', 'target':j})
+			if len(self.regions(i, 'R')) > 1:
+				right_reg = list(self.regions(i, 'R'))
+				right_reg.remove([i, self.wrap(i+1)])
+				for j in right_reg:
+					possible_data.append({'arc':i, 'side':'R', 'target':j})
+		return possible_data
+		
+	def possibleR2Down(self):
+		possible_data = []
+		n = self.number_crossings()
+		for i in range(1, 2*n + 1):
+			if len(self.regions(i, 'L')) == 2 or len(self.regions(i, 'R')) == 2:
+				i1 = index(i, self.code)
+				i2 = index(self.wrap(i + 1), self.code)
+				o1 = self.orientations[i1]
+				o2 = self.orientations[i2]
+				if o1 == -o2:
+					possible_data.append({'arc':i})
+		return possible_data
+		
+	def possibleR3(self):
+		possible_data = []
+		n = self.number_crossings()
+		for i in range(1, 2*n + 1):
+			if len(self.regions(i, 'L')) == 3:
+				if self.quad(i)[2] != self.quad(self.wrap(i+1)):
+					possible_data.append({'arc':i, 'side':'L'})
+			if len(self.regions(i, 'R')) == 3:
+				if self.quad(i)[2] != self.quad(self.wrap(i+1)):
+					possible_data.append({'arc':i, 'side':'R'})
+		return possible_data
 
-    def finePossibleMoves(self):
-        possible_moves = []
-        n = self.number_crossings()
-        for i in range(1, n + 1):
-            possible_moves.append(
-                ADTOp.ADTOp(1, i, 'U', side='L', crossing_sign='1'))
-            possible_moves.append(
-                ADTOp.ADTOp(1, i, 'U', side='L', crossing_sign='-1'))
-            possible_moves.append(
-                ADTOp.ADTOp(1, i, 'U', side='R', crossing_sign='1'))
-            possible_moves.append(
-                ADTOp.ADTOp(1, i, 'U', side='R', crossing_sign='-1'))
-            left_reg = len(self.regions(i, 'L'))
-            right_reg = len(self.regions(i, 'R'))
-            if left_reg == 1 or right_reg == 1:
-                possible_moves.append(ADTOp.ADTOp(1, i, 'D'))
-            if left_reg > 1:
-                candidates = list(self.regions(i, 'L'))
-                candidates.remove([i, self.wrap(i + 1)])
-                for j in candidates:
-                    possible_moves.append(
-                        ADTOp.ADTOp(2, i, 'U', side='L', target_position=j))
-            if right_reg > 1:
-                candidates = list(self.regions(i, 'R'))
-                candidates.remove([i, self.wrap(i + 1)])
-                for j in candidates:
-                    possible_moves.append(
-                        ADTOp.ADTOp(2, i, 'U', side='R', target_position=j))
-            if (left_reg == 2 or right_reg == 2) and n > 1:
-                i1 = index(i, self.code)
-                i2 = index(self.wrap(i + 1), self.code)
-                o1 = self.orientations[i1]
-                o2 = self.orientations[i2]
-                if o1 == -o2:
-                    possible_moves.append(ADTOp.ADTOp(2, i, 'D'))
-            if left_reg == 3:
-                if self.quad(i)[2] == -self.quad(self.wrap(i + 1))[2]:
-                    possible_moves.append(ADTOp.ADTOp(3, i, 'H', side='L'))
-            if right_reg == 3:
-                if self.quad(i)[2] == -self.quad(self.wrap(i + 1))[2]:
-                    possible_moves.append(ADTOp.ADTOp(3, i, 'H', side='R'))
-        return possible_moves
 
 
     # phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
