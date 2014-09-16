@@ -149,12 +149,27 @@ class ADTLink(object):
             return even
         elif point % 2 == 0:
             return odd
+            
+    def isSimple(self):
+    	n = self.number_crossings()
+    	if n <= 1:
+    		return True
+    	elif n > 1:
+    		return False
+    	else:
+    		raise TypeError("Perhaps this is not a diagram. Something is wrong.")
 
     # Helper method that takes in an 'arc' and a 'side' ("L" or "R"),
     # and returns a list of all other arcs which are adjacent to the region
     # on the side of the arc indicated by the arguments.
     # These returned arcs are represented as two-element lists, from
     # vertex to vertex (with positive labels).
+    
+    # Big Note: regions does not return the correct list when applied to a diagram with only a single crossing.
+    # 		In particular, regardless of the side selected, the list will be only a single item long,
+    #		indicating only the edge determined by the parameter arc.
+    # 		This allows regions to be used correctly with R1 Up/Down moves [CHECK THIS], as well as R3 moves [CHECK THIS],
+	#		and R2Down moves, but NOT with R2Up moves.
 
     def regions(self, arc, side):
         side = str(side).lower()
@@ -163,7 +178,7 @@ class ADTLink(object):
         elif side in ["r", "right", "1", "R"]:
             side = 1
         else:
-            raise TypeError("Side should be l or r.")
+            raise TypeError("Side should be 'L' or 'R'.")
         forward = 0
         once = 0
         output = []
@@ -303,7 +318,7 @@ class ADTLink(object):
         arc = normalise(arc, 1, 2 * n)
         candidates = list(self.regions(arc, side))
         candidates.remove([arc, self.wrap(arc + 1)])
-        if not(target in candidates):
+        if not(target in candidates) or n <= 1: # This is where the R2Up move is precluded from being applied to a single-crossing diagram.
             return False
         new_dt = []
         new_or = list(self.orientations)
@@ -688,12 +703,12 @@ class ADTLink(object):
 			right_reg = len(self.regions(i, 'R'))
 			if left_reg == 1 or right_reg == 1:
 				possible_moves.append(ADTOp.ADTOp(1, 'D', {'arc':i}))
-			if left_reg > 1:
+			if left_reg > 1 and n > 1: 	# This precludes listing R2Up moves on a single-crossing or no-crossing diagram.
 				candidates = list(self.regions(i, 'L'))
 				candidates.remove([i, self.wrap(i+1)])
 				for j in candidates:
 					possible_moves.append(ADTOp.ADTOp(2, 'U', {'arc':i, 'side':'L', 'target':j}))
-			if right_reg > 1:
+			if right_reg > 1 and n > 1:	# This precludes listing R2Up moves on a single-crossing or no-crossing diagram.
 				candidates = list(self.regions(i, 'R'))
 				candidates.remove([i, self.wrap(i+1)])
 				for j in candidates:
@@ -738,17 +753,18 @@ class ADTLink(object):
 	def possibleR2Up(self):
 		possible_data = []
 		n = self.number_crossings()
-		for i in range(1, 2*n + 1):
-			if len(self.regions(i, 'L')) > 1:
-				left_reg = list(self.regions(i, 'L'))
-				left_reg.remove([i, self.wrap(i+1)])
-				for j in left_reg:
-					possible_data.append({'arc':i, 'side':'L', 'target':j})
-			if len(self.regions(i, 'R')) > 1:
-				right_reg = list(self.regions(i, 'R'))
-				right_reg.remove([i, self.wrap(i+1)])
-				for j in right_reg:
-					possible_data.append({'arc':i, 'side':'R', 'target':j})
+		if n > 1:	# This precludes listing R2Up moves on a single-crossing or no-crossing diagram.
+			for i in range(1, 2*n + 1):
+				if len(self.regions(i, 'L')) > 1:
+					left_reg = list(self.regions(i, 'L'))
+					left_reg.remove([i, self.wrap(i+1)])
+					for j in left_reg:
+						possible_data.append({'arc':i, 'side':'L', 'target':j})
+				if len(self.regions(i, 'R')) > 1:
+					right_reg = list(self.regions(i, 'R'))
+					right_reg.remove([i, self.wrap(i+1)])
+					for j in right_reg:
+						possible_data.append({'arc':i, 'side':'R', 'target':j})
 		return possible_data
 		
 	def possibleR2Down(self):
