@@ -97,7 +97,7 @@ class ADTLink(object):
         return ADTLink(new_dt, new_or)
 
 	def to_string(self):
-        codeString = " ".join(str(x) for x in self.code)
+		codeString = " ".join(str(x) for x in self.code)
         orientationsString = " ".join(str(x) for x in self.orientations)
         return codeString, orientationsString
 
@@ -690,7 +690,7 @@ class ADTLink(object):
 
         return True
 
-### Generates a list of possible moves that can be performed on a diagram.
+### Generates a list of possible moves that can be performed on a diagram.        
 	def finePossibleMoves(self):
 		possible_moves = []
 		n = self.number_crossings()
