@@ -691,7 +691,7 @@ class ADTLink(object):
         return True
 
 ### Generates a list of possible moves that can be performed on a diagram.        
-	def finePossibleMoves(self):
+    def finePossibleMoves(self):
 		possible_moves = []
 		n = self.number_crossings()
 		for i in range(1, 2*n + 1):
@@ -728,12 +728,12 @@ class ADTLink(object):
 					possible_moves.append(ADTOp.ADTOp(3, 'H', {'arc':i, 'side':'R'}))
 		return possible_moves
 		
-	def fineRandomMove(self):
+    def fineRandomMove(self):
 		possible_moves = self.finePossibleMoves()
 		move = random.choice(possible_moves)
 		return move
 		
-	def possibleR1Up(self):
+    def possibleR1Up(self):
 		possible_data = []
 		n = self.number_crossings()
 		for i in range(1, 2*n + 1):
@@ -742,7 +742,7 @@ class ADTLink(object):
 					possible_data.append({'arc':i, 'side':j, 'sign':k})
 		return possible_data
 		
-	def possibleR1Down(self):
+    def possibleR1Down(self):
 		possible_data = []
 		n = self.number_crossings()
 		for i in range(1, 2*n + 1):
@@ -750,7 +750,7 @@ class ADTLink(object):
 				possible_data.append({'arc':i})
 		return possible_data
 		
-	def possibleR2Up(self):
+    def possibleR2Up(self):
 		possible_data = []
 		n = self.number_crossings()
 		if n > 1:	# This precludes listing R2Up moves on a single-crossing or no-crossing diagram.
@@ -767,7 +767,7 @@ class ADTLink(object):
 						possible_data.append({'arc':i, 'side':'R', 'target':j})
 		return possible_data
 		
-	def possibleR2Down(self):
+    def possibleR2Down(self):
 		possible_data = []
 		n = self.number_crossings()
 		for i in range(1, 2*n + 1):
@@ -780,7 +780,7 @@ class ADTLink(object):
 					possible_data.append({'arc':i})
 		return possible_data
 		
-	def possibleR3(self):
+    def possibleR3(self):
 		possible_data = []
 		n = self.number_crossings()
 		for i in range(1, 2*n + 1):
