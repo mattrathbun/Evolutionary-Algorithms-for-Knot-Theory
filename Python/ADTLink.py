@@ -589,9 +589,6 @@ class ADTLink(object):
 
     # The R3 move
 
-    # wibble: need to remember that there is a special case when
-    # we go over the 2*n to 1.
-
     def R3(self, arc, side):
         n = self.number_crossings()
         arc = normalise(arc, 1, 2 * n)
@@ -615,23 +612,23 @@ class ADTLink(object):
             # rewrite the crossing
             # the crossing is _always_ changed in sign
             if self.rightOutwards(arc):
-                rewrite.update({self.right(arc): -self.right(arc) + 1})
+                rewrite.update({self.right(arc): -self.wrap(self.right(arc) + 1)})
             else:
-                rewrite.update({self.right(arc): -self.right(arc) - 1})
+                rewrite.update({self.right(arc): -self.wrap(self.right(arc) - 1)})
             if self.rightOutwards(arcNext):
-                rewrite.update({self.right(arcNext): -self.right(arcNext) + 1})
+                rewrite.update({self.right(arcNext): -self.wrap(self.right(arcNext) + 1)})
             else:
-                rewrite.update({self.right(arcNext): -self.right(arcNext) - 1})
+                rewrite.update({self.right(arcNext): -self.wrap(self.right(arcNext) - 1)})
             # rewrite the strand part 1
             if self.rightOutwards(arcNext):
-                rewrite.update({self.jump(arc): self.jump(arcNext) + 1})
+                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
             else:
-                rewrite.update({self.jump(arc): self.jump(arcNext) - 1})
+                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
             # rewrite the strand part 2
             if self.rightOutwards(arc):
-                rewrite.update({self.jump(arcNext): self.jump(arc) + 1})
+                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
             else:
-                rewrite.update({self.jump(arcNext): self.jump(arc) - 1})
+                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
             theCrossing = abs(self.right(arc))
             if not self.isOdd(theCrossing):
                 theCrossing = abs(self.jump(self.right(arc)))
@@ -640,23 +637,23 @@ class ADTLink(object):
             # rewrite the crossing
             # the crossing is _always_ changed in sign
             if self.leftOutwards(arc):
-                rewrite.update({self.left(arc): -self.left(arc) + 1})
+                rewrite.update({self.left(arc): -self.wrap(self.left(arc) + 1)})
             else:
-                rewrite.update({self.left(arc): -self.left(arc) - 1})
+                rewrite.update({self.left(arc): -self.wrapself.left(arc) - 1)})
             if self.leftOutwards(arcNext):
-                rewrite.update({self.left(arcNext): -self.left(arcNext) + 1})
+                rewrite.update({self.left(arcNext): -self.wrap(self.left(arcNext) + 1)})
             else:
-                rewrite.update({self.left(arcNext): -self.left(arcNext) - 1})
+                rewrite.update({self.left(arcNext): -self.wrap(self.left(arcNext) - 1)})
             # rewrite the strand part 1
             if self.leftOutwards(arcNext):
-                rewrite.update({self.jump(arc): self.jump(arcNext) + 1})
+                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
             else:
-                rewrite.update({self.jump(arc): self.jump(arcNext) - 1})
+                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
             # rewrite the strand part 2
             if self.leftOutwards(arc):
-                rewrite.update({self.jump(arcNext): self.jump(arc) + 1})
+                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
             else:
-                rewrite.update({self.jump(arcNext): self.jump(arc) - 1})
+                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) - 1}))
             theCrossing = abs(self.left(arc))
             if not self.isOdd(theCrossing):
                 theCrossing = abs(self.jump(self.left(arc)))
