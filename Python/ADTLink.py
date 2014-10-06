@@ -612,13 +612,13 @@ class ADTLink(object):
             # rewrite the crossing
             # the crossing is _always_ changed in sign
             if self.rightOutwards(arc):
-                rewrite.update({self.right(arc): -self.wrap(self.right(arc) + 1)})
-            else:
                 rewrite.update({self.right(arc): -self.wrap(self.right(arc) - 1)})
-            if self.rightOutwards(arcNext):
-                rewrite.update({self.right(arcNext): -self.wrap(self.right(arcNext) + 1)})
             else:
+                rewrite.update({self.right(arc): -self.wrap(self.right(arc) + 1)})
+            if self.rightOutwards(arcNext):
                 rewrite.update({self.right(arcNext): -self.wrap(self.right(arcNext) - 1)})
+            else:
+                rewrite.update({self.right(arcNext): -self.wrap(self.right(arcNext) + 1)})
             # rewrite the strand part 1
             if self.rightOutwards(arcNext):
                 rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
@@ -639,7 +639,7 @@ class ADTLink(object):
             if self.leftOutwards(arc):
                 rewrite.update({self.left(arc): -self.wrap(self.left(arc) + 1)})
             else:
-                rewrite.update({self.left(arc): -self.wrapself.left(arc) - 1)})
+                rewrite.update({self.left(arc): -self.wrap(self.left(arc) - 1)})
             if self.leftOutwards(arcNext):
                 rewrite.update({self.left(arcNext): -self.wrap(self.left(arcNext) + 1)})
             else:
@@ -653,7 +653,7 @@ class ADTLink(object):
             if self.leftOutwards(arc):
                 rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
             else:
-                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) - 1}))
+                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
             theCrossing = abs(self.left(arc))
             if not self.isOdd(theCrossing):
                 theCrossing = abs(self.jump(self.left(arc)))
