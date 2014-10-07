@@ -21,6 +21,19 @@ print "Should get ([-6, -8, 12, -2, 10, -4], [1, 1, -1, 1, 1, 1])."
 
 print " "
 print "#############################################################"
+print "#### Colin's Original example shuffled round"
+print "#############################################################"
+
+K = ADTLink.ADTLink([8,-12,-10,2,4,-6],[1,1,1,1,-1,1])
+print K.to_list()
+print" " 
+K.R3(12,'r')
+print" "
+print "We get    ",K.to_list()
+#print "Should get ([-6, -8, 12, -2, 10, -4], [1, 1, -1, 1, 1, 1])."
+
+print " "
+print "#############################################################"
 print "#### Matt's example with the orientation at 3/10 changed to -ve"
 print "#############################################################"
 
