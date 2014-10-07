@@ -80,31 +80,29 @@ if L != ADTLink.ADTLink([-12, 14, -16, -22, -20, -6, 2, -4, -18, -10, 8], [-1, 1
 	raise TypeError("Not the right result!")
 print "\n"
 
-# cwp
-
+print "Testing L={} for all locations of R2Down moves".format(L.to_list())
+moves = []
 for i in range(1, 22):
 	Ltest = L.copy()
 	if Ltest.R2Down(i):
-		print "{}".format(i)
-
-# for i in range(1, 22):
-# 	Ltest = L.copy()
-# 	if Ltest.R2DownPlus(i, 'r'):
-# 		print "{} on the right".format(i)
-# print "\n"
+		moves.append(i)
+print moves
+# Should be [1, 3, 7, 8, 12, 14, 20, 21]
+if moves != [1, 3, 7, 8, 12, 14, 20, 21]:
+	raise TypeError("Not the right result!")
+print "\n"
 		
 M = ADTLink.ADTLink([2, -4], [1, -1])
 print "M is:"
 print M.to_list()
 print "\n"
 
-# print "Performing R2DownPlus(4, 'l')"
-# print M.R2DownPlus(4, 'l')
-# print M.to_list()
-# print "\n"
 print "Performing R2Down(4)"
 print M.R2Down(4)
 print M.to_list()
+# Should be [], []
+if M != ADTLink.ADTLink([], []):
+	raise TypeError("Not the right result!")
 print "\n"
 
 N = ADTLink.ADTLink([6, 4, -8, -2], [-1, -1, 1, 1])
@@ -112,13 +110,12 @@ print "N is:"
 print N.to_list()
 print "\n"
 
-# print "Performing R2DownPlus(8, 'l')"
-# print N.R2DownPlus(8, 'l')
-# print N.to_list()
-# print "\n"
 print "Performing R2Down(8)"
 print N.R2Down(8)
 print N.to_list()
+# Should be [-2, 4], [1, -1]
+if N != ADTLink.ADTLink([-2, 4], [1, -1]):
+	raise TypeError("Not the right result!")
 print "\n"
 
 K = ADTLink.ADTLink([6, -8, 2, 4], [1, 1, 1, -1])
@@ -126,55 +123,74 @@ print "K is:"
 print K.to_list()
 print "\n"
 
-# print "Performing R2DownPlus(7, 'l')"
-# print K.R2DownPlus(7, 'l')
-# print K.to_list()
-# print "\n"
 print "Performing R2Down(7)"
 print K.R2Down(7)
 print K.to_list()
+# Should be [4, 2], [1, 1]
+if K != ADTLink.ADTLink([4, 2], [1, 1]):
+	raise TypeError("Not the right result!")
 print "\n"
 
-K = ADTLink.ADTLink([4, -6, -8, -2], [1, 1, -1, 1])
-print "K is:"
-print K.to_list()
+L = ADTLink.ADTLink([4, -6, -8, -2], [1, 1, -1, 1])
+L1 = L.copy()
+L2 = L.copy()
+print "L1 and L2 are:"
+print L.to_list()
 print "\n"
 
-# print "Performing R2DownPlus(4, 'l')"
-# print K.R2DownPlus(4, 'l')
-# print K.to_list()
-# print "\n"
-print "Performing R2Down(4)"
-print K.R2Down(4)
-print K.to_list()
+print "Performing R2Down(4) to L1"
+print L1.R2Down(4)
+print L1.to_list()
+# Should be [-2, -4], [1, 1]
+if L1 != ADTLink.ADTLink([-2, -4], [1, 1]):
+	raise TypeError("Not the right result!")
 print "\n"
 
-K = ADTLink.ADTLink([6, 8, -2, 4], [-1, 1, 1, 1])
-print "K is:"
-print K.to_list()
+print "Performing R2Down(8) to L2"
+print L2.R2Down(8)
+print L2.to_list()
+# Should be [-2, -4], [1, 1]
+if L2 != ADTLink.ADTLink([-2, -4], [1, 1]):
+	raise TypeError("Not the right result!")
+print "\n"
+	
+M = ADTLink.ADTLink([6, 8, -2, 4], [-1, 1, 1, 1])
+print "M is:"
+print M.to_list()
 print "\n"
 
-# print "Performing R2DownPlus(1, 'l')"
-# print K.R2DownPlus(1, 'l')
-# print K.to_list()
-# print "\n"
 print "Performing R2Down(1)"
-print K.R2Down(1)
-print K.to_list()
+print M.R2Down(1)
+print M.to_list()
+# Should be [4, 2], [1, 1]
+if M != ADTLink.ADTLink([4, 2], [1, 1]):
+	raise TypeError("Not the right result!")
 print "\n"
 
-K = ADTLink.ADTLink([-4, 6, -8, -2], [1, 1, 1, -1])
+N = ADTLink.ADTLink([-4, 6, -8, -2], [1, 1, 1, -1])
+print "N is:"
+print N.to_list()
+print "\n"
+
+print "Performing R2Down(6)"
+print N.R2Down(6)
+# Should be [-2, -4], [1, 1]
+print N.to_list()
+if N != ADTLink.ADTLink([-2, -4], [1, 1]):
+	raise TypeError("Not the right result!")
+print "\n"
+
+K = ADTLink.ADTLink([-4, 6, -2], [-1, 1, -1])
 print "K is:"
 print K.to_list()
 print "\n"
 
-# print "Performing R2DownPlus(6, 'l')"
-# print K.R2DownPlus(6, 'l')
-# print K.to_list()
-# print "\n"
 print "Performing R2Down(6)"
 print K.R2Down(6)
+#Should be [-2], [-1]
 print K.to_list()
+if K != ADTLink.ADTLink([-2], [-1]):
+	raise TypeError("Not the right result!")
 print "\n"
 
 
