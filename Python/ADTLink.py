@@ -17,7 +17,6 @@ def normalize(i, m, M):
 # in a DT-code.  If the number is odd, function returns the index of the
 # even number that corresponds to that odd crossing.
 
-
 def index(num, code):
     if num % 2 == 0:
         return [i for i, j in enumerate(code) if (abs(j) == abs(num))][0]
@@ -536,7 +535,6 @@ class ADTLink(object):
             return False
 
     # helper: returns the crossing to the right of the current arc
-
     def right(self, arc):
         if self.isOverstrand(arc) and self.quad(arc)[3] == -1:
             return self.wrap(self.jump(arc) + 1)
@@ -588,16 +586,14 @@ class ADTLink(object):
             return True
 
     # The R3 move
-
     def R3(self, arc, side):
         n = self.number_crossings()
         arc = normalise(arc, 1, 2 * n)
-        candidates = list(self.regions(arc, side))
-        print candidates
-        if not (len(candidates) == 3):
-            print "Not three candidates"
-            return False
         arcNext = self.wrap(arc + 1)
+
+        if self.right(arc) != self.jump(self.right(arcNext)):
+            print "cannot do R3 from that position: not a triangle"
+            return False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
@@ -646,14 +642,14 @@ class ADTLink(object):
                 rewrite.update({self.left(arcNext): -self.wrap(self.left(arcNext) - 1)})
             # rewrite the strand part 1
             if self.leftOutwards(arcNext):
-                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
-            else:
                 rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
+            else:
+                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
             # rewrite the strand part 2
             if self.leftOutwards(arc):
-                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
-            else:
                 rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
+            else:
+                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
             theCrossing = abs(self.left(arc))
             if not self.isOdd(theCrossing):
                 theCrossing = abs(self.jump(self.left(arc)))
