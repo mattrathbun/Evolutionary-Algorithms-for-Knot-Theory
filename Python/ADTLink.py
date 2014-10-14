@@ -208,6 +208,15 @@ class ADTLink(object):
         		forward = 0
         return output
 
+    def shiftLabel(self):
+    	new_code = []
+    	new_signs = []
+    	new_orients = []
+    	temp = []
+    	for i in self.code:
+    		odd, even, sign, orient = self.quad(i)
+    		temp.append(
+
     # Methods that perform a Reidemeister 1 Move, introducing a single
     # twist at the location arc.  arc is an integer corresponding to a
     # label at one of the crossings of the diagram.  The twist should
