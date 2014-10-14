@@ -1,3 +1,7 @@
+import os, sys
+lib_path = os.path.abspath('../')
+sys.path.append(lib_path)
+
 from ADTLink import *
 from graph_tool.all import *
 

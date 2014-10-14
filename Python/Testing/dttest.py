@@ -1,3 +1,7 @@
+import os, sys
+lib_path = os.path.abspath('../')
+sys.path.append(lib_path)
+
 from DTLink import *
 
 dt = DTLink([4,6,2]) # Trefoil

@@ -1,10 +1,14 @@
+import os, sys
+lib_path = os.path.abspath('../Braids')
+sys.path.append(lib_path)
+
 # this is a place to mess around with creating objects etc.
 
 # okay, so in Python we can just write a sequence of commands
 # not like java where we have to wrap all this up in a class 
 
 import Braid
-import Population
+import BraidOpPopulation
 from random import *
 import numpy
 

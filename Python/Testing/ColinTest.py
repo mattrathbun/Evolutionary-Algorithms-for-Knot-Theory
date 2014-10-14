@@ -1,3 +1,7 @@
+import os, sys
+lib_path = os.path.abspath('../')
+sys.path.append(lib_path)
+
 import ADTLink
 
 K = ADTLink.ADTLink([-6,10,12,-2,4,-8],[1,1,-1,1,1,1])
