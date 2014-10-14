@@ -95,8 +95,8 @@ class ADT(object):
             new_or.append(i)
         return ADT(new_dt, new_or)
 
-	def to_string(self):
-		codeString = " ".join(str(x) for x in self.code)
+    def to_string(self):
+        codeString = " ".join(str(x) for x in self.code)
         orientationsString = " ".join(str(x) for x in self.orientations)
         return codeString, orientationsString
 
