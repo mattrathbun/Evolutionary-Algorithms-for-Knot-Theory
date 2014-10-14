@@ -207,15 +207,41 @@ class ADTLink(object):
         	else:
         		forward = 0
         return output
+        
+    # Method which shifts the labeling of a diagram by one (with the same orientation) to return
+    # a new ADTLink object with a different code representing the diagram.
 
     def shiftLabel(self):
     	new_code = []
-    	new_signs = []
     	new_orients = []
     	temp = []
     	for i in self.code:
     		odd, even, sign, orient = self.quad(i)
-    		temp.append(
+    		temp.append([self.wrap(even - 1), self.wrap(odd - 1), -sign, orient])
+    	temp.sort()
+    	for i in temp:
+    		new_code.append(i[2]*i[1])
+    		new_orients.append(i[3])
+    	return ADTLink(new_code, new_orients)
+    	
+    # Method which tests whether two codes correspond to the same diagram by testing all
+    # the label-shifts of K.  	
+    	
+    def sameDiagram(self, K):
+    	n = self.number_crossings()
+    	m = K.number_crossings()
+    	result = False
+    	if n != m:
+    		return result
+    	else:
+    		around = K.copy()
+    		for i in range(2*n):
+    			if around == self:
+    				return True
+    			else:
+    				around = around.shiftLabel()
+    		return result
+    		
 
     # Methods that perform a Reidemeister 1 Move, introducing a single
     # twist at the location arc.  arc is an integer corresponding to a
@@ -323,10 +349,12 @@ class ADTLink(object):
 
     def R2Up(self, arc, side, target):
         n = self.number_crossings()
+        if n <= 1: # This is where the R2Up move is precluded from being applied to a single-crossing diagram.
+        	return False
         arc = normalise(arc, 1, 2 * n)
         candidates = list(self.regions(arc, side))
         candidates.remove([arc, self.wrap(arc + 1)])
-        if not(target in candidates) or n <= 1: # This is where the R2Up move is precluded from being applied to a single-crossing diagram.
+        if not(target in candidates): 
             return False
         new_dt = []
         new_or = list(self.orientations)
