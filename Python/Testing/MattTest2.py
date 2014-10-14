@@ -2,10 +2,10 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 
-import ADTLink
+import ADT
 
 print "################################################"
-K = ADTLink.ADTLink([6, 8, 2, 4], [-1, 1, -1, 1])
+K = ADT.ADT([6, 8, 2, 4], [-1, 1, -1, 1])
 
 print "Here's K before the R2UpPlus move:"
 print K.to_list()
@@ -106,13 +106,13 @@ L.R2Up(8, 'r', [3, 4])
 print L.to_list()
 print "\n"
 
-#N = ADTLink.ADTLink([], [])
+#N = ADT.ADT([], [])
 
 #print N.R2Up(1, 'l', [1,2])
 #print N.to_list()
 ## This returns an error.
 
-N = ADTLink.ADTLink([2], [-1])
+N = ADT.ADT([2], [-1])
 
 print "Here's N before the R2UpPlus move:"
 print N.to_list()
@@ -156,7 +156,7 @@ print "\n"
 #print K.to_list()
 
 
-#K = ADTLink.ADTLink([-8, -14, 12, -2, -10, -4, 6], [-1, 1, -1, -1, -1, 1, -1])
+#K = ADT.ADT([-8, -14, 12, -2, -10, -4, 6], [-1, 1, -1, -1, -1, 1, -1])
 
 #K.R2UpPlus(8, 'l', [10, 11])
 #print K.to_list()

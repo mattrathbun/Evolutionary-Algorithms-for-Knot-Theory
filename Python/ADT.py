@@ -51,7 +51,7 @@ def index(num, code):
 # crossing point in the diagram, as well as an oriented edge in the
 # diagram going from the point i to the point i+1.
 
-class ADTLink(object):
+class ADT(object):
 
     def __init__(self, code, orientations):
         if isinstance(code, list):
@@ -93,7 +93,7 @@ class ADTLink(object):
             new_dt.append(i)
         for i in self.orientations:
             new_or.append(i)
-        return ADTLink(new_dt, new_or)
+        return ADT(new_dt, new_or)
 
 	def to_string(self):
 		codeString = " ".join(str(x) for x in self.code)
@@ -209,7 +209,7 @@ class ADTLink(object):
         return output
         
     # Method which shifts the labeling of a diagram by one (with the same orientation) to return
-    # a new ADTLink object with a different code representing the diagram.
+    # a new ADT object with a different code representing the diagram.
 
     def shiftLabel(self):
     	new_code = []
@@ -222,7 +222,7 @@ class ADTLink(object):
     	for i in temp:
     		new_code.append(i[2]*i[1])
     		new_orients.append(i[3])
-    	return ADTLink(new_code, new_orients)
+    	return ADT(new_code, new_orients)
     	
     # Method which tests whether two codes correspond to the same diagram by testing all
     # the label-shifts of K.  	
@@ -248,7 +248,7 @@ class ADTLink(object):
     # label at one of the crossings of the diagram.  The twist should
     # be introduced in the arc that immediately PROcedes the label arc
     # (the arc which connects the point arc to the point arc+1).
-    # Method mutates the ADTLink object, and returns True if the move
+    # Method mutates the ADT object, and returns True if the move
     # is successfully performed (which it always should since an R1Up
     # move has no obstruction).
 
@@ -279,7 +279,7 @@ class ADTLink(object):
         return True
 
     # Methods that perform a Reidemeister 1 Move, eliminating a single
-    # twist at the location arc.  Method mutates the ADTLink object,
+    # twist at the location arc.  Method mutates the ADT object,
     # returns True if move is successfully performed (the move will be
     # unsuccessful if the diagram does not contain a positive twist at
     # the location arc, i.e. if a (positive) even number in the code
@@ -330,7 +330,7 @@ class ADTLink(object):
     #     [tail, head] -- is the other strand that arc will cross over
     #     or under.
     #
-    # Method mutates the ADTLink object, and returns True if the move
+    # Method mutates the ADT object, and returns True if the move
     # is successfully performed.
 
     # Note: The parity of arc will be the same as the parity of tail,
@@ -484,7 +484,7 @@ class ADTLink(object):
     # there is no choice of secondary arc, and the edge can only be
     # adjacent to at most one bigon.
     #
-    # Method mutates the ADTLink object, and returns True if the move
+    # Method mutates the ADT object, and returns True if the move
     # is successfully performed.
     #
     # Note also, the parity of arc will be the same as the parity of tail,

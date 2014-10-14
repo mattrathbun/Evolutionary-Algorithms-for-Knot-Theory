@@ -2,16 +2,16 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 
-import ADTLink
+import ADT
 
-K = ADTLink.ADTLink([6, 12, 8, 2, 10, -4], [-1, -1, -1, -1, 1, 1])
-L = ADTLink.ADTLink([-6, 10, -12, -4, -8, -2], [-1, 1, -1, -1, 1, -1])
+K = ADT.ADT([6, 12, 8, 2, 10, -4], [-1, -1, -1, -1, 1, 1])
+L = ADT.ADT([-6, 10, -12, -4, -8, -2], [-1, 1, -1, -1, 1, -1])
 print K.sameDiagram(L)
 # Should be True
 if not K.sameDiagram(L):
 	raise TypeError("These are different diagrams!")
 	
-M = ADTLink.ADTLink([10, 6, 12, 8, -2, 4], [-1, -1, -1, 1, 1, -1])
+M = ADT.ADT([10, 6, 12, 8, -2, 4], [-1, -1, -1, 1, 1, -1])
 print K.sameDiagram(M)
 # Should be True
 if not K.sameDiagram(M):
@@ -26,7 +26,7 @@ for i in range(2*n):
 	if not K.sameDiagram(around):
 		raise TypeError("These are different diagrams!")
 		
-N = ADTLink.ADTLink([6, 12, 8, 2, 10, -4], [-1, -1, -1, -1, 1, -1])
+N = ADT.ADT([6, 12, 8, 2, 10, -4], [-1, -1, -1, -1, 1, -1])
 print K.sameDiagram(N)
 # Should be False
 if K.sameDiagram(N):

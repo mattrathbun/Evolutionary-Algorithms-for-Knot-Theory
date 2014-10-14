@@ -2,7 +2,7 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 
-import ADTLink, ADTOp
+import ADT, ADTOp
 
 def findInverse(diagram, op):
     K = diagram.copy()
@@ -20,7 +20,7 @@ def findInverse(diagram, op):
     else:
     	print "This move does nothing to this diagram."
     	
-L = ADTLink.ADTLink([-12, 14, -16, -22, -20, -6, 2, -4, -18, -10, 8], [-1, 1, -1, 1, 1, -1, 1, -1, 1, 1, -1])
+L = ADT.ADT([-12, 14, -16, -22, -20, -6, 2, -4, -18, -10, 8], [-1, 1, -1, 1, 1, -1, 1, -1, 1, 1, -1])
 for i in range(100):
     M = ADTOp.fineRandomOp(L)
     findInverse(L, M)

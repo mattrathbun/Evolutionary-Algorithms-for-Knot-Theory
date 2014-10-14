@@ -2,9 +2,9 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 
-import ADTLink
+import ADT
 
-K = ADTLink.ADTLink([2], [-1])
+K = ADT.ADT([2], [-1])
 for i in [1,2]:
 	for j in ["L", "R"]:
 		for k in [[1, 2], [2, 1]]:
@@ -15,7 +15,7 @@ for i in [1,2]:
 				raise TypeError("Shouldn't be able to perform this move!")
 print '\n'
 
-K = ADTLink.ADTLink([], [])
+K = ADT.ADT([], [])
 for j in ["L", "R"]:
 	for k in [[], [1, 1], [1, 2]]:
 		bool = K.R2Up(1, j, k)
@@ -24,12 +24,12 @@ for j in ["L", "R"]:
 			raise TypeError("Shouldn't be able to perform this move!")
 print '\n'
 			
-K = ADTLink.ADTLink([4, -2], [-1, 1])
+K = ADT.ADT([4, -2], [-1, 1])
 K1 = K.copy()
 K1.R2Up(1, "L", [3, 4])
 print K1.to_list()
 # Should be ([8, 6, -4, -2], [-1, -1, 1, 1])
-if K1 != ADTLink.ADTLink([8, 6, -4, -2], [-1, -1, 1, 1]):
+if K1 != ADT.ADT([8, 6, -4, -2], [-1, -1, 1, 1]):
 	raise TypeError("This isn't the right result!")
 print '\n'
 	
@@ -53,7 +53,7 @@ K4 = K.copy()
 K4.R2Up(1, "R", [3, 2])
 print K4.to_list()
 # Should be ([8, 6, -2, -4], [-1, -1, 1, 1])
-if K4 != ADTLink.ADTLink([8, 6, -2, -4], [-1, -1, 1, 1]):
+if K4 != ADT.ADT([8, 6, -2, -4], [-1, -1, 1, 1]):
 	raise TypeError("This isn't the right result!")
 print '\n'
 	
@@ -66,11 +66,11 @@ for i in [[2, 3], [3, 2]]:
 		raise TypeError("This isn't the right result!")
 print '\n'
 
-L = ADTLink.ADTLink([-6, 8, -10, -2, -4], [-1, 1, -1, -1, -1])
+L = ADT.ADT([-6, 8, -10, -2, -4], [-1, 1, -1, -1, -1])
 L.R2Up(10, "R", [6, 5])
 print L.to_list()
 # Should be ([-8, 10, -12, -14, -2, -4, 6], [-1, 1, -1, -1, -1, -1, 1])
-if L != ADTLink.ADTLink([-8, 10, -12, -14, -2, -4, 6], [-1, 1, -1, -1, -1, -1, 1]):
+if L != ADT.ADT([-8, 10, -12, -14, -2, -4, 6], [-1, 1, -1, -1, -1, -1, 1]):
 	raise TypeError("This isn't the right result!")
 print '\n'
 	

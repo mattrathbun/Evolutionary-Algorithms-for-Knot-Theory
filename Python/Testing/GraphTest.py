@@ -2,15 +2,15 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 
-from ADTLink import *
+from ADT import *
 from graph_tool.all import *
 
 g = Graph()
 diags = []
 edges = []
-#diags.append(ADTLink([],[]))
-diags.append(ADTLink([4,6,2],[1,1,1]))
-#diags.append(ADTLink([4,6,8,2],[-1,1,-1,1]))
+#diags.append(ADT([],[]))
+diags.append(ADT([4,6,2],[1,1,1]))
+#diags.append(ADT([4,6,8,2],[-1,1,-1,1]))
 g.add_vertex()
 maxlvl = 1
 

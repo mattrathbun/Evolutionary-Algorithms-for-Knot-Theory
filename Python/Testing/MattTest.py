@@ -2,13 +2,13 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 
-import ADTLink
-#K = ADTLink.ADTLink([4, 6, 8, 2], [-1, 1, -1, 1])
+import ADT
+#K = ADT.ADT([4, 6, 8, 2], [-1, 1, -1, 1])
 #for i in range(1, 9):
 #	print "i = {}".format(i)
 #	print K.R2Candidates(i, 'r')
 
-K = ADTLink.ADTLink([-8, -14, 12, -2, -10, -4, 6], [-1, 1, -1, -1, -1, 1, -1])
+K = ADT.ADT([-8, -14, 12, -2, -10, -4, 6], [-1, 1, -1, -1, -1, 1, -1])
 #print K.R2Candidates(9, 'l')
 #print K.R2Candidates(9, 'r')
 print "arc = 10, side = r"
