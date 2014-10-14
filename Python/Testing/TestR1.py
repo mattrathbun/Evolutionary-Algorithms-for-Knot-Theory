@@ -1,9 +1,9 @@
 import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
-import ADTLink
+import ADT
 
-K = ADTLink.ADTLink([4,8,12,2,14,6,10], [1, 1, 1, 1, -1, 1, -1])
+K = ADT.ADT([4,8,12,2,14,6,10], [1, 1, 1, 1, -1, 1, -1])
 Kname = "7_6"
 
 print "%s                  : %s\n" % (Kname, K.to_string())
