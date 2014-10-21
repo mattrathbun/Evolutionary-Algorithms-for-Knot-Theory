@@ -19,7 +19,7 @@ class Population(object):
 
     def iterate(self, fit, mu=0.05):
         n = self.size()
-        pop1 = self.oplists.copy()
+        pop1 = list(self.oplists)
         fcmp = lambda x, y: cmp(fit(x), fit(y))
         pop1.sort(cmp=fcmp)
         tfv = 0
@@ -53,9 +53,9 @@ class Population(object):
 
         # do we need to do this?
         # because we are overwriting all of pop2 later
-        for i in range(len(pop2), len(pop1)):
-            pop2.insert(0, pop1[0].copy())
-            pop2 = pop2[:n]
+        # for i in range(len(pop2), len(pop1)):
+        #     pop2.insert(0, pop1[0].copy())
+        #     pop2 = pop2[:n]
 
         # recombination - the old way, this code can be deleted??
 
@@ -65,13 +65,14 @@ class Population(object):
         # recombination with tournament selection size 3
 
         for i in range(len(pop2)):
-            for j in range(0, 1):
-                candidates[j] = random.sample(pop1, 3)
-                fitnesses[j] = map(fit, candidates[j])
-                best[j] = numpy.argmax(fitnesses[j])
-                parent[j] = candidates[j][best[j]]
+            parent = []
+            for j in range(0, 2):
+                candidates = random.sample(pop1, 3)
+                fitnesses = map(fit, candidates)
+                best = numpy.argmax(fitnesses)
+                parent.append(candidates[best])
 
-            pop2[i] = parent[0].ADTOpList.recombine(parent[1])
+            pop2[i] = parent[0].recombine(parent[1])
 
         # mutation
 
