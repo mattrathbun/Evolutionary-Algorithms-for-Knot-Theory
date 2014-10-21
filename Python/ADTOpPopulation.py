@@ -23,12 +23,14 @@ class Population(object):
         fcmp = lambda x, y: cmp(fit(x), fit(y))
         pop1.sort(cmp=fcmp)
         tfv = 0
-        maxf = 0
-        minf = 1000000
+        # maxf = 0
+        # minf = 1000000
+        maxf = fit(pop1[-1])
+        minf = fit(pop1[0])
         for ol in pop1:
             fv = fit(ol)
-            maxf = fv if fv > maxf else maxf
-            minf = fv if fv < maxf else minf
+            # maxf = (fv if fv > maxf else maxf)
+            # minf = (fv if fv < maxf else minf)
             tfv += fv
         afv = tfv / n
 
@@ -36,6 +38,7 @@ class Population(object):
         print "average fitness = ", afv
         print "max fitness     = ", maxf
         print "min fitness     = ", minf
+        print ""
 
         # pop2 will be the new population
 
@@ -43,13 +46,13 @@ class Population(object):
 
         # generating a new population
 
-        for ol in pop1:
-            fv = fit(ol)
-            i = fv / afv
-            while (i > 0):
-                if random.random() <= i:
-                    pop2.append(ol.copy())
-                    i -= 1
+        # for ol in pop1:
+        #     fv = fit(ol)
+        #     i = fv / afv
+        #     while (i > 0):
+        #         if random.random() <= i:
+        #             pop2.append(ol.copy())
+        #             i -= 1
 
         # do we need to do this?
         # because we are overwriting all of pop2 later
@@ -64,7 +67,7 @@ class Population(object):
 
         # recombination with tournament selection size 3
 
-        for i in range(len(pop2)):
+        for i in range(len(pop1)/2):
             parent = []
             for j in range(0, 2):
                 candidates = random.sample(pop1, 3)
@@ -72,7 +75,7 @@ class Population(object):
                 best = numpy.argmax(fitnesses)
                 parent.append(candidates[best])
 
-            pop2[i] = parent[0].recombine(parent[1])
+            pop2.extend(parent[0].recombine(parent[1]))
 
         # mutation
 

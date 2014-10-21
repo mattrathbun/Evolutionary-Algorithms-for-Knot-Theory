@@ -14,4 +14,9 @@ ol = pop.toList()
 for l in ol:
     print [op.toString() for op in l.toList()]
 
-pop.iterate(fit)
+for i in range(0,10):
+    pop.iterate(fit)
+
+ol = pop.toList()
+for l in ol:
+    print [op.toString() for op in l.toList()]
