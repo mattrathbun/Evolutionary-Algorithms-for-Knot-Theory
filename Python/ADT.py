@@ -766,10 +766,15 @@ class ADT(object):
     def possibleR1Up(self):
 		possible_data = []
 		n = self.number_crossings()
-		for i in range(1, 2*n + 1):
+		if n > 1:
+			for i in range(1, 2*n + 1):
+				for j in ['L', 'R']:
+					for k in [1, -1]:
+						possible_data.append({'arc':i, 'side':j, 'sign':k})
+		else:
 			for j in ['L', 'R']:
 				for k in [1, -1]:
-					possible_data.append({'arc':i, 'side':j, 'sign':k})
+					possible_data.append({'arc':1, 'side':j, 'sign':k})
 		return possible_data
 		
     def possibleR1Down(self):

@@ -39,27 +39,27 @@ class ADTOp(object):
     def toString(self):
         if self.number == 1 and self.direction == 'U':
             if self.checkFullData():
-                return "1U(pos={}, {}, sign={}".format(str(self.data['arc']), str(self.data['side']), str(self.data['sign']))
+                return "1U(pos={}, side={}, sign={})".format(str(self.data['arc']), str(self.data['side']), str(self.data['sign']))
             else:
                 return "1U"
         elif self.number == 1 and self.direction == "D":
             if self.checkFullData():
-                return "1D({})".format(str(self.data['arc']))
+                return "1D(pos={})".format(str(self.data['arc']))
             else:
                 return "1D"
         elif self.number == 2 and self.direction == "U":
             if self.checkFullData():
-                return "2U(pos={}, {}, target={})".format(str(self.data['arc']), str(self.data['side']), str(self.data['target']))
+                return "2U(pos={}, side={}, target={})".format(str(self.data['arc']), str(self.data['side']), str(self.data['target']))
             else:
                 return "2U"
         elif self.number == 2 and self.direction == "D":
             if self.checkFullData():
-                return "2D({})".format(str(self.data['arc']))
+                return "2D(pos={})".format(str(self.data['arc']))
             else:
                 return "2D"
         elif self.number == 3:
             if self.checkFullData():
-                return "3H({})".format(str(self.data['arc']))
+                return "3H(pos={})".format(str(self.data['arc']))
             else:
                 return "3H"
 

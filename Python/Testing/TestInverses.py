@@ -13,12 +13,18 @@ def findInverse(diagram, op):
             Ktemp = K.copy()
             move.apply(Ktemp)
             if diagram == Ktemp:
-                print "These two moves are inverses."
-                return op, move
-        print "This move has no inverse."
-        return op
-    else:
-    	print "This move does nothing to this diagram."
+            	return move
+        return "Nope"
+#    else:
+#    	return None
+#                print "These two moves are inverses."
+#                return op, move
+#        print "This move has no inverse."
+#        return op
+#    else:
+#    	print "This move does nothing to this diagram."
+#    	return op
+#		return None
     	
 L = ADT.ADT([-12, 14, -16, -22, -20, -6, 2, -4, -18, -10, 8], [-1, 1, -1, 1, 1, -1, 1, -1, 1, 1, -1])
 for i in range(100):
