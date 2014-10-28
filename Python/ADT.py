@@ -182,6 +182,10 @@ class ADT(object):
         once = 0
         output = []
         n = self.number_crossings()
+        if n == 0:
+        	return output
+        elif n == 1:
+        	return [[1,2]]
         arc = normalise(arc, 1, 2 * n)
         tail = arc
         head = self.wrap(arc + 1)
@@ -228,19 +232,27 @@ class ADT(object):
     # the label-shifts of K.  	
     	
     def sameDiagram(self, K):
+    	print "    Calling sameDiagram."
     	n = self.number_crossings()
     	m = K.number_crossings()
-    	result = False
     	if n != m:
-    		return result
+    		print "        Different number of crossings!"
+    		return False
+    	elif n == 0:
+    		return True
     	else:
     		around = K.copy()
     		for i in range(2*n):
     			if around == self:
+    				print "    An exact match."
     				return True
+    				print "THIS LINE SHOULD NEVER BE PRINTED."
     			else:
+    				print "    Not an exact match."
+    				print "    ", self.to_string(), " is not equal to ", around.to_string()
+    				print "    Let's try shifting labels."
     				around = around.shiftLabel()
-    		return result
+    		return False
     		
 
     # Methods that perform a Reidemeister 1 Move, introducing a single
@@ -724,6 +736,12 @@ class ADT(object):
     def finePossibleMoves(self):
 		possible_moves = []
 		n = self.number_crossings()
+		if n == 0:
+			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':1, 'side':'L', 'sign':1}))
+			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':1, 'side':'L', 'sign':-1}))
+			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':1, 'side':'R', 'sign':1}))
+			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':1, 'side':'R', 'sign':-1}))
+			return possible_moves
 		for i in range(1, 2*n + 1):
 			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'L', 'sign':1}))
 			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'L', 'sign':-1}))
