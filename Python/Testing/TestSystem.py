@@ -4,7 +4,7 @@ sys.path.append(lib_path)
 
 import ADT, ADTOp, ADTOpList, ADTOpPopulation
 
-n = 5
+n = 20
 
 
 K = ADT.ADT([],[])
@@ -45,13 +45,13 @@ for i in sequence:
 	print '\n'
 print '\n'
 
-print 'Inverses:'
-for i in inverses:
-	if i.getattr(self, "toString", False):
-		print i.toString()
-		print '\n'
-	else:
-		print ' '
-		print '\n'
-print '\n'
+# print 'Inverses:'
+# for i in inverses:
+# 	if i.getattr(self, "toString", False):
+# 		print i.toString()
+# 		print '\n'
+# 	else:
+# 		print ' '
+# 		print '\n'
+# print '\n'
 

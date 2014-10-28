@@ -242,7 +242,7 @@ class ADT(object):
     		return True
     	else:
     		around = K.copy()
-    		for i in range(2*n):
+    		for i in range(2*n + 1):
     			if around == self:
     				print "    An exact match."
     				return True
