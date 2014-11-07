@@ -54,23 +54,23 @@ K = original.copy()
 
 print "Applying the move to the diagram results in:"
 move.apply(K)
-K.to_string()
+print K.to_string()
 # K = [6, 2, 4], [-1, -1, 1]
 print '\n'
 
 inverse = ADTOp.ADTOp(2, "U", {'arc':1, 'side':"L", 'target':[5,4]})
-print "The inverse move should is: ", inverse.toString()
+print "The inverse move should be: ", inverse.toString()
 print '\n'
 
 print "We apply the inverse move to this new diagram, and get:"
 inverse.apply(K)
-K.to_string()
+print K.to_string()
 # K = [10, 8, 4, -2, 6], [-1, 1, -1, -1, 1]
 print '\n'
 
 print "Do these represent the same diagram?"
 original.sameDiagram(K)
-print original.sameDiagram(K)
+#print original.sameDiagram(K)
 # True
 print '\n'
 

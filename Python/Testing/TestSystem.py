@@ -45,6 +45,11 @@ for i in sequence:
 	print '\n'
 print '\n'
 
+print 'Inverses: '
+for i in inverses:
+	print i.toString()
+	print '\n'
+
 # print 'Inverses:'
 # for i in inverses:
 # 	if i.getattr(self, "toString", False):

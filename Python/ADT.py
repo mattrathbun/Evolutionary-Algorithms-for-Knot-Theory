@@ -232,11 +232,11 @@ class ADT(object):
     # the label-shifts of K.  	
     	
     def sameDiagram(self, K):
-    	print "    Calling sameDiagram."
+#    	print "    Calling sameDiagram."
     	n = self.number_crossings()
     	m = K.number_crossings()
     	if n != m:
-    		print "        Different number of crossings!"
+#    		print "        Different number of crossings!"
     		return False
     	elif n == 0:
     		return True
@@ -244,13 +244,13 @@ class ADT(object):
     		around = K.copy()
     		for i in range(2*n + 1):
     			if around == self:
-    				print "    An exact match."
+#    				print "    An exact match."
     				return True
-    				print "THIS LINE SHOULD NEVER BE PRINTED."
+#    				print "THIS LINE SHOULD NEVER BE PRINTED."
     			else:
-    				print "    Not an exact match."
-    				print "    ", self.to_string(), " is not equal to ", around.to_string()
-    				print "    Let's try shifting labels."
+#    				print "    Not an exact match."
+#    				print "    ", self.to_string(), " is not equal to ", around.to_string()
+#    				print "    Let's try shifting labels."
     				around = around.shiftLabel()
     		return False
     		
@@ -641,16 +641,16 @@ class ADT(object):
         arcNext = self.wrap(arc + 1)
 
         if self.right(arc) != self.jump(self.right(arcNext)):
-            print "cannot do R3 from that position: not a triangle"
+#            print "cannot do R3 from that position: not a triangle"
             return False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
-            print "Not both overcrossings or undercrossings"
+#            print "Not both overcrossings or undercrossings"
             return False
         doubleOverstrand = self.isOverstrand(arc)
-        print "DO: ", doubleOverstrand
-        print "RR: ", self.right(arc), self.right(arcNext)
+#        print "DO: ", doubleOverstrand
+#        print "RR: ", self.right(arc), self.right(arcNext)
 
         rewrite = {}
         if side in ['R', 'r', 'right', '1', 'Right']:
@@ -703,7 +703,7 @@ class ADT(object):
             if not self.isOdd(theCrossing):
                 theCrossing = abs(self.jump(self.left(arc)))
 
-        print "\nfinal rewrite: ", rewrite, "\n"
+#        print "\nfinal rewrite: ", rewrite, "\n"
 
         # it helps that rewrite[even] = odd and vice versa
         newCode = [0] * self.number_crossings()

@@ -18,22 +18,22 @@ def findInverse(diagram, op):
     if op.apply(K):
         possible_moves = K.finePossibleMoves()
         for move in possible_moves:
-        	if move.getNumber == number and move.getDirection == reverse:
+        	if move.getNumber() == number and move.getDirection() == reverse:
         		Ktemp = K.copy()
         		move.apply(Ktemp)
         		if diagram.sameDiagram(Ktemp):
-        			print "FOUND IT!"
-        			retrun [True, move]
-#        			return move
-        print "Original diagram: ", diagram.to_string()
-        print "Origingal move: ", op.toString()
-        print "After move has been applied: ", K.to_string()
-        print "Possible moves on the result: "
-        for i in possible_moves:
-        	print i.toString()
-        print "*"*30
-        print "n = ", n
-        print "The move we are trying to invert is: ", op.toString()
+#        			print "FOUND IT!"
+#        			return [True, move]
+        			return move
+#        print "Original diagram: ", diagram.to_string()
+#        print "Origingal move: ", op.toString()
+#        print "After move has been applied: ", K.to_string()
+#        print "Possible moves on the result: "
+#        for i in possible_moves:
+#        	print i.toString()
+#        print "*"*30
+#        print "n = ", n
+#        print "The move we are trying to invert is: ", op.toString()
 #        return [False, n, op.toString()]
         raise TypeError("No inverse found.")
     else:
