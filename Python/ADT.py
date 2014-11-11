@@ -133,6 +133,8 @@ class ADT(object):
             even = abs(arc)
             # [0] added so that idx is an integer and not a list.
             # (Else code[idx] does not work.)
+            print "Code: ", code
+            print "Orientations: ", orient
             idx = [i for i, j in enumerate(code) if abs(j) == even][0]
             odd = 2 * idx + 1
             sign = cmp(code[idx], 0)
@@ -380,31 +382,34 @@ class ADT(object):
         if arc % 2 == 0:
             if arc < tail:
                 if head == self.wrap(tail + 1):
-                    for i in self.code:
-                        if (abs(i) > arc) and (abs(i) > tail):
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif (abs(i) > arc):
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= arc
-                            new_dt.append(i)
-                    new_dt.insert(arc / 2, tail + 4)
-                    new_or.insert(arc / 2, side)
-                    new_dt.insert(tail / 2 + 1, -(arc + 2))
-                    new_or.insert(tail / 2 + 1, -side)
+                	print "Case 1"
+                	for i in self.code:
+                		if (abs(i) > arc) and (abs(i) > tail):
+                			new_dt.append(i + 4 * cmp(i, 0))
+                		elif (abs(i) > arc):
+                			new_dt.append(i + 2 * cmp(i, 0))
+                		else:  # abs(i) <= arc
+                			new_dt.append(i)
+                	new_dt.insert(arc / 2, tail + 4)
+                	new_or.insert(arc / 2, side)
+                	new_dt.insert(tail / 2 + 1, -(arc + 2))
+                	new_or.insert(tail / 2 + 1, -side)
                 else:  # tail == self.wrap(head + 1)
-                    for i in self.code:
-                        if (abs(i) > arc) and (abs(i) >= tail):
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif (abs(i) > arc):
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= arc
-                            new_dt.append(i)
-                    new_dt.insert(arc / 2, tail + 2)
-                    new_or.insert(arc / 2, -side)
-                    new_dt.insert(tail / 2 + 1, -(arc + 2))
-                    new_or.insert(tail / 2 + 1, side)
+                	print "Case 2"
+                	for i in self.code:
+                		if (abs(i) > arc) and (abs(i) >= tail):
+                			new_dt.append(i + 4 * cmp(i, 0))
+                		elif (abs(i) > arc):
+                			new_dt.append(i + 2 * cmp(i, 0))
+                		else:  # abs(i) <= arc
+                			new_dt.append(i)
+                	new_dt.insert(arc / 2, tail + 2)
+                	new_or.insert(arc / 2, -side)
+                	new_dt.insert(tail / 2 + 1, -(arc + 2))
+                	new_or.insert(tail / 2 + 1, side)
             else:  # tail < arc
                 if head == self.wrap(tail + 1):
+                    print "Case 3"
                     for i in self.code:
                         if (abs(i) > arc):
                             new_dt.append(i + 4 * cmp(i, 0))
@@ -417,6 +422,7 @@ class ADT(object):
                     new_dt.insert(arc / 2 + 1, tail + 2)
                     new_or.insert(arc / 2 + 1, side)
                 else:  # head < tail
+                    print "Case 4"
                     for i in self.code:
                         if (abs(i) > arc):
                             new_dt.append(i + 4 * cmp(i, 0))
@@ -431,18 +437,20 @@ class ADT(object):
         else:  # arc % 2 == 1
             if arc < tail:
                 if head == self.wrap(tail + 1):
-                    for i in self.code:
-                        if abs(i) > tail:
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif abs(i) > arc:  # but <= tail
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= arc
-                            new_dt.append(i)
-                    new_dt.insert((arc + 1) / 2, head + 2)
-                    new_or.insert((arc + 1) / 2, -side)
-                    new_dt.insert(head / 2 + 1, -(arc + 1))
-                    new_or.insert(head / 2 + 1, side)
+                	print "Case 5"
+                	for i in self.code:
+                		if abs(i) > tail:
+                			new_dt.append(i + 4 * cmp(i, 0))
+                		elif abs(i) > arc:  # but <= tail
+                			new_dt.append(i + 2 * cmp(i, 0))
+                		else:  # abs(i) <= arc
+                			new_dt.append(i)
+                	new_dt.insert((arc + 1) / 2, head + 2)
+                	new_or.insert((arc + 1) / 2, -side)
+                	new_dt.insert(head / 2 + 1, -(arc + 1))
+                	new_or.insert(head / 2 + 1, side)
                 else:  # tail == self.wrap(head + 1)
+                    print "Case 6"
                     for i in self.code:
                         if abs(i) >= tail:
                             new_dt.append(i + 4 * cmp(i, 0))
@@ -456,6 +464,7 @@ class ADT(object):
                     new_or.insert(head / 2 + 1, -side)
             else:  # tail < arc
                 if head == self.wrap(tail + 1):
+                    print "Case 7"
                     for i in self.code:
                         if abs(i) > arc:
                             new_dt.append(i + 4 * cmp(i, 0))
@@ -468,6 +477,7 @@ class ADT(object):
                     new_dt.insert((arc + 1) / 2 + 1, tail + 1)
                     new_or.insert((arc + 1) / 2 + 1, -side)
                 else:  # tail == self.wrap(head + 1)
+                    print "Case 8"
                     for i in self.code:
                         if abs(i) > arc:
                             new_dt.append(i + 4 * cmp(i, 0))

@@ -28,3 +28,26 @@ for i in range(1,15):
                          (Kname if LL == K else "NOT %s" % (Kname)))
             print ""
     print ""
+
+print "####################### Problem starts here!!! ###########################"
+
+def testR1DownProblem(diagram, arc):
+	print "Here's the diagram before the R1Down move: ", diagram.to_string()
+	print "Here's an attempt at an R1 Down move at strand {}".format(arc)
+	diagram.R1Down(arc)
+	print diagram.to_string()
+	if not diagram.isrealisable():
+		raise TypeError("R1Down move is not producing a valid diagram!")
+
+L = ADT.ADT([22, 4, 20, -10, 12, -8, 6, 18, -2, -14, -16], [-1, 1, -1, 1, -1, 1, -1, -1, 1, 1, 1])
+testR1DownProblem(L, 22)
+## Should be: ...
+## Produces: [4, 20, -10, 12, -8, 6, 18, -2, -14, -16], [1, -1, 1, -1, 1, -1, -1, 1, 1, 1]
+	
+
+K = ADT.ADT([12, -8, 10, 2, 4, -6], [-1, -1, 1, 1, 1, -1])
+testR1DownProblem(K, 12)
+K.R1Down(12)
+## Should be: [
+## Produces: [-8, 10, 2, 4, -6], [-1, 1, 1, 1, -1]
+	

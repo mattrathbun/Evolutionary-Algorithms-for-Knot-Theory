@@ -59,7 +59,7 @@ class ADTOp(object):
                 return "2D"
         elif self.number == 3:
             if self.checkFullData():
-                return "3H(pos={})".format(str(self.data['arc']))
+                return "3H(pos={}, side={})".format(str(self.data['arc']), str(self.data['side']))
             else:
                 return "3H"
 
@@ -136,23 +136,55 @@ class ADTOp(object):
                 self.fillData(random.choice(possible_data))
 
     def apply(self, knot):
+    	K = knot.copy()
         if not self.checkFullData():
             self.randomData(knot)
             if not self.checkFullData():
                 return False
+        print "Trying to apply move: ", self.toString()
+        print "to diagram: ", knot.to_string()
         if self.number == 1 and self.direction == "U":
-            return knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
+            knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
         elif self.number == 1 and self.direction == "D":
-            return knot.R1Down(arc=self.data['arc'])
+            knot.R1Down(arc=self.data['arc'])
         elif self.number == 2 and self.direction == "U":
-            return knot.R2Up(arc=self.data['arc'], side=self.data['side'], target=self.data['target'])
+            knot.R2Up(arc=self.data['arc'], side=self.data['side'], target=self.data['target'])
         elif self.number == 2 and self.direction == "D":
-            return knot.R2Down(arc=self.data['arc'])
+            knot.R2Down(arc=self.data['arc'])
         elif self.number == 3:
-            return knot.R3(arc=self.data['arc'], side=self.data['side'])
+            knot.R3(arc=self.data['arc'], side=self.data['side'])
         else:
             raise TypeError(
                 'What kind of move are you, and how did you get this far?')
+        if knot.isrealisable():
+        	return knot
+        else:
+        	print "We have a problem."
+        	print "Starting with: ", K.to_string()
+        	print "Applying move: ", self.toString()
+        	print "Became: ", knot.to_string()
+        	raise TypeError("We have a problem!!!")
+            
+
+#     def apply(self, knot):
+#         if not self.checkFullData():
+#             self.randomData(knot)
+#             if not self.checkFullData():
+#                 return False
+#         if self.number == 1 and self.direction == "U":
+#             return knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
+#         elif self.number == 1 and self.direction == "D":
+#             return knot.R1Down(arc=self.data['arc'])
+#         elif self.number == 2 and self.direction == "U":
+#             return knot.R2Up(arc=self.data['arc'], side=self.data['side'], target=self.data['target'])
+#         elif self.number == 2 and self.direction == "D":
+#             return knot.R2Down(arc=self.data['arc'])
+#         elif self.number == 3:
+#             return knot.R3(arc=self.data['arc'], side=self.data['side'])
+#         else:
+#             raise TypeError(
+#                 'What kind of move are you, and how did you get this far?')
+
 
 coarse_up_moves = ['R1Up', 'R2Up']
 coarse_down_moves = ['R1Down', 'R2Down']

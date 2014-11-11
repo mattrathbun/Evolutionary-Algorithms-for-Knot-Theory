@@ -16,6 +16,8 @@ def findInverse(diagram, op):
     elif direction == "H":
     	reverse = "H"
     if op.apply(K):
+    	if K.number_crossings() <= 1 and op.getNumber() == 2:
+    		return ADTOp.ADTOp(2, "U")
         possible_moves = K.finePossibleMoves()
         for move in possible_moves:
         	if move.getNumber() == number and move.getDirection() == reverse:
@@ -31,11 +33,12 @@ def findInverse(diagram, op):
 #        print "Possible moves on the result: "
 #        for i in possible_moves:
 #        	print i.toString()
-#        print "*"*30
-#        print "n = ", n
-#        print "The move we are trying to invert is: ", op.toString()
-#        return [False, n, op.toString()]
-        raise TypeError("No inverse found.")
+        print "*"*30
+        print "Error!!"
+        print "n = ", n
+        print "The move we are trying to invert is: ", op.toString()
+        return [False, n, op.toString()]
+#        raise TypeError("No inverse found.")
     else:
     	return None
 #    else:
