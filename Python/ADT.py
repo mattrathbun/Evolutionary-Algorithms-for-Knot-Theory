@@ -4,10 +4,12 @@ import ADTOp
 # Returns i if i is between m and M. Otherwise,
 #   if i is smaller than m, return m, larger than M, return M
 
+
 def normalise(i, m, M):
     return (m if i < m else (M if i > M else i))
 
 # In case Matt forgets to use the British spelling.
+
 
 def normalize(i, m, M):
     return normalise(i, m, M)
@@ -16,6 +18,7 @@ def normalize(i, m, M):
 # is even, function returns the index at which that even number shows up
 # in a DT-code.  If the number is odd, function returns the index of the
 # even number that corresponds to that odd crossing.
+
 
 def index(num, code):
     if num % 2 == 0:
@@ -50,6 +53,7 @@ def index(num, code):
 # Additional notes: A number i between 1 and 2n corresponds to both a
 # crossing point in the diagram, as well as an oriented edge in the
 # diagram going from the point i to the point i+1.
+
 
 class ADT(object):
 
@@ -150,27 +154,28 @@ class ADT(object):
             return even
         elif point % 2 == 0:
             return odd
-            
+
     def isSimple(self):
-    	n = self.number_crossings()
-    	if n <= 1:
-    		return True
-    	elif n > 1:
-    		return False
-    	else:
-    		raise TypeError("Perhaps this is not a diagram. Something is wrong.")
+        n = self.number_crossings()
+        if n <= 1:
+            return True
+        elif n > 1:
+            return False
+        else:
+            raise TypeError(
+                "Perhaps this is not a diagram. Something is wrong.")
 
     # Helper method that takes in an 'arc' and a 'side' ("L" or "R"),
     # and returns a list of all other arcs which are adjacent to the region
     # on the side of the arc indicated by the arguments.
     # These returned arcs are represented as two-element lists, from
     # vertex to vertex (with positive labels).
-    
+
     # Big Note: regions does not return the correct list when applied to a diagram with only a single crossing.
     # 		In particular, regardless of the side selected, the list will be only a single item long,
     #		indicating only the edge determined by the parameter arc.
     # 		This allows regions to be used correctly with R1 Up/Down moves [CHECK THIS], as well as R3 moves [CHECK THIS],
-	#		and R2Down moves, but NOT with R2Up moves.
+        #		and R2Down moves, but NOT with R2Up moves.
 
     def regions(self, arc, side):
         side = str(side).lower()
@@ -185,9 +190,9 @@ class ADT(object):
         output = []
         n = self.number_crossings()
         if n == 0:
-        	return output
+            return output
         elif n == 1:
-        	return [[1,2]]
+            return [[1, 2]]
         arc = normalise(arc, 1, 2 * n)
         tail = arc
         head = self.wrap(arc + 1)
@@ -195,67 +200,67 @@ class ADT(object):
 #        	output = [[tail, head], [head, tail]] ###############################
 #        else:
         while True:
-        	tail = self.jump(head)
-        	odd, even, sign, orient = self.quad(tail)
-        	if ((side + forward) % 2 == 0) and (tail % 2 == 1):
-        		head = self.wrap(tail - sign * orient)
-        	elif ((side + forward) % 2 == 0) and (tail % 2 == 0):
-        		head = self.wrap(tail + sign * orient)
-        	elif ((side + forward) % 2 == 1) and (tail % 2 == 1):
-        		head = self.wrap(tail + sign * orient)
-        	elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
-        		head = self.wrap(tail - sign * orient)
-        	output.append([tail, head])
-        	if (tail == arc and head == self.wrap(arc + 1)):
-        		break
-        	if ((tail - head) % (2 * n) == 1):
-        		forward = 1
-        	else:
-        		forward = 0
+            tail = self.jump(head)
+            odd, even, sign, orient = self.quad(tail)
+            if ((side + forward) % 2 == 0) and (tail % 2 == 1):
+                head = self.wrap(tail - sign * orient)
+            elif ((side + forward) % 2 == 0) and (tail % 2 == 0):
+                head = self.wrap(tail + sign * orient)
+            elif ((side + forward) % 2 == 1) and (tail % 2 == 1):
+                head = self.wrap(tail + sign * orient)
+            elif ((side + forward) % 2 == 1) and (tail % 2 == 0):
+                head = self.wrap(tail - sign * orient)
+            output.append([tail, head])
+            if (tail == arc and head == self.wrap(arc + 1)):
+                break
+            if ((tail - head) % (2 * n) == 1):
+                forward = 1
+            else:
+                forward = 0
         return output
-        
+
     # Method which shifts the labeling of a diagram by one (with the same orientation) to return
     # a new ADT object with a different code representing the diagram.
 
     def shiftLabel(self):
-    	new_code = []
-    	new_orients = []
-    	temp = []
-    	for i in self.code:
-    		odd, even, sign, orient = self.quad(i)
-    		temp.append([self.wrap(even - 1), self.wrap(odd - 1), -sign, orient])
-    	temp.sort()
-    	for i in temp:
-    		new_code.append(i[2]*i[1])
-    		new_orients.append(i[3])
-    	return ADT(new_code, new_orients)
-    	
+        new_code = []
+        new_orients = []
+        temp = []
+        for i in self.code:
+            odd, even, sign, orient = self.quad(i)
+            temp.append(
+                [self.wrap(even - 1), self.wrap(odd - 1), -sign, orient])
+        temp.sort()
+        for i in temp:
+            new_code.append(i[2] * i[1])
+            new_orients.append(i[3])
+        return ADT(new_code, new_orients)
+
     # Method which tests whether two codes correspond to the same diagram by testing all
-    # the label-shifts of K.  	
-    	
+    # the label-shifts of K.
+
     def sameDiagram(self, K):
-#    	print "    Calling sameDiagram."
-    	n = self.number_crossings()
-    	m = K.number_crossings()
-    	if n != m:
-#    		print "        Different number of crossings!"
-    		return False
-    	elif n == 0:
-    		return True
-    	else:
-    		around = K.copy()
-    		for i in range(2*n + 1):
-    			if around == self:
-#    				print "    An exact match."
-    				return True
+        #    	print "    Calling sameDiagram."
+        n = self.number_crossings()
+        m = K.number_crossings()
+        if n != m:
+            #    		print "        Different number of crossings!"
+            return False
+        elif n == 0:
+            return True
+        else:
+            around = K.copy()
+            for i in range(2 * n + 1):
+                if around == self:
+                    #    				print "    An exact match."
+                    return True
 #    				print "THIS LINE SHOULD NEVER BE PRINTED."
-    			else:
-#    				print "    Not an exact match."
-#    				print "    ", self.to_string(), " is not equal to ", around.to_string()
-#    				print "    Let's try shifting labels."
-    				around = around.shiftLabel()
-    		return False
-    		
+                else:
+                    #    				print "    Not an exact match."
+                    #    				print "    ", self.to_string(), " is not equal to ", around.to_string()
+                    #    				print "    Let's try shifting labels."
+                    around = around.shiftLabel()
+            return False
 
     # Methods that perform a Reidemeister 1 Move, introducing a single
     # twist at the location arc.  arc is an integer corresponding to a
@@ -355,7 +360,7 @@ class ADT(object):
     # under is unnecessary as pushing (arc, arc+1) under (tail, head)
     # is equivalent to pushing (tail, head) over (arc, arc+1). We have arbitrarily chosen
     # to push (arc, arc+1) OVER (tail, head).
-    
+
     # Big Note: The regions method does not return the correct output on diagrams with
     # a single crossing. As this only effects the outcome of the R2Up method, it appears
     # to be easier to modify the behavior of R2Up in this special case instead of the
@@ -363,12 +368,14 @@ class ADT(object):
 
     def R2Up(self, arc, side, target):
         n = self.number_crossings()
-        if n <= 1: # This is where the R2Up move is precluded from being applied to a single-crossing diagram.
-        	return False
+        # This is where the R2Up move is precluded from being applied to a
+        # single-crossing diagram.
+        if n <= 1:
+            return False
         arc = normalise(arc, 1, 2 * n)
         candidates = list(self.regions(arc, side))
         candidates.remove([arc, self.wrap(arc + 1)])
-        if not(target in candidates): 
+        if not(target in candidates):
             return False
         new_dt = []
         new_or = list(self.orientations)
@@ -382,31 +389,31 @@ class ADT(object):
         if arc % 2 == 0:
             if arc < tail:
                 if head == self.wrap(tail + 1):
-                	print "Case 1"
-                	for i in self.code:
-                		if (abs(i) > arc) and (abs(i) > tail):
-                			new_dt.append(i + 4 * cmp(i, 0))
-                		elif (abs(i) > arc):
-                			new_dt.append(i + 2 * cmp(i, 0))
-                		else:  # abs(i) <= arc
-                			new_dt.append(i)
-                	new_dt.insert(arc / 2, tail + 4)
-                	new_or.insert(arc / 2, side)
-                	new_dt.insert(tail / 2 + 1, -(arc + 2))
-                	new_or.insert(tail / 2 + 1, -side)
+                    print "Case 1"
+                    for i in self.code:
+                        if (abs(i) > arc) and (abs(i) > tail):
+                            new_dt.append(i + 4 * cmp(i, 0))
+                        elif (abs(i) > arc):
+                            new_dt.append(i + 2 * cmp(i, 0))
+                        else:  # abs(i) <= arc
+                            new_dt.append(i)
+                    new_dt.insert(arc / 2, tail + 4)
+                    new_or.insert(arc / 2, side)
+                    new_dt.insert(tail / 2 + 1, -(arc + 2))
+                    new_or.insert(tail / 2 + 1, -side)
                 else:  # tail == self.wrap(head + 1)
-                	print "Case 2"
-                	for i in self.code:
-                		if (abs(i) > arc) and (abs(i) >= tail):
-                			new_dt.append(i + 4 * cmp(i, 0))
-                		elif (abs(i) > arc):
-                			new_dt.append(i + 2 * cmp(i, 0))
-                		else:  # abs(i) <= arc
-                			new_dt.append(i)
-                	new_dt.insert(arc / 2, tail + 2)
-                	new_or.insert(arc / 2, -side)
-                	new_dt.insert(tail / 2 + 1, -(arc + 2))
-                	new_or.insert(tail / 2 + 1, side)
+                    print "Case 2"
+                    for i in self.code:
+                        if (abs(i) > arc) and (abs(i) >= tail):
+                            new_dt.append(i + 4 * cmp(i, 0))
+                        elif (abs(i) > arc):
+                            new_dt.append(i + 2 * cmp(i, 0))
+                        else:  # abs(i) <= arc
+                            new_dt.append(i)
+                    new_dt.insert(arc / 2, tail + 2)
+                    new_or.insert(arc / 2, -side)
+                    new_dt.insert(tail / 2 + 1, -(arc + 2))
+                    new_or.insert(tail / 2 + 1, side)
             else:  # tail < arc
                 if head == self.wrap(tail + 1):
                     print "Case 3"
@@ -437,18 +444,18 @@ class ADT(object):
         else:  # arc % 2 == 1
             if arc < tail:
                 if head == self.wrap(tail + 1):
-                	print "Case 5"
-                	for i in self.code:
-                		if abs(i) > tail:
-                			new_dt.append(i + 4 * cmp(i, 0))
-                		elif abs(i) > arc:  # but <= tail
-                			new_dt.append(i + 2 * cmp(i, 0))
-                		else:  # abs(i) <= arc
-                			new_dt.append(i)
-                	new_dt.insert((arc + 1) / 2, head + 2)
-                	new_or.insert((arc + 1) / 2, -side)
-                	new_dt.insert(head / 2 + 1, -(arc + 1))
-                	new_or.insert(head / 2 + 1, side)
+                    print "Case 5"
+                    for i in self.code:
+                        if abs(i) > tail:
+                            new_dt.append(i + 4 * cmp(i, 0))
+                        elif abs(i) > arc:  # but <= tail
+                            new_dt.append(i + 2 * cmp(i, 0))
+                        else:  # abs(i) <= arc
+                            new_dt.append(i)
+                    new_dt.insert((arc + 1) / 2, head + 2)
+                    new_or.insert((arc + 1) / 2, -side)
+                    new_dt.insert(head / 2 + 1, -(arc + 1))
+                    new_or.insert(head / 2 + 1, side)
                 else:  # tail == self.wrap(head + 1)
                     print "Case 6"
                     for i in self.code:
@@ -651,12 +658,12 @@ class ADT(object):
         arcNext = self.wrap(arc + 1)
 
         if self.right(arc) != self.jump(self.right(arcNext)):
-#            print "cannot do R3 from that position: not a triangle"
+            # print "cannot do R3 from that position: not a triangle"
             return False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
-#            print "Not both overcrossings or undercrossings"
+            #            print "Not both overcrossings or undercrossings"
             return False
         doubleOverstrand = self.isOverstrand(arc)
 #        print "DO: ", doubleOverstrand
@@ -667,23 +674,31 @@ class ADT(object):
             # rewrite the crossing
             # the crossing is _always_ changed in sign
             if self.rightOutwards(arc):
-                rewrite.update({self.right(arc): -self.wrap(self.right(arc) - 1)})
+                rewrite.update(
+                    {self.right(arc): -self.wrap(self.right(arc) - 1)})
             else:
-                rewrite.update({self.right(arc): -self.wrap(self.right(arc) + 1)})
+                rewrite.update(
+                    {self.right(arc): -self.wrap(self.right(arc) + 1)})
             if self.rightOutwards(arcNext):
-                rewrite.update({self.right(arcNext): -self.wrap(self.right(arcNext) - 1)})
+                rewrite.update(
+                    {self.right(arcNext): -self.wrap(self.right(arcNext) - 1)})
             else:
-                rewrite.update({self.right(arcNext): -self.wrap(self.right(arcNext) + 1)})
+                rewrite.update(
+                    {self.right(arcNext): -self.wrap(self.right(arcNext) + 1)})
             # rewrite the strand part 1
             if self.rightOutwards(arcNext):
-                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
+                rewrite.update(
+                    {self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
             else:
-                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
+                rewrite.update(
+                    {self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
             # rewrite the strand part 2
             if self.rightOutwards(arc):
-                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
+                rewrite.update(
+                    {self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
             else:
-                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
+                rewrite.update(
+                    {self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
             theCrossing = abs(self.right(arc))
             if not self.isOdd(theCrossing):
                 theCrossing = abs(self.jump(self.right(arc)))
@@ -692,23 +707,31 @@ class ADT(object):
             # rewrite the crossing
             # the crossing is _always_ changed in sign
             if self.leftOutwards(arc):
-                rewrite.update({self.left(arc): -self.wrap(self.left(arc) + 1)})
+                rewrite.update(
+                    {self.left(arc): -self.wrap(self.left(arc) + 1)})
             else:
-                rewrite.update({self.left(arc): -self.wrap(self.left(arc) - 1)})
+                rewrite.update(
+                    {self.left(arc): -self.wrap(self.left(arc) - 1)})
             if self.leftOutwards(arcNext):
-                rewrite.update({self.left(arcNext): -self.wrap(self.left(arcNext) + 1)})
+                rewrite.update(
+                    {self.left(arcNext): -self.wrap(self.left(arcNext) + 1)})
             else:
-                rewrite.update({self.left(arcNext): -self.wrap(self.left(arcNext) - 1)})
+                rewrite.update(
+                    {self.left(arcNext): -self.wrap(self.left(arcNext) - 1)})
             # rewrite the strand part 1
             if self.leftOutwards(arcNext):
-                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
+                rewrite.update(
+                    {self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
             else:
-                rewrite.update({self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
+                rewrite.update(
+                    {self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
             # rewrite the strand part 2
             if self.leftOutwards(arc):
-                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
+                rewrite.update(
+                    {self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
             else:
-                rewrite.update({self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
+                rewrite.update(
+                    {self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
             theCrossing = abs(self.left(arc))
             if not self.isOdd(theCrossing):
                 theCrossing = abs(self.jump(self.left(arc)))
@@ -742,120 +765,138 @@ class ADT(object):
 
         return True
 
-### Generates a list of possible moves that can be performed on a diagram.        
+# Generates a list of possible moves that can be performed on a diagram.
     def finePossibleMoves(self):
-		possible_moves = []
-		n = self.number_crossings()
-		if n == 0:
-			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':1, 'side':'L', 'sign':1}))
-			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':1, 'side':'L', 'sign':-1}))
-			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':1, 'side':'R', 'sign':1}))
-			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':1, 'side':'R', 'sign':-1}))
-			return possible_moves
-		for i in range(1, 2*n + 1):
-			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'L', 'sign':1}))
-			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'L', 'sign':-1}))
-			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'R', 'sign':1}))
-			possible_moves.append(ADTOp.ADTOp(1, 'U', {'arc':i, 'side':'R', 'sign':-1}))
-			left_reg = len(self.regions(i, 'L'))
-			right_reg = len(self.regions(i, 'R'))
-			if left_reg == 1 or right_reg == 1:
-				possible_moves.append(ADTOp.ADTOp(1, 'D', {'arc':i}))
-			if left_reg > 1 and n > 1: 	# This precludes listing R2Up moves on a single-crossing or no-crossing diagram.
-				candidates = list(self.regions(i, 'L'))
-				candidates.remove([i, self.wrap(i+1)])
-				for j in candidates:
-					possible_moves.append(ADTOp.ADTOp(2, 'U', {'arc':i, 'side':'L', 'target':j}))
-			if right_reg > 1 and n > 1:	# This precludes listing R2Up moves on a single-crossing or no-crossing diagram.
-				candidates = list(self.regions(i, 'R'))
-				candidates.remove([i, self.wrap(i+1)])
-				for j in candidates:
-					possible_moves.append(ADTOp.ADTOp(2, 'U', {'arc':i, 'side':'R', 'target':j}))
-			if (left_reg == 2 or right_reg == 2) and n > 1:
-				i1 = index(i, self.code)
-				i2 = index(self.wrap(i+1), self.code)
-				o1 = self.orientations[i1]
-				o2 = self.orientations[i2]
-				if o1 == -o2:
-					possible_moves.append(ADTOp.ADTOp(2, 'D', {'arc':i}))
-			if left_reg == 3:
-				if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
-					possible_moves.append(ADTOp.ADTOp(3, 'H', {'arc':i, 'side':'L'}))
-			if right_reg == 3:
-				if self.quad(i)[2] == -self.quad(self.wrap(i+1))[2]:
-					possible_moves.append(ADTOp.ADTOp(3, 'H', {'arc':i, 'side':'R'}))
-		return possible_moves
-		
+        possible_moves = []
+        n = self.number_crossings()
+        if n == 0:
+            possible_moves.append(
+                ADTOp.ADTOp(1, 'U', {'arc': 1, 'side': 'L', 'sign': 1}))
+            possible_moves.append(
+                ADTOp.ADTOp(1, 'U', {'arc': 1, 'side': 'L', 'sign': -1}))
+            possible_moves.append(
+                ADTOp.ADTOp(1, 'U', {'arc': 1, 'side': 'R', 'sign': 1}))
+            possible_moves.append(
+                ADTOp.ADTOp(1, 'U', {'arc': 1, 'side': 'R', 'sign': -1}))
+            return possible_moves
+        for i in range(1, 2 * n + 1):
+            possible_moves.append(
+                ADTOp.ADTOp(1, 'U', {'arc': i, 'side': 'L', 'sign': 1}))
+            possible_moves.append(
+                ADTOp.ADTOp(1, 'U', {'arc': i, 'side': 'L', 'sign': -1}))
+            possible_moves.append(
+                ADTOp.ADTOp(1, 'U', {'arc': i, 'side': 'R', 'sign': 1}))
+            possible_moves.append(
+                ADTOp.ADTOp(1, 'U', {'arc': i, 'side': 'R', 'sign': -1}))
+            left_reg = len(self.regions(i, 'L'))
+            right_reg = len(self.regions(i, 'R'))
+            if left_reg == 1 or right_reg == 1:
+                possible_moves.append(ADTOp.ADTOp(1, 'D', {'arc': i}))
+            # This precludes listing R2Up moves on a single-crossing or
+            # no-crossing diagram.
+            if left_reg > 1 and n > 1:
+                candidates = list(self.regions(i, 'L'))
+                candidates.remove([i, self.wrap(i + 1)])
+                for j in candidates:
+                    possible_moves.append(
+                        ADTOp.ADTOp(2, 'U', {'arc': i, 'side': 'L', 'target': j}))
+            # This precludes listing R2Up moves on a single-crossing or
+            # no-crossing diagram.
+            if right_reg > 1 and n > 1:
+                candidates = list(self.regions(i, 'R'))
+                candidates.remove([i, self.wrap(i + 1)])
+                for j in candidates:
+                    possible_moves.append(
+                        ADTOp.ADTOp(2, 'U', {'arc': i, 'side': 'R', 'target': j}))
+            if (left_reg == 2 or right_reg == 2) and n > 1:
+                i1 = index(i, self.code)
+                i2 = index(self.wrap(i + 1), self.code)
+                o1 = self.orientations[i1]
+                o2 = self.orientations[i2]
+                if o1 == -o2:
+                    possible_moves.append(ADTOp.ADTOp(2, 'D', {'arc': i}))
+            if left_reg == 3:
+                if self.quad(i)[2] == -self.quad(self.wrap(i + 1))[2]:
+                    possible_moves.append(
+                        ADTOp.ADTOp(3, 'H', {'arc': i, 'side': 'L'}))
+            if right_reg == 3:
+                if self.quad(i)[2] == -self.quad(self.wrap(i + 1))[2]:
+                    possible_moves.append(
+                        ADTOp.ADTOp(3, 'H', {'arc': i, 'side': 'R'}))
+        return possible_moves
+
     def fineRandomMove(self):
-		possible_moves = self.finePossibleMoves()
-		move = random.choice(possible_moves)
-		return move
-		
+        possible_moves = self.finePossibleMoves()
+        move = random.choice(possible_moves)
+        return move
+
     def possibleR1Up(self):
-		possible_data = []
-		n = self.number_crossings()
-		if n > 1:
-			for i in range(1, 2*n + 1):
-				for j in ['L', 'R']:
-					for k in [1, -1]:
-						possible_data.append({'arc':i, 'side':j, 'sign':k})
-		else:
-			for j in ['L', 'R']:
-				for k in [1, -1]:
-					possible_data.append({'arc':1, 'side':j, 'sign':k})
-		return possible_data
-		
+        possible_data = []
+        n = self.number_crossings()
+        if n > 1:
+            for i in range(1, 2 * n + 1):
+                for j in ['L', 'R']:
+                    for k in [1, -1]:
+                        possible_data.append({'arc': i, 'side': j, 'sign': k})
+        else:
+            for j in ['L', 'R']:
+                for k in [1, -1]:
+                    possible_data.append({'arc': 1, 'side': j, 'sign': k})
+        return possible_data
+
     def possibleR1Down(self):
-		possible_data = []
-		n = self.number_crossings()
-		for i in range(1, 2*n + 1):
-			if len(self.regions(i, 'L')) == 1 or len(self.regions(i, 'R')) == 1:
-				possible_data.append({'arc':i})
-		return possible_data
-		
+        possible_data = []
+        n = self.number_crossings()
+        for i in range(1, 2 * n + 1):
+            if len(self.regions(i, 'L')) == 1 or len(self.regions(i, 'R')) == 1:
+                possible_data.append({'arc': i})
+        return possible_data
+
     def possibleR2Up(self):
-		possible_data = []
-		n = self.number_crossings()
-		if n > 1:	# This precludes listing R2Up moves on a single-crossing or no-crossing diagram.
-			for i in range(1, 2*n + 1):
-				if len(self.regions(i, 'L')) > 1:
-					left_reg = list(self.regions(i, 'L'))
-					left_reg.remove([i, self.wrap(i+1)])
-					for j in left_reg:
-						possible_data.append({'arc':i, 'side':'L', 'target':j})
-				if len(self.regions(i, 'R')) > 1:
-					right_reg = list(self.regions(i, 'R'))
-					right_reg.remove([i, self.wrap(i+1)])
-					for j in right_reg:
-						possible_data.append({'arc':i, 'side':'R', 'target':j})
-		return possible_data
-		
+        possible_data = []
+        n = self.number_crossings()
+        # This precludes listing R2Up moves on a single-crossing or no-crossing
+        # diagram.
+        if n > 1:
+            for i in range(1, 2 * n + 1):
+                if len(self.regions(i, 'L')) > 1:
+                    left_reg = list(self.regions(i, 'L'))
+                    left_reg.remove([i, self.wrap(i + 1)])
+                    for j in left_reg:
+                        possible_data.append(
+                            {'arc': i, 'side': 'L', 'target': j})
+                if len(self.regions(i, 'R')) > 1:
+                    right_reg = list(self.regions(i, 'R'))
+                    right_reg.remove([i, self.wrap(i + 1)])
+                    for j in right_reg:
+                        possible_data.append(
+                            {'arc': i, 'side': 'R', 'target': j})
+        return possible_data
+
     def possibleR2Down(self):
-		possible_data = []
-		n = self.number_crossings()
-		for i in range(1, 2*n + 1):
-			if len(self.regions(i, 'L')) == 2 or len(self.regions(i, 'R')) == 2:
-				i1 = index(i, self.code)
-				i2 = index(self.wrap(i + 1), self.code)
-				o1 = self.orientations[i1]
-				o2 = self.orientations[i2]
-				if o1 == -o2:
-					possible_data.append({'arc':i})
-		return possible_data
-		
+        possible_data = []
+        n = self.number_crossings()
+        for i in range(1, 2 * n + 1):
+            if len(self.regions(i, 'L')) == 2 or len(self.regions(i, 'R')) == 2:
+                i1 = index(i, self.code)
+                i2 = index(self.wrap(i + 1), self.code)
+                o1 = self.orientations[i1]
+                o2 = self.orientations[i2]
+                if o1 == -o2:
+                    possible_data.append({'arc': i})
+        return possible_data
+
     def possibleR3(self):
-		possible_data = []
-		n = self.number_crossings()
-		for i in range(1, 2*n + 1):
-			if len(self.regions(i, 'L')) == 3:
-				if self.quad(i)[2] != self.quad(self.wrap(i+1)):
-					possible_data.append({'arc':i, 'side':'L'})
-			if len(self.regions(i, 'R')) == 3:
-				if self.quad(i)[2] != self.quad(self.wrap(i+1)):
-					possible_data.append({'arc':i, 'side':'R'})
-		return possible_data
-
-
+        possible_data = []
+        n = self.number_crossings()
+        for i in range(1, 2 * n + 1):
+            if len(self.regions(i, 'L')) == 3:
+                if self.quad(i)[2] != self.quad(self.wrap(i + 1)):
+                    possible_data.append({'arc': i, 'side': 'L'})
+            if len(self.regions(i, 'R')) == 3:
+                if self.quad(i)[2] != self.quad(self.wrap(i + 1)):
+                    possible_data.append({'arc': i, 'side': 'R'})
+        return possible_data
 
     # phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
     # Says whether arc r is inside or outside the loop determined by arc i
@@ -913,4 +954,13 @@ class ADT(object):
                         phisa = self.phi(i, s) * self.phi(i, a_s)
                         if phisa != 1:
                             return False
+        return True
+
+    def crossing_change(self, arc):
+        n = self.number_crossings()
+        arc = normalise(arc, 1, 2 * n)
+        odd, even, sign, orient = self.quad(arc)
+        i = (odd - 1) / 2
+        self.code[i] *= -1
+        self.orientations[i] *= -1
         return True
