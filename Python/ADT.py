@@ -100,8 +100,8 @@ class ADT(object):
         return ADT(new_dt, new_or)
 
     def to_string(self):
-        codeString = " ".join(str(x) for x in self.code)
-        orientationsString = " ".join(str(x) for x in self.orientations)
+        codeString = ", ".join(str(x) for x in self.code)
+        orientationsString = ", ".join(str(x) for x in self.orientations)
         return codeString, orientationsString
 
     # Helper method. Given an integer arc (odd or +/-even), returns a
@@ -137,8 +137,8 @@ class ADT(object):
             even = abs(arc)
             # [0] added so that idx is an integer and not a list.
             # (Else code[idx] does not work.)
-            print "Code: ", code
-            print "Orientations: ", orient
+#            print "Code: ", code
+#            print "Orientations: ", orient
             idx = [i for i, j in enumerate(code) if abs(j) == even][0]
             odd = 2 * idx + 1
             sign = cmp(code[idx], 0)
@@ -367,12 +367,14 @@ class ADT(object):
     # regions method itself.
 
     def R2Up(self, arc, side, target):
+    	count = 0
         n = self.number_crossings()
         # This is where the R2Up move is precluded from being applied to a
         # single-crossing diagram.
         if n <= 1:
             return False
         arc = normalise(arc, 1, 2 * n)
+        new_arc = arc
         candidates = list(self.regions(arc, side))
         candidates.remove([arc, self.wrap(arc + 1)])
         if not(target in candidates):
@@ -386,119 +388,170 @@ class ADT(object):
             side = -1
         else:
             raise TypeError("Side should be 'L' or 'R'.")
-        if arc % 2 == 0:
-            if arc < tail:
-                if head == self.wrap(tail + 1):
-                    print "Case 1"
-                    for i in self.code:
-                        if (abs(i) > arc) and (abs(i) > tail):
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif (abs(i) > arc):
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= arc
-                            new_dt.append(i)
-                    new_dt.insert(arc / 2, tail + 4)
-                    new_or.insert(arc / 2, side)
-                    new_dt.insert(tail / 2 + 1, -(arc + 2))
-                    new_or.insert(tail / 2 + 1, -side)
-                else:  # tail == self.wrap(head + 1)
-                    print "Case 2"
-                    for i in self.code:
-                        if (abs(i) > arc) and (abs(i) >= tail):
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif (abs(i) > arc):
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= arc
-                            new_dt.append(i)
-                    new_dt.insert(arc / 2, tail + 2)
-                    new_or.insert(arc / 2, -side)
-                    new_dt.insert(tail / 2 + 1, -(arc + 2))
-                    new_or.insert(tail / 2 + 1, side)
-            else:  # tail < arc
-                if head == self.wrap(tail + 1):
-                    print "Case 3"
-                    for i in self.code:
-                        if (abs(i) > arc):
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif (abs(i) > tail):  # but <= arc
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= tail
-                            new_dt.append(i)
-                    new_dt.insert(tail / 2, -(arc + 4))
-                    new_or.insert(tail / 2, -side)
-                    new_dt.insert(arc / 2 + 1, tail + 2)
-                    new_or.insert(arc / 2 + 1, side)
-                else:  # head < tail
-                    print "Case 4"
-                    for i in self.code:
-                        if (abs(i) > arc):
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif (abs(i) >= tail):  # but <= arc
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) < tail
-                            new_dt.append(i)
-                    new_dt.insert(tail / 2, -(arc + 4))
-                    new_or.insert(tail / 2, side)
-                    new_dt.insert(arc / 2 + 1, tail)
-                    new_or.insert(arc / 2 + 1, -side)
-        else:  # arc % 2 == 1
-            if arc < tail:
-                if head == self.wrap(tail + 1):
-                    print "Case 5"
-                    for i in self.code:
-                        if abs(i) > tail:
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif abs(i) > arc:  # but <= tail
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= arc
-                            new_dt.append(i)
-                    new_dt.insert((arc + 1) / 2, head + 2)
-                    new_or.insert((arc + 1) / 2, -side)
-                    new_dt.insert(head / 2 + 1, -(arc + 1))
-                    new_or.insert(head / 2 + 1, side)
-                else:  # tail == self.wrap(head + 1)
-                    print "Case 6"
-                    for i in self.code:
-                        if abs(i) >= tail:
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif abs(i) > arc:  # but < tail
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= arc
-                            new_dt.append(i)
-                    new_dt.insert((arc + 1) / 2, head + 4)
-                    new_or.insert((arc + 1) / 2, side)
-                    new_dt.insert(head / 2 + 1, -(arc + 1))
-                    new_or.insert(head / 2 + 1, -side)
-            else:  # tail < arc
-                if head == self.wrap(tail + 1):
-                    print "Case 7"
-                    for i in self.code:
-                        if abs(i) > arc:
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif abs(i) > tail:  # but <= arc
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) <= tail
-                            new_dt.append(i)
-                    new_dt.insert(head / 2, -(arc + 3))
-                    new_or.insert(head / 2, side)
-                    new_dt.insert((arc + 1) / 2 + 1, tail + 1)
-                    new_or.insert((arc + 1) / 2 + 1, -side)
-                else:  # tail == self.wrap(head + 1)
-                    print "Case 8"
-                    for i in self.code:
-                        if abs(i) > arc:
-                            new_dt.append(i + 4 * cmp(i, 0))
-                        elif abs(i) >= tail:  # but <= arc
-                            new_dt.append(i + 2 * cmp(i, 0))
-                        else:  # abs(i) < tail
-                            new_dt.append(i)
-                    new_dt.insert(head / 2, -(arc + 3))
-                    new_or.insert(head / 2, -side)
-                    new_dt.insert((arc + 1) / 2 + 1, tail + 1)
-                    new_or.insert((arc + 1) / 2 + 1, side)
-        self.code = new_dt
-        self.orientations = new_or
-        return True
+        K = self.copy()
+        while new_arc != 2*n:
+        	count += 1
+        	print "Shifting label...{} times so far.".format(count)
+        	K = K.shiftLabel()
+        	new_arc = K.wrap(new_arc - 1)
+        	tail = K.wrap(tail - 1)
+        	head = K.wrap(head - 1)
+        print "Tail and Head are ", tail, head
+        if tail == K.wrap(head + 1):
+        	new_code = [i+(2*cmp(i, 0)) if abs(i) > head else i for i in K.code]
+        	new_orientations = [i for i in K.orientations]
+        	new_code.append(K.wrap(head + 1))
+        	new_orientations.append(-side)
+        	new_code.insert((head + 1)/2, -(2*n + 4))
+        	new_orientations.insert((head + 1)/2, side)
+        if head == self.wrap(tail + 1):
+        	new_code = [i+(2*cmp(i, 0)) if abs(i) > tail else i for i in K.code]
+        	print "K orientations: ", K.orientations
+        	new_orientations = [i for i in K.orientations]
+        	print "new_code, new_orientations: ", new_code, new_orientations
+        	new_code.append(K.wrap(tail + 2))
+        	new_orientations.append(side)
+        	print "new_code, new_orientations: ", new_code, new_orientations
+        	new_code.insert(tail/2, -(2*n + 4))
+        	new_orientations.insert(tail/2, -side)
+        	print "new_code, new_orientations: ", new_code, new_orientations
+        self.code = new_code
+        self.orientations = new_orientations
+        	
+
+#     def R2Up(self, arc, side, target):
+#         n = self.number_crossings()
+#         # This is where the R2Up move is precluded from being applied to a
+#         # single-crossing diagram.
+#         if n <= 1:
+#             return False
+#         arc = normalise(arc, 1, 2 * n)
+#         candidates = list(self.regions(arc, side))
+#         candidates.remove([arc, self.wrap(arc + 1)])
+#         if not(target in candidates):
+#             return False
+#         new_dt = []
+#         new_or = list(self.orientations)
+#         tail, head = target
+#         if side in ['L', 'l', 'left', '0', 'Left']:
+#             side = 1
+#         elif side in ['R', 'r', 'right', '1', 'Right']:
+#             side = -1
+#         else:
+#             raise TypeError("Side should be 'L' or 'R'.")
+#         if arc % 2 == 0:
+#             if arc < tail:
+#                 if head == self.wrap(tail + 1):
+#                     print "Case 1"
+#                     for i in self.code:
+#                         if (abs(i) > arc) and (abs(i) > tail):
+#                             new_dt.append(i + 4 * cmp(i, 0))
+#                         elif (abs(i) > arc):
+#                             new_dt.append(i + 2 * cmp(i, 0))
+#                         else:  # abs(i) <= arc
+#                             new_dt.append(i)
+#                     new_dt.insert(arc / 2, tail + 4)
+#                     new_or.insert(arc / 2, side)
+#                     new_dt.insert(tail / 2 + 1, -(arc + 2))
+#                     new_or.insert(tail / 2 + 1, -side)
+#                 else:  # tail == self.wrap(head + 1)
+#                     print "Case 2"
+#                     for i in self.code:
+#                         if (abs(i) > arc) and (abs(i) >= tail):
+#                             new_dt.append(i + 4 * cmp(i, 0))
+#                         elif (abs(i) > arc):
+#                             new_dt.append(i + 2 * cmp(i, 0))
+#                         else:  # abs(i) <= arc
+#                             new_dt.append(i)
+#                     new_dt.insert(arc / 2, tail + 2)
+#                     new_or.insert(arc / 2, -side)
+#                     new_dt.insert(tail / 2 + 1, -(arc + 2))
+#                     new_or.insert(tail / 2 + 1, side)
+#             else:  # tail < arc
+#                 if head == self.wrap(tail + 1):
+#                     print "Case 3"
+#                     for i in self.code:
+#                         if (abs(i) > arc):
+#                             new_dt.append(i + 4 * cmp(i, 0))
+#                         elif (abs(i) > tail):  # but <= arc
+#                             new_dt.append(i + 2 * cmp(i, 0))
+#                         else:  # abs(i) <= tail
+#                             new_dt.append(i)
+#                     new_dt.insert(tail / 2, -(arc + 4))
+#                     new_or.insert(tail / 2, -side)
+#                     new_dt.insert(arc / 2 + 1, tail + 2)
+#                     new_or.insert(arc / 2 + 1, side)
+#                 else:  # head < tail
+#                     print "Case 4"
+#                     for i in self.code:
+#                         if (abs(i) > arc):
+#                             new_dt.append(i + 4 * cmp(i, 0))
+#                         elif (abs(i) >= tail):  # but <= arc
+#                             new_dt.append(i + 2 * cmp(i, 0))
+#                         else:  # abs(i) < tail
+#                             new_dt.append(i)
+#                     new_dt.insert(tail / 2, -(arc + 4))
+#                     new_or.insert(tail / 2, side)
+#                     new_dt.insert(arc / 2 + 1, tail)
+#                     new_or.insert(arc / 2 + 1, -side)
+#         else:  # arc % 2 == 1
+#             if arc < tail:
+#                 if head == self.wrap(tail + 1):
+#                     print "Case 5"
+#                     for i in self.code:
+#                         if abs(i) > tail:
+#                             new_dt.append(i + 4 * cmp(i, 0))
+#                         elif abs(i) > arc:  # but <= tail
+#                             new_dt.append(i + 2 * cmp(i, 0))
+#                         else:  # abs(i) <= arc
+#                             new_dt.append(i)
+#                     new_dt.insert((arc + 1) / 2, head + 2)
+#                     new_or.insert((arc + 1) / 2, -side)
+#                     new_dt.insert(head / 2 + 1, -(arc + 1))
+#                     new_or.insert(head / 2 + 1, side)
+#                 else:  # tail == self.wrap(head + 1)
+#                     print "Case 6"
+#                     for i in self.code:
+#                         if abs(i) >= tail:
+#                             new_dt.append(i + 4 * cmp(i, 0))
+#                         elif abs(i) > arc:  # but < tail
+#                             new_dt.append(i + 2 * cmp(i, 0))
+#                         else:  # abs(i) <= arc
+#                             new_dt.append(i)
+#                     new_dt.insert((arc + 1) / 2, head + 4)
+#                     new_or.insert((arc + 1) / 2, side)
+#                     new_dt.insert(head / 2 + 1, -(arc + 1))
+#                     new_or.insert(head / 2 + 1, -side)
+#             else:  # tail < arc
+#                 if head == self.wrap(tail + 1):
+#                     print "Case 7"
+#                     for i in self.code:
+#                         if abs(i) > arc:
+#                             new_dt.append(i + 4 * cmp(i, 0))
+#                         elif abs(i) > tail:  # but <= arc
+#                             new_dt.append(i + 2 * cmp(i, 0))
+#                         else:  # abs(i) <= tail
+#                             new_dt.append(i)
+#                     new_dt.insert(head / 2, -(arc + 3))
+#                     new_or.insert(head / 2, side)
+#                     new_dt.insert((arc + 1) / 2 + 1, tail + 1)
+#                     new_or.insert((arc + 1) / 2 + 1, -side)
+#                 else:  # tail == self.wrap(head + 1)
+#                     print "Case 8"
+#                     for i in self.code:
+#                         if abs(i) > arc:
+#                             new_dt.append(i + 4 * cmp(i, 0))
+#                         elif abs(i) >= tail:  # but <= arc
+#                             new_dt.append(i + 2 * cmp(i, 0))
+#                         else:  # abs(i) < tail
+#                             new_dt.append(i)
+#                     new_dt.insert(head / 2, -(arc + 3))
+#                     new_or.insert(head / 2, -side)
+#                     new_dt.insert((arc + 1) / 2 + 1, tail + 1)
+#                     new_or.insert((arc + 1) / 2 + 1, side)
+#         self.code = new_dt
+#         self.orientations = new_or
+#         return True
 
     # Methods that perform a Reidemeister 2 Move, eliminating two crossings.
     # A pre-condition for this move is the existence of a bigon in which

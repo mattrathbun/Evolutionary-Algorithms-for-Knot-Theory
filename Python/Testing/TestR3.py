@@ -91,3 +91,31 @@ print M.to_string()
 ## Produces [-2, -2], [1, 1]
 if not M.isrealisable():
 	raise TypeError("R3 move is not producing a valid diagram!")
+	
+def testR3(diagram, position, side, expected=None):
+	print "Start with diagram: ", diagram.to_list()
+	print "Performing an R3 move at position {}, on the side {}".format(position, side)
+	diagram.R3(position, side)
+	print "Produces: ", diagram.to_list()
+	if not diagram.isrealisable():
+		raise TypeError("R3 move is not producing a valid diagram!")
+	if expected != None:
+		if not diagram.sameDiagram(expected):
+			print "Should be producing: ", expected.to_list()
+			raise TypeError("R3 move is not producing the expected diagram!")
+	print '\n'
+
+K = ADT.ADT([4, -2], [1, 1])
+testR3(K, 1, "L")
+## Should be: ....
+## Produces: [-2, -2], [1, 1]
+
+K = ADT.ADT([6, -2, -10, -14, 4, 12, 8, 16], [-1, -1, 1, 1, -1, 1, -1, -1])
+testR3(K, 6, "R")
+## Should be: ....
+## Produces: [-14, -2, -10, -16, 4, 12, 8, 6], [-1, -1, 1, 1, -1, 1, -1, -1]
+
+K = ADT.ADT([2, -4], [1, 1])
+testR3(K, 2, "L")
+## Should be: ....
+## Produces: [-2, 0], [1, 1]

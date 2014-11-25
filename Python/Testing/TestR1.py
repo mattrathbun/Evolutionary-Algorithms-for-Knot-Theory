@@ -50,4 +50,8 @@ testR1DownProblem(K, 12)
 K.R1Down(12)
 ## Should be: [
 ## Produces: [-8, 10, 2, 4, -6], [-1, 1, 1, 1, -1]
-	
+
+K = ADT.ADT([8, -4, 6, -2], [1, -1, -1, 1])
+testR1DownProblem(K, 8)
+## Should be: ....
+## Produces:  [-4, 6, -2], [-1, -1, 1]	

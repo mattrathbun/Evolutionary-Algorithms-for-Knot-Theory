@@ -4,7 +4,7 @@ sys.path.append(lib_path)
 
 import ADT, ADTOp, ADTOpList, ADTOpPopulation
 
-n = 20
+n = 40
 
 
 K = ADT.ADT([],[])
