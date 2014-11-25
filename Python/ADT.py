@@ -724,11 +724,11 @@ class ADT(object):
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
-            #            print "Not both overcrossings or undercrossings"
+            # print "Not both overcrossings or undercrossings"
             return False
         doubleOverstrand = self.isOverstrand(arc)
-#        print "DO: ", doubleOverstrand
-#        print "RR: ", self.right(arc), self.right(arcNext)
+        #print "DO: ", doubleOverstrand
+        #print "RR: ", self.right(arc), self.right(arcNext)
 
         rewrite = {}
         if side in ['R', 'r', 'right', '1', 'Right']:
@@ -810,6 +810,7 @@ class ADT(object):
             crossingSign = 1
             if p[0] < 0 or p[1] < 0:
                 crossingSign = -1
+            print "p ",p,"  crossing sign", crossingSign
             if self.isOdd(p[0]):
                 newCode[(abs(p[0]) - 1) / 2] = crossingSign * abs(p[1])
             else:

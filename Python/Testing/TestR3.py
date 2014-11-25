@@ -59,6 +59,10 @@ K = ADT.ADT([-6, -10, 12, -2, -4, -8], [1, -1, -1, 1, 1, 1])
 print K.isrealisable()
 print "Should be False."
 
+print " "
+print " "
+print "*************************************************************"
+
 print "########## Here's where trouble starts!!! ##########"
 
 K = ADT.ADT([-8, -10, -2, -12, 4, 6], [1, -1, 1, 1, 1, -1])
