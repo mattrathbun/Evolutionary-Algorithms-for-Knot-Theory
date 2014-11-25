@@ -137,6 +137,7 @@ class ADT(object):
             even = abs(arc)
             # [0] added so that idx is an integer and not a list.
             # (Else code[idx] does not work.)
+#            print "Arc: ", arc
 #            print "Code: ", code
 #            print "Orientations: ", orient
             idx = [i for i, j in enumerate(code) if abs(j) == even][0]
@@ -313,6 +314,11 @@ class ADT(object):
             return False
         n = self.number_crossings()
         arc = normalise(arc, 1, 2 * n)
+        if arc == 2*n:
+        	K = self.shiftLabel()
+        	self.code = K.code
+        	self.orientations = K.orientations
+        	arc = self.wrap(arc - 1)
         new_dt = []
         temp_dt = list(self.code)
         new_or = list(self.orientations)
@@ -328,11 +334,13 @@ class ADT(object):
             return True
         elif arc % 2 == 0:
             temp_dt.pop((arc / 2) % n)
+#            print "temp_dt is: ", temp_dt
             for i in temp_dt:
                 if abs(i) > arc:
                     new_dt.append(i - 2 * cmp(i, 0))
                 else:
                     new_dt.append(i)
+#            print "new_dt has become: ", new_dt
             self.code = new_dt
             self.orientations.pop((arc / 2) % n)
             return True
