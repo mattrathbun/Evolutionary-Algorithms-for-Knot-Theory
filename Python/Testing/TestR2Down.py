@@ -197,4 +197,8 @@ if K != ADT.ADT([-2], [-1]):
 	raise TypeError("Not the right result!")
 print "\n"
 
+print '########### New issue. ############'
+print '\n'
 
+K = ADT.ADT([-2, -4, -8, 6], [-1, 1, -1, 1])
+K.R2Down(5)

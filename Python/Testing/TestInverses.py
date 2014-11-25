@@ -18,6 +18,8 @@ def findInverse(diagram, op):
     if op.apply(K):
     	if K.number_crossings() <= 1 and op.getNumber() == 2:
     		return ADTOp.ADTOp(2, "U")
+    	if K.number_crossings() == 0 and op.getNumber() == 1:
+    		return ADTOp.ADTOp(1, "U")
         possible_moves = K.finePossibleMoves()
         for move in possible_moves:
         	if move.getNumber() == number and move.getDirection() == reverse:
@@ -37,7 +39,7 @@ def findInverse(diagram, op):
         print "Error!!"
         print "n = ", n
         print "The move we are trying to invert is: ", op.toString()
-        return [False, n, op.toString()]
+        return [False, diagram.to_list(), n, op.toString()]
 #        raise TypeError("No inverse found.")
     else:
     	return None

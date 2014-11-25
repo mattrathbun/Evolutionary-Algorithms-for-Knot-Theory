@@ -12,7 +12,7 @@ K = ADT.ADT([],[])
 path = [K]
 sequence = []
 inverses = []
-moves = ADTOpList.randomOpList(n, n).toList()
+moves = ADTOpList.randomOpList(n, n, upBias=5, downBias=5).toList()
 print "We have a list of moves."
 for i in moves:
 	print i.toString()
@@ -47,6 +47,7 @@ print '\n'
 
 print 'Inverses: '
 for i in inverses:
+	print i
 	print i.toString()
 	print '\n'
 

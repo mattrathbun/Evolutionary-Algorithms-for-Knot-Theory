@@ -89,9 +89,9 @@ class ADTOpList(object):
         return uc
 
 
-def randomOpList(maxl, minl):
+def randomOpList(maxl, minl, upBias=1, horizontalBias=1, downBias=1):
     length = randint(minl, maxl)
     ops = []
     for i in range(0, length):
-        ops.append(ADTOp.coarseRandomOp())
+        ops.append(ADTOp.coarseRandomOp(upBias, horizontalBias, downBias))
     return ADTOpList(ops)
