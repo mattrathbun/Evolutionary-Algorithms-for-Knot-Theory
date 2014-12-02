@@ -38,16 +38,16 @@ def findInverse(diagram, op):
                     #        			return [True, move]
                     print "move is not None, I think."
                     return move
-            print "Done cycling through possible_moves"
-            if op.getNumber() == 2 and op.getDirection() == "D":
-                print "Doing final check to see if we had an 'irreverisble' R2Down move"
-                arc = op.getData()['arc']
-                for s in ["L", "R"]:
-                    for i in [1, -1]:
-                        if len(diagram.regions(diagram.wrap(arc + i), s)) == 1:
-                            print "Returning not None."
-                            return ADTOp.ADTOp('1 & 1', "U")
-                print "Nothing got returned."
+        print "Done cycling through possible_moves"
+        if op.getNumber() == 2 and op.getDirection() == "D":
+            print "Doing final check to see if we had an 'irreverisble' R2Down move"
+            arc = op.getData()['arc']
+            for s in ["L", "R"]:
+                for i in [1, -1]:
+                    if len(diagram.regions(diagram.wrap(arc + i), s)) == 1:
+                        print "Returning not None."
+                        return ADTOp.ADTOp('1 & 1', "U")
+            print "Nothing got returned."
 #         print "*"*30
 #         print "Error!!"
 #         print "n = ", n
