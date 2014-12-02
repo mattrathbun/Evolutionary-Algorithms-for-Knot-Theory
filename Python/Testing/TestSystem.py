@@ -22,6 +22,7 @@ for i in moves:
 	if i.apply(L):
 		sequence.append(i)
 		path.append(L)
+		print "Just about to call findInverse on diagram {}, with move {}".format(M.to_list(), i.toString())
 		inv = TestInverses.findInverse(M, i)
 		if inv == None:
 			raise TypeError("findInverse should never have been called.")
@@ -50,6 +51,8 @@ for i in inverses:
 	print i
 	print i.toString()
 	print '\n'
+	
+print len(path), len(sequence), len(inverses)
 
 # print 'Inverses:'
 # for i in inverses:

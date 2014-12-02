@@ -5,6 +5,7 @@ sys.path.append(lib_path)
 import ADT, ADTOp
 
 def findInverse(diagram, op):
+    print "findInverse is being called right now."
     K = diagram.copy()
     n = K.number_crossings()
     number = op.getNumber()
@@ -16,32 +17,42 @@ def findInverse(diagram, op):
     elif direction == "H":
     	reverse = "H"
     if op.apply(K):
+    	print "op.apply(K) seemed to work"
     	if K.number_crossings() <= 1 and op.getNumber() == 2:
+    		print "Returning not None."
     		return ADTOp.ADTOp(2, "U")
     	if K.number_crossings() == 0 and op.getNumber() == 1:
+    		print "Returning not None."
     		return ADTOp.ADTOp(1, "U")
         possible_moves = K.finePossibleMoves()
         for move in possible_moves:
+        	print "Checking {} in possible_moves".format(move.toString())
         	if move.getNumber() == number and move.getDirection() == reverse:
         		Ktemp = K.copy()
         		move.apply(Ktemp)
         		if diagram.sameDiagram(Ktemp):
 #        			print "FOUND IT!"
 #        			return [True, move]
-        			return move
-#        print "Original diagram: ", diagram.to_string()
-#        print "Origingal move: ", op.toString()
-#        print "After move has been applied: ", K.to_string()
-#        print "Possible moves on the result: "
-#        for i in possible_moves:
-#        	print i.toString()
-        print "*"*30
-        print "Error!!"
-        print "n = ", n
-        print "The move we are trying to invert is: ", op.toString()
-        return [False, diagram.to_list(), n, op.toString()]
-#        raise TypeError("No inverse found.")
+					print "move is not None, I think."
+					return move
+		print "Done cycling through possible_moves"
+		if op.getNumber() == 2 and op.getDirection() == "D":
+			print "Doing final check to see if we had an 'irreverisble' R2Down move"
+			arc = op.getData()['arc']
+			for  s in ["L", "R"]:
+				for i in [1, -1]:
+					if len(diagram.regions(diagram.wrap(arc + i), s)) == 1:
+						print "Returning not None."
+						return ADTOp.ADTOp('1 & 1', "U")
+			print "Nothing got returned."
+#         print "*"*30
+#         print "Error!!"
+#         print "n = ", n
+#         print "The move we are trying to invert is: ", op.toString()
+#         return [False, diagram.to_list(), n, op.toString()]
+#         raise TypeError("No inverse found.")
     else:
+    	print "About to return None in TestInverses function findInverse"
     	return None
 #    else:
 #    	return None

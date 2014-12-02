@@ -62,6 +62,9 @@ class ADTOp(object):
                 return "3H(pos={}, side={})".format(str(self.data['arc']), str(self.data['side']))
             else:
                 return "3H"
+        else:
+        	print "This is strange."
+        	return self.number, self.direction
 
     def copy(self):
         return ADTOp(number=self.number, direction=self.direction, data=self.data)
