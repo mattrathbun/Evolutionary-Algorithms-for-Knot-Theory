@@ -1,4 +1,5 @@
 import ADTOp
+import sys
 
 # Helper function. Takes three numbers: i, m, M. (m meant to be min and M max).
 # Returns i if i is between m and M. Otherwise,
@@ -731,99 +732,65 @@ class ADT(object):
         #print "RR: ", self.right(arc), self.right(arcNext)
 
         rewrite = {}
+		#temp new code here
+        rewriteOri = {}
         if side in ['R', 'r', 'right', '1', 'Right']:
-            # rewrite the crossing
-            # the crossing is _always_ changed in sign
-            if self.rightOutwards(arc):
-                rewrite.update(
-                    {self.right(arc): -self.wrap(self.right(arc) - 1)})
-            else:
-                rewrite.update(
-                    {self.right(arc): -self.wrap(self.right(arc) + 1)})
-            if self.rightOutwards(arcNext):
-                rewrite.update(
-                    {self.right(arcNext): -self.wrap(self.right(arcNext) - 1)})
-            else:
-                rewrite.update(
-                    {self.right(arcNext): -self.wrap(self.right(arcNext) + 1)})
-            # rewrite the strand part 1
-            if self.rightOutwards(arcNext):
-                rewrite.update(
-                    {self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
-            else:
-                rewrite.update(
-                    {self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
-            # rewrite the strand part 2
-            if self.rightOutwards(arc):
-                rewrite.update(
-                    {self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
-            else:
-                rewrite.update(
-                    {self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
-            theCrossing = abs(self.right(arc))
-            if not self.isOdd(theCrossing):
-                theCrossing = abs(self.jump(self.right(arc)))
+			a = arc
+			ap = self.jump(arc)
+			sign_a = self.quad(a)[2]
+			ori_a = self.quad(a)[3]
+			b = arcNext
+			bp = self.jump(arcNext)
+			sign_b = self.quad(b)[2]
+			ori_b = self.quad(b)[3]
+			c = self.right(arc)
+			cp = self.jump(c)
+			sign_c = self.quad(c)[2]
+			ori_c = self.quad(c)[3]
 
-        if (side in ['L', 'l', 'left', '0', 'Left']):
-            # rewrite the crossing
-            # the crossing is _always_ changed in sign
-            if self.leftOutwards(arc):
-                rewrite.update(
-                    {self.left(arc): -self.wrap(self.left(arc) + 1)})
-            else:
-                rewrite.update(
-                    {self.left(arc): -self.wrap(self.left(arc) - 1)})
-            if self.leftOutwards(arcNext):
-                rewrite.update(
-                    {self.left(arcNext): -self.wrap(self.left(arcNext) + 1)})
-            else:
-                rewrite.update(
-                    {self.left(arcNext): -self.wrap(self.left(arcNext) - 1)})
-            # rewrite the strand part 1
-            if self.leftOutwards(arcNext):
-                rewrite.update(
-                    {self.jump(arc): self.wrap(self.jump(arcNext) - 1)})
-            else:
-                rewrite.update(
-                    {self.jump(arc): self.wrap(self.jump(arcNext) + 1)})
-            # rewrite the strand part 2
-            if self.leftOutwards(arc):
-                rewrite.update(
-                    {self.jump(arcNext): self.wrap(self.jump(arc) - 1)})
-            else:
-                rewrite.update(
-                    {self.jump(arcNext): self.wrap(self.jump(arc) + 1)})
-            theCrossing = abs(self.left(arc))
-            if not self.isOdd(theCrossing):
-                theCrossing = abs(self.jump(self.left(arc)))
+			print "code:"
+			print "a/ap",a,ap,sign_a,ori_a
+			print "b/bp",b,bp,sign_b,ori_b
+			print "c/cp",c,cp,sign_c,ori_c
 
-#        print "\nfinal rewrite: ", rewrite, "\n"
+			#rewrite the crossing
+			# - sign is always changed
+			# - orientation is inherited from c
+			if self.isOdd(ap):
+				rewrite.update({ap: -1*sign_c*bp})
+				rewriteOri.update({ap: ori_c})
+			else:
+				rewrite.update({bp: -1*sign_c*ap})
+				rewriteOri.update({bp: ori_c})
 
-        # it helps that rewrite[even] = odd and vice versa
-        newCode = [0] * self.number_crossings()
-        pairs = []
-        for i in range(1, 2 * self.number_crossings(), 2):
-            pairs.append(map(lambda x: (rewrite[x] if x in rewrite else x)
-                             if x > 0 else (-rewrite[-x] if -x in rewrite else x), [i, self.code[(i - 1) / 2]]))
+			#rewrite strand part 1
+			if self.isOdd(a):
+				rewrite.update({a: sign_a*cp})
+				rewriteOri.update({a: 0})
+			else:
+				rewrite.update({cp: sign_a*a})
+				rewriteOri.update({cp: 0})
 
-        for p in pairs:
-            crossingSign = 1
-            if p[0] < 0 or p[1] < 0:
-                crossingSign = -1
-            print "p ",p,"  crossing sign", crossingSign
-            if self.isOdd(p[0]):
-                newCode[(abs(p[0]) - 1) / 2] = crossingSign * abs(p[1])
-            else:
-                newCode[(abs(p[1]) - 1) / 2] = crossingSign * abs(p[0])
-        self.code = newCode
+			#rewrite strand part 2
+			if self.isOdd(b):
+				rewrite.update({b: sign_b*c})
+				rewriteOri.update({b: 0})
+			else:
+				rewrite.update({c: sign_b*b})
+				rewriteOri.update({c: 0})
+			
+        print "rewrite:",rewrite
+        print "rewriteOri:",rewriteOri
+        print "*************************"
 
-        theNewCrossing = self.jump(rewrite[theCrossing])
+        print "doing the rewrite..."
+        for p in rewrite:
+			self.code[(p-1)/2] = rewrite[p]
+			self.orientations[(p-1)/2] = rewriteOri[p]
 
-        # orientations
-        temp = self.orientations[index(theCrossing, self.code)]
-        self.orientations[index(theCrossing, self.code)] = self.orientations[
-            index(theNewCrossing, self.code)]
-        self.orientations[index(theNewCrossing, self.code)] = temp
+        print "*************************"
+
+		#temp new code end
 
         return True
 
