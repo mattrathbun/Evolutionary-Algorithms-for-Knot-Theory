@@ -34,7 +34,6 @@ print" "
 K.R3(12,'r')
 print" "
 print "We get    ",K.to_list()
-#print "Should get ([-6, -8, 12, -2, 10, -4], [1, 1, -1, 1, 1, 1])."
 
 print " "
 print "#############################################################"
@@ -70,7 +69,8 @@ print "Start with K: ", K.to_string()
 print "Then perform an R3 move at position 5 on the right."
 K.R3(5, "R")
 ## Should be [-8, 6, -10, -12, 4, 2], [1, 1, -1, 1, 1, -1]
-print K.to_string()
+print "We get    ",K.to_list()
+print "Should get ([-8, -6, 10, -12, 4, 2], [1, 1, -1, 1, 1, -1])."
 ## Produces [-8, 6, -10, -12, 4, -2], [1, -1, 1, 1, 1, -1]
 if not K.isrealisable():
 	raise TypeError("R3 move is not producing a valid diagram!")
