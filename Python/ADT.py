@@ -960,6 +960,13 @@ class ADT(object):
                     possible_data.append({'arc': i, 'side': 'R'})
         return possible_data
 
+    def possibleCC(self):
+        possible_data = []
+        n = self.number_crossings()
+        for i in range(1,2*n+1):
+            possible_data.append({'arc' : i})
+        return possible_data
+
     # phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
     # Says whether arc r is inside or outside the loop determined by arc i
     # and the under- or over-arc corresponding to arc i: returns -1 if
