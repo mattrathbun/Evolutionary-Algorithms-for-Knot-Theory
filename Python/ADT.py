@@ -724,7 +724,7 @@ class ADT(object):
             return False
 
         if self.right(self.right(arc))==arc:
-            print "cannot do R3 from that position: 2-pointer"
+            # print "cannot do R3 from that position: 2-pointer"
             return False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
