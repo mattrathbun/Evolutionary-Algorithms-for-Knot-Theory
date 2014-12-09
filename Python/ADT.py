@@ -729,7 +729,7 @@ class ADT(object):
 
         if self.right(self.right(arc))==arc:
             print "cannot do R3 from that position: 2-pointer"
-            rEturn False
+            return False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
@@ -934,6 +934,15 @@ class ADT(object):
                 if self.quad(i)[2] != self.quad(self.wrap(i + 1)):
                     possible_data.append({'arc': i, 'side': 'R'})
         return possible_data
+
+
+    def finePossibleChanges(self):
+        return self.possibleCC()
+
+    def fineRandomChange(self):
+        possible_changes = self.finePossibleChanges()
+        change = random.choice(possible_changes)
+        return change
 
     def possibleCC(self):
         possible_data = []
