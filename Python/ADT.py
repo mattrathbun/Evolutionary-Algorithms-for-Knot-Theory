@@ -720,16 +720,16 @@ class ADT(object):
         arcNext = self.wrap(arc + 1)
 
         if len(self.regions(arc,side))!=3:
-            # print "not a triangle"
+            print "not a triangle"
             return False
 
         if self.right(arc) != self.jump(self.right(arcNext)):
-            # print "cannot do R3 from that position: not a triangle"
+            print "cannot do R3 from that position: not a triangle"
             return False
 
         if self.right(self.right(arc))==arc:
-            # print "cannot do R3 from that position: 2-pointer"
-            return False
+            print "cannot do R3 from that position: 2-pointer"
+            rEturn False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
@@ -799,7 +799,6 @@ class ADT(object):
              self.code[(p-1)/2] = rewrite[p]
              self.orientations[(p-1)/2] = rewriteOri[p]
         # print "*************************"
-
 
         return True
 
