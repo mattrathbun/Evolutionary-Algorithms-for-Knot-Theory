@@ -45,7 +45,9 @@ K = ADT.ADT([-6, -10, 12, -2, 4, -8], [1, -1, -1, 1, 1, 1])
 print K.to_list()
 K.R3(8, 'R')
 print "We get    ",K.to_list()
-print "Should get ([-6, -8, 12, -2, 10, -4], [1, 1, -1, 1, 1, -1])."
+print "Should get ([-6, -8, 12, -2, 10, 4], [1, 1, -1, 1, 1, -1])."
+## I hhave changed this from -4 to +4; I think that there was a mistake 
+## in the original example.
 
 print "#############################################################"
 
@@ -68,14 +70,15 @@ K = ADT.ADT([-8, -10, -2, -12, 4, 6], [1, -1, 1, 1, 1, -1])
 print "Start with K: ", K.to_string()
 print "Then perform an R3 move at position 5 on the right."
 K.R3(5, "R")
-## Should be [-8, 6, -10, -12, 4, 2], [1, 1, -1, 1, 1, -1]
 print "We get    ",K.to_list()
-print "Should get ([-8, -6, 10, -12, 4, 2], [1, 1, -1, 1, 1, -1])."
-## Produces [-8, 6, -10, -12, 4, -2], [1, -1, 1, 1, 1, -1]
+print "Should get ([-8, 6, -10, -12, 4, 2], [1, 1, -1, 1, 1, -1])."
 if not K.isrealisable():
 	raise TypeError("R3 move is not producing a valid diagram!")
 	
-	
+
+
+
+
 L = ADT.ADT([6, 10, 4, -8, -2, -14, 12], [-1, -1, -1, -1, 1, 1, 1])
 print "Start with L: ", L.to_string()
 print "Then perform an R3 move at position 1 on the right."
@@ -119,6 +122,9 @@ testR3(K, 6, "R")
 ## Should be: ....
 ## Produces: [-14, -2, -10, -16, 4, 12, 8, 6], [-1, -1, 1, 1, -1, 1, -1, -1]
 
+print();
+print();
+print("*** this is the final bit of trouble");
 K = ADT.ADT([2, -4], [1, 1])
 testR3(K, 2, "L")
 ## Should be: ....

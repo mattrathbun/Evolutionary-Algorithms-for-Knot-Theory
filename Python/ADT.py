@@ -1,7 +1,7 @@
 import ADTOp
 import sys
 
-# Helper function. Takes three numbers: i, m, M. (m meant to be min and M max).
+# Helper function. Takes three numbers: i, m, M. (m meant to be min and M 
 # Returns i if i is between m and M. Otherwise,
 #   if i is smaller than m, return m, larger than M, return M
 
@@ -138,9 +138,9 @@ class ADT(object):
             even = abs(arc)
             # [0] added so that idx is an integer and not a list.
             # (Else code[idx] does not work.)
-#            print "Arc: ", arc
-#            print "Code: ", code
-#            print "Orientations: ", orient
+            # print "Arc: ", arc
+            # print "Code: ", code
+            # print "Orientations: ", orient
             idx = [i for i, j in enumerate(code) if abs(j) == even][0]
             odd = 2 * idx + 1
             sign = cmp(code[idx], 0)
@@ -174,10 +174,10 @@ class ADT(object):
     # vertex to vertex (with positive labels).
 
     # Big Note: regions does not return the correct list when applied to a diagram with only a single crossing.
-    # 		In particular, regardless of the side selected, the list will be only a single item long,
-    #		indicating only the edge determined by the parameter arc.
-    # 		This allows regions to be used correctly with R1 Up/Down moves [CHECK THIS], as well as R3 moves [CHECK THIS],
-        #		and R2Down moves, but NOT with R2Up moves.
+    #       In particular, regardless of the side selected, the list will be only a single item long,
+    #       indicating only the edge determined by the parameter arc.
+    #       This allows regions to be used correctly with R1 Up/Down moves [CHECK THIS], as well as R3 moves [CHECK THIS],
+        #       and R2Down moves, but NOT with R2Up moves.
 
     def regions(self, arc, side):
         side = str(side).lower()
@@ -199,7 +199,7 @@ class ADT(object):
         tail = arc
         head = self.wrap(arc + 1)
 #        if n == 1:
-#        	output = [[tail, head], [head, tail]] ###############################
+#           output = [[tail, head], [head, tail]] ###############################
 #        else:
         while True:
             tail = self.jump(head)
@@ -242,11 +242,11 @@ class ADT(object):
     # the label-shifts of K.
 
     def sameDiagram(self, K):
-        #    	print "    Calling sameDiagram."
+        #       print "    Calling sameDiagram."
         n = self.number_crossings()
         m = K.number_crossings()
         if n != m:
-            #    		print "        Different number of crossings!"
+            #           print "        Different number of crossings!"
             return False
         elif n == 0:
             return True
@@ -254,13 +254,13 @@ class ADT(object):
             around = K.copy()
             for i in range(2 * n + 1):
                 if around == self:
-                    #    				print "    An exact match."
+                    #                   print "    An exact match."
                     return True
-#    				print "THIS LINE SHOULD NEVER BE PRINTED."
+#                   print "THIS LINE SHOULD NEVER BE PRINTED."
                 else:
-                    #    				print "    Not an exact match."
-                    #    				print "    ", self.to_string(), " is not equal to ", around.to_string()
-                    #    				print "    Let's try shifting labels."
+                    #                   print "    Not an exact match."
+                    #                   print "    ", self.to_string(), " is not equal to ", around.to_string()
+                    #                   print "    Let's try shifting labels."
                     around = around.shiftLabel()
             return False
 
@@ -316,10 +316,10 @@ class ADT(object):
         n = self.number_crossings()
         arc = normalise(arc, 1, 2 * n)
         if arc == 2*n:
-        	K = self.shiftLabel()
-        	self.code = K.code
-        	self.orientations = K.orientations
-        	arc = self.wrap(arc - 1)
+            K = self.shiftLabel()
+            self.code = K.code
+            self.orientations = K.orientations
+            arc = self.wrap(arc - 1)
         new_dt = []
         temp_dt = list(self.code)
         new_or = list(self.orientations)
@@ -376,7 +376,7 @@ class ADT(object):
     # regions method itself.
 
     def R2Up(self, arc, side, target):
-    	count = 0
+        count = 0
         n = self.number_crossings()
         # This is where the R2Up move is precluded from being applied to a
         # single-crossing diagram.
@@ -399,34 +399,34 @@ class ADT(object):
             raise TypeError("Side should be 'L' or 'R'.")
         K = self.copy()
         while new_arc != 2*n:
-        	count += 1
-        	print "Shifting label...{} times so far.".format(count)
-        	K = K.shiftLabel()
-        	new_arc = K.wrap(new_arc - 1)
-        	tail = K.wrap(tail - 1)
-        	head = K.wrap(head - 1)
+            count += 1
+            print "Shifting label...{} times so far.".format(count)
+            K = K.shiftLabel()
+            new_arc = K.wrap(new_arc - 1)
+            tail = K.wrap(tail - 1)
+            head = K.wrap(head - 1)
         print "Tail and Head are ", tail, head
         if tail == K.wrap(head + 1):
-        	new_code = [i+(2*cmp(i, 0)) if abs(i) > head else i for i in K.code]
-        	new_orientations = [i for i in K.orientations]
-        	new_code.append(K.wrap(head + 1))
-        	new_orientations.append(-side)
-        	new_code.insert((head + 1)/2, -(2*n + 4))
-        	new_orientations.insert((head + 1)/2, side)
+            new_code = [i+(2*cmp(i, 0)) if abs(i) > head else i for i in K.code]
+            new_orientations = [i for i in K.orientations]
+            new_code.append(K.wrap(head + 1))
+            new_orientations.append(-side)
+            new_code.insert((head + 1)/2, -(2*n + 4))
+            new_orientations.insert((head + 1)/2, side)
         if head == self.wrap(tail + 1):
-        	new_code = [i+(2*cmp(i, 0)) if abs(i) > tail else i for i in K.code]
-        	print "K orientations: ", K.orientations
-        	new_orientations = [i for i in K.orientations]
-        	print "new_code, new_orientations: ", new_code, new_orientations
-        	new_code.append(K.wrap(tail + 2))
-        	new_orientations.append(side)
-        	print "new_code, new_orientations: ", new_code, new_orientations
-        	new_code.insert(tail/2, -(2*n + 4))
-        	new_orientations.insert(tail/2, -side)
-        	print "new_code, new_orientations: ", new_code, new_orientations
+            new_code = [i+(2*cmp(i, 0)) if abs(i) > tail else i for i in K.code]
+            print "K orientations: ", K.orientations
+            new_orientations = [i for i in K.orientations]
+            print "new_code, new_orientations: ", new_code, new_orientations
+            new_code.append(K.wrap(tail + 2))
+            new_orientations.append(side)
+            print "new_code, new_orientations: ", new_code, new_orientations
+            new_code.insert(tail/2, -(2*n + 4))
+            new_orientations.insert(tail/2, -side)
+            print "new_code, new_orientations: ", new_code, new_orientations
         self.code = new_code
         self.orientations = new_orientations
-        	
+            
 
 #     def R2Up(self, arc, side, target):
 #         n = self.number_crossings()
@@ -728,69 +728,69 @@ class ADT(object):
             # print "Not both overcrossings or undercrossings"
             return False
         doubleOverstrand = self.isOverstrand(arc)
-        #print "DO: ", doubleOverstrand
-        #print "RR: ", self.right(arc), self.right(arcNext)
+        # print "DO: ", doubleOverstrand
+        # print "RR: ", self.right(arc), self.right(arcNext)
 
         rewrite = {}
-		#temp new code here
         rewriteOri = {}
         if side in ['R', 'r', 'right', '1', 'Right']:
-			a = arc
-			ap = self.jump(arc)
-			sign_a = self.quad(a)[2]
-			ori_a = self.quad(a)[3]
-			b = arcNext
-			bp = self.jump(arcNext)
-			sign_b = self.quad(b)[2]
-			ori_b = self.quad(b)[3]
-			c = self.right(arc)
-			cp = self.jump(c)
-			sign_c = self.quad(c)[2]
-			ori_c = self.quad(c)[3]
+            c = self.right(arc)
+        elif side in ['L', 'l', 'left', '0', 'Left']:
+            c = self.left(arc)
+        else:
+            return False
+        a = arc
+        ap = self.jump(arc)
+        sign_a = self.quad(a)[2]
+        ori_a = self.quad(a)[3]
+        b = arcNext
+        bp = self.jump(arcNext)
+        sign_b = self.quad(b)[2]
+        ori_b = self.quad(b)[3]
+        cp = self.jump(c)
+        sign_c = self.quad(c)[2]
+        ori_c = self.quad(c)[3]
 
-			print "code:"
-			print "a/ap",a,ap,sign_a,ori_a
-			print "b/bp",b,bp,sign_b,ori_b
-			print "c/cp",c,cp,sign_c,ori_c
+		# print "code:"
+        # print "a/ap",a,ap,sign_a,ori_a
+        # print "b/bp",b,bp,sign_b,ori_b
+        # print "c/cp",c,cp,sign_c,ori_c
 
-			#rewrite the crossing
-			# - sign is always changed
-			# - orientation is inherited from c
-			if self.isOdd(ap):
-				rewrite.update({ap: -1*sign_c*bp})
-				rewriteOri.update({ap: ori_c})
-			else:
-				rewrite.update({bp: -1*sign_c*ap})
-				rewriteOri.update({bp: ori_c})
+        #rewrite the crossing
+        # - sign is always changed
+        # - orientation is inherited from c
+        if self.isOdd(ap):
+            rewrite.update({ap: -1*sign_c*bp})
+            rewriteOri.update({ap: ori_c})
+        else:
+            rewrite.update({bp: -1*sign_c*ap})
+            rewriteOri.update({bp: ori_c})
 
-			#rewrite strand part 1
-			if self.isOdd(a):
-				rewrite.update({a: sign_a*cp})
-				rewriteOri.update({a: 0})
-			else:
-				rewrite.update({cp: sign_a*a})
-				rewriteOri.update({cp: 0})
+        #rewrite strand part 1
+        if self.isOdd(a):
+            rewrite.update({a: sign_a*cp})
+            rewriteOri.update({a: ori_b})
+        else:
+            rewrite.update({cp: sign_a*a})
+            rewriteOri.update({cp: ori_b})
 
-			#rewrite strand part 2
-			if self.isOdd(b):
-				rewrite.update({b: sign_b*c})
-				rewriteOri.update({b: 0})
-			else:
-				rewrite.update({c: sign_b*b})
-				rewriteOri.update({c: 0})
-			
-        print "rewrite:",rewrite
-        print "rewriteOri:",rewriteOri
-        print "*************************"
+        #rewrite strand part 2
+        if self.isOdd(b):
+            rewrite.update({b: sign_b*c})
+            rewriteOri.update({b: ori_a})
+        else:
+            rewrite.update({c: sign_b*b})
+            rewriteOri.update({c: ori_a})
 
-        print "doing the rewrite..."
+        # print "rewrite:",rewrite
+        # print "rewriteOri:",rewriteOri
+        # print "*************************"
+        # print "doing the rewrite..."
         for p in rewrite:
-			self.code[(p-1)/2] = rewrite[p]
-			self.orientations[(p-1)/2] = rewriteOri[p]
+             self.code[(p-1)/2] = rewrite[p]
+             self.orientations[(p-1)/2] = rewriteOri[p]
+        # print "*************************"
 
-        print "*************************"
-
-		#temp new code end
 
         return True
 
