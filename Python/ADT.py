@@ -719,6 +719,10 @@ class ADT(object):
         arc = normalise(arc, 1, 2 * n)
         arcNext = self.wrap(arc + 1)
 
+        if len(self.regions(arc,side))!=3:
+            # print "not a triangle"
+            return False
+
         if self.right(arc) != self.jump(self.right(arcNext)):
             # print "cannot do R3 from that position: not a triangle"
             return False
