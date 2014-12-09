@@ -426,7 +426,7 @@ class ADT(object):
             print "new_code, new_orientations: ", new_code, new_orientations
         self.code = new_code
         self.orientations = new_orientations
-            
+
 
 #     def R2Up(self, arc, side, target):
 #         n = self.number_crossings()
@@ -723,10 +723,15 @@ class ADT(object):
             # print "cannot do R3 from that position: not a triangle"
             return False
 
+        if self.right(self.right(arc))==arc:
+            print "cannot do R3 from that position: 2-pointer"
+            return False
+
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
             # print "Not both overcrossings or undercrossings"
             return False
+
         doubleOverstrand = self.isOverstrand(arc)
         # print "DO: ", doubleOverstrand
         # print "RR: ", self.right(arc), self.right(arcNext)
@@ -751,7 +756,7 @@ class ADT(object):
         sign_c = self.quad(c)[2]
         ori_c = self.quad(c)[3]
 
-		# print "code:"
+        # print "code:"
         # print "a/ap",a,ap,sign_a,ori_a
         # print "b/bp",b,bp,sign_b,ori_b
         # print "c/cp",c,cp,sign_c,ori_c
