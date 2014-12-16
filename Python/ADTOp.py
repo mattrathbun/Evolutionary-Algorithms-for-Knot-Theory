@@ -160,7 +160,10 @@ class ADTOp(object):
             raise TypeError(
                 'What kind of move are you, and how did you get this far?')
         if knot.isrealisable():
-        	return knot
+            if knot != K:
+                return knot
+            else:
+                return False
         else:
         	print "We have a problem."
         	print "Starting with: ", K.to_string()

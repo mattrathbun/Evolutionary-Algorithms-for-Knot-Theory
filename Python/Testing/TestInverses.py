@@ -48,6 +48,7 @@ def findInverse(diagram, op):
                         print "Returning not None."
                         return ADTOp.ADTOp('1 & 1', "U")
             print "Nothing got returned."
+        print "Nothing is being returned."
 #         print "*"*30
 #         print "Error!!"
 #         print "n = ", n
