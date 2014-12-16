@@ -719,6 +719,10 @@ class ADT(object):
         arc = normalise(arc, 1, 2 * n)
         arcNext = self.wrap(arc + 1)
 
+        if n<3:
+            print "too few crossings"
+            return False
+
         if len(self.regions(arc,side))!=3:
             print "not a triangle"
             return False
@@ -733,7 +737,7 @@ class ADT(object):
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
-            # print "Not both overcrossings or undercrossings"
+            print "Not both overcrossings or undercrossings"
             return False
 
         doubleOverstrand = self.isOverstrand(arc)
@@ -760,10 +764,10 @@ class ADT(object):
         sign_c = self.quad(c)[2]
         ori_c = self.quad(c)[3]
 
-        # print "code:"
-        # print "a/ap",a,ap,sign_a,ori_a
-        # print "b/bp",b,bp,sign_b,ori_b
-        # print "c/cp",c,cp,sign_c,ori_c
+        print "code:"
+        print "a/ap",a,ap,sign_a,ori_a
+        print "b/bp",b,bp,sign_b,ori_b
+        print "c/cp",c,cp,sign_c,ori_c
 
         #rewrite the crossing
         # - sign is always changed
