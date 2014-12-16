@@ -34,8 +34,6 @@ def findInverse(diagram, op):
                 Ktemp = K.copy()
                 move.apply(Ktemp)
                 if diagram.sameDiagram(Ktemp):
-                    #        			print "FOUND IT!"
-                    #        			return [True, move]
                     print "move is not None, I think."
                     return move
         print "Done cycling through possible_moves"
@@ -49,25 +47,10 @@ def findInverse(diagram, op):
                         return ADTOp.ADTOp('1 & 1', "U")
             print "Nothing got returned."
         print "Nothing is being returned."
-#         print "*"*30
-#         print "Error!!"
-#         print "n = ", n
-#         print "The move we are trying to invert is: ", op.toString()
-#         return [False, diagram.to_list(), n, op.toString()]
-#         raise TypeError("No inverse found.")
     else:
         print "About to return None in TestInverses function findInverse"
         return None
-#    else:
-#    	return None
-#                print "These two moves are inverses."
-#                return op, move
-#        print "This move has no inverse."
-#        return op
-#    else:
-#    	print "This move does nothing to this diagram."
-#    	return op
-#		return None
+
 
 ##L = ADT.ADT([-12, 14, -16, -22, -20, -6, 2, -4, -18, -10, 8], [-1, 1, -1, 1, 1, -1, 1, -1, 1, 1, -1])
 # for i in range(100):
