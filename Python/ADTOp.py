@@ -155,10 +155,12 @@ class ADTOp(object):
         elif self.number == 2 and self.direction == "D":
             knot.R2Down(arc=self.data['arc'])
         elif self.number == 3:
-            knot.R3(arc=self.data['arc'], side=self.data['side'])
+            if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
+                return False
         else:
             raise TypeError(
                 'What kind of move are you, and how did you get this far?')
+
         if knot.isrealisable():
             if knot != K:
                 return knot
