@@ -720,24 +720,24 @@ class ADT(object):
         arcNext = self.wrap(arc + 1)
 
         if n<3:
-            print "too few crossings"
+            # print "too few crossings"
             return False
 
         if len(self.regions(arc,side))!=3:
-            print "not a triangle"
+            # print "not a triangle"
             return False
 
         if self.right(arc) != self.jump(self.right(arcNext)):
-            print "cannot do R3 from that position: not a triangle"
+            # print "cannot do R3 from that position: not a triangle"
             return False
 
         if self.right(self.right(arc))==arc:
-            print "cannot do R3 from that position: 2-pointer"
+            # print "cannot do R3 from that position: 2-pointer"
             return False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
-            print "Not both overcrossings or undercrossings"
+            # print "Not both overcrossings or undercrossings"
             return False
 
         doubleOverstrand = self.isOverstrand(arc)
@@ -752,6 +752,7 @@ class ADT(object):
             c = self.left(arc)
         else:
             return False
+
         a = arc
         ap = self.jump(arc)
         sign_a = self.quad(a)[2]
@@ -764,10 +765,15 @@ class ADT(object):
         sign_c = self.quad(c)[2]
         ori_c = self.quad(c)[3]
 
-        print "code:"
-        print "a/ap",a,ap,sign_a,ori_a
-        print "b/bp",b,bp,sign_b,ori_b
-        print "c/cp",c,cp,sign_c,ori_c
+        # check that we have three distinct edges
+        allCodes = {a,ap,b,bp,c,cp}
+        if len(allCodes)<6:
+            return False
+
+        # print "code:"
+        # print "a/ap",a,ap,sign_a,ori_a
+        # print "b/bp",b,bp,sign_b,ori_b
+        # print "c/cp",c,cp,sign_c,ori_c
 
         #rewrite the crossing
         # - sign is always changed
