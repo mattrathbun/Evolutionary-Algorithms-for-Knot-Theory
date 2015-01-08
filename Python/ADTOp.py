@@ -156,6 +156,7 @@ class ADTOp(object):
             knot.R2Down(arc=self.data['arc'])
         elif self.number == 3:
             if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
+                print "This is where the False is coming from (0)"
                 return False
         else:
             raise TypeError(

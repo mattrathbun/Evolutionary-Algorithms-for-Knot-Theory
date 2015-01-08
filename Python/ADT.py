@@ -729,15 +729,18 @@ class ADT(object):
 
         if self.right(arc) != self.jump(self.right(arcNext)):
             # print "cannot do R3 from that position: not a triangle"
+            print "No, THIS is where the False is coming from (1)"
             return False
 
         if self.right(self.right(arc))==arc:
             # print "cannot do R3 from that position: 2-pointer"
+            print "No, THIS is where the False is coming from (2)"
             return False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
             # print "Not both overcrossings or undercrossings"
+            print "No, THIS is where the False is coming from (3)"
             return False
 
         doubleOverstrand = self.isOverstrand(arc)
@@ -751,6 +754,7 @@ class ADT(object):
         elif side in ['L', 'l', 'left', '0', 'Left']:
             c = self.left(arc)
         else:
+            print "No, THIS is where the False is coming from (4)"
             return False
 
         a = arc
@@ -768,6 +772,7 @@ class ADT(object):
         # check that we have three distinct edges
         allCodes = {a,ap,b,bp,c,cp}
         if len(allCodes)<6:
+            print "No, THIS is where the False is coming from (5)"
             return False
 
         # print "code:"
