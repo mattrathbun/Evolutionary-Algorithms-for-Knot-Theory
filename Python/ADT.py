@@ -727,13 +727,21 @@ class ADT(object):
             # print "not a triangle"
             return False
 
-        if self.right(arc) != self.jump(self.right(arcNext)):
-            # print "cannot do R3 from that position: not a triangle"
-            return False
+        if side in ['R', 'r', 'right', '1', 'Right']:
+            if self.right(arc) != self.jump(self.right(arcNext)):
+                # print "cannot do R3 from that position (R): not a triangle"
+                return False
+            if self.right(self.right(arc))==arc:
+                # print "cannot do R3 from that position (R): 2-pointer"
+                return False
 
-        if self.right(self.right(arc))==arc:
-            # print "cannot do R3 from that position: 2-pointer"
-            return False
+        if side in ['L', 'l', 'left', '0', 'Left']:
+            if self.left(arc) != self.jump(self.right(arcNext)):
+                # print "cannot do R3 from that position (L): not a triangle"
+                return False
+            if self.left(self.left(arc))==arc:
+                # print "cannot do R3 from that position (L): 2-pointer"
+                return False
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
@@ -745,9 +753,9 @@ class ADT(object):
         # print "RR: ", self.right(arc), self.right(arcNext)
 
         rewrite = {}
-        rewriteOri = {}
+        rewriteOri = {} 
         if side in ['R', 'r', 'right', '1', 'Right']:
-            c = self.right(arc)
+           c = self.right(arc)
         elif side in ['L', 'l', 'left', '0', 'Left']:
             c = self.left(arc)
         else:
@@ -768,6 +776,7 @@ class ADT(object):
         # check that we have three distinct edges
         allCodes = {a,ap,b,bp,c,cp}
         if len(allCodes)<6:
+            print "WARNING: duplicate codes"
             return False
 
         # print "code:"

@@ -18,7 +18,8 @@ print "#############################################################"
 
 print K.to_list()
 print" " 
-K.R3(8,'r')
+ret = K.R3(8,'r')
+print "return is: ",ret
 print" "
 print "We get    ",K.to_list()
 print "Should get ([-6, -8, 12, -2, 10, -4], [1, 1, -1, 1, 1, 1])."
@@ -124,8 +125,25 @@ testR3(K, 6, "R")
 
 print();
 print();
-print("*** this is the final bit of trouble");
 K = ADT.ADT([2, -4], [1, 1])
 testR3(K, 2, "L")
-## Should be: ....
-## Produces: [-2, 0], [1, 1]
+## Should be: ([2,-4], [1,1])
+
+print("*****************************************************")
+print("*** here is one that doesn't work")
+K = ADT.ADT([6,-18,-8,2,16,-10,-14,12,4], [-1,1,1,-1,-1,1,-1,1,-1])
+print "before: ",K.to_list()
+ret = testR3(K, 18, "R")
+print "return is: ",ret
+print "after : ",K.to_list()
+
+print("*****************************************************")
+print("*** here is another one that doesn't work")
+K = ADT.ADT([2,-6,-4,-8],[1,-1,1,-1])
+print "before: ",K.to_list()
+ret = testR3(K, 8, "L")
+print "return is: ",ret
+print "after : ",K.to_list()
+
+
+
