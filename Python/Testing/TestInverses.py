@@ -53,6 +53,12 @@ def findInverse(diagram, op):
 
 
 
+# K = ADT.ADT([2,-6,-4,-8],[1,-1,1,-1])
+# M = ADTOp.ADTOp(3, 'H', {'arc': 8, 'side':'L'})
+# 
+# N = findInverse(K, M)
+# print N.toString()
+
 ## Most recent error:
 # Just about to call findInverse on diagram ([20, -22, 4, -8, 14, -10, 12, -6, -16, 18, -2], [-1, 1, -1, -1, 1, 1, 1, -1, 1, 1, 1]), with move 3H(pos=20, side=R)
 # findInverse is being called right now.

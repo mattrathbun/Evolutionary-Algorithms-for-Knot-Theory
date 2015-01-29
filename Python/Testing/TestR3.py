@@ -144,6 +144,7 @@ print "before: ",K.to_list()
 ret = testR3(K, 8, "L")
 print "return is: ",ret
 print "after : ",K.to_list()
+print "Should be [6, -8, -4, 2], [-1, 1, 1, -1]"
 
 
 
