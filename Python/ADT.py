@@ -736,7 +736,7 @@ class ADT(object):
                 return False
 
         if side in ['L', 'l', 'left', '0', 'Left']:
-            if self.left(arc) != self.jump(self.right(arcNext)):
+            if self.left(arc) != self.jump(self.left(arcNext)):
                 # print "cannot do R3 from that position (L): not a triangle"
                 return False
             if self.left(self.left(arc))==arc:
