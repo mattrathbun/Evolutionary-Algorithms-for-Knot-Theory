@@ -727,6 +727,7 @@ class ADT(object):
             # print "not a triangle"
             return False
 
+<<<<<<< HEAD
         if side in ['R', 'r', 'right', '1', 'Right']:
             if self.right(arc) != self.jump(self.right(arcNext)):
                 # print "cannot do R3 from that position (R): not a triangle"
@@ -742,6 +743,17 @@ class ADT(object):
             if self.left(self.left(arc))==arc:
                 # print "cannot do R3 from that position (L): 2-pointer"
                 return False
+=======
+        if self.right(arc) != self.jump(self.right(arcNext)):
+            # print "cannot do R3 from that position: not a triangle"
+            print "No, THIS is where the False is coming from (1)"
+            return False
+
+        if self.right(self.right(arc))==arc:
+            # print "cannot do R3 from that position: 2-pointer"
+            print "No, THIS is where the False is coming from (2)"
+            return False
+>>>>>>> e5cc16fa2ee313c25b40f2584f2b277c5602efcb
 
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
