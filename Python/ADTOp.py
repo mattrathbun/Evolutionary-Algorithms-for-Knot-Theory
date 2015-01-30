@@ -225,3 +225,85 @@ def fineRandomOp(diagram):
     possible_moves = diagram.finePossibleMoves()
     move = random.choice(possible_moves)
     return move
+    
+    
+class ADTChange(object):
+
+    def __init__(self, type="CC", data=None):
+        self.type = type
+        self.data = data
+
+    def __eq__(self, other):
+        if type(other) == type(self):
+            return self.__dict__ == other.__dict__
+        else:
+            return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def getType(self):
+        return self.type
+
+    def getData(self):
+        return self.data
+        
+    def toString(self):
+        if type == "CC":
+            return "CC(@{})".format(str(self.data['arc']))
+        else:
+            print "I don't know how to print that type yet."
+
+    def copy(self):
+        return ADTChange(type=self.type, data=self.data)
+
+    def checkFullData(self):
+        if self.type == "CC":
+            if self.data:
+                return True
+            else:
+                return False
+        else:
+            return False
+            
+    def possibleChangeRequest(self, diagram):
+        return diagram.possibleCC()
+
+    def fillData(self, data):
+        if not self.checkFullData():
+            self.data = data
+
+    def randomData(self, knot):
+        if not self.checkFullData():
+            possible_data = self.possibleChangeRequest(knot)
+            if possible_data == []:
+                pass
+            else:
+                self.fillData(random.choice(possible_data))
+
+    def apply(self, knot):
+        K = knot.copy()
+        if not self.checkFullData():
+            self.randomData(knot)
+            if not self.checkFullData():
+                return False
+        print "Trying to apply change: ", self.toString()
+        print "to diagram: ", knot.to_string()
+        if self.type == "CC":
+            knot.crossing_change(arc=self.data['arc'])
+        else:
+            raise TypeError(
+                'What kind of change are you, and how did you get this far?')
+
+        if knot.isrealisable():
+            if knot != K:
+                return knot
+            else:
+                return False
+        else:
+            print "We have a problem."
+            print "Starting with: ", K.to_string()
+            print "Applying move: ", self.toString()
+            print "Became: ", knot.to_string()
+            raise TypeError("We have a problem!!!")
+
