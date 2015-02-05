@@ -68,14 +68,14 @@ class ADTComplex:
             for i in r:
                 v = self.g.vertex(i)
                 self.g.add_edge(v,rv)
-            if len(r) < 3:
+            if len(r) == 2:
                 for i in range(len(r)-1):
                     re = [r[i],r[(i+1)%len(r)]]
                     re.sort()
                     print "  edge %s in region %s" % (str(re),str(r))
                     el = [idx for idx,val in enumerate(self.nodes) if val == re]
                     print "  nodes: %s" % (str(el))
-                    print "  region %s is loop or bigon" % (str(r))
+                    print "  region %s is bigon" % (str(r))
                     for j in el:
                         w = self.g.vertex(j)
                         self.g.add_edge(rv,w)
@@ -87,7 +87,7 @@ class ADTComplex:
                     print "  edge %s in region %s" % (str(re),str(r))
                     el = [idx for idx,val in enumerate(self.nodes) if val == re]
                     print "  nodes: %s" % (str(el))
-                    print "    region %s is polygon" % (str(r))
+                    print "    region %s is polygon or loop" % (str(r))
                     w = self.g.vertex(el[0])
                     self.g.add_edge(rv,w)
                     print "    edge %s -- %s (%d -- %d)" % (str(r), str(re), rn, el[0])  
