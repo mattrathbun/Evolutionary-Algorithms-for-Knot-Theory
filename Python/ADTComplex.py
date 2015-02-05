@@ -15,7 +15,7 @@ class ADTComplex:
 
         # Add nodes corresponding to crossings
         for i in range(n):
-            self.nodes.append("v%02d" % i)
+            self.nodes.append([i])
             self.g.add_vertex()
             self.vtype[self.g.vertex(i)] = 0
             
@@ -24,7 +24,10 @@ class ADTComplex:
             odd, even, sign, orient = adt.quad(2*i+1)
             
             odd2, even2, sign2, orient2 = adt.quad(adt.wrap(odd+1))
-            self.edges.append("e%02d%02d" % (i,(odd2-1)/2))
+            el = [i, (odd2-1)/2]
+            el.sort()
+            self.nodes.append(el)
+            self.edges.append(el)
             self.g.add_vertex()
             e = self.g.vertex(n+2*i)
             v = self.g.vertex(i)
@@ -34,7 +37,10 @@ class ADTComplex:
             self.g.add_edge(e,w)
             
             odd3, even3, sign3, orient3 = adt.quad(adt.wrap(even+1))
-            self.edges.append("e%02d%02d" % (i,(odd3-1)/2))
+            el = [i,(odd3-1)/2]
+            el.sort()
+            self.nodes.append(el)
+            self.edges.append(el)
             self.g.add_vertex()
             e = self.g.vertex(n+2*i+1)
             v = self.g.vertex(i)
@@ -43,7 +49,7 @@ class ADTComplex:
             self.g.add_edge(v,e)
             self.g.add_edge(e,w)
 
-        print self.edges
+        print "edges: ", self.edges
         # Add nodes corresponding to regions
         for i in range(n):
             odd, even, sign, orient = adt.quad(2*i+1)
@@ -53,7 +59,7 @@ class ADTComplex:
                 regv.sort()
                 if regv not in self.regions:
                     self.regions.append(regv)
-        print self.regions
+        print "regions: ", self.regions
 
         for r in self.regions:
             rn = self.g.add_vertex()
@@ -62,7 +68,30 @@ class ADTComplex:
             for i in r:
                 v = self.g.vertex(i)
                 self.g.add_edge(v,rv)
-                print "adding edge %02d-%02d" % (i,rn)
+            if len(r) < 3:
+                for i in range(len(r)-1):
+                    re = [r[i],r[(i+1)%len(r)]]
+                    re.sort()
+                    print "  edge %s in region %s" % (str(re),str(r))
+                    el = [idx for idx,val in enumerate(self.nodes) if val == re]
+                    print "  nodes: %s" % (str(el))
+                    print "  region %s is loop or bigon" % (str(r))
+                    for j in el:
+                        w = self.g.vertex(j)
+                        self.g.add_edge(rv,w)
+                        print "    edge %s -- %s (%d -- %d)" % (str(r), str(re), rn, j)
+            else:
+                for i in range(len(r)):
+                    re = [r[i],r[(i+1)%len(r)]]
+                    re.sort()
+                    print "  edge %s in region %s" % (str(re),str(r))
+                    el = [idx for idx,val in enumerate(self.nodes) if val == re]
+                    print "  nodes: %s" % (str(el))
+                    print "    region %s is polygon" % (str(r))
+                    w = self.g.vertex(el[0])
+                    self.g.add_edge(rv,w)
+                    print "    edge %s -- %s (%d -- %d)" % (str(r), str(re), rn, el[0])  
+                
                 
             
 
@@ -86,7 +115,11 @@ class ADTComplex:
 
      
     def draw_graph(self):
-        pos = sfdp_layout(self.g)
+        pos = arf_layout(self.g)
+        pos = sfdp_layout(self.g, C=0.5, gamma=0.5)
+        # pos = radial_tree_layout(self.g,0)
+        # pos = fruchterman_reingold_layout(self.g)
+        # pos = sfdp_layout(self.g)
         graph_draw(self.g, pos=pos, vertex_text=self.g.vertex_index, vertex_fill_color=self.vtype)
         graph_draw(self.g, pos=pos, vertex_text=self.g.vertex_index, vertex_fill_color=self.vtype, output="complex.png")
 
