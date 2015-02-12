@@ -824,33 +824,33 @@ class ADT(object):
 
         return True
 
-# Generates a list of possible moves that can be performed on a diagram.
+# Generates a list of all possible moves (with data) that can be performed on a diagram.
     def finePossibleMoves(self):
         possible_moves = []
         n = self.number_crossings()
         if n == 0:
             possible_moves.append(
-                ADTOp.ADTOp(1, 'U', {'arc': 1, 'side': 'L', 'sign': 1}))
+                ADTOp.ADTMove(1, 'U', {'arc': 1, 'side': 'L', 'sign': 1}))
             possible_moves.append(
-                ADTOp.ADTOp(1, 'U', {'arc': 1, 'side': 'L', 'sign': -1}))
+                ADTOp.ADTMove(1, 'U', {'arc': 1, 'side': 'L', 'sign': -1}))
             possible_moves.append(
-                ADTOp.ADTOp(1, 'U', {'arc': 1, 'side': 'R', 'sign': 1}))
+                ADTOp.ADTMove(1, 'U', {'arc': 1, 'side': 'R', 'sign': 1}))
             possible_moves.append(
-                ADTOp.ADTOp(1, 'U', {'arc': 1, 'side': 'R', 'sign': -1}))
+                ADTOp.ADTMove(1, 'U', {'arc': 1, 'side': 'R', 'sign': -1}))
             return possible_moves
         for i in range(1, 2 * n + 1):
             possible_moves.append(
-                ADTOp.ADTOp(1, 'U', {'arc': i, 'side': 'L', 'sign': 1}))
+                ADTOp.ADTMove(1, 'U', {'arc': i, 'side': 'L', 'sign': 1}))
             possible_moves.append(
-                ADTOp.ADTOp(1, 'U', {'arc': i, 'side': 'L', 'sign': -1}))
+                ADTOp.ADTMove(1, 'U', {'arc': i, 'side': 'L', 'sign': -1}))
             possible_moves.append(
-                ADTOp.ADTOp(1, 'U', {'arc': i, 'side': 'R', 'sign': 1}))
+                ADTOp.ADTMove(1, 'U', {'arc': i, 'side': 'R', 'sign': 1}))
             possible_moves.append(
-                ADTOp.ADTOp(1, 'U', {'arc': i, 'side': 'R', 'sign': -1}))
+                ADTOp.ADTMove(1, 'U', {'arc': i, 'side': 'R', 'sign': -1}))
             left_reg = len(self.regions(i, 'L'))
             right_reg = len(self.regions(i, 'R'))
             if left_reg == 1 or right_reg == 1:
-                possible_moves.append(ADTOp.ADTOp(1, 'D', {'arc': i}))
+                possible_moves.append(ADTOp.ADTMove(1, 'D', {'arc': i}))
             # This precludes listing R2Up moves on a single-crossing or
             # no-crossing diagram.
             if left_reg > 1 and n > 1:
@@ -858,7 +858,7 @@ class ADT(object):
                 candidates.remove([i, self.wrap(i + 1)])
                 for j in candidates:
                     possible_moves.append(
-                        ADTOp.ADTOp(2, 'U', {'arc': i, 'side': 'L', 'target': j}))
+                        ADTOp.ADTMove(2, 'U', {'arc': i, 'side': 'L', 'target': j}))
             # This precludes listing R2Up moves on a single-crossing or
             # no-crossing diagram.
             if right_reg > 1 and n > 1:
@@ -866,22 +866,22 @@ class ADT(object):
                 candidates.remove([i, self.wrap(i + 1)])
                 for j in candidates:
                     possible_moves.append(
-                        ADTOp.ADTOp(2, 'U', {'arc': i, 'side': 'R', 'target': j}))
+                        ADTOp.ADTMove(2, 'U', {'arc': i, 'side': 'R', 'target': j}))
             if (left_reg == 2 or right_reg == 2) and n > 1:
                 i1 = index(i, self.code)
                 i2 = index(self.wrap(i + 1), self.code)
                 o1 = self.orientations[i1]
                 o2 = self.orientations[i2]
                 if o1 == -o2:
-                    possible_moves.append(ADTOp.ADTOp(2, 'D', {'arc': i}))
+                    possible_moves.append(ADTOp.ADTMove(2, 'D', {'arc': i}))
             if left_reg == 3:
                 if self.quad(i)[2] == -self.quad(self.wrap(i + 1))[2]:
                     possible_moves.append(
-                        ADTOp.ADTOp(3, 'H', {'arc': i, 'side': 'L'}))
+                        ADTOp.ADTMove(3, 'H', {'arc': i, 'side': 'L'}))
             if right_reg == 3:
                 if self.quad(i)[2] == -self.quad(self.wrap(i + 1))[2]:
                     possible_moves.append(
-                        ADTOp.ADTOp(3, 'H', {'arc': i, 'side': 'R'}))
+                        ADTOp.ADTMove(3, 'H', {'arc': i, 'side': 'R'}))
         return possible_moves
 
     def fineRandomMove(self):
@@ -958,20 +958,23 @@ class ADT(object):
         return possible_data
 
 
-    def finePossibleChanges(self):
-        return self.possibleCC()
-
-    def fineRandomChange(self):
-        possible_changes = self.finePossibleChanges()
-        change = random.choice(possible_changes)
-        return change
-
-    def possibleCC(self):
+    def finePossibleCC(self):
         possible_data = []
         n = self.number_crossings()
         for i in range(1,2*n+1):
-            possible_data.append({'arc' : i})
+            possible_data.append(ADTOp.ADTCC({'arc' : i}))
         return possible_data
+
+
+    def fineRandomCC(self):
+        possible_changes = self.finePossibleCC()
+        change = random.choice(possible_changes)
+        return ADTOp.ADTCC(change)
+
+
+    def finePossibleOps(self):
+        possible_ops = self.finePossibleMoves() + self.finePossibleCC()
+        return possible_ops
 
     # phi_i(r) as defined in [Dowker-Thistlethwaite, page 24].
     # Says whether arc r is inside or outside the loop determined by arc i
