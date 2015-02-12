@@ -50,12 +50,17 @@ class ADTOpList(object):
         curr = self.opList
         self.opList = list_of_ops + curr
 
-    def mutate(self):
+    def mutate(self, restriction=None):
         n = self.length()
         type = randint(0, 4)
         ol = self.toList()
         if type == 0:  # Randomly change one of the operations
-            ol[randint(0, n - 1)] = ADTOp.coarseRandomOp()
+            if restriction == 'Move':
+                ol[randint(0, n-1)] = ADTOp.coarseRandomMove()
+            elif restriction == 'CC':
+                ol[randint(0, n-1)] = ADTOp.coarseRandomCC()
+            else:
+                ol[randint(0, n - 1)] = ADTOp.coarseRandomOp()
         elif type == 1:  # Cyclic permutation
             ol.append(ol[0])
             del ol[0]
@@ -77,21 +82,30 @@ class ADTOpList(object):
     def downCount(self):
         dc = 0
         for op in self.toList():
-            if op.getDirection() == "D":
-                dc += 1
+            if op.type == 'Move':
+                if op.getDirection() == "D":
+                    dc += 1
         return dc
 
     def upCount(self):
         uc = 0
         for op in self.toList():
-            if op.getDirection() == "U":
-                uc += 1
+            if op.type == 'Move':
+                if op.getDirection() == "U":
+                    uc += 1
         return uc
+        
+    def ccCount(self):
+        cc = 0
+        for op in self.toList():
+            if op.type = 'CC':
+                cc += 1
+        return cc
 
 
-def randomOpList(maxl, minl, upBias=1, horizontalBias=1, downBias=1):
+def randomOpList(maxl, minl, upBias=1, horizontalBias=1, downBias=1, CCBias=1):
     length = randint(minl, maxl)
     ops = []
     for i in range(0, length):
-        ops.append(ADTOp.coarseRandomOp(upBias, horizontalBias, downBias))
+        ops.append(ADTOp.coarseRandomOp(upBias, horizontalBias, downBias, CCBias))
     return ADTOpList(ops)
