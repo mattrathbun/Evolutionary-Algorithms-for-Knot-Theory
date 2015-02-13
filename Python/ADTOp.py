@@ -32,6 +32,9 @@ class ADTOp(object):
 
     def copy(self):
         return ADTOp(self.opType)
+        
+    def toString(self):
+        return str(self.opType)
 
 
 def coarseRandomOp(upMoveBias=1, horizontalMoveBias=1, downMoveBias=1, CCBias=1):
@@ -125,8 +128,8 @@ class ADTMove(ADTOp):
             else:
                 return "3H"
         else:
-        	print "This is strange."
-        	return self.number, self.direction
+            print "This is strange."
+            return self.number, self.direction
 
     def copy(self):
         return ADTMove(number=self.number, direction=self.direction, data=self.data)
@@ -206,8 +209,8 @@ class ADTMove(ADTOp):
             self.randomData(knot)
             if not self.checkFullData():
                 return False
-        print "Trying to apply move: ", self.toString()
-        print "to diagram: ", knot.to_string()
+#         print "Trying to apply move: ", self.toString()
+#         print "to diagram: ", knot.to_string()
         if self.number == 1 and self.direction == "U":
             knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
         elif self.number == 1 and self.direction == "D":
@@ -218,7 +221,7 @@ class ADTMove(ADTOp):
             knot.R2Down(arc=self.data['arc'])
         elif self.number == 3:
             if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
-                print "This is where the False is coming from (0)"
+#                 print "This is where the False is coming from (0)"
                 return False
         else:
             raise TypeError(
@@ -230,11 +233,11 @@ class ADTMove(ADTOp):
             else:
                 return False
         else:
-        	print "We have a problem."
-        	print "Starting with: ", K.to_string()
-        	print "Applying move: ", self.toString()
-        	print "Became: ", knot.to_string()
-        	raise TypeError("We have a problem!!!")
+            print "We have a problem."
+            print "Starting with: ", K.to_string()
+            print "Applying move: ", self.toString()
+            print "Became: ", knot.to_string()
+            raise TypeError("We have a problem!!!")
             
 
 #     def apply(self, knot):
@@ -315,7 +318,7 @@ class ADTCC(ADTOp):
             else:
                 return "CC"
         else:
-            print "I don't know how to print that type yet."
+            print "I don't know how to print that opType yet."
 
     def copy(self):
         return ADTCC(opType=self.opType, data=self.data)
@@ -350,8 +353,8 @@ class ADTCC(ADTOp):
             self.randomData(knot)
             if not self.checkFullData():
                 return False
-        print "Trying to apply change: ", self.toString()
-        print "to diagram: ", knot.to_string()
+#         print "Trying to apply change: ", self.toString()
+#         print "to diagram: ", knot.to_string()
         if self.opType == "CC":
             knot.crossing_change(arc=self.data['arc'])
         else:

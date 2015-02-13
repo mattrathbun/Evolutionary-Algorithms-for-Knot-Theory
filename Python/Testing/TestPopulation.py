@@ -4,7 +4,9 @@ sys.path.append(lib_path)
 import ADTOpPopulation
 
 def fit(ol):
-    return ol.length()
+#    return ol.length()
+#    return ol.upCount()
+    return ol.upCount() + ol.horizontalCount()
 
 pop = ADTOpPopulation.Population(10,10,5, 'Move')
 

@@ -12,22 +12,22 @@ K = ADT.ADT([],[])
 path = [K]
 sequence = []
 inverses = []
-moves = ADTOpList.randomOpList(n, n, upBias=5, downBias=5).toList()
+moves = ADTOpList.randomMoveList(n, n, upBias=5, downBias=5).toList()
 print "We have a list of moves."
 for i in moves:
-	print i.toString()
+    print i.toString()
 for i in moves:
-	L = K.copy()
-	M = K.copy()
-	if i.apply(L):
-		sequence.append(i)
-		path.append(L)
-		print "Just about to call findInverse on diagram {}, with move {}".format(M.to_list(), i.toString())
-		inv = TestInverses.findInverse(M, i)
-		if inv == None:
-			raise TypeError("findInverse should never have been called.")
-		inverses.append(inv)
-		K = L
+    L = K.copy()
+    M = K.copy()
+    if i.apply(L):
+        sequence.append(i)
+        path.append(L)
+#         print "Just about to call findInverse on diagram {}, with move {}".format(M.to_list(), i.toString())
+        inv = TestInverses.findInverse(M, i)
+        if inv == None:
+            raise TypeError("findInverse should never have been called.")
+        inverses.append(inv)
+        K = L
 
 print '\n'*10
 print '*'*30

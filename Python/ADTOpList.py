@@ -75,20 +75,15 @@ class ADTOpList(object):
         self.opList = list_of_ops + curr
 
     def mutate(self):
-        print "Mutating here with opListType {}".format(self.opListType)
         n = self.length()
         mutationType = randint(0, 4)
-        print "mutationType is{}".format(mutationType)
         ol = self.toList()
         if mutationType == 0:  # Randomly change one of the operations
             if self.opListType == 'Move':
-                print "RIGHT HERE"
                 ol[randint(0, n-1)] = ADTOp.coarseRandomMove()
             elif self.opListType == 'CC':
-                raise TypeError("Bad.")
                 ol[randint(0, n-1)] = ADTOp.coarseRandomCC()
             else:
-                raise TypeError("Also Bad.")
                 ol[randint(0, n - 1)] = ADTOp.coarseRandomOp()
         elif mutationType == 1:  # Cyclic permutation
             ol.append(ol[0])
@@ -128,6 +123,14 @@ class ADTOpList(object):
                 if op.getDirection() == "U":
                     uc += 1
         return uc
+        
+    def horizontalCount(self):
+        hc = 0
+        for op in self.toList():
+            if op.opType == "Move":
+                if op.getDirection() == "H":
+                    hc += 1
+        return hc
         
     def ccCount(self):
         cc = 0

@@ -400,12 +400,12 @@ class ADT(object):
         K = self.copy()
         while new_arc != 2*n:
             count += 1
-            print "Shifting label...{} times so far.".format(count)
+#             print "Shifting label...{} times so far.".format(count)
             K = K.shiftLabel()
             new_arc = K.wrap(new_arc - 1)
             tail = K.wrap(tail - 1)
             head = K.wrap(head - 1)
-        print "Tail and Head are ", tail, head
+#         print "Tail and Head are ", tail, head
         if tail == K.wrap(head + 1):
             new_code = [i+(2*cmp(i, 0)) if abs(i) > head else i for i in K.code]
             new_orientations = [i for i in K.orientations]
@@ -415,15 +415,15 @@ class ADT(object):
             new_orientations.insert((head + 1)/2, side)
         if head == self.wrap(tail + 1):
             new_code = [i+(2*cmp(i, 0)) if abs(i) > tail else i for i in K.code]
-            print "K orientations: ", K.orientations
+#             print "K orientations: ", K.orientations
             new_orientations = [i for i in K.orientations]
-            print "new_code, new_orientations: ", new_code, new_orientations
+#             print "new_code, new_orientations: ", new_code, new_orientations
             new_code.append(K.wrap(tail + 2))
             new_orientations.append(side)
-            print "new_code, new_orientations: ", new_code, new_orientations
+#             print "new_code, new_orientations: ", new_code, new_orientations
             new_code.insert(tail/2, -(2*n + 4))
             new_orientations.insert(tail/2, -side)
-            print "new_code, new_orientations: ", new_code, new_orientations
+#             print "new_code, new_orientations: ", new_code, new_orientations
         self.code = new_code
         self.orientations = new_orientations
 
@@ -746,7 +746,7 @@ class ADT(object):
         if self.quad(arc)[2] == self.quad(arcNext)[2]:
             # not both over or undercrossings
             # print "Not both overcrossings or undercrossings"
-            print "No, THIS is where the False is coming from (3)"
+#             print "No, THIS is where the False is coming from (3)"
             return False
 
         doubleOverstrand = self.isOverstrand(arc)
@@ -760,7 +760,7 @@ class ADT(object):
         elif side in ['L', 'l', 'left', '0', 'Left']:
             c = self.left(arc)
         else:
-            print "No, THIS is where the False is coming from (4)"
+#             print "No, THIS is where the False is coming from (4)"
             return False
 
         a = arc
@@ -778,8 +778,8 @@ class ADT(object):
         # check that we have three distinct edges
         allCodes = {a,ap,b,bp,c,cp}
         if len(allCodes)<6:
-            print "WARNING: duplicate codes"
-            print "No, THIS is where the False is coming from (5)"
+#             print "WARNING: duplicate codes"
+#             print "No, THIS is where the False is coming from (5)"
             return False
 
         # print "code:"
