@@ -6,7 +6,7 @@ import ADTOpPopulation
 def fit(ol):
     return ol.length()
 
-pop = ADTOpPopulation.Population(10,10,5)
+pop = ADTOpPopulation.Population(10,10,5, 'Move')
 
 print "pop.size() = %d\n" % (pop.size())
 

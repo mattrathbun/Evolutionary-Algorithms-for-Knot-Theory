@@ -2,14 +2,24 @@ import ADTOpList
 import random
 import numpy
 
+opPopulationTypes = ['Move', 'CC']
+
 class Population(object):
 
-    def __init__(self, num, maxl, minl):
+    def __init__(self, num, maxl, minl, opPopulationType=None):
         # num is population size
         # minl, maxl are the min and max list sizes
+        self.opPopulationType = opPopulationType
         self.oplists = []
-        for i in range(num):
-            self.oplists.append(ADTOpList.randomOpList(maxl, minl))
+        if self.opPopulationType == 'Move':
+            for i in range(num):
+                self.oplists.append(ADTOpList.randomMoveList(maxl, minl))
+        elif opPopulationType == 'CC':
+            for i in range(num):
+                self.oplists.append(ADTOpList.randomCCList(maxl, minl))
+        else:
+            for i in range(num):
+                self.oplists.append(ADTOpList.randomOpList(maxl, minl))
 
     def toList(self):
         return self.oplists

@@ -12,8 +12,8 @@ ops = moves + changes
 ## 'Ops' are any operation that modifies an ADT object.
 
 class ADTOp(object):
-    def __init__(self, type):
-        self.type = type
+    def __init__(self, opType):
+        self.opType = opType
         
     def __eq__(self, other):
         if type(other) == type(self):
@@ -24,14 +24,14 @@ class ADTOp(object):
     def __ne__(self, other):
         return not self.__eq__(other)
 
-    def getType(self):
-        return self.type
+    def getOpType(self):
+        return self.opType
 
-    def getTypeString(self):
-        return str(self.type)
+    def getOpTypeString(self):
+        return str(self.opType)
 
     def copy(self):
-        return ADTOp(self.type)
+        return ADTOp(self.opType)
 
 
 def coarseRandomOp(upMoveBias=1, horizontalMoveBias=1, downMoveBias=1, CCBias=1):
@@ -66,7 +66,7 @@ def fineRandomOp(diagram):
 class ADTMove(ADTOp):
 
     def __init__(self, number, direction, data=None):
-        self.type = 'Move'
+        self.opType = 'Move'
         self.number = number
         self.direction = direction
         self.data = data # data is meant to be a dictionary
@@ -290,7 +290,7 @@ def fineRandomMove(diagram):
 class ADTCC(ADTOp):
 
     def __init__(self, data=None):
-        self.type = 'CC'
+        self.opType = 'CC'
         self.data = data
 
     def __eq__(self, other):
@@ -302,14 +302,14 @@ class ADTCC(ADTOp):
     def __ne__(self, other):
         return not self.__eq__(other)
 
-    def getType(self):
-        return self.type
+    def getOpType(self):
+        return self.opType
 
     def getData(self):
         return self.data
         
     def toString(self):
-        if self.type == "CC":
+        if self.opType == "CC":
             if self.checkFullData():
                 return "CC(@{})".format(str(self.data['arc']))
             else:
@@ -318,10 +318,10 @@ class ADTCC(ADTOp):
             print "I don't know how to print that type yet."
 
     def copy(self):
-        return ADTCC(type=self.type, data=self.data)
+        return ADTCC(opType=self.opType, data=self.data)
 
     def checkFullData(self):
-        if self.type == "CC":
+        if self.opType == "CC":
             if self.data:
                 return True
             else:
@@ -352,7 +352,7 @@ class ADTCC(ADTOp):
                 return False
         print "Trying to apply change: ", self.toString()
         print "to diagram: ", knot.to_string()
-        if self.type == "CC":
+        if self.opType == "CC":
             knot.crossing_change(arc=self.data['arc'])
         else:
             raise TypeError(

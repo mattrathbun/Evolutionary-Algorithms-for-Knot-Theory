@@ -2,13 +2,30 @@ import ADTOp
 from random import *
 
 
+opListTypes = ['Move', 'CC']
+
 class ADTOpList(object):
 
-    def __init__(self, opList):
+    def __init__(self, opList, opListType=None):
         self.opList = opList
+        self.opListType = opListType
 
     def toList(self):
         return self.opList
+        
+    def getOpListType(self):
+        return self.opListType
+        
+    def setOpListType(self, opListType):
+        self.opListType = opListType
+        
+    def checkOpListType(self):
+        if self.opListType:
+            for op in self.opList:
+                if op.opType != self.opListType:
+                    raise TypeError("Supposed to be a list of type {}, but {} has type {}.".format(self.opListType, op.toString(), op.opType))
+        else:
+            return True
 
     def __eq__(self, other):
         if type(other) == type(self):
@@ -23,10 +40,17 @@ class ADTOpList(object):
         ol = []
         for i in self.opList:
             ol.append(i)
-        return ADTOpList(ol)
+        return ADTOpList(ol, self.opListType)
+
 
     def length(self):
         return len(self.opList)
+        
+    def toString(self):
+        l = []
+        for op in self.opList:
+            l.append(op.toString())
+        return l
 
     def apply(self, diagram):
         d = diagram.copy()
@@ -40,7 +64,7 @@ class ADTOpList(object):
                 eff = op.apply(d)
                 if eff == 1:
                     nl.append(op)
-        return d, ADTOpList(nl)
+        return d, ADTOpList(nl, self.opListType)
 
     def append(self, list_of_ops):
         curr = self.opList
@@ -50,39 +74,49 @@ class ADTOpList(object):
         curr = self.opList
         self.opList = list_of_ops + curr
 
-    def mutate(self, restriction=None):
+    def mutate(self):
+        print "Mutating here with opListType {}".format(self.opListType)
         n = self.length()
-        type = randint(0, 4)
+        mutationType = randint(0, 4)
+        print "mutationType is{}".format(mutationType)
         ol = self.toList()
-        if type == 0:  # Randomly change one of the operations
-            if restriction == 'Move':
+        if mutationType == 0:  # Randomly change one of the operations
+            if self.opListType == 'Move':
+                print "RIGHT HERE"
                 ol[randint(0, n-1)] = ADTOp.coarseRandomMove()
-            elif restriction == 'CC':
+            elif self.opListType == 'CC':
+                raise TypeError("Bad.")
                 ol[randint(0, n-1)] = ADTOp.coarseRandomCC()
             else:
+                raise TypeError("Also Bad.")
                 ol[randint(0, n - 1)] = ADTOp.coarseRandomOp()
-        elif type == 1:  # Cyclic permutation
+        elif mutationType == 1:  # Cyclic permutation
             ol.append(ol[0])
             del ol[0]
-        elif type == 2:  # Cyclic permutation the other direction
+        elif mutationType == 2:  # Cyclic permutation the other direction
             ol.insert(0, ol[-1])
             del ol[-1]
-        elif type == 3:  # Delete a random operation from the list
+        elif mutationType == 3:  # Delete a random operation from the list
             del ol[randint(0, n - 1)]
-        elif type == 4:  # Insert a random operation
-            ol.insert(randint(0, n - 1), ADTOp.coarseRandomOp())
+        elif mutationType == 4:  # Insert a random operation
+            if self.opListType == 'Move':
+                ol.insert(randint(0, n-1), ADTOp.coarseRandomMove())
+            elif self.opListType == 'CC':
+                ol.insert(randint(0, n-1), ADTOp.coarseRandomCC())
+            else:
+                ol.insert(randint(0, n - 1), ADTOp.coarseRandomOp())
         self.opList = ol
 
     def recombine(self, other):
         pos = randint(1, min(self.length(), other.length()) - 1)
         self_first_word = self.toList()[0:pos] + other.toList()[pos:]
         other_first_word = other.toList()[0:pos] + self.toList()[pos:]
-        return (ADTOpList(self_first_word), ADTOpList(other_first_word))
+        return (ADTOpList(self_first_word, self.opListType), ADTOpList(other_first_word, self.opListType))
 
     def downCount(self):
         dc = 0
         for op in self.toList():
-            if op.type == 'Move':
+            if op.opType == 'Move':
                 if op.getDirection() == "D":
                     dc += 1
         return dc
@@ -90,7 +124,7 @@ class ADTOpList(object):
     def upCount(self):
         uc = 0
         for op in self.toList():
-            if op.type == 'Move':
+            if op.opType == 'Move':
                 if op.getDirection() == "U":
                     uc += 1
         return uc
@@ -98,7 +132,7 @@ class ADTOpList(object):
     def ccCount(self):
         cc = 0
         for op in self.toList():
-            if op.type = 'CC':
+            if op.opType == 'CC':
                 cc += 1
         return cc
 
@@ -109,3 +143,14 @@ def randomOpList(maxl, minl, upBias=1, horizontalBias=1, downBias=1, CCBias=1):
     for i in range(0, length):
         ops.append(ADTOp.coarseRandomOp(upBias, horizontalBias, downBias, CCBias))
     return ADTOpList(ops)
+    
+def randomMoveList(maxl, minl, upBias = 1, horizontalBias = 1, downBias = 1):
+    moves = randomOpList(maxl, minl, upBias=upBias, horizontalBias=horizontalBias, downBias=downBias, CCBias=0)
+    moves.setOpListType('Move')
+    return moves
+    
+def randomCCList(maxl, minl):
+    cc = randomOpList(maxl, minl, upBias=0, horizontalBias=0, downBias=0)
+    cc.setOpListType('CC')
+    return cc
+    
