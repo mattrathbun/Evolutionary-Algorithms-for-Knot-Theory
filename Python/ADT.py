@@ -962,7 +962,7 @@ class ADT(object):
         possible_data = []
         n = self.number_crossings()
         for i in range(1,2*n+1):
-            possible_data.append(ADTOp.ADTCC({'arc' : i}))
+            possible_data.append({'arc' : i})
         return possible_data
 
 

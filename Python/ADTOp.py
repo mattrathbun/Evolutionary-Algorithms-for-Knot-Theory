@@ -333,7 +333,7 @@ class ADTCC(ADTOp):
             return False
             
     def possibleCCRequest(self, diagram):
-        return diagram.possibleCC()
+        return diagram.finePossibleCC()
 
     def fillData(self, data):
         if not self.checkFullData():
