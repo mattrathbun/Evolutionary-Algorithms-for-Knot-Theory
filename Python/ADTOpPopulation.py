@@ -1,16 +1,18 @@
 import ADTOpList
 import random
 import numpy
+from datetime import datetime
 
 opPopulationTypes = ['Move', 'CC']
 
 class Population(object):
 
-    def __init__(self, num, maxl, minl, opPopulationType=None):
+    def __init__(self, num, maxl, minl, opPopulationType=None, model='original'):
         # num is population size
         # minl, maxl are the min and max list sizes
         self.opPopulationType = opPopulationType
         self.oplists = []
+        self.model = model
         if self.opPopulationType == 'Move':
             for i in range(num):
                 self.oplists.append(ADTOpList.randomMoveList(maxl, minl))
@@ -27,11 +29,16 @@ class Population(object):
     def size(self):
         return len(self.oplists)
 
-    def iterate(self, fit, mu=0.05):
+    def iterate(self, fit, mu=0.25):
+        print "Starting to iterate"
+        startiter = datetime.now()
         n = self.size()
         pop1 = list(self.oplists)
         fcmp = lambda x, y: cmp(fit(x), fit(y))
+        print "Starting to sort"
+        startsort = datetime.now()
         pop1.sort(cmp=fcmp)
+        print "Finished sorting. Took this long: ", datetime.now() - startsort
         tfv = 0
         # maxf = 0
         # minf = 1000000
@@ -77,21 +84,28 @@ class Population(object):
 
         # recombination with tournament selection size 3
 
-        for i in range(len(pop1)/2):
-            parent = []
-            for j in range(0, 2):
-                candidates = random.sample(pop1, 3)
-                fitnesses = map(fit, candidates)
-                best = numpy.argmax(fitnesses)
-                parent.append(candidates[best])
+        if self.model == 'original':
+            for i in range(len(pop1)/2):
+                parent = []
+                for j in range(0, 2):
+                    candidates = random.sample(pop1, 3)
+                    fitnesses = map(fit, candidates)
+                    best = numpy.argmax(fitnesses)
+                    parent.append(candidates[best])
 
-            pop2.extend(parent[0].recombine(parent[1]))
-
+                pop2.extend(parent[0].recombine(parent[1], self.model))
+                pop3 = pop2
+        else:
+            pop3 = pop1
         # mutation
 
-        for i in range(len(pop2)):
+        print "Starting mutation"
+        startmut = datetime.now()
+        for i in range(len(pop3)):
             if (random.random() < mu):
-                pop2[i].mutate()
+                pop3[i].mutate(self.model)
+        print "Finished mutation. Took this long: ", datetime.now() - startmut
 
-        pop2.sort(cmp=fcmp)
-        self.oplists = pop2
+        pop3.sort(cmp=fcmp)
+        self.oplists = pop3
+        print "Finished iteration. Took: ", datetime.now() - startiter

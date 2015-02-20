@@ -6,9 +6,11 @@ opListTypes = ['Move', 'CC']
 
 class ADTOpList(object):
 
-    def __init__(self, opList, opListType=None):
+    def __init__(self, opList, minl = 0, maxl = 20, opListType=None):
         self.opList = opList
         self.opListType = opListType
+        self.minl = minl
+        self.maxl = maxl
 
     def toList(self):
         return self.opList
@@ -74,39 +76,59 @@ class ADTOpList(object):
         curr = self.opList
         self.opList = list_of_ops + curr
 
-    def mutate(self):
+    def mutate(self, model='original'):
         n = self.length()
-        mutationType = randint(0, 4)
         ol = self.toList()
-        if mutationType == 0:  # Randomly change one of the operations
-            if self.opListType == 'Move':
-                ol[randint(0, n-1)] = ADTOp.coarseRandomMove()
-            elif self.opListType == 'CC':
-                ol[randint(0, n-1)] = ADTOp.coarseRandomCC()
-            else:
-                ol[randint(0, n - 1)] = ADTOp.coarseRandomOp()
-        elif mutationType == 1:  # Cyclic permutation
-            ol.append(ol[0])
-            del ol[0]
-        elif mutationType == 2:  # Cyclic permutation the other direction
-            ol.insert(0, ol[-1])
-            del ol[-1]
-        elif mutationType == 3:  # Delete a random operation from the list
-            del ol[randint(0, n - 1)]
-        elif mutationType == 4:  # Insert a random operation
-            if self.opListType == 'Move':
-                ol.insert(randint(0, n-1), ADTOp.coarseRandomMove())
-            elif self.opListType == 'CC':
-                ol.insert(randint(0, n-1), ADTOp.coarseRandomCC())
-            else:
-                ol.insert(randint(0, n - 1), ADTOp.coarseRandomOp())
-        self.opList = ol
+        if model=='original':
+            mutationType = randint(0, 4)
+            if mutationType == 0:  # Randomly change one of the operations
+                if self.opListType == 'Move':
+                    ol[randint(0, n-1)] = ADTOp.coarseRandomMove()
+                elif self.opListType == 'CC':
+                    ol[randint(0, n-1)] = ADTOp.coarseRandomCC()
+                else:
+                    ol[randint(0, n - 1)] = ADTOp.coarseRandomOp()
+            elif mutationType == 1:  # Cyclic permutation
+                ol.append(ol[0])
+                del ol[0]
+            elif mutationType == 2:  # Cyclic permutation the other direction
+                ol.insert(0, ol[-1])
+                del ol[-1]
+            elif mutationType == 3:  # Delete a random operation from the list
+                del ol[randint(0, n - 1)]
+            elif mutationType == 4:  # Insert a random operation
+                if self.opListType == 'Move':
+                    ol.insert(randint(0, n-1), ADTOp.coarseRandomMove())
+                elif self.opListType == 'CC':
+                    ol.insert(randint(0, n-1), ADTOp.coarseRandomCC())
+                else:
+                    ol.insert(randint(0, n - 1), ADTOp.coarseRandomOp())
+            self.opList = ol
+        if model=='randtail':
+            print "Mutating with the new model."
+            m = randint(0, n-1)
+            k = randint(0, self.maxl) 
+            for i in range(m, m+k):
+                if self.opListType == 'Move':
+                    new = ADTOp.coarseRandomMove()
+                elif self.opListType == 'CC':
+                    new = ADTOp.coarseRandomCC()
+                else:
+                    new = ADTOp.coarseRandomOp()
+                try:
+                    ol[i] = new
+                except:
+                    ol.append(new)
+            self.opList = ol
 
-    def recombine(self, other):
-        pos = randint(1, min(self.length(), other.length()) - 1)
-        self_first_word = self.toList()[0:pos] + other.toList()[pos:]
-        other_first_word = other.toList()[0:pos] + self.toList()[pos:]
-        return (ADTOpList(self_first_word, self.opListType), ADTOpList(other_first_word, self.opListType))
+    def recombine(self, other, model='original'):
+        if model=='original':
+            pos = randint(1, min(self.length(), other.length()) - 1)
+            self_first_word = self.toList()[0:pos] + other.toList()[pos:]
+            other_first_word = other.toList()[0:pos] + self.toList()[pos:]
+            return (ADTOpList(self_first_word, self.opListType), ADTOpList(other_first_word, self.opListType))
+        if model == 'randtail':
+            return (self, other)
 
     def downCount(self):
         dc = 0
