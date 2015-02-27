@@ -120,6 +120,29 @@ class ADTOpList(object):
                 except:
                     ol.append(new)
             self.opList = ol
+        if model=='modtail':
+            print "Mutating with the newest model."
+            m = randint(0, n-1)
+            k = randint(0, self.maxl) 
+            for i in range(m, m+k):
+                try:
+                    if ol[i].opType == "Move":
+                        num = ol[i].number
+                        dir = ol[i].direction
+                        ol[i] = ADTOp.ADTMove(num, dir)
+                    elif ol[i].opType == "CC":
+                        ol[i] = ADTOp.ADTCC()
+                    else:
+                        ol[i] = ADTOp.coarseRandomOp()
+                except:
+                    if self.opListType == 'Move':
+                        new = ADTOp.coarseRandomMove()
+                    elif self.opListType == 'CC':
+                        new = ADTOp.coarseRandomCC()
+                    else:
+                        new = ADTOp.coarseRandomOp()
+                    ol.append(new)
+            self.opList = ol
 
     def recombine(self, other, model='original'):
         if model=='original':

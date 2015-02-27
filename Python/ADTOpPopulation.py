@@ -3,6 +3,7 @@ import random
 import numpy
 from datetime import datetime
 
+
 opPopulationTypes = ['Move', 'CC']
 
 class Population(object):
@@ -29,7 +30,7 @@ class Population(object):
     def size(self):
         return len(self.oplists)
 
-    def iterate(self, fit, mu=0.25):
+    def iterate(self, fit, mu=0.07):
         print "Starting to iterate"
         startiter = datetime.now()
         n = self.size()
@@ -39,6 +40,7 @@ class Population(object):
         startsort = datetime.now()
         pop1.sort(cmp=fcmp)
         print "Finished sorting. Took this long: ", datetime.now() - startsort
+        possible_survivors = []
         tfv = 0
         # maxf = 0
         # minf = 1000000
@@ -46,6 +48,9 @@ class Population(object):
         minf = fit(pop1[0])
         for ol in pop1:
             fv = fit(ol)
+            if fv > 2:
+                possible_survivors.append(ol)
+                print "     Look! We have a possible survivor: {}".format(ol.toString())
             # maxf = (fv if fv > maxf else maxf)
             # minf = (fv if fv < maxf else minf)
             tfv += fv
@@ -56,6 +61,24 @@ class Population(object):
         print "max fitness     = ", maxf
         print "min fitness     = ", minf
         print ""
+
+        # persistence is a parameter to check for a proportion of the population that succeeds in the goal
+        #   and will be forced to survive (without mutation) into the next generation
+        persistence = max(1, self.size()/10)
+
+        # takes the highest (persistence) many members of the possible_survivors in order to force
+        #   them through to the next generation
+        possible_survivors.sort()
+        if len(possible_survivors) > persistence:
+            survivors = [possible_survivors[-(i+1)] for i in range(persistence)]
+            print "    We have {} possible_survivors!.".format(len(possible_survivors))
+            for l in survivors:
+                l.toString()
+        else:
+            survivors = possible_survivors
+            print "    We have {} survivors!".format(len(survivors))
+            for l in survivors:
+                l.toString()
 
         # pop2 will be the new population
 
@@ -95,8 +118,13 @@ class Population(object):
 
                 pop2.extend(parent[0].recombine(parent[1], self.model))
                 pop3 = pop2
-        else:
-            pop3 = pop1
+        elif self.model == 'randtail' or self.model == 'modtail':
+            for i in range(len(pop1)-min(len(survivors),persistence)):
+                candidates = random.sample(pop1, 3)
+                fitnesses = map(fit, candidates)
+                best = numpy.argmax(fitnesses)
+                pop2.append(candidates[best])
+            pop3 = pop2
         # mutation
 
         print "Starting mutation"
@@ -105,6 +133,15 @@ class Population(object):
             if (random.random() < mu):
                 pop3[i].mutate(self.model)
         print "Finished mutation. Took this long: ", datetime.now() - startmut
+        
+        pop3.extend(survivors)
+        print "    And now the survivors should be included in the population."
+        print "    Survivors:"
+        for l in survivors:
+            print l.toString()
+        print "    Population:"
+        for l in pop3:
+            print l.toString()
 
         pop3.sort(cmp=fcmp)
         self.oplists = pop3
