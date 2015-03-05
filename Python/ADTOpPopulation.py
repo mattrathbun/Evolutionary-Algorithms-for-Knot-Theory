@@ -68,7 +68,7 @@ class Population(object):
 
         # takes the highest (persistence) many members of the possible_survivors in order to force
         #   them through to the next generation
-        possible_survivors.sort()
+        possible_survivors.sort(cmp=fcmp)
         if len(possible_survivors) > persistence:
             survivors = [possible_survivors[-(i+1)] for i in range(persistence)]
             print "    We have {} possible_survivors!.".format(len(possible_survivors))
@@ -141,7 +141,7 @@ class Population(object):
             print l.toString()
         print "    Population:"
         for l in pop3:
-            print "    "+l.toString()
+            print "    ", l.toString()
 
         pop3.sort(cmp=fcmp)
         self.oplists = pop3
