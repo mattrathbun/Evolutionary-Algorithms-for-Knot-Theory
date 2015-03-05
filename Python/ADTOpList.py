@@ -61,11 +61,14 @@ class ADTOpList(object):
             try:
                 op
             except NameError:
+                print "We are about to pass in applying an opList."
                 pass
             else:
                 eff = op.apply(d)
-                if eff == 1:
+#                print "eff = ", eff
+                if eff != False:
                     nl.append(op)
+#        print "nl = ", nl
         return d, ADTOpList(nl, self.opListType)
 
     def append(self, list_of_ops):
