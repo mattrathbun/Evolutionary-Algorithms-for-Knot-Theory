@@ -12,6 +12,8 @@ K = ADT.ADT([-4, -18, -22, -14, -6, -20, -8, -10, -2, -12, -16], [1, 1, 1, -1, 1
 #K = ADT.ADT([
 
 
+
+
 def fit(ol):
 #    print "Starting fit function." 
 #    startfit = datetime.now()
@@ -34,26 +36,17 @@ ol = pop.toList()
 for l in ol:
     print [op.toString() for op in l.toList()]
 
-numiterations = 30
+numiterations = 50
 
 for i in range(0,numiterations):
     print "Iteration {} of {}".format(i, numiterations)
     pop.iterate(fit)
-#        with open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a') as myfile:
-#        for l in ol:
-#            myfile.write([op.toString() for op in l.toList()]+'\n', 'a')
     for l in pop.toList():
         print [op.toString() for op in l.toList()]
 
 
 ol = pop.toList()
-#with open(""../../../../../../Dropbox (CSU Fullerton)/TestFile"", 'a') as myfile:
-#    for l in ol:
-#        myfile.write([op.toString() for op in l.toList()]+'\n', 'a')
-
-
 for l in ol:
     print [op.toString() for op in l.toList()]
 
 print "Finished script. Took: ", datetime.now() - start
-

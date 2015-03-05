@@ -141,7 +141,7 @@ class Population(object):
             print l.toString()
         print "    Population:"
         for l in pop3:
-            print l.toString()
+            print "    "+l.toString()
 
         pop3.sort(cmp=fcmp)
         self.oplists = pop3
