@@ -12,22 +12,21 @@ K = ADT.ADT([-4, -18, -22, -14, -6, -20, -8, -10, -2, -12, -16], [1, 1, 1, -1, 1
 #K = ADT.ADT([
 
 
-
-
 def fit(ol):
 #    print "Starting fit function." 
 #    startfit = datetime.now()
-    d, min_ol = ol.apply(K)
+    L = K.copy()
+    d, min_ol = ol.apply(L)
     if d.number_crossings() < 3:
         bonus = 10000
     else:
         bonus = 1
-    ccCount = ol.ccCount()
+    ccCount = min_ol.ccCount()
 #    print "Finishing fit function. Took: ", datetime.now() - startfit
-    return 1.0 + bonus/(d.number_crossings()**3.0 + ccCount**2.0 + ol.length() + 1.0)
+    return 1.0 + bonus/(d.number_crossings()**3.0 + ccCount**2.0 + min_ol.length() + 1.0)
     #return 1.0 + bonus/(d.number_crossings()**5.0 + ccCount + 1.0)
 
-pop = ADTOpPopulation.Population(10,30,5, model='modtail')
+pop = ADTOpPopulation.Population(15,30,5, model='modtail')
 
 print "pop.size() = %d\n" % (pop.size())
 
@@ -35,17 +34,26 @@ ol = pop.toList()
 for l in ol:
     print [op.toString() for op in l.toList()]
 
-numiterations = 50
+numiterations = 30
 
 for i in range(0,numiterations):
     print "Iteration {} of {}".format(i, numiterations)
     pop.iterate(fit)
-    for l in ol:
+#        with open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a') as myfile:
+#        for l in ol:
+#            myfile.write([op.toString() for op in l.toList()]+'\n', 'a')
+    for l in pop.toList():
         print [op.toString() for op in l.toList()]
 
 
 ol = pop.toList()
+#with open(""../../../../../../Dropbox (CSU Fullerton)/TestFile"", 'a') as myfile:
+#    for l in ol:
+#        myfile.write([op.toString() for op in l.toList()]+'\n', 'a')
+
+
 for l in ol:
     print [op.toString() for op in l.toList()]
 
 print "Finished script. Took: ", datetime.now() - start
+

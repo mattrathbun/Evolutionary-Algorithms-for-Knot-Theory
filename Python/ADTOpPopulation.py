@@ -30,7 +30,7 @@ class Population(object):
     def size(self):
         return len(self.oplists)
 
-    def iterate(self, fit, mu=0.07):
+    def iterate(self, fit, mu=0.15):
         print "Starting to iterate"
         startiter = datetime.now()
         n = self.size()
