@@ -1,5 +1,5 @@
 from math import *
-import random
+import random, re
 
 moves = ['R1Up', 'R1Down', 'R2Up', 'R2Down', 'R3']
 coarse_up_moves = ['R1Up', 'R2Up']
@@ -382,4 +382,38 @@ def fineRandomCC(diagram):
     n = diagram.number_crossings()
     arc = random.randint(1, n)
     return ADTCC({'arc':arc})
-
+    
+    
+# Silly helper function to spit out an integer if a string represents an integer.
+def if_int(s):
+    try:
+        int(s)
+        return int(s)
+    except ValueError:
+        return s
+        
+        
+def stringToOp(str):
+    if len(str)==2:
+        if str=='CC':
+            return ADTCC()
+        else:
+            return ADTMove(int(str[0]), str[1])
+    else:
+        if str[0:2] == "CC":
+            opType = "CC"
+            arc = if_int(re.findall('@(\S+)\)', str)[0])
+            data = {'arc':arc}
+            return ADTCC(data)
+        else:
+            opType = "Move"
+            num = int(str[0])
+            dir = str[1]
+            data = {}
+            raw_data = re.findall('([a-z]+?=[^\[]+?)', str)
+            raw_data.extend(re.findall('(\S+?=\[.+?\])', str))
+            for datum in raw_data:
+                data[re.findall('(^\S+?)=', datum)[0]] = if_int(re.findall('=(.*)$', datum)[0])
+            return ADTMove(num, dir, data)
+            
+            
