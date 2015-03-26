@@ -1,7 +1,7 @@
 import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
-import ADT, ADTOpPopulation
+import ADT, ADTOpPopulation, ADTOpPopulationSets
 from datetime import datetime
 
 print "Starting script."
@@ -31,7 +31,7 @@ def fit(ol):
     return 1.0 + bonus/(d.number_crossings()**3.0 + ccCount**2.0 + min_ol.length() + 1.0)
     #return 1.0 + bonus/(d.number_crossings()**5.0 + ccCount + 1.0)
 
-pop = ADTOpPopulation.Population(25,30,5, model='modtail')
+pop = ADTOpPopulationSets.Population(25,30,5, model='modtail')
 
 print "pop.size() = %d\n" % (pop.size())
 
