@@ -30,7 +30,7 @@ class Population(object):
     def size(self):
         return len(self.oplists)
 
-    def iterate(self, fit, mu=0.15):
+    def iterate(self, fit, mu=0.50):
         print "Starting to iterate"
         startiter = datetime.now()
         n = self.size()
@@ -49,7 +49,7 @@ class Population(object):
         for ol in pop1:
             fv = fit(ol)
             if fv > 2:
-                possible_survivors.append(ol)
+                possible_survivors.append(ol.copy())
                 print "     Look! We have a possible survivor: {}".format(ol.toString())
             # maxf = (fv if fv > maxf else maxf)
             # minf = (fv if fv < maxf else minf)
@@ -70,12 +70,12 @@ class Population(object):
         #   them through to the next generation
         possible_survivors.sort(cmp=fcmp)
         if len(possible_survivors) > persistence:
-            survivors = [possible_survivors[-(i+1)] for i in range(persistence)]
+            survivors = [possible_survivors[-(i+1)].copy() for i in range(persistence)]
             print "    We have {} possible_survivors!.".format(len(possible_survivors))
             for l in survivors:
                 l.toString()
         else:
-            survivors = possible_survivors
+            survivors = [ol.copy() for ol in possible_survivors]
             print "    We have {} survivors!".format(len(survivors))
             for l in survivors:
                 l.toString()
@@ -114,7 +114,7 @@ class Population(object):
                     candidates = random.sample(pop1, 3)
                     fitnesses = map(fit, candidates)
                     best = numpy.argmax(fitnesses)
-                    parent.append(candidates[best])
+                    parent.append(candidates[best].copy())
 
                 pop2.extend(parent[0].recombine(parent[1], self.model))
                 pop3 = pop2
@@ -123,7 +123,7 @@ class Population(object):
                 candidates = random.sample(pop1, 3)
                 fitnesses = map(fit, candidates)
                 best = numpy.argmax(fitnesses)
-                pop2.append(candidates[best])
+                pop2.append(candidates[best].copy())
             pop3 = pop2
         # mutation
 
@@ -145,4 +145,9 @@ class Population(object):
 
         pop3.sort(cmp=fcmp)
         self.oplists = pop3
+        
         print "Finished iteration. Took: ", datetime.now() - startiter
+        
+        return pop3[-1]
+        
+        

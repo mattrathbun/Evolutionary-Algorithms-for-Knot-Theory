@@ -321,7 +321,7 @@ class ADTCC(ADTOp):
             print "I don't know how to print that opType yet."
 
     def copy(self):
-        return ADTCC(opType=self.opType, data=self.data)
+        return ADTCC(data=self.data)
 
     def checkFullData(self):
         if self.opType == "CC":

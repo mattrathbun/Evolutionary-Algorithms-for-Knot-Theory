@@ -41,7 +41,7 @@ class ADTOpList(object):
     def copy(self):
         ol = []
         for i in self.opList:
-            ol.append(i)
+            ol.append(i.copy())
         return ADTOpList(ol, self.opListType)
 
 

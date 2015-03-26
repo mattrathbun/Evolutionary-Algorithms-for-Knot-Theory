@@ -128,23 +128,27 @@ class ADT(object):
         code = self.code
         orient = self.orientations
         n = self.number_crossings()
-        arc = normalise(abs(arc), 1, 2 * n)
-        if (arc % 2 == 1):
-            idx = (arc - 1) / 2
-            even = abs(code[idx])
-            sign = cmp(code[idx], 0)
-            return [arc, even, sign, orient[idx]]
+        if n > 0:
+            arc = normalise(abs(arc), 1, 2 * n)
+            if (arc % 2 == 1):
+                idx = (arc - 1) / 2
+                even = abs(code[idx])
+                sign = cmp(code[idx], 0)
+                return [arc, even, sign, orient[idx]]
+            else:
+                even = abs(arc)
+                # [0] added so that idx is an integer and not a list.
+                # (Else code[idx] does not work.)
+                # print "Arc: ", arc
+                # print "Code: ", code
+                # print "Orientations: ", orient
+                idx = [i for i, j in enumerate(code) if abs(j) == even][0]
+                odd = 2 * idx + 1
+                sign = cmp(code[idx], 0)
+                return [odd, even, sign, orient[idx]]
         else:
-            even = abs(arc)
-            # [0] added so that idx is an integer and not a list.
-            # (Else code[idx] does not work.)
-            # print "Arc: ", arc
-            # print "Code: ", code
-            # print "Orientations: ", orient
-            idx = [i for i, j in enumerate(code) if abs(j) == even][0]
-            odd = 2 * idx + 1
-            sign = cmp(code[idx], 0)
-            return [odd, even, sign, orient[idx]]
+            
+            raise TypeError("This is not actually a fundamental problem. I just want to know when/if quad is being called on the empty diagram. Probably we should build something in to detect this, because I think this is the source of an occasional error whereby idx is out of range of code.")
 
     # Helper method that takes a point at a crossing (odd or +/- even)
     # and returns the other point at that crossing (+even or odd).
@@ -314,6 +318,8 @@ class ADT(object):
         else:
             return False
         n = self.number_crossings()
+        if n == 0:
+            return False
         arc = normalise(arc, 1, 2 * n)
         if arc == 2*n:
             K = self.shiftLabel()
@@ -717,11 +723,12 @@ class ADT(object):
     def R3(self, arc, side):
         n = self.number_crossings()
         arc = normalise(arc, 1, 2 * n)
-        arcNext = self.wrap(arc + 1)
-
+        
         if n<3:
             # print "too few crossings"
             return False
+            
+        arcNext = self.wrap(arc + 1)
 
         if len(self.regions(arc,side))!=3:
             # print "not a triangle"
@@ -1036,6 +1043,8 @@ class ADT(object):
 
     def crossing_change(self, arc):
         n = self.number_crossings()
+        if n == 0:
+            return False
         arc = normalise(arc, 1, 2 * n)
         odd, even, sign, orient = self.quad(arc)
         i = (odd - 1) / 2
