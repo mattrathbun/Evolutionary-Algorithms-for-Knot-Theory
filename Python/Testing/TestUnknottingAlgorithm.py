@@ -64,7 +64,7 @@ d, min_ol = best.apply(L)
 print "The resulting diagram is:"
 print d.to_string()
 print "It has {} crossings.".format(d.number_crossings())
-print "The (effective) length of the sequence is {}".format(len(min_ol))
+print "The (effective) length of the sequence is {}".format(len(min_ol.toList()))
 print "And it has only {} crossing changes!".format(min_ol.ccCount())
 
 
