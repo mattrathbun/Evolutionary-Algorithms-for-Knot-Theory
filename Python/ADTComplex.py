@@ -89,7 +89,7 @@ class ADTComplex:
      
     def draw_graph(self):
         #pos = arf_layout(self.g)
-        pos = sfdp_layout(self.g, C=0.5, gamma=0.5)
+        pos = graph_tool.draw.sfdp_layout(self.g, C=0.5, gamma=0.5)
         # pos = radial_tree_layout(self.g,0)
         # pos = fruchterman_reingold_layout(self.g)
         # pos = sfdp_layout(self.g)
