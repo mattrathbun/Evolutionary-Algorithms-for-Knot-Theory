@@ -93,5 +93,5 @@ class ADTComplex:
         # pos = radial_tree_layout(self.g,0)
         # pos = fruchterman_reingold_layout(self.g)
         # pos = sfdp_layout(self.g)
-        graph_draw(self.g, pos=pos, vertex_text=self.g.vertex_index, vertex_fill_color=self.vtype)
+        graph_tool.draw.graph_draw(self.g, pos=pos, vertex_text=self.g.vertex_index, vertex_fill_color=self.vtype)
         #graph_draw(self.g, pos=pos, vertex_text=self.g.vertex_index, vertex_fill_color=self.vtype, output="complex.png")
