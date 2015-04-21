@@ -783,7 +783,10 @@ class ADT(object):
         ori_c = self.quad(c)[3]
 
         # check that we have three distinct edges
-        allCodes = {a,ap,b,bp,c,cp}
+        #allCodes = {a,ap,b,bp,c,cp}
+        allCodes = {a:None, ap:None, b:None, bp:None, c:None, cp:None}
+#        keys = [a,ap,b,bp,c,cp]
+#        allCodes = {key: None for key in keys}
         if len(allCodes)<6:
 #             print "WARNING: duplicate codes"
 #             print "No, THIS is where the False is coming from (5)"
