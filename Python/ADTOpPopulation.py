@@ -47,6 +47,7 @@ class Population(object):
         maxf = fit(pop1[-1])
         minf = fit(pop1[0])
         for ol in pop1:
+            ol.setOpListType = self.opPopulationType
             fv = fit(ol)
             if fv > 2:
                 possible_survivors.append(ol.copy())

@@ -52,6 +52,7 @@ def coarseRandomOp(upMoveBias=1, horizontalMoveBias=1, downMoveBias=1, CCBias=1)
     elif randOp == 'R3':
         return ADTMove(number=3, direction='H', data=None)
     elif randOp == 'CC':
+        raise TypeError("HOW IS THIS HAPPENING??")
         return ADTCC()
     else:
         raise TypeError('Unknown kind of Op.')

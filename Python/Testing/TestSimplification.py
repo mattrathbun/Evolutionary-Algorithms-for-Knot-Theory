@@ -35,7 +35,7 @@ def testSimplification(attempts, length):
         print "K is ", K.to_string()
         print "\n"
         
-        pop = ADTOpPopulationSets.Population(10,30,5, opPopulationType='Move', model='randtail')
+        pop = ADTOpPopulationSets.Population(20,30,5, opPopulationType='Move', model='randtail')
 
 #        print "pop.size() = %d\n" % (pop.size())
 
@@ -43,7 +43,7 @@ def testSimplification(attempts, length):
 #        for l in pl:
 #            print [op.toString() for op in l.toList()]
 
-        numiterations = 20
+        numiterations = 25
 
         for i in range(0,numiterations):
             print "Iteration {} of {}".format(i, numiterations)
@@ -72,7 +72,7 @@ def testSimplification(attempts, length):
         print "\n"
         if d.number_crossings() < 3:
             successes += 1
-        print "{} successes so far, out of {} attempts.".format(successes, j)
+        print "{} successes so far, out of {} attempts.".format(successes, j+1)
         print "\n"
     
     print "We had {}% success!".format(float(successes)/float(attempts)*100)

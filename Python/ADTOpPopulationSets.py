@@ -39,6 +39,10 @@ class Population(object):
         startiter = datetime.now()
         n = self.size()
         pop1 = list(self.oplists)
+        for guy in pop1:
+            print guy.opListType
+        print "\n\n\n\n"
+        
         fcmp = lambda x, y: cmp(fit(x), fit(y))
         print "Starting to sort"
         startsort = datetime.now()
@@ -129,13 +133,22 @@ class Population(object):
             pop2 = pop1[len(pop1)/2:]
             while len(pop2) < len(pop1)-min(len(survivors),persistence):
                 if self.opPopulationType == 'Move':
+                    print "SHOULD ONLY BE PRODUCING MOVES"
                     pop2.append(ADTOpList.randomMoveList(self.maxl, self.minl))
                 elif self.opPopulationType == 'CC':
+                    print "BUT NOT ONLY PRODUCING MOVES"
                     pop2.append(ADTOpList.randomCCList(self.maxl, self.minl))
                 else:
+                    print "BUT NOT ONLY PRODUCING MOVES (2)"
                     pop2.append(ADTOpList.randomOpList(self.maxl, self.minl))
 
+        print "Looking at pop2 \n\n"
+        for guy in pop2:
+            print guy.opListType
         pop3 = list(pop2)
+        print "Looking at pop3: \n\n"
+        for guy in pop3:
+            print guy.opListType
 
         # mutation
 

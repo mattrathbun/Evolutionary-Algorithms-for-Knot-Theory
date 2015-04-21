@@ -80,16 +80,22 @@ class ADTOpList(object):
         self.opList = list_of_ops + curr
 
     def mutate(self, model='original'):
+        print self.opListType
+        if self.opListType != "Move":
+            raise TypeError("SHOULD BE TYPE MOVE.")
         n = self.length()
         ol = self.toList()
         if model=='original':
             mutationType = randint(0, 4)
             if mutationType == 0:  # Randomly change one of the operations
                 if self.opListType == 'Move':
+                    print "MUTATE SHOULD ONLY BE PRODUCING MOVES"
                     ol[randint(0, n-1)] = ADTOp.coarseRandomMove()
                 elif self.opListType == 'CC':
+                    raise TypeError("MUTATE SHOULD NOT BE PRODUCING CHANGES")
                     ol[randint(0, n-1)] = ADTOp.coarseRandomCC()
                 else:
+                    raise TypeError("MUTATE SHOULD NOT BE PRODUCING ANYTHING ELSE")
                     ol[randint(0, n - 1)] = ADTOp.coarseRandomOp()
             elif mutationType == 1:  # Cyclic permutation
                 ol.append(ol[0])
@@ -114,15 +120,18 @@ class ADTOpList(object):
             for i in range(m, m+k):
                 if self.opListType == 'Move':
                     new = ADTOp.coarseRandomMove()
+                    print "The new move has type: "
                 elif self.opListType == 'CC':
                     new = ADTOp.coarseRandomCC()
                 else:
+                    raise TypeError("I think this is it.")
                     new = ADTOp.coarseRandomOp()
                 try:
                     ol[i] = new
                 except:
                     ol.append(new)
             self.opList = ol
+            print "DURING MUTATION, SELF HAS TYPE ", self.opListType
         if model=='modtail':
             print "Mutating with the newest model."
             m = randint(0, n-1)
