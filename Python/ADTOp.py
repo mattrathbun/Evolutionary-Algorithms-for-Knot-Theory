@@ -394,27 +394,27 @@ def if_int(s):
         return s
         
         
-def stringToOp(str):
-    if len(str)==2:
-        if str=='CC':
-            return ADTCC()
-        else:
-            return ADTMove(int(str[0]), str[1])
-    else:
-        if str[0:2] == "CC":
-            opType = "CC"
-            arc = if_int(re.findall('@(\S+)\)', str)[0])
-            data = {'arc':arc}
-            return ADTCC(data)
-        else:
-            opType = "Move"
-            num = int(str[0])
-            dir = str[1]
-            data = {}
-            raw_data = re.findall('([a-z]+?=[^\[]+?)', str)
-            raw_data.extend(re.findall('(\S+?=\[.+?\])', str))
-            for datum in raw_data:
-                data[re.findall('(^\S+?)=', datum)[0]] = if_int(re.findall('=(.*)$', datum)[0])
-            return ADTMove(num, dir, data)
+# def stringToOp(str):
+#     if len(str)==2:
+#         if str=='CC':
+#             return ADTCC()
+#         else:
+#             return ADTMove(int(str[0]), str[1])
+#     else:
+#         if str[0:2] == "CC":
+#             opType = "CC"
+#             arc = if_int(re.findall('@(\S+)\)', str)[0])
+#             data = {'arc':arc}
+#             return ADTCC(data)
+#         else:
+#             opType = "Move"
+#             num = int(str[0])
+#             dir = str[1]
+#             data = {}
+#             raw_data = re.findall('([a-z]+?=[^\[]+?)', str)
+#             raw_data.extend(re.findall('(\S+?=\[.+?\])', str))
+#             for datum in raw_data:
+#                 data[re.findall('(^\S+?)=', datum)[0]] = if_int(re.findall('=(.*)$', datum)[0])
+#             return ADTMove(num, dir, data)
             
             

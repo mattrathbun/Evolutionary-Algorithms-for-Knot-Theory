@@ -39,9 +39,10 @@ class Population(object):
         startiter = datetime.now()
         n = self.size()
         pop1 = list(self.oplists)
-        for guy in pop1:
-            print guy.opListType
-        print "\n\n\n\n"
+#         print "Looking at pop1"
+#         for guy in pop1:
+#             print guy.opListType
+#         print "\n\n\n\n"
         
         fcmp = lambda x, y: cmp(fit(x), fit(y))
         print "Starting to sort"
@@ -58,7 +59,7 @@ class Population(object):
             fv = fit(ol)
             if fv > 2:
                 possible_survivors.add(ol.copy())
-                print "     Look! We have a possible survivor: {}".format(ol.toString())
+#                 print "     Look! We have a possible survivor: {}".format(ol.toString())
             # maxf = (fv if fv > maxf else maxf)
             # minf = (fv if fv < maxf else minf)
             tfv += fv
@@ -81,13 +82,13 @@ class Population(object):
         if len(possible_survivors) > persistence:
             survivors = [possible_survivors[-(i+1)].copy() for i in range(persistence)]
 #            print "    We have {} possible_survivors!.".format(len(possible_survivors))
-            for l in survivors:
-                l.toString()
+#             for l in survivors:
+#                 l.toString()
         else:
             survivors = [ol.copy() for ol in possible_survivors]
 #            print "    We have {} survivors!".format(len(survivors))
-            for l in survivors:
-                l.toString()
+#             for l in survivors:
+#                 l.toString()
                 
         survivors = set(survivors)
 
@@ -133,49 +134,54 @@ class Population(object):
             pop2 = pop1[len(pop1)/2:]
             while len(pop2) < len(pop1)-min(len(survivors),persistence):
                 if self.opPopulationType == 'Move':
-                    print "SHOULD ONLY BE PRODUCING MOVES"
+#                     print "SHOULD ONLY BE PRODUCING MOVES"
                     pop2.append(ADTOpList.randomMoveList(self.maxl, self.minl))
                 elif self.opPopulationType == 'CC':
-                    print "BUT NOT ONLY PRODUCING MOVES"
+#                     print "BUT NOT ONLY PRODUCING MOVES"
                     pop2.append(ADTOpList.randomCCList(self.maxl, self.minl))
                 else:
-                    print "BUT NOT ONLY PRODUCING MOVES (2)"
+#                     print "BUT NOT ONLY PRODUCING MOVES (2)"
                     pop2.append(ADTOpList.randomOpList(self.maxl, self.minl))
 
-        print "Looking at pop2 \n\n"
-        for guy in pop2:
-            print guy.opListType
+#         print "Looking at pop2 \n\n"
+#         for guy in pop2:
+#             print guy.opListType
         pop3 = list(pop2)
-        print "Looking at pop3: \n\n"
-        for guy in pop3:
-            print guy.opListType
+#         print "Looking at pop3: \n\n"
+#         for guy in pop3:
+#             print guy.opListType
 
         # mutation
 
-        print "Starting mutation"
+        print "    Starting mutation"
         startmut = datetime.now()
         for i in range(len(pop3)):
             if (random.random() < mu):
                 pop3[i].mutate(self.model)
-        print "Finished mutation. Took this long: ", datetime.now() - startmut
+        print "    Finished mutation. Took this long: ", datetime.now() - startmut
         
         pop3 = set(pop3)
         pop3.update(survivors)
-        print "    And now the survivors should be included in the population."
-        print "    Survivors:"
-        for l in survivors:
-            print l.toString()
+#         print "    And now the survivors should be included in the population."
+#         print "    Survivors:"
+#         for l in survivors:
+#             print l.toString()
         print "    Population:"
         for l in pop3:
             print "    ", l.toString()
 
         pop3 = list(pop3)
         
+
+        print "    Re-sorting..."
+        startsecondsort = datetime.now()
         pop3.sort(cmp=fcmp)
+        print "    Finished second sort. Took this long: ", datetime.now() - startsecondsort
         
         self.oplists = set(pop3)
         
         print "Finished iteration. Took: ", datetime.now() - startiter
+        print "\n"
         
         return pop3[-1]
         
