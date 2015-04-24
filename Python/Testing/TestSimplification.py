@@ -35,7 +35,7 @@ def testSimplification():
 #        for l in pl:
 #            print [op.toString() for op in l.toList()]
 
-    numiterations = 2
+    numiterations = 10
     iteration = 0
     while True:
         print "Iteration {} of {}".format(iteration+1, numiterations)
@@ -72,7 +72,7 @@ attempts = 10
 successes = 0
 for j in range(attempts):
     K = ADT.ADT([],[])
-    length = 14
+    length = 12
     while K.number_crossings() < length:
         M = ADTOp.coarseRandomMove(upBias=3)
         M.apply(K)
