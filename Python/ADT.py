@@ -849,6 +849,8 @@ class ADT(object):
         if n == 0:
             return possible_moves
         else:
+            possible_moves.append(
+                ADTOp.ADTMove(0, 'H', {}))
             left_reg = len(self.regions(1, 'L'))
             right_reg = len(self.regions(1, 'R'))
             if left_reg == 1 or right_reg == 1:

@@ -71,8 +71,6 @@ def coarseRandomOp(upMoveBias=1, horizontalMoveBias=1, downMoveBias=1, CCBias=1)
         return ADTMove(number=2, direction='D', data=None)
     elif randOp == 'R3':
         return ADTMove(number=3, direction='H', data=None)
-    elif randOp == 'Shift':
-        return ADTMove(number=0, direction='H', data=None)
     elif randOp == 'CC':
         raise TypeError("HOW IS THIS HAPPENING??")
         return ADTCC()
@@ -262,7 +260,7 @@ class ADTMove(ADTOp):
                 self.fillData(random.choice(possible_data))
 
     def apply(self, knot):
-    	K = knot.copy()
+        K = knot.copy()
         if not self.checkFullData():
             self.simpleRandomData(knot)
             if not self.checkFullData():
@@ -328,7 +326,7 @@ def simpleCoarseRandomMove(upBias=1, horizontalBias=1, downBias=1):
     # likelihood of choosing an element from the corresponding list by
     # exactly this factor.
     if randOp == 'Shift':
-        return ADTMove(number=1, direction='H', data={})
+        return ADTMove(number=0, direction='H', data={})
     if randOp == 'R1Up':
         return ADTMove(number=1, direction='U', data=None)
     elif randOp == 'R1Down':
