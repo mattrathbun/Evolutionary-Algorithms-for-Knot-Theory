@@ -1,10 +1,10 @@
 from math import *
 import random, re
 
-moves = ['R1Up', 'R1Down', 'R2Up', 'R2Down', 'R3']
+moves = ['R1Up', 'R1Down', 'R2Up', 'R2Down', 'R3', 'Shift']
 coarse_up_moves = ['R1Up', 'R2Up']
 coarse_down_moves = ['R1Down', 'R2Down']
-coarse_horizontal_moves = ['R3']
+coarse_horizontal_moves = ['R3', 'Shift']
 changes = ['CC']
 ops = moves + changes
 
@@ -36,6 +36,26 @@ class ADTOp(object):
     def toString(self):
         return str(self.opType)
 
+def simpleCoarseRandomOp(upMoveBias=1, horizontalMoveBias=1, downMoveBias=1, CCBias=1):
+    randOp = random.choice(upMoveBias * coarse_up_moves + downMoveBias *
+                           coarse_down_moves + horizontalMoveBias * coarse_horizontal_moves
+                           + CCBias * changes)
+    if randOp == 'R1Up':
+        return ADTMove(number=1, direction='U', data=None)
+    elif randOp == 'R1Down':
+        return ADTMove(number=1, direction='D', data=None)
+    elif randOp == 'R2Up':
+        return ADTMove(number=2, direction='U', data=None)
+    elif randOp == 'R2Down':
+        return ADTMove(number=2, direction='D', data=None)
+    elif randOp == 'R3':
+        return ADTMove(number=3, direction='H', data=None)
+    elif randOp == 'Shift':
+        return ADTMove(number=0, direction='H', data={})
+    elif randOp == 'CC':
+        return ADTCC()
+    else:
+        raise TypeError('Unknown kind of Op.')
 
 def coarseRandomOp(upMoveBias=1, horizontalMoveBias=1, downMoveBias=1, CCBias=1):
     randOp = random.choice(upMoveBias * coarse_up_moves + downMoveBias *
@@ -51,12 +71,17 @@ def coarseRandomOp(upMoveBias=1, horizontalMoveBias=1, downMoveBias=1, CCBias=1)
         return ADTMove(number=2, direction='D', data=None)
     elif randOp == 'R3':
         return ADTMove(number=3, direction='H', data=None)
+    elif randOp == 'Shift':
+        return ADTMove(number=0, direction='H', data=None)
     elif randOp == 'CC':
         raise TypeError("HOW IS THIS HAPPENING??")
         return ADTCC()
     else:
         raise TypeError('Unknown kind of Op.')
 
+def simpleFineRandomOp(diagram):
+    possible_ops = diagram.simpleFinePossibleOps()
+    op = random.choice(possible_ops)
 
 def fineRandomOp(diagram):
     possible_ops = diagram.finePossibleOps()
@@ -65,7 +90,7 @@ def fineRandomOp(diagram):
 
 
 
-## 'Moves' specifically refer to Reidemeister moves operating on ADT objects
+## 'Moves' specifically refer to Reidemeister moves operating on ADT objects or a shift in label.
 
 class ADTMove(ADTOp):
 
@@ -103,6 +128,9 @@ class ADTMove(ADTOp):
         return str(self.number) + str(self.direction)
 
     def toString(self):
+        if self.number == 0 and self.direction == 'H':
+            if self.checkFullData():
+                return "Shift"
         if self.number == 1 and self.direction == 'U':
             if self.checkFullData():
                 return "1U(pos={}, side={}, sign={})".format(str(self.data['arc']), str(self.data['side']), str(self.data['sign']))
@@ -136,6 +164,8 @@ class ADTMove(ADTOp):
         return ADTMove(number=self.number, direction=self.direction, data=self.data)
 
     def checkFullData(self):
+        if self.number == 0:
+            return True
         if not self.data:
             return False
         if self.number == 1:
@@ -175,8 +205,27 @@ class ADTMove(ADTOp):
         else:
             return False
 
+    def simpleFinePossibleMoveRequest(self, diagram):
+        return diagram.simpleFinePossibleMoves()
+
     def finePossibleMovesRequest(self, diagram):
         return diagram.finePossibleMoves()
+
+    def simpleCoarsePossibleDataRequest(self, diagram):
+        if self.number == 0 and self.direction == 'H':
+            return diagram.simplePossibleShift()
+        if self.number == 1 and self.direction == 'U':
+            return diagram.simplePossibleR1Up()
+        elif self.number == 1 and self.direction == 'D':
+            return diagram.simplePossibleR1Down()
+        elif self.number == 2 and self.direction == 'U':
+            return diagram.simplePossibleR2Up()
+        elif self.number == 2 and self.direction == 'D':
+            return diagram.simplePossibleR2Down()
+        elif self.number == 3 and self.direction == 'H':
+            return diagram.simplePossibleR3()
+        else:
+            raise TypeError('Unknown kind of Move.')
 
     def coarsePossibleDataRequest(self, diagram):
         if self.number == 1 and self.direction == 'U':
@@ -196,6 +245,14 @@ class ADTMove(ADTOp):
         if not self.checkFullData():
             self.data = data
 
+    def simpleRandomData(self, knot):
+        if not self.checkFullData():
+            possible_data = self.simpleCoarsePossibleDataRequest(knot)
+            if possible_data == []:
+                pass
+            else:
+                self.fillData(random.choice(possible_data))
+
     def randomData(self, knot):
         if not self.checkFullData():
             possible_data = self.coarsePossibleDataRequest(knot)
@@ -207,11 +264,13 @@ class ADTMove(ADTOp):
     def apply(self, knot):
     	K = knot.copy()
         if not self.checkFullData():
-            self.randomData(knot)
+            self.simpleRandomData(knot)
             if not self.checkFullData():
                 return False
 #         print "Trying to apply move: ", self.toString()
 #         print "to diagram: ", knot.to_string()
+        if self.number == 0 and self.direction == "H":
+            knot.shiftLabel()
         if self.number == 1 and self.direction == "U":
             knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
         elif self.number == 1 and self.direction == "D":
@@ -261,6 +320,28 @@ class ADTMove(ADTOp):
 #                 'What kind of move are you, and how did you get this far?')
 
 
+def simpleCoarseRandomMove(upBias=1, horizontalBias=1, downBias=1):
+    randOp = random.choice(upBias * coarse_up_moves + downBias *
+                           coarse_down_moves + horizontalBias * coarse_horizontal_moves)
+    # We introduce here the possibility for bias. The 3 optional
+    # parameters default to 1, but can be attuned to multiply the
+    # likelihood of choosing an element from the corresponding list by
+    # exactly this factor.
+    if randOp == 'Shift':
+        return ADTMove(number=1, direction='H', data={})
+    if randOp == 'R1Up':
+        return ADTMove(number=1, direction='U', data=None)
+    elif randOp == 'R1Down':
+        return ADTMove(number=1, direction='D', data=None)
+    elif randOp == 'R2Up':
+        return ADTMove(number=2, direction='U', data=None)
+    elif randOp == 'R2Down':
+        return ADTMove(number=2, direction='D', data=None)
+    elif randOp == 'R3':
+        return ADTMove(number=3, direction='H', data=None)
+    else:
+        raise TypeError('Unknown kind of Move.')
+
 
 def coarseRandomMove(upBias=1, horizontalBias=1, downBias=1):
     randOp = random.choice(upBias * coarse_up_moves + downBias *
@@ -282,6 +363,10 @@ def coarseRandomMove(upBias=1, horizontalBias=1, downBias=1):
     else:
         raise TypeError('Unknown kind of Move.')
 
+def simpleFineRandomMove(diagram):
+    possible_moves = diagram.simpleFinePossibleMoves()
+    move = random.choice(possible_moves)
+    return move
 
 def fineRandomMove(diagram):
     possible_moves = diagram.finePossibleMoves()
@@ -333,12 +418,23 @@ class ADTCC(ADTOp):
         else:
             return False
             
+    def simplePossibleCCRequest(self, diagram):
+        return diagram.simpleFinePossibleCC()
+    
     def possibleCCRequest(self, diagram):
         return diagram.finePossibleCC()
 
     def fillData(self, data):
         if not self.checkFullData():
             self.data = data
+
+    def simpleRandomData(self, knot):
+        if not self.checkFullData():
+            possible_data = self.simplePossibleCCRequest(knot)
+            if possible_data == []:
+                pass
+            else:
+                self.fillData(random.choice(possible_data))
 
     def randomData(self, knot):
         if not self.checkFullData():
@@ -351,7 +447,7 @@ class ADTCC(ADTOp):
     def apply(self, knot):
         K = knot.copy()
         if not self.checkFullData():
-            self.randomData(knot)
+            self.simpleRandomData(knot)
             if not self.checkFullData():
                 return False
 #         print "Trying to apply change: ", self.toString()
@@ -374,10 +470,14 @@ class ADTCC(ADTOp):
             print "Became: ", knot.to_string()
             raise TypeError("We have a problem!!!")
 
+def simpleCoarseRandomCC():
+    return ADTCC()
 
 def coarseRandomCC():
     return ADTCC()
 
+def simpleFineRandomCC(diagram):
+    return ADTCC({'arc':1})
 
 def fineRandomCC(diagram):
     n = diagram.number_crossings()

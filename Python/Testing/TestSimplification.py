@@ -27,7 +27,7 @@ def fit(ol):
 
 def testSimplification():
 
-    pop = ADTOpPopulationSets.Population(20,30,5, opPopulationType='Move', model='randtail')
+    pop = ADTOpPopulationSets.Population(20,35,5, opPopulationType='Move', model='randtail')
 
 #        print "pop.size() = %d\n" % (pop.size())
 
@@ -35,7 +35,7 @@ def testSimplification():
 #        for l in pl:
 #            print [op.toString() for op in l.toList()]
 
-    numiterations = 10
+    numiterations = 20
     iteration = 0
     while True:
         print "Iteration {} of {}".format(iteration+1, numiterations)
@@ -68,11 +68,11 @@ def testSimplification():
                 return 0
         
         
-attempts = 10
+attempts = 1000
 successes = 0
 for j in range(attempts):
     K = ADT.ADT([],[])
-    length = 12
+    length = 14
     while K.number_crossings() < length:
         M = ADTOp.coarseRandomMove(upBias=3)
         M.apply(K)

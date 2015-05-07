@@ -833,6 +833,58 @@ class ADT(object):
         # print "*************************"
 
         return True
+        
+# Generates a list of all possible moves (with data) that can be performed at strand 1
+    def simpleFinePossibleMoves(self):
+        possible_moves = []
+        n = self.number_crossings()
+        possible_moves.append(
+            ADTOp.ADTMove(1, 'U', {'arc': 1, 'side': 'L', 'sign': 1}))
+        possible_moves.append(
+            ADTOp.ADTMove(1, 'U', {'arc': 1, 'side': 'L', 'sign': -1}))
+        possible_moves.append(
+            ADTOp.ADTMove(1, 'U', {'arc': 1, 'side': 'R', 'sign': 1}))
+        possible_moves.append(
+            ADTOp.ADTMove(1, 'U', {'arc': 1, 'side': 'R', 'sign': -1}))
+        if n == 0:
+            return possible_moves
+        else:
+            left_reg = len(self.regions(1, 'L'))
+            right_reg = len(self.regions(1, 'R'))
+            if left_reg == 1 or right_reg == 1:
+                possible_moves.append(ADTOp.ADTMove(1, 'D', {'arc': 1}))
+            # This precludes listing R2Up moves on a single-crossing or no-crossing diagram.
+            if ((left_reg > 1) and (n > 1)):
+                candidates = list(self.regions(1, 'L'))
+                candidates.remove([1, 2])
+                for j in candidates:
+                    possible_moves.append(
+                        ADTOp.ADTMove(2, 'U', {'arc': 1, 'side': 'L', 'target': j}))
+            # This precludes listing R2Up moves on a single-crossing or
+            # no-crossing diagram.
+            if right_reg > 1 and n > 1:
+                candidates = list(self.regions(1, 'R'))
+                candidates.remove([1, 2])
+                for j in candidates:
+                    possible_moves.append(
+                        ADTOp.ADTMove(2, 'U', {'arc': 1, 'side': 'R', 'target': j}))
+            if (left_reg == 2 or right_reg == 2) and n > 1:
+                i1 = index(1, self.code)
+                i2 = index(2, self.code)
+                o1 = self.orientations[i1]
+                o2 = self.orientations[i2]
+                if o1 == -o2:
+                    possible_moves.append(ADTOp.ADTMove(2, 'D', {'arc': 1}))
+            if left_reg == 3:
+                if self.quad(1)[2] == -self.quad(2)[2]:
+                    possible_moves.append(
+                        ADTOp.ADTMove(3, 'H', {'arc': i, 'side': 'L'}))
+            if right_reg == 3:
+                if self.quad(1)[2] == -self.quad(2)[2]:
+                    possible_moves.append(
+                        ADTOp.ADTMove(3, 'H', {'arc': 1, 'side': 'R'}))
+        return possible_moves
+            
 
 # Generates a list of all possible moves (with data) that can be performed on a diagram.
     def finePossibleMoves(self):
@@ -894,11 +946,26 @@ class ADT(object):
                         ADTOp.ADTMove(3, 'H', {'arc': i, 'side': 'R'}))
         return possible_moves
 
+    def simpleFineRandomMove(self):
+        possible_moves = self.simpleFinePossibleMoves()
+        move - random.choice(possible_moves)
+
     def fineRandomMove(self):
         possible_moves = self.finePossibleMoves()
         move = random.choice(possible_moves)
         return move
 
+    def simplePossibleShift(self):
+        return {}
+
+    def simplePossibleR1Up(self):
+        possible_data = []
+        n = self.number_crossings()
+        for j in ['L', 'R']:
+            for k in [1, -1]:
+                possible_data.append({'arc': 1, 'side': j, 'sign': k})
+        return possible_data
+    
     def possibleR1Up(self):
         possible_data = []
         n = self.number_crossings()
@@ -913,12 +980,39 @@ class ADT(object):
                     possible_data.append({'arc': 1, 'side': j, 'sign': k})
         return possible_data
 
+    def simplePossibleR1Down(self):
+        possible_data = []
+        n = self.number_crossings()
+        if len(self.regions(1, 'L')) == 1 or len(self.regions(1, 'R')) == 1:
+                possible_data.append({'arc': 1})
+        return possible_data
+    
     def possibleR1Down(self):
         possible_data = []
         n = self.number_crossings()
         for i in range(1, 2 * n + 1):
             if len(self.regions(i, 'L')) == 1 or len(self.regions(i, 'R')) == 1:
                 possible_data.append({'arc': i})
+        return possible_data
+
+    def simplePossibleR2Up(self):
+        possible_data = []
+        n = self.number_crossings()
+        # This precludes listing R2Up moves on a single-crossing or no-crossing
+        # diagram.
+        if n > 1:
+            if len(self.regions(1, 'L')) > 1:
+                    left_reg = list(self.regions(1, 'L'))
+                    left_reg.remove([1, 2])
+                    for j in left_reg:
+                        possible_data.append(
+                            {'arc': 1, 'side': 'L', 'target': j})
+            if len(self.regions(1, 'R')) > 1:
+                right_reg = list(self.regions(1, 'R'))
+                right_reg.remove([1, 2])
+                for j in right_reg:
+                    possible_data.append(
+                        {'arc': 1, 'side': 'R', 'target': j})
         return possible_data
 
     def possibleR2Up(self):
@@ -942,6 +1036,18 @@ class ADT(object):
                             {'arc': i, 'side': 'R', 'target': j})
         return possible_data
 
+    def simplePossibleR2Down(self):
+        possible_data = []
+        n = self.number_crossings()
+        if len(self.regions(1, 'L')) == 2 or len(self.regions(1, 'R')) == 2:
+            i1 = index(1, self.code)
+            i2 = index(2, self.code)
+            o1 = self.orientations[i1]
+            o2 = self.orientations[i2]
+            if o1 == -o2:
+                possible_data.append({'arc': 1})
+        return possible_data
+
     def possibleR2Down(self):
         possible_data = []
         n = self.number_crossings()
@@ -953,6 +1059,17 @@ class ADT(object):
                 o2 = self.orientations[i2]
                 if o1 == -o2:
                     possible_data.append({'arc': i})
+        return possible_data
+
+    def simplePossibleR3(self):
+        possible_data = []
+        n = self.number_crossings()
+        if len(self.regions(1, 'L')) == 3:
+            if self.quad(1)[2] != self.quad(2):
+                possible_data.append({'arc': 1, 'side': 'L'})
+        if len(self.regions(1, 'R')) == 3:
+            if self.quad(1)[2] != self.quad(2):
+                possible_data.append({'arc': 1, 'side': 'R'})
         return possible_data
 
     def possibleR3(self):
@@ -967,6 +1084,8 @@ class ADT(object):
                     possible_data.append({'arc': i, 'side': 'R'})
         return possible_data
 
+    def simpleFinePossibleCC(self):
+        return {'arc': 1}
 
     def finePossibleCC(self):
         possible_data = []
@@ -975,12 +1094,19 @@ class ADT(object):
             possible_data.append({'arc' : i})
         return possible_data
 
+    def simpleFineRandomCC(self):
+        possible_changes = self.simpleFinePossibleCC()
+        change = random.choice(possible_changes)
+        return ADTOp.ADTCC(change)
 
     def fineRandomCC(self):
         possible_changes = self.finePossibleCC()
         change = random.choice(possible_changes)
         return ADTOp.ADTCC(change)
 
+    def simpleFinePossibleOps(self):
+        possible_ops = self.simpleFinePossibleMoves() + self.simpleFinePossibleCC()
+        return possible_ops
 
     def finePossibleOps(self):
         possible_ops = self.finePossibleMoves() + self.finePossibleCC()
