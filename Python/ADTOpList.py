@@ -90,13 +90,13 @@ class ADTOpList(object):
             if mutationType == 0:  # Randomly change one of the operations
                 if self.opListType == 'Move':
 #                     print "MUTATE SHOULD ONLY BE PRODUCING MOVES"
-                    ol[randint(0, n-1)] = ADTOp.coarseRandomMove()
+                    ol[randint(0, n-1)] = ADTOp.simpleCoarseRandomMove()
                 elif self.opListType == 'CC':
 #                     raise TypeError("MUTATE SHOULD NOT BE PRODUCING CHANGES")
-                    ol[randint(0, n-1)] = ADTOp.coarseRandomCC()
+                    ol[randint(0, n-1)] = ADTOp.simpleCoarseRandomCC()
                 else:
 #                     raise TypeError("MUTATE SHOULD NOT BE PRODUCING ANYTHING ELSE")
-                    ol[randint(0, n - 1)] = ADTOp.coarseRandomOp()
+                    ol[randint(0, n - 1)] = ADTOp.simpleCoarseRandomOp()
             elif mutationType == 1:  # Cyclic permutation
                 ol.append(ol[0])
                 del ol[0]
@@ -107,11 +107,11 @@ class ADTOpList(object):
                 del ol[randint(0, n - 1)]
             elif mutationType == 4:  # Insert a random operation
                 if self.opListType == 'Move':
-                    ol.insert(randint(0, n-1), ADTOp.coarseRandomMove())
+                    ol.insert(randint(0, n-1), ADTOp.simpleCoarseRandomMove())
                 elif self.opListType == 'CC':
-                    ol.insert(randint(0, n-1), ADTOp.coarseRandomCC())
+                    ol.insert(randint(0, n-1), ADTOp.simpleCoarseRandomCC())
                 else:
-                    ol.insert(randint(0, n - 1), ADTOp.coarseRandomOp())
+                    ol.insert(randint(0, n - 1), ADTOp.simpleCoarseRandomOp())
             self.opList = ol
         if model=='randtail':
 #             print "Mutating with the new model."
@@ -119,13 +119,13 @@ class ADTOpList(object):
             k = randint(0, self.maxl) 
             for i in range(m, m+k):
                 if self.opListType == 'Move':
-                    new = ADTOp.coarseRandomMove()
+                    new = ADTOp.simpleCoarseRandomMove()
 #                     print "The new move has type: "
                 elif self.opListType == 'CC':
-                    new = ADTOp.coarseRandomCC()
+                    new = ADTOp.simpleCoarseRandomCC()
                 else:
 #                     raise TypeError("I think this is it.")
-                    new = ADTOp.coarseRandomOp()
+                    new = ADTOp.simpleCoarseRandomOp()
                 try:
                     ol[i] = new
                 except:
@@ -145,14 +145,14 @@ class ADTOpList(object):
                     elif ol[i].opType == "CC":
                         ol[i] = ADTOp.ADTCC()
                     else:
-                        ol[i] = ADTOp.coarseRandomOp()
+                        ol[i] = ADTOp.simpleCoarseRandomOp()
                 except:
                     if self.opListType == 'Move':
-                        new = ADTOp.coarseRandomMove()
+                        new = ADTOp.simpleCoarseRandomMove()
                     elif self.opListType == 'CC':
-                        new = ADTOp.coarseRandomCC()
+                        new = ADTOp.simpleCoarseRandomCC()
                     else:
-                        new = ADTOp.coarseRandomOp()
+                        new = ADTOp.simpleCoarseRandomOp()
                     ol.append(new)
             self.opList = ol
 
@@ -201,7 +201,7 @@ def randomOpList(maxl, minl, upBias=1, horizontalBias=1, downBias=1, CCBias=1):
     length = randint(minl, maxl)
     ops = []
     for i in range(0, length):
-        ops.append(ADTOp.coarseRandomOp(upBias, horizontalBias, downBias, CCBias))
+        ops.append(ADTOp.simpleCoarseRandomOp(upBias, horizontalBias, downBias, CCBias))
     return ADTOpList(ops)
     
 def randomMoveList(maxl, minl, upBias = 1, horizontalBias = 1, downBias = 1):
