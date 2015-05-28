@@ -6,7 +6,6 @@ import ADT, ADTOp, ADTOpList, ADTOpPopulation
 
 n = 40
 
-
 K = ADT.ADT([],[])
 
 path = [K]

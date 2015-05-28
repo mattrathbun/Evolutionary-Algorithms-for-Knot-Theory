@@ -177,11 +177,14 @@ class ADT(object):
     # These returned arcs are represented as two-element lists, from
     # vertex to vertex (with positive labels).
 
-    # Big Note: regions does not return the correct list when applied to a diagram with only a single crossing.
-    #       In particular, regardless of the side selected, the list will be only a single item long,
-    #       indicating only the edge determined by the parameter arc.
-    #       This allows regions to be used correctly with R1 Up/Down moves [CHECK THIS], as well as R3 moves [CHECK THIS],
-        #       and R2Down moves, but NOT with R2Up moves.
+    # Big Note: regions does not return the correct list when applied
+    # to a diagram with only a single crossing.
+    # In particular, regardless of the side selected,
+    # the list will be only a single item long,
+    # indicating only the edge determined by the parameter arc.
+    # This allows regions to be used correctly with R1 Up/Down moves
+    # [CHECK THIS], as well as R3 moves [CHECK THIS],
+    # and R2Down moves, but NOT with R2Up moves.
 
     def regions(self, arc, side):
         side = str(side).lower()
@@ -203,7 +206,7 @@ class ADT(object):
         tail = arc
         head = self.wrap(arc + 1)
 #        if n == 1:
-#           output = [[tail, head], [head, tail]] ###############################
+#           output = [[tail, head], [head, tail]] ##########################
 #        else:
         while True:
             tail = self.jump(head)
