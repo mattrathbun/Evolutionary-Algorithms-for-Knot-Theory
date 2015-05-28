@@ -240,8 +240,10 @@ class ADT(object):
         for i in temp:
             new_code.append(i[2] * i[1])
             new_orients.append(i[3])
+        self.code = new_code
+        self.orientations = new_orients
         return ADT(new_code, new_orients)
-
+    
     # Method which tests whether two codes correspond to the same diagram by testing all
     # the label-shifts of K.
 
