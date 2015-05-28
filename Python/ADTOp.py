@@ -265,11 +265,11 @@ class ADTMove(ADTOp):
             self.simpleRandomData(knot)
             if not self.checkFullData():
                 return False
-#         print "Trying to apply move: ", self.toString()
-#         print "to diagram: ", knot.to_string()
+        print "Trying to apply move: ", self.toString(), " ", self.number," ", self.direction
+        print "to diagram: ", knot.to_string()
         if self.number == 0 and self.direction == "H":
             knot.shiftLabel()
-        if self.number == 1 and self.direction == "U":
+        elif self.number == 1 and self.direction == "U":
             knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
         elif self.number == 1 and self.direction == "D":
             knot.R1Down(arc=self.data['arc'])
