@@ -226,7 +226,7 @@ class ADT(object):
         return output
 
     # Method which shifts the labeling of a diagram by one (with the same orientation) to return
-    # a new ADT object with a different code representing the diagram.
+    # a new ADT object with a different code representing the diagram. (The label 1 moves to the location of 2, etc.)
 
     def shiftLabel(self):
         new_code = []
@@ -1090,7 +1090,7 @@ class ADT(object):
         return possible_data
 
     def simpleFinePossibleCC(self):
-        return {'arc': 1}
+        return [{'arc': 1}]
 
     def finePossibleCC(self):
         possible_data = []

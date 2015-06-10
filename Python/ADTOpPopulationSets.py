@@ -32,7 +32,7 @@ class Population(object):
         return list(self.oplists)
         
     def toString(self):
-        for in in list(self.oplists):
+        for i in list(self.oplists):
             print i.toString()
 
     def size(self):

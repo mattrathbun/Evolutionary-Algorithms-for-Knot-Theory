@@ -9,6 +9,7 @@ start = datetime.now()
 
 #K = ADT.ADT([6, -2, -10, -14, 4, 12, 8, 16], [-1, -1, 1, 1, -1, 1, -1, -1])
 
+# The knot 7_6
 K = ADT.ADT([10, 8, 14, 4, 12, 2, 6], [1, -1, 1, -1, 1, 1, 1])
 
 #K = ADT.ADT([-4, -18, -22, -14, -6, -20, -8, -10, -2, -12, -16], [1, 1, 1, -1, 1, -1, -1, 1, 1, -1, 1])
@@ -32,7 +33,7 @@ def fit(ol):
     #return 1.0 + bonus/(d.number_crossings()**5.0 + ccCount + 1.0)
 
 #pop = ADTOpPopulationSets.Population(25,30,5, model='randtail')
-pop = ADTOpPopulationSets.Population(15,30,5, model='original')
+pop = ADTOpPopulationSets.Population(25,30,5, model='original')
 
 print "pop.size() = %d\n" % (pop.size())
 
@@ -40,7 +41,7 @@ pl = pop.toList()
 for l in pl:
     print [op.toString() for op in l.toList()]
 
-numiterations = 10
+numiterations = 100
 
 for i in range(1,numiterations):
     print "Iteration {} of {}".format(i, numiterations)
