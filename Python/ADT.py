@@ -267,7 +267,7 @@ class ADT(object):
                     #                   print "    Not an exact match."
                     #                   print "    ", self.to_string(), " is not equal to ", around.to_string()
                     #                   print "    Let's try shifting labels."
-                    around = around.shiftLabel()
+                    around.shiftLabel()
             return False
 
     # Methods that perform a Reidemeister 1 Move, introducing a single
@@ -324,7 +324,8 @@ class ADT(object):
             return False
         arc = normalise(arc, 1, 2 * n)
         if arc == 2*n:
-            K = self.shiftLabel()
+            K = self.copy()
+            K.shiftLabel()
             self.code = K.code
             self.orientations = K.orientations
             arc = self.wrap(arc - 1)
@@ -409,7 +410,7 @@ class ADT(object):
         while new_arc != 2*n:
             count += 1
 #             print "Shifting label...{} times so far.".format(count)
-            K = K.shiftLabel()
+            K.shiftLabel()
             new_arc = K.wrap(new_arc - 1)
             tail = K.wrap(tail - 1)
             head = K.wrap(head - 1)

@@ -11,7 +11,7 @@ Kname = "trefoil"
 print "%s : %s\n" % (Kname, K.to_string())
 
 n = 1
-moves = ADTOpList.randomMoveList(n, n, upBias=5, downBias=5).toList()
+moves = ADTOpList.randomMoveList(n, n).toList()
 print "We have a list of moves."
 for i in moves:
     print i.toString()
