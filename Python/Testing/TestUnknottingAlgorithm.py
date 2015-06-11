@@ -21,15 +21,22 @@ K = ADT.ADT([10, 8, 14, 4, 12, 2, 6], [1, -1, 1, -1, 1, 1, 1])
 def fit(ol):
 #    print "Starting fit function." 
 #    startfit = datetime.now()
-    L = K.copy()
-    d, min_ol = ol.apply(L)
-    if d.number_crossings() < 3:
-        bonus = 10000
-    else:
-        bonus = 1
-    ccCount = min_ol.ccCount()
+    if ol.fitness == float('inf'):
+        L = K.copy()
+        d, min_ol = ol.apply(L)
+        if d.number_crossings() < 3:
+            bonus = 10000
+        else:
+            bonus = 1
+        ccCount = min_ol.ccCount()
 #    print "Finishing fit function. Took: ", datetime.now() - startfit
-    return 1.0 + bonus/(d.number_crossings()**3.0 + ccCount**2.0 + min_ol.length() + 1.0)
+        fitness = 1.0 + bonus/(d.number_crossings()**3.0 + ccCount**2.0 + min_ol.length() + 1.0)
+        ol.setFitness = fitness
+        return fitness
+    elif isinstance(ol.fitness, float):
+        return ol.fitness
+    else:
+        raise TypeError("Not sure what self.fitness is.")
     #return 1.0 + bonus/(d.number_crossings()**5.0 + ccCount + 1.0)
 
 #pop = ADTOpPopulationSets.Population(25,30,5, model='randtail')
@@ -44,6 +51,9 @@ for l in pl:
 numiterations = 100
 
 for i in range(1,numiterations):
+    print "\n"
+    print "\n"
+    print "\n"
     print "Iteration {} of {}".format(i, numiterations)
     best = pop.iterate(fit)
     for l in pop.toList():

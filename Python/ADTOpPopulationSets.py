@@ -1,6 +1,7 @@
 import ADTOpList
 import random
 import numpy
+from operator import attrgetter
 from datetime import datetime
 
 
@@ -174,19 +175,26 @@ class Population(object):
         for l in pop3:
             print "    ", l.toString()
 
-        pop3 = list(pop3)
+ ##       pop3 = list(pop3)
         
 
-        print "    Re-sorting..."
-        startsecondsort = datetime.now()
-        pop3.sort(cmp=fcmp)
-        print "    Finished second sort. Took this long: ", datetime.now() - startsecondsort
-        
+#        print "    Re-sorting..."
+#        startsecondsort = datetime.now()
+#        pop3.sort(cmp=fcmp)
+#        print "    Finished second sort. Took this long: ", datetime.now() - startsecondsort
+                
         self.oplists = set(pop3)
+        
+        print "Starting maximization of resulting population."
+        startmax = datetime.now()
+        best = max(pop3, key = attrgetter('fitness'))
+        print "Finished maximization."
+        print "\n"
         
         print "Finished iteration. Took: ", datetime.now() - startiter
         print "\n"
-        
-        return pop3[-1]
+
+        return best                
+#        return pop3[-1]
         
         
