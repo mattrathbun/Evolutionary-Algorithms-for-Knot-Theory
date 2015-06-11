@@ -21,7 +21,7 @@ K = ADT.ADT([10, 8, 14, 4, 12, 2, 6], [1, -1, 1, -1, 1, 1, 1])
 def fit(ol):
 #    print "Starting fit function." 
 #    startfit = datetime.now()
-    if ol.fitness == float('inf'):
+    if ol.fitness == -float('inf'):
         L = K.copy()
         d, min_ol = ol.apply(L)
         if d.number_crossings() < 3:

@@ -11,7 +11,7 @@ class ADTOpList(object):
         self.opListType = opListType
         self.minl = minl
         self.maxl = maxl
-        self.fitness = float('inf')
+        self.fitness = -float('inf')
 
     def toList(self):
         return self.opList
@@ -115,7 +115,7 @@ class ADTOpList(object):
                 else:
                     ol.insert(randint(0, n - 1), ADTOp.simpleCoarseRandomOp())
             self.opList = ol
-            self.setFitness(float('inf'))
+            self.setFitness(-float('inf'))
         if model=='randtail':
 #             print "Mutating with the new model."
             m = randint(0, n-1)
@@ -134,7 +134,7 @@ class ADTOpList(object):
                 except:
                     ol.append(new)
             self.opList = ol
-            self.setFitness(float('inf'))
+            self.setFitness(-float('inf'))
 #             print "DURING MUTATION, SELF HAS TYPE ", self.opListType
         if model=='modtail':
 #             print "Mutating with the newest model."
@@ -159,7 +159,7 @@ class ADTOpList(object):
                         new = ADTOp.simpleCoarseRandomOp()
                     ol.append(new)
             self.opList = ol
-            self.setFitness(float('inf'))
+            self.setFitness(-float('inf'))
 
     def recombine(self, other, model='original'):
         if model=='original':
