@@ -55,6 +55,10 @@ for i in range(1,numiterations):
     print "\n"
     print "\n"
     print "Iteration {} of {}".format(i, numiterations)
+    print "pop HAS {} MEMBERS IN IT!!!".format(len(pop.toList()))
+    print "\n"
+    print "\n"
+    print "\n"
     best = pop.iterate(fit)
     for l in pop.toList():
         print [op.toString() for op in l.toList()]

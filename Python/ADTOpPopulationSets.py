@@ -96,6 +96,12 @@ class Population(object):
 #                 l.toString()
                 
         survivors = set(survivors)
+        print "\n"
+        print "\n"
+        print "\n"
+        print "We have {} survivors that are going to be forced into the population.".format(len(survivors))
+        print "\n"
+        print "\n"
 
         # pop2 will be the new population
 
@@ -125,7 +131,8 @@ class Population(object):
         # recombination with tournament selection size 3
 
         if self.model == 'original':
-            for i in range(len(pop1)/2):
+#            for i in range(len(pop1)/2):
+            while len(pop2) < len(pop1)-min(len(survivors),persistence):
                 parent = []
                 for j in range(0, 2):
                     candidates = random.sample(pop1, 3)
