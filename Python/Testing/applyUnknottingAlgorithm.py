@@ -64,30 +64,55 @@ K.setInvariant('unknottingNumber', 1)
 #K = ADT.ADT([
 
 
-
-
-def fit(ol, a=2, b=3, c=1):
-#    print "Starting fit function." 
-#    startfit = datetime.now()
-    if ol.fitness == -float('inf'):
-        L = K.copy()
-        d, min_ol = ol.apply(L)
-        if d.number_crossings() < 3:
-            bonus = 10000
+class Fit(object):
+    def __init__(self, a, b, c, target):
+        self.a = a
+        self.b = b
+        self.c = c
+        self.target = target
+    
+    def __call__(self, ol):
+        if ol.fitness == -float('inf'):
+            L = self.target.copy()
+            d, min_ol = ol.apply(L)
+            if d.number_crossings() < 3:
+                bonus = 10000
+            else:
+                bonus = 1
+            ccCount = min_ol.ccCount()
+            fitness = 1.0 + bonus/(d.number_crossings()**float(self.a) + ccCount**float(self.b) + min_ol.length()**float(self.c) + 1.0)
+            ol.setFitness = fitness
+            return fitness
+        elif isinstance(ol.fitness, float):
+            return ol.fitness
         else:
-            bonus = 1
-        ccCount = min_ol.ccCount()
-#    print "Finishing fit function. Took: ", datetime.now() - startfit
-        fitness = 1.0 + bonus/(d.number_crossings()**float(a) + ccCount**float(b) + min_ol.length()**float(c) + 1.0)
-        ol.setFitness = fitness
-        return fitness
-    elif isinstance(ol.fitness, float):
-        return ol.fitness
-    else:
-        raise TypeError("Not sure what self.fitness is.")
-    #return 1.0 + bonus/(d.number_crossings()**5.0 + ccCount + 1.0)
+            raise TypeError("Not sure what self.fitness is.")
+
+# def fit(ol, a=2, b=3, c=1):
+# #    print "Starting fit function." 
+# #    startfit = datetime.now()
+#     if ol.fitness == -float('inf'):
+#         L = K.copy()
+#         d, min_ol = ol.apply(L)
+#         if d.number_crossings() < 3:
+#             bonus = 10000
+#         else:
+#             bonus = 1
+#         ccCount = min_ol.ccCount()
+# #    print "Finishing fit function. Took: ", datetime.now() - startfit
+#         fitness = 1.0 + bonus/(d.number_crossings()**float(a) + ccCount**float(b) + min_ol.length()**float(c) + 1.0)
+#         ol.setFitness = fitness
+#         return fitness
+#     elif isinstance(ol.fitness, float):
+#         return ol.fitness
+#     else:
+#         raise TypeError("Not sure what self.fitness is.")
+#     #return 1.0 + bonus/(d.number_crossings()**5.0 + ccCount + 1.0)
 
 #pop = ADTOpPopulationSets.Population(25,30,5, model='randtail')
 pop = ADTOpPopulationSets.Population(50,50,5, model='original')
+
+
+fit = Fit(2, 3, 1, K)
 
 applyUnknottingAlgorithm(fit, K, 10)
