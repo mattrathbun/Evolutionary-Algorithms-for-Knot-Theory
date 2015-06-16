@@ -73,6 +73,8 @@ class ADT(object):
             raise TypeError("Arguments must be either a list or a string.")
         if len(self.code) != len(self.orientations):
             raise TypeError("Code and Orientations must have the same length.")
+            
+        self.invariants = {}
 
     def __eq__(self, other):
         if type(other) == type(self):
@@ -104,6 +106,14 @@ class ADT(object):
         codeString = ", ".join(str(x) for x in self.code)
         orientationsString = ", ".join(str(x) for x in self.orientations)
         return codeString, orientationsString
+        
+    # Methods to let us store known invariant values for a knot type (e.g. unknotting number, alternating, bridge number, etc.)
+        
+    def setInvariant(self, key, value):
+        self.invariants[key] = value
+        
+    def getInvariant(self, key):
+        return self.invariants[key]
 
     # Helper method. Given an integer arc (odd or +/-even), returns a
     # number between 1 and 2*n, with the appropriate modular identification.

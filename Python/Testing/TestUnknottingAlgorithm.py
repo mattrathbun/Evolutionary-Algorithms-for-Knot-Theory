@@ -40,7 +40,7 @@ def fit(ol):
     #return 1.0 + bonus/(d.number_crossings()**5.0 + ccCount + 1.0)
 
 #pop = ADTOpPopulationSets.Population(25,30,5, model='randtail')
-pop = ADTOpPopulationSets.Population(25,30,5, model='original')
+pop = ADTOpPopulationSets.Population(50,50,5, model='original')
 
 print "pop.size() = %d\n" % (pop.size())
 
@@ -48,7 +48,7 @@ pl = pop.toList()
 for l in pl:
     print [op.toString() for op in l.toList()]
 
-numiterations = 100
+numiterations = 200
 
 for i in range(1,numiterations):
     print "\n"
