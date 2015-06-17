@@ -1,7 +1,7 @@
 import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
-import ADT, ADTOpPopulation, ADTOpPopulationSets
+import ADT, ADTOpPopulation, ADTOpPopulationSets, Fit
 from datetime import datetime
 
 
@@ -32,7 +32,11 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
         L = K.copy()
         d, min_ol = best.apply(L)
         
-        if (i == numiterations) or ((min_ol.ccCount() == K.getInvariant('unknottingNumber')) and (d.number_crossings() < 3)):
+        success = False
+        if (min_ol.ccCount() == K.getInvariant('unknottingNumber')) and (d.number_crossings() < 3):
+            success = True
+        
+        if (i == numiterations) or success:
 
             print "***************************************"
             print "\n"
@@ -47,11 +51,13 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
             print "The (effective) length of the sequence is {}".format(len(min_ol.toList()))
             print "It has {} crossing changes!".format(min_ol.ccCount())
             print "Which compares to a crossing number of {} for the knot {}".format(K.getInvariant('unknottingNumber'), K.to_string())
+            if success:
+                print "This is a SUCCESS!"
             print "It took us {} of {} iterations to get there".format(i, numiterations)
             
             print "\n"
             print "Finished applyUnknottingAlgorithm. Took: ", datetime.now() - startApply
-            return i, numiterations, pop, best, min_ol, d
+            return success, i, numiterations, pop, best, min_ol, d
 
 
 #K = ADT.ADT([6, -2, -10, -14, 4, 12, 8, 16], [-1, -1, 1, 1, -1, 1, -1, -1])
@@ -64,29 +70,29 @@ K.setInvariant('unknottingNumber', 1)
 #K = ADT.ADT([
 
 
-class Fit(object):
-    def __init__(self, a, b, c, target):
-        self.a = a
-        self.b = b
-        self.c = c
-        self.target = target
-    
-    def __call__(self, ol):
-        if ol.fitness == -float('inf'):
-            L = self.target.copy()
-            d, min_ol = ol.apply(L)
-            if d.number_crossings() < 3:
-                bonus = 10000
-            else:
-                bonus = 1
-            ccCount = min_ol.ccCount()
-            fitness = 1.0 + bonus/(d.number_crossings()**float(self.a) + ccCount**float(self.b) + min_ol.length()**float(self.c) + 1.0)
-            ol.setFitness = fitness
-            return fitness
-        elif isinstance(ol.fitness, float):
-            return ol.fitness
-        else:
-            raise TypeError("Not sure what self.fitness is.")
+# class Fit(object):
+#     def __init__(self, a, b, c, target):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#         self.target = target
+#     
+#     def __call__(self, ol):
+#         if ol.fitness == -float('inf'):
+#             L = self.target.copy()
+#             d, min_ol = ol.apply(L)
+#             if d.number_crossings() < 3:
+#                 bonus = 10000
+#             else:
+#                 bonus = 1
+#             ccCount = min_ol.ccCount()
+#             fitness = 1.0 + bonus/(d.number_crossings()**float(self.a) + ccCount**float(self.b) + min_ol.length()**float(self.c) + 1.0)
+#             ol.setFitness = fitness
+#             return fitness
+#         elif isinstance(ol.fitness, float):
+#             return ol.fitness
+#         else:
+#             raise TypeError("Not sure what self.fitness is.")
 
 # def fit(ol, a=2, b=3, c=1):
 # #    print "Starting fit function." 
@@ -113,6 +119,25 @@ class Fit(object):
 pop = ADTOpPopulationSets.Population(50,50,5, model='original')
 
 
-fit = Fit(2, 3, 1, K)
 
-applyUnknottingAlgorithm(fit, K, 10)
+param_choice = []
+choice_efficiency = float('inf')
+for c in [1, 2, 3, 4]:
+    for b in [4, 3, 2, 1]:
+        for a in [4, 3, 2, 1]:
+            fit = Fit.Fit(a, b, c, K)
+            print "\n"
+            print "Attempting applyUnknottingAlgorithm with parameters a = {}, b = {}, and c = {}".format(a, b, c)
+            print "\n"
+            success, i, numiterations, pop, best, min_ol, d = applyUnknottingAlgorithm(fit, K, 20)
+            if success and float(i)/float(numiterations) < choice_efficiency :
+                param_choice = [a, b, c]
+                choice_efficiency = float(i)/float(numiterations)
+            print "\n"
+            print "So far, the best choice of parameters is: ", param_choice
+            print "And it has an efficiency of: ", choice_efficiency
+            print "\n"
+print "\n"
+print "*****************************************"
+print "The best choice of parameters is: ", param_choice
+print "They give us an efficiency of: ", choice_efficiency

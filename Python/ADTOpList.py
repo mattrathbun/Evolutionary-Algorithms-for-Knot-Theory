@@ -163,7 +163,7 @@ class ADTOpList(object):
 
     def recombine(self, other, model='original'):
         if model=='original':
-            pos = randint(1, min(self.length(), other.length()) - 1)
+            pos = randint(1, max(1, min(self.length(), other.length()) - 1))
             self_first_word = self.toList()[0:pos] + other.toList()[pos:]
             other_first_word = other.toList()[0:pos] + self.toList()[pos:]
             return (ADTOpList(self_first_word, self.opListType), ADTOpList(other_first_word, self.opListType))
