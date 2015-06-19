@@ -15,6 +15,10 @@ class Population(object):
         self.num = num
         self.maxl = maxl
         self.minl = minl
+        self.maxFitness = 1
+        self.minFitness = 1
+        self.totalFitness = num
+        self.averageFitness = 1
         
         self.opPopulationType = opPopulationType
         self.oplists = set()
@@ -28,6 +32,7 @@ class Population(object):
         else:
             for i in range(num):
                 self.oplists.add(ADTOpList.randomOpList(maxl, minl))
+                
 
     def toList(self):
         return list(self.oplists)
@@ -39,7 +44,7 @@ class Population(object):
     def size(self):
         return len(self.oplists)
 
-    def iterate(self, fit, mu=0.30):
+    def iterate(self, fit, mu=0.30, upMoveBias=1, downMoveBias=1, horizontalMoveBias = 1, CCBias = 1):
         print "Starting to iterate"
         startiter = datetime.now()
         n = self.size()
@@ -69,6 +74,10 @@ class Population(object):
             # minf = (fv if fv < maxf else minf)
             tfv += fv
         afv = tfv / n
+        self.maxFitness = maxf
+        self.minFitness = minf
+        self.totalFitness = tfv
+        self.averageFitness = afv
 
         print "total fitness   = ", tfv
         print "average fitness = ", afv
@@ -78,13 +87,14 @@ class Population(object):
 
         # persistence is a parameter to check for a proportion of the population that succeeds in the goal
         #   and will be forced to survive (without mutation) into the next generation
-        persistence = max(1, self.size()/10)
+#        persistence = max(1, self.size()/10)
+        persistence = 0
 
         # takes the highest (persistence) many members of the possible_survivors in order to force
         #   them through to the next generation
         possible_survivors = list(possible_survivors)
         possible_survivors.sort(cmp=fcmp)
-        if len(possible_survivors) > persistence:
+        if len(possible_survivors) >= persistence:
             survivors = [possible_survivors[-(i+1)].copy() for i in range(persistence)]
 #            print "    We have {} possible_survivors!.".format(len(possible_survivors))
 #             for l in survivors:
@@ -168,8 +178,11 @@ class Population(object):
         print "    Starting mutation"
         startmut = datetime.now()
         for i in range(len(pop3)):
+            print "(Just checking: mu is currently {})".format(mu)
             if (random.random() < mu):
-                pop3[i].mutate(self.model)
+                print "We are mutating!!!"
+                print "pop3[i] is: {}".format(pop3[i].toString())
+                pop3[i].mutate(self.model, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
         print "    Finished mutation. Took this long: ", datetime.now() - startmut
         
         pop3 = set(pop3)

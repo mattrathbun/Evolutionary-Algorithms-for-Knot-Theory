@@ -2,12 +2,13 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 import ADT, ADTOpPopulation, ADTOpPopulationSets, Fit
+import math
 from datetime import datetime
 
 
 def applyUnknottingAlgorithm(fit, K, numiterations):
     startApply = datetime.now()
-    pop = ADTOpPopulationSets.Population(30,50,5, model='original')
+    pop = ADTOpPopulationSets.Population(20,60,5, model='original')
 
     print "pop.size() = %d\n" % (pop.size())
 
@@ -16,6 +17,13 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
         print [op.toString() for op in l.toList()]
 
     i = 0
+    mu = 0.25
+    upMoveBias = 1
+    horizontalMoveBias = 1
+    downMoveBias = 1
+    CCBias = 1
+    
+    maxfvs = [1, 1, 1]
     while True:
         i += 1
         print "\n"
@@ -26,11 +34,21 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
         print "\n"
         print "\n"
         print "\n"
-        best = pop.iterate(fit)
+        best = pop.iterate(fit, mu = mu, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
 #        for l in pop.toList():
 #            print [op.toString() for op in l.toList()]
         L = K.copy()
         d, min_ol = best.apply(L)
+        
+        
+        del maxfvs[0]
+        maxfvs.append(pop.maxFitness)
+        x = sum([abs(maxfvs[2] - maxfvs[1]), abs(maxfvs[1] - maxfvs[0])])/2.0
+        mu = 0.65*math.exp(-x) + 0.25
+        y = math.floor(2*mu) + 1.0
+        upMoveBias = int(y)
+        horizontalMoveBias = int(y)
+        CCBias = int(y)
         
         success = False
         if (min_ol.ccCount() == K.getInvariant('unknottingNumber')) and (d.number_crossings() < 3):
@@ -120,24 +138,27 @@ pop = ADTOpPopulationSets.Population(50,50,5, model='original')
 
 
 
-param_choice = []
-choice_efficiency = float('inf')
-for c in [1, 2, 3, 4]:
-    for b in [4, 3, 2, 1]:
-        for a in [4, 3, 2, 1]:
-            fit = Fit.Fit(a, b, c, K)
-            print "\n"
-            print "Attempting applyUnknottingAlgorithm with parameters a = {}, b = {}, and c = {}".format(a, b, c)
-            print "\n"
-            success, i, numiterations, pop, best, min_ol, d = applyUnknottingAlgorithm(fit, K, 20)
-            if success and float(i)/float(numiterations) < choice_efficiency :
-                param_choice = [a, b, c]
-                choice_efficiency = float(i)/float(numiterations)
-            print "\n"
-            print "So far, the best choice of parameters is: ", param_choice
-            print "And it has an efficiency of: ", choice_efficiency
-            print "\n"
-print "\n"
-print "*****************************************"
-print "The best choice of parameters is: ", param_choice
-print "They give us an efficiency of: ", choice_efficiency
+#param_choice = []
+#choice_efficiency = float('inf')
+#for c in [1, 2, 3, 4]:
+#    for b in [5, 4, 3, 2]:
+#        for a in [5, 4, 3, 2]:
+#             fit = Fit.Fit(a, b, c, K)
+#             print "\n"
+#             print "Attempting applyUnknottingAlgorithm with parameters a = {}, b = {}, and c = {}".format(a, b, c)
+#             print "\n"
+#             success, i, numiterations, pop, best, min_ol, d = applyUnknottingAlgorithm(fit, K, 40)
+#             if success and float(i)/float(numiterations) < choice_efficiency :
+#                 param_choice = [a, b, c]
+#                 choice_efficiency = float(i)/float(numiterations)
+#             print "\n"
+#             print "So far, the best choice of parameters is: ", param_choice
+#             print "And it has an efficiency of: ", choice_efficiency
+#             print "\n"
+# print "\n"
+# print "*****************************************"
+# print "The best choice of parameters is: ", param_choice
+# print "They give us an efficiency of: ", choice_efficiency
+
+fit = Fit.Fit(3, 3, 1, K)
+success, i, numiterations, pop, best, min_ol, d = applyUnknottingAlgorithm(fit, K, 30)
