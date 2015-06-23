@@ -8,7 +8,7 @@ from datetime import datetime
 
 def applyUnknottingAlgorithm(fit, K, numiterations):
     startApply = datetime.now()
-    pop = ADTOpPopulationSets.Population(20,60,5, model='original')
+    pop = ADTOpPopulationSets.Population(25,60,5, model='original')
 
     print "pop.size() = %d\n" % (pop.size())
 
@@ -23,7 +23,7 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
     downMoveBias = 1
     CCBias = 1
     
-    maxfvs = [1, 1, 1]
+    maxfvs = [1, 100, 1, 100, 1, 100, 1, 100, 1, 100, 1]
     while True:
         i += 1
         print "\n"
@@ -34,16 +34,17 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
         print "\n"
         print "\n"
         print "\n"
-        best = pop.iterate(fit, mu = mu, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
+        best_opList = pop.iterate(fit, mu = mu, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
 #        for l in pop.toList():
 #            print [op.toString() for op in l.toList()]
         L = K.copy()
-        d, min_ol = best.apply(L)
+        d, min_ol = best_opList.apply(L)
         
         
         del maxfvs[0]
         maxfvs.append(pop.maxFitness)
-        x = sum([abs(maxfvs[2] - maxfvs[1]), abs(maxfvs[1] - maxfvs[0])])/2.0
+        diffs = [abs(maxfvs[j+1] - maxfvs[j]) for j in range(len(maxfvs)-1)]
+        x = sum(diffs)/float(len(diffs))
         mu = 0.65*math.exp(-x) + 0.25
         y = math.floor(2*mu) + 1.0
         upMoveBias = int(y)
@@ -55,14 +56,13 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
             success = True
         
         if (i == numiterations) or success:
-
             print "***************************************"
             print "\n"
             print "\n"
             print "\n"
             print "The best sequence we found is:"
-            print [op.toString() for op in best.toList()]
-            print "It has fitness {}".format(fit(best))
+            print [op.toString() for op in best_opList.toList()]
+            print "It has fitness {}".format(fit(best_opList))
             print "The resulting diagram is:"
             print d.to_string()
             print "It has {} crossings.".format(d.number_crossings())
@@ -75,7 +75,7 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
             
             print "\n"
             print "Finished applyUnknottingAlgorithm. Took: ", datetime.now() - startApply
-            return success, i, numiterations, pop, best, min_ol, d
+            return success, i, numiterations, pop, best_opList, min_ol, d
 
 
 #K = ADT.ADT([6, -2, -10, -14, 4, 12, 8, 16], [-1, -1, 1, 1, -1, 1, -1, -1])
@@ -134,7 +134,7 @@ K.setInvariant('unknottingNumber', 1)
 #     #return 1.0 + bonus/(d.number_crossings()**5.0 + ccCount + 1.0)
 
 #pop = ADTOpPopulationSets.Population(25,30,5, model='randtail')
-pop = ADTOpPopulationSets.Population(50,50,5, model='original')
+#pop = ADTOpPopulationSets.Population(50,50,5, model='original')
 
 
 
@@ -160,5 +160,5 @@ pop = ADTOpPopulationSets.Population(50,50,5, model='original')
 # print "The best choice of parameters is: ", param_choice
 # print "They give us an efficiency of: ", choice_efficiency
 
-fit = Fit.Fit(3, 3, 1, K)
-success, i, numiterations, pop, best, min_ol, d = applyUnknottingAlgorithm(fit, K, 30)
+fit = Fit.Fit(3, 2, 1, K)
+success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit, K, 100)

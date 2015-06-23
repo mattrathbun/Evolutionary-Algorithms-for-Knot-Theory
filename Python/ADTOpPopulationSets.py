@@ -87,8 +87,8 @@ class Population(object):
 
         # persistence is a parameter to check for a proportion of the population that succeeds in the goal
         #   and will be forced to survive (without mutation) into the next generation
-#        persistence = max(1, self.size()/10)
-        persistence = 0
+        persistence = max(1, self.size()/10)
+#        persistence = 0
 
         # takes the highest (persistence) many members of the possible_survivors in order to force
         #   them through to the next generation
@@ -207,14 +207,15 @@ class Population(object):
         
         print "Starting maximization of resulting population."
         startmax = datetime.now()
-        best = max(pop3, key = attrgetter('fitness'))
+        best_opList = max(pop3, key = attrgetter('fitness'))
+        print "best has fitness of: {}".format(best_opList.checkFitness())
         print "Finished maximization."
         print "\n"
         
         print "Finished iteration. Took: ", datetime.now() - startiter
         print "\n"
 
-        return best                
+        return best_opList                
 #        return pop3[-1]
         
         
