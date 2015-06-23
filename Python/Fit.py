@@ -18,7 +18,7 @@ class Fit(object):
                 bonus = 1
             ccCount = min_ol.ccCount()
             fitness = 1.0 + bonus/(d.number_crossings()**float(self.a) + ccCount**float(self.b) + (ol.length() - min_ol.length())**float(self.c) + 1.0)
-            ol.setFitness = fitness
+            ol.setFitness(fitness)
             return fitness
         elif isinstance(ol.fitness, float):
             return ol.fitness

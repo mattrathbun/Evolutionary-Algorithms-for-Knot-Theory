@@ -45,7 +45,7 @@ def applyUnknottingAlgorithm(fit, K, numiterations):
         maxfvs.append(pop.maxFitness)
         diffs = [abs(maxfvs[j+1] - maxfvs[j]) for j in range(len(maxfvs)-1)]
         x = sum(diffs)/float(len(diffs))
-        mu = 0.65*math.exp(-x) + 0.25
+        mu = 0.45*math.exp(-x) + 0.25
         y = math.floor(2*mu) + 1.0
         upMoveBias = int(y)
         horizontalMoveBias = int(y)
