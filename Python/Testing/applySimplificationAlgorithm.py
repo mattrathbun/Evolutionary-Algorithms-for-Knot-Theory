@@ -160,7 +160,7 @@ def testSimplificationAlgorithm(duration, seqLen):
         for op in ol.toList():
             op.apply(L)
         fit = Fit(4, 3, 3, L)
-        success, i, numiterations, pop, best_opList, min_ol, d = applySimplificationAlgorithm(fit, L, 100)
+        success, i, numiterations, pop, best_opList, min_ol, d = applySimplificationAlgorithm(fit, L, 40)
         if success:
             successes += 1
             sumEfficiency += float(i+1)/float(numiterations)
@@ -172,7 +172,7 @@ def testSimplificationAlgorithm(duration, seqLen):
     print "Overall we have an efficiency of {}".format(aveEfficiency)
     return successRate, aveEfficiency
     
-testSimplificationAlgorithm(100, 50)
+testSimplificationAlgorithm(10, 20)
                 
 
 # param_choice = []
