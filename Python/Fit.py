@@ -2,10 +2,11 @@
 
 
 class Fit(object):
-    def __init__(self, a, b, c, target):
+    def __init__(self, a, b, c, d, target):
         self.a = a
         self.b = b
         self.c = c
+        self.d = d
         self.target = target
     
     def __call__(self, ol):
@@ -17,7 +18,7 @@ class Fit(object):
             else:
                 bonus = 1
             ccCount = min_ol.ccCount()
-            fitness = 1.0 + bonus/(d.number_crossings()**float(self.a) + ccCount**float(self.b) + (ol.length() - min_ol.length())**float(self.c) + 1.0)
+            fitness = 1.0 + bonus/(d.number_crossings()**float(self.a) + ccCount**float(self.b) + ol.length()**float(self.c) + (ol.length() - min_ol.length())**float(self.d) + 1.0)
             ol.setFitness(fitness)
             return fitness
         elif isinstance(ol.fitness, float):

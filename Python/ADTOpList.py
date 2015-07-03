@@ -86,10 +86,10 @@ class ADTOpList(object):
 #         if self.opListType != "Move":
 #             raise TypeError("SHOULD BE TYPE MOVE.")
         n = self.length()
-        print "n can be surprisingly small: n = {}".format(n)
         ol = self.toList()
         if model=='original':
-            mutationType = randint(0, 4)
+#            mutationType = randint(0, 4)
+            mutationType = choice([0, 3, 4])
             if mutationType == 0:  # Randomly change one of the operations
                 if self.opListType == 'Move':
 #                     print "MUTATE SHOULD ONLY BE PRODUCING MOVES"
