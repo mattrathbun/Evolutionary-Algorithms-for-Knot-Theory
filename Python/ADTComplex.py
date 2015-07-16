@@ -75,16 +75,16 @@ class ADTComplex:
         adt = self.adt
         for i in range(1,self.n_regs+1):
             for j in range(1,self.n_arcs+1):
-                if c2[i-1][j-1] == 1:
-                    if c2[i-1][adt.wrap(adt.jump(j)-1)-1] == 1:
-                        c3[j-1][0] = i
-                    if c2[i-1][adt.jump(j)-1] == 1:
-                        c3[j-1][1] = i
-                if c2[i-1][adt.wrap(j-2)-1] == 1:
-                    if c2[i-1][adt.jump(j)-1] == 1:
-                        c3[j-1][2] = i
-                    if c2[i-1][adt.wrap(adt.jump(j)-1)-1] == 1:
-                        c3[j-1][3] = i
+                if self.c2[i-1][j-1] == 1:
+                    if self.c2[i-1][adt.wrap(adt.jump(j)-1)-1] == 1:
+                        self.c3[j-1][0] = i
+                    if self.c2[i-1][adt.jump(j)-1] == 1:
+                        self.c3[j-1][1] = i
+                if self.c2[i-1][adt.wrap(j-2)-1] == 1:
+                    if self.c2[i-1][adt.jump(j)-1] == 1:
+                        self.c3[j-1][2] = i
+                    if self.c2[i-1][adt.wrap(adt.jump(j)-1)-1] == 1:
+                        self.c3[j-1][3] = i
         return
 
     def draw_graph(self):
