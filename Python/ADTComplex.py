@@ -24,6 +24,7 @@ class ADTComplex:
     def calc_incidence(self):
         self.calc_incidence_c2()
         self.calc_incidence_c3()
+        self.calc_incidence_er()
         
     def calc_incidence_c2(self):
         adt = self.adt
@@ -85,6 +86,16 @@ class ADTComplex:
                         self.c3[j-1][2] = i
                     if self.c2[i-1][adt.wrap(adt.jump(j)-1)-1] == 1:
                         self.c3[j-1][3] = i
+        return
+    
+    def calc_incidence_er(self):
+        for i in range(1,self.n_arcs):
+            for j in range(i+1, self.n_arcs+1):
+                for k in range(1,3):
+                    reg1 = self.c3[i][k]
+                    if self.c2[reg1][j] == 1:
+                        self.er[i][j] = reg1
+                        self.er[j][i] = reg1
         return
 
     def draw_graph(self):
