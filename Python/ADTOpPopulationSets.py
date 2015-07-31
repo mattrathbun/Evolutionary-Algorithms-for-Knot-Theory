@@ -149,7 +149,6 @@ class Population(object):
                     fitnesses = map(fit, candidates)
                     best = numpy.argmax(fitnesses)
                     parent.append(candidates[best].copy())
-
                 pop2.update(parent[0].recombine(parent[1], self.model))
                 pop3 = pop2
         elif self.model == 'randtail' or self.model == 'modtail':
@@ -169,6 +168,7 @@ class Population(object):
 #         for guy in pop2:
 #             print guy.opListType
         pop3 = list(pop2)
+
 #         print "Looking at pop3: \n\n"
 #         for guy in pop3:
 #             print guy.opListType

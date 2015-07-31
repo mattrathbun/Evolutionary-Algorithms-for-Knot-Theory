@@ -82,20 +82,18 @@ class ADTOpList(object):
         self.opList = list_of_ops + curr
 
     def mutate(self, model='original', upMoveBias=1, downMoveBias=1, horizontalMoveBias = 1, CCBias = 1):
-#         print self.opListType
-#         if self.opListType != "Move":
-#             raise TypeError("SHOULD BE TYPE MOVE.")
+        print "Starting muatation"
         n = self.length()
         ol = self.toList()
         if model=='original':
-#            mutationType = randint(0, 4)
-            mutationType = choice([0, 3, 4])
+            mutationType = randint(0, 4)
+#            mutationType = choice([0, 3, 4])
             if mutationType == 0:  # Randomly change one of the operations
                 if self.opListType == 'Move':
 #                     print "MUTATE SHOULD ONLY BE PRODUCING MOVES"
-                    ol[randint(0, n-1)] = ADTOp.simpleCoarseRandomMove(upMoveBias = upMoveBias, horizontalMoveBias = horizontalMoveBias, downMoveBias = downMoveBias )
+                    ol[randint(0, n-1)] = ADTOp.simpleCoarseRandomMove(upBias = upMoveBias, horizontalBias = horizontalMoveBias, downBias = downMoveBias )
                 elif self.opListType == 'CC':
-#                     raise TypeError("MUTATE SHOULD NOT BE PRODUCING CHANGES")
+                    raise TypeError("MUTATE SHOULD NOT BE PRODUCING CHANGES")
                     ol[randint(0, n-1)] = ADTOp.simpleCoarseRandomCC()
                 else:
 #                     raise TypeError("MUTATE SHOULD NOT BE PRODUCING ANYTHING ELSE")
@@ -111,7 +109,7 @@ class ADTOpList(object):
                     del ol[randint(0, n - 1)]
             elif mutationType == 4:  # Insert a random operation
                 if self.opListType == 'Move':
-                    ol.insert(randint(0, n-1), ADTOp.simpleCoarseRandomMove(upMoveBias = upMoveBias, horizontalMoveBias = horizontalMoveBias, downMoveBias = downMoveBias))
+                    ol.insert(randint(0, n-1), ADTOp.simpleCoarseRandomMove(upBias = upMoveBias, horizontalBias = horizontalMoveBias, downBias = downMoveBias))
                 elif self.opListType == 'CC':
                     ol.insert(randint(0, n-1), ADTOp.simpleCoarseRandomCC())
                 else:
@@ -168,7 +166,7 @@ class ADTOpList(object):
             pos = randint(1, max(1, min(self.length(), other.length()) - 1))
             self_first_word = self.toList()[0:pos] + other.toList()[pos:]
             other_first_word = other.toList()[0:pos] + self.toList()[pos:]
-            return (ADTOpList(self_first_word, self.opListType), ADTOpList(other_first_word, self.opListType))
+            return (ADTOpList(self_first_word, opListType = self.opListType), ADTOpList(other_first_word, opListType = self.opListType))
         if model == 'randtail':
             return (self, other)
 
