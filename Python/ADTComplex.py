@@ -1,10 +1,8 @@
 from ADT import *
-from graph_tool.all import *
 
 class ADTComplex:
     def __init__(self, adt):
         self.adt = adt
-        self.g = Graph(directed = False)
         self.n = adt.number_crossings()
         self.n_arcs = 2*self.n
         self.n_regs = self.n + 2
@@ -378,12 +376,3 @@ class ADTComplex:
             if nb[i][valence+1] == 0:
                 nb[i][valence+1] = nb[i][1]
         return
-    
-    def draw_graph(self):
-        #pos = arf_layout(self.g)
-        pos = graph_tool.draw.sfdp_layout(self.g, C=0.5, gamma=0.5)
-        # pos = radial_tree_layout(self.g,0)
-        # pos = fruchterman_reingold_layout(self.g)
-        # pos = sfdp_layout(self.g)
-        graph_tool.draw.graph_draw(self.g, pos=pos, vertex_text=self.g.vertex_index, vertex_color=self.wtype, vertex_fill_color=self.vtype)
-        #graph_draw(self.g, pos=pos, vertex_text=self.g.vertex_index, vertex_fill_color=self.vtype, output="complex.png")
