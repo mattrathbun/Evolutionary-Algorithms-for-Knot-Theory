@@ -2,7 +2,12 @@
 
 import ADT, ADTOp, ADTOpList, ADTOpPopulationSets
 
-K = ADT.ADT([-16, -4, -6, -26, -10, -20, 24, 2, 14, 18, 22, 12, 8], [1, -1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1])
+#K = ADT.ADT([-16, -4, -6, -26, -10, -20, 24, 2, 14, 18, 22, 12, 8], [1, -1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1])
+K = ADT.ADT([],[])
+for ind in range(8):
+    M = ADTOp.simpleCoarseRandomMove(upBias=2, horizontalBias=1, downBias=0)
+    M.apply(K)
+
 
 def fit(ol):
     if ol.fitness == -float('inf'):

@@ -1,19 +1,16 @@
 import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
-import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, FitnessSimplification
+import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, Fit
 from datetime import datetime
 
 print "Starting script."
 start = datetime.now()
 
 
-#K = ADT.ADT([-16, -4, -6, -26, -10, -20, 24, 2, 14, 18, 22, 12, 8], [1, -1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1])
-
-fit = FitnessSimplification.fit
-
 def testSimplification():
-
+    fit = Fit.Fit(2, 0, 1, 1, K)
+    
     pop = ADTOpPopulationSets.Population(20,30,5, opPopulationType='Move', model='original')
 
 #        print "pop.size() = %d\n" % (pop.size())
