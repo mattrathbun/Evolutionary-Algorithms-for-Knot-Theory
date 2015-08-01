@@ -11,7 +11,7 @@ start = datetime.now()
 def testSimplification():
     fit = Fit.Fit(2, 0, 1, 1, K)
     
-    pop = ADTOpPopulationSets.Population(20,30,5, opPopulationType='Move', model='original')
+    pop = ADTOpPopulationSets.Population(25,50,12, opPopulationType='Move', model='original')
 
 #        print "pop.size() = %d\n" % (pop.size())
 
@@ -19,7 +19,7 @@ def testSimplification():
 #        for l in pl:
 #            print [op.toString() for op in l.toList()]
 
-    numiterations = 10
+    numiterations = 20
     iteration = 0
     while True:
         print "Iteration {} of {}".format(iteration+1, numiterations)
@@ -55,6 +55,10 @@ def testSimplification():
 attempts = 10
 successes = 0
 for j in range(attempts):
+    print "\n"
+    print "Starting attempt {} of {}.".format(j+1, attempts)
+    print "\n"
+    
     K = ADT.ADT([],[])
     length = 12
     while K.number_crossings() < length:
