@@ -178,7 +178,7 @@ class Population(object):
         print "    Starting mutation"
         startmut = datetime.now()
         for i in range(len(pop3)):
-            print "(mu is currently {})".format(mu)
+#            print "(mu is currently {})".format(mu)
             if (random.random() < mu):
                 pop3[i].mutate(self.model, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
         print "    Finished mutation. Took this long: ", datetime.now() - startmut
