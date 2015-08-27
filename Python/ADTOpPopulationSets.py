@@ -175,7 +175,7 @@ class Population(object):
 
         # mutation
 
-        print "    Starting mutation"
+#        print "    Starting mutation"
         startmut = datetime.now()
         for i in range(len(pop3)):
 #            print "(mu is currently {})".format(mu)

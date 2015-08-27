@@ -4,7 +4,7 @@ sys.path.append(lib_path)
 import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, Fit
 from datetime import datetime
 
-#myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
+#myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestSimplificationComparison2Output", 'a')
 
 print "Starting script."
 start = datetime.now()
@@ -15,7 +15,7 @@ popsize = 10*length #the number of sequences in the population during each attem
 numiterations = 4*length #the maximum number of iterations used in each attempt at the algorithm
 
 def testSimplification():
-    fit = Fit.Fit(2, 0, 1, 1, K)
+    fit = Fit.Fit(2, 0, 0, 0, K)
     
 #    pop = ADTOpPopulationSets.Population(50,30,15, opPopulationType='Move', model='original')
     pop = ADTOpPopulationSets.Population(popsize,3*length, length/2, opPopulationType='Move', model='original') 
@@ -29,7 +29,7 @@ def testSimplification():
 #    numiterations is set above
     iteration = 0
     while True:
-    	myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
+    	myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestSimplificationComparison2Output", 'a')
     	myfile.write("Iteration {} of {}".format(iteration+1, numiterations))
     	myfile.write("\n")
     	myfile.close()
@@ -49,7 +49,7 @@ def testSimplification():
             print "\n"
             print "\n"
             
-            myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
+            myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestSimplificationComparison2Output", 'a')
             myfile.write("The best sequence we found is:\n")
             for op in best.toList():
                 myfile.write(op.toString())
@@ -79,7 +79,7 @@ def testSimplification():
 # attempts is set above
 successes = 0
 for j in range(attempts):
-    myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
+    myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestSimplificationComparison2Output", 'a')
     print "\n"
     myfile.write("Starting attempt {} of {}.".format(j+1, attempts))
     myfile.write("\n")
@@ -92,7 +92,7 @@ for j in range(attempts):
     while K.number_crossings() < length:
         M = ADTOp.simpleCoarseRandomMove(upBias=3)
         M.apply(K)
-    myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
+    myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestSimplificationComparison2Output", 'a')
     myfile.write("K is {}".format(K.to_string()))
     myfile.write("\n")
     myfile.close()
@@ -101,14 +101,14 @@ for j in range(attempts):
 
     successes += testSimplification()
     
-    myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
+    myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestSimplificationComparison2Output", 'a')
     myfile.write("{} successes so far, out of {} attempts.".format(successes, j+1))
     myfile.write("\n")
     myfile.close()
     print "{} successes so far, out of {} attempts.".format(successes, j+1)
     print "\n"
     
-myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
+myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestSimplificationComparison2Output", 'a')
 myfile.write("We had {}% success!".format(float(successes)/float(attempts)*100))
 myfile.write("\n")
     
