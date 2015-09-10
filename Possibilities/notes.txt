@@ -1,0 +1,7 @@
+Finding patterns across a set of knots. One approach is to take a set
+of knots and learn a common operator sequence. An alternative is to
+take a set of learned sequences from different knots and then do some
+kind of post hoc pattern analysis (like Uri Alon's "motif analysis").
+
+What should we compare our algorithm with? Random search? A greedy
+mutation algorithm?
