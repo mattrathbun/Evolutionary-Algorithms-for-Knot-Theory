@@ -1,0 +1,73 @@
+\documentclass[a4paper,fleqn,11pt]{article}
+
+\usepackage[margin=25mm]{geometry}
+
+\listfiles
+\newcommand{\bx}[1]{\fbox{\begin{minipage}{12cm}#1\end{minipage}}}
+\usepackage{url,apalike,amsmath}
+\usepackage[pdftex]{graphicx}
+\usepackage[small]{titlesec}
+
+\begin{document}
+
+\large\noindent\textbf{Searching for Unknotting Sequences using
+  Machine Learning}\\
+\\
+%% authorlist
+\normalsize
+
+\medskip
+\hrule
+\medskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+\bx{motivation - why are we doing this? Perhaps contextualise this in
+  the idea of different kinds of computational tools for mathematics
+  research: we are accustomed to tools that 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problem Description}
+
+\bx{describe problem in detail. give details of what each of the
+  operators does}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algorithm}
+
+Genetic algorithms (GAs) are a population-based search heuristic,
+designed to efficiently search a large space of possible solutions to
+a problem. They are inspired by 
+
+
+\bx{a description of the algorithm. I assume that we are going to use
+  the SSM method? Describe the representation of the operator list,
+  and the fitness function - and, in particular, how that fitness
+  function is designed. A pseudocode version of the search process
+  would be useful. We are looking just at finding the sequence for
+  unknotting an individual knot, not a general sequence for unknotting
+  a number of different knots, I assume?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental Setup and Results}
+
+\bx{describe the experimental setup. how many attempts, how big is the
+  knot, how many times did we repeat the algorithmic run.}
+
+\bx{Present a table of results. We need to run each experiment a
+  number of times (because it is a stochastic algorithm) for a number
+  of knots (so that a pathological case doesn't distort the
+  results). Each experiment is a particular size of knot.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+
+\bx{...of results}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}
+\bibliography{refs.bib}
+
+\end{document}

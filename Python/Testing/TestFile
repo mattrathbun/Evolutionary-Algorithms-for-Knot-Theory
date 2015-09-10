@@ -1,0 +1,340 @@
+Starting attempt 1 of 10.
+K is ('30, 2, 4, -28, -32, -18, -14, 12, -24, -22, 26, 16, -20, 6, -8, 10', '-1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1')
+Iteration 1 of 60
+Starting attempt 1 of 10.
+K is ('8, 2, -10, 6, 4', '-1, 1, 1, -1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+2D(pos=1)
+1D
+Shift
+2U(pos=1, side=R, target=[5, 4])
+Shift
+2D(pos=1)
+2D(pos=1)
+2U(pos=1, side=R, target=[5, 6])
+2D
+2D
+3H
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 455.545454545
+The resulting diagram has 1 crossings.
+1 successes so far, out of 1 attempts.
+Starting attempt 2 of 10.
+K is ('4, 2, -10, -8, 6', '-1, -1, 1, -1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+Shift
+2D
+2U(pos=1, side=R, target=[3, 4])
+1D(pos=1)
+2D(pos=1)
+3H(pos=1, side=R)
+1D(pos=1)
+3H(pos=1, side=R)
+2U(pos=1, side=R, target=[7, 8])
+
+It has fitness 477.19047619
+The resulting diagram has 2 crossings.
+2 successes so far, out of 2 attempts.
+Starting attempt 3 of 10.
+K is ('2, -12, 6, -8, -10, 4', '1, -1, 1, 1, -1, 1')
+Iteration 1 of 20
+The best sequence we found is:
+1U(pos=1, side=L, sign=-1)
+2D(pos=1)
+3H
+2D(pos=1)
+Shift
+2U(pos=1, side=L, target=[7, 8])
+Shift
+1D(pos=1)
+1D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+1U(pos=1, side=L, sign=-1)
+
+It has fitness 501.0
+The resulting diagram has 1 crossings.
+3 successes so far, out of 3 attempts.
+Starting attempt 4 of 10.
+K is ('-8, -12, 10, 6, 2, 4', '1, 1, -1, 1, -1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+2D(pos=1)
+2D(pos=1)
+Shift
+
+It has fitness 1112.11111111
+The resulting diagram has 2 crossings.
+4 successes so far, out of 4 attempts.
+Starting attempt 5 of 10.
+K is ('4, 2, -10, -8, 6', '-1, 1, 1, -1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+1D
+Shift
+1D(pos=1)
+2D(pos=1)
+3H(pos=1, side=L)
+
+It has fitness 770.230769231
+The resulting diagram has 2 crossings.
+5 successes so far, out of 5 attempts.
+Starting attempt 6 of 10.
+K is ('-8, -10, 4, -12, 2, 6', '-1, -1, 1, -1, 1, 1')
+Iteration 1 of 20
+Iteration 2 of 20
+The best sequence we found is:
+2D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+Shift
+
+It has fitness 1251.0
+The resulting diagram has 1 crossings.
+6 successes so far, out of 6 attempts.
+Starting attempt 7 of 10.
+K is ('-2, -12, 6, -8, -10, 4', '-1, 1, 1, -1, 1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+1U(pos=1, side=L, sign=1)
+2D(pos=1)
+2D(pos=1)
+1D(pos=1)
+3H(pos=1, side=L)
+1D(pos=1)
+Shift
+Shift
+1D(pos=1)
+1D
+
+It has fitness 715.285714286
+The resulting diagram has 0 crossings.
+7 successes so far, out of 7 attempts.
+Starting attempt 8 of 10.
+K is ('10, -2, -8, -6, 4', '1, -1, 1, 1, -1')
+Iteration 1 of 20
+Iteration 2 of 20
+Iteration 3 of 20
+Iteration 4 of 20
+Iteration 5 of 20
+The best sequence we found is:
+2D
+2D
+Shift
+2D
+1D(pos=1)
+2D(pos=1)
+2U(pos=1, side=L, target=[3, 2])
+Shift
+2D(pos=1)
+2U(pos=1, side=R, target=[1, 10])
+3H(pos=1, side=R)
+
+It has fitness 455.545454545
+The resulting diagram has 2 crossings.
+8 successes so far, out of 8 attempts.
+Starting attempt 9 of 10.
+K is ('8, 2, 4, 10, -6', '-1, 1, 1, -1, 1')
+Iteration 1 of 20
+The best sequence we found is:
+2D
+2U(pos=1, side=R, target=[5, 6])
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+1D
+2D(pos=1)
+1D(pos=1)
+2D
+1U(pos=1, side=L, sign=1)
+2U(pos=1, side=R, target=[5, 6])
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 501.0
+The resulting diagram has 0 crossings.
+9 successes so far, out of 9 attempts.
+Starting attempt 10 of 10.
+K is ('6, -10, -8, 2, 4', '1, -1, -1, 1, 1')
+Iteration 1 of 20
+Starting attempt 1 of 10.
+K is ('-8, -10, -4, -12, 2, 6', '1, 1, -1, 1, -1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+1D
+3H
+1D
+2D(pos=1)
+2U(pos=1, side=L, target=[5, 6])
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+
+It has fitness 715.285714286
+The resulting diagram has 1 crossings.
+1 successes so far, out of 1 attempts.
+Starting attempt 2 of 10.
+K is ('-2, -4, -12, 10, -8, 6', '-1, 1, 1, -1, 1, -1')
+Iteration 1 of 20
+Iteration 2 of 20
+Iteration 3 of 20
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+2U(pos=1, side=L, target=[7, 8])
+2D(pos=1)
+
+It has fitness 1001.0
+The resulting diagram has 0 crossings.
+2 successes so far, out of 2 attempts.
+Starting attempt 3 of 10.
+K is ('4, -10, 6, 8, 2', '1, -1, 1, 1, 1')
+Iteration 1 of 20
+The best sequence we found is:
+2D
+2D
+2D
+Shift
+3H
+3H
+1D
+3H
+2D(pos=1)
+Shift
+2D
+2D
+3H
+1D(pos=1)
+1D(pos=1)
+3H
+
+It has fitness 334.333333333
+The resulting diagram has 1 crossings.
+3 successes so far, out of 3 attempts.
+Starting attempt 4 of 10.
+K is ('-10, -8, -4, -12, 2, 6', '1, 1, -1, 1, -1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+Shift
+2D(pos=1)
+3H
+3H
+2D
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+
+It has fitness 770.230769231
+The resulting diagram has 0 crossings.
+4 successes so far, out of 4 attempts.
+Starting attempt 5 of 10.
+K is ('10, -12, -8, -4, 6, 2', '1, -1, -1, -1, 1, 1')
+Iteration 1 of 20
+Iteration 2 of 20
+The best sequence we found is:
+Shift
+2D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+Shift
+
+It has fitness 1112.11111111
+The resulting diagram has 0 crossings.
+5 successes so far, out of 5 attempts.
+Starting attempt 6 of 10.
+K is ('-4, 2, 8, -10, 6', '1, -1, 1, -1, 1')
+Iteration 1 of 20
+The best sequence we found is:
+2D(pos=1)
+3H(pos=1, side=R)
+Shift
+2D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 1 crossings.
+6 successes so far, out of 6 attempts.
+Starting attempt 7 of 10.
+K is ('-6, -2, -10, 8, 4', '1, -1, 1, -1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+3H
+1D
+Shift
+2D
+Shift
+1D
+Shift
+2D(pos=1)
+3H
+2D(pos=1)
+
+It has fitness 556.555555556
+The resulting diagram has 1 crossings.
+7 successes so far, out of 7 attempts.
+Starting attempt 8 of 10.
+K is ('-6, -2, -10, -8, 4', '1, -1, 1, 1, -1')
+Iteration 1 of 20
+Iteration 2 of 20
+Iteration 3 of 20
+Iteration 4 of 20
+The best sequence we found is:
+Shift
+1D(pos=1)
+2D(pos=1)
+
+It has fitness 1112.11111111
+The resulting diagram has 2 crossings.
+8 successes so far, out of 8 attempts.
+Starting attempt 9 of 10.
+K is ('4, 2, 8, -10, 6', '-1, 1, 1, -1, 1')
+Iteration 1 of 20
+Iteration 2 of 20
+Iteration 3 of 20
+Iteration 4 of 20
+Iteration 5 of 20
+Iteration 6 of 20
+Iteration 7 of 20
+Iteration 8 of 20
+Iteration 9 of 20
+Iteration 10 of 20
+Iteration 11 of 20
+Iteration 12 of 20
+Iteration 13 of 20
+Iteration 14 of 20
+Iteration 15 of 20
+Iteration 16 of 20
+Iteration 17 of 20
+Iteration 18 of 20
+Iteration 19 of 20
+Iteration 20 of 20
+The best sequence we found is:
+Shift
+1D(pos=1)
+
+It has fitness 1.05
+The resulting diagram has 4 crossings.
+8 successes so far, out of 9 attempts.
+Starting attempt 10 of 10.
+K is ('6, -2, -10, 8, 4', '-1, -1, 1, 1, -1')
+Iteration 1 of 20
+The best sequence we found is:
+2D
+Shift
+1D(pos=1)
+1D
+2D(pos=1)
+
+It has fitness 770.230769231
+The resulting diagram has 2 crossings.
+9 successes so far, out of 10 attempts.
+We had 90.0% success!
+Finished script. Took: 0:00:27.168353

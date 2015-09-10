@@ -82,7 +82,7 @@ class ADTOpList(object):
         self.opList = list_of_ops + curr
 
     def mutate(self, model='original', upMoveBias=1, downMoveBias=1, horizontalMoveBias = 1, CCBias = 1):
-        print "Starting muatation"
+        # print "Starting mutation"
         n = self.length()
         ol = self.toList()
         if model=='original':
