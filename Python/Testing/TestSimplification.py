@@ -4,16 +4,19 @@ sys.path.append(lib_path)
 import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, Fit
 from datetime import datetime
 
-fileName = "TestFile"
-#fileName = "../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
+#fileName = "TestFile"
+fileName = "../../../../../../Dropbox (CSU Fullerton)/TestFileMemory"
 
 #myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
 
 print "Starting script."
 start = datetime.now()
 
-length = 5 #length of test/target unknot diagrams
-attempts = 10 #the number of times we attempt to test the algorithm's effectiveness
+
+
+
+length = 15 #length of test/target unknot diagrams
+attempts = 5 #the number of times we attempt to test the algorithm's effectiveness
 popsize = 10*length #the number of sequences in the population during each attempt
 numiterations = 4*length #the maximum number of iterations used in each attempt at the algorithm
 
@@ -81,6 +84,9 @@ def testSimplification():
         
 # attempts is set above
 successes = 0
+
+
+
 for j in range(attempts):
     myfile = open(fileName, 'a')
     print "\n"
