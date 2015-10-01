@@ -15,14 +15,22 @@ class ADTComplex:
     
     def init_incidence(self):
         self.c2 = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_regs+1)]
-        self.c3 = [[0 for j in range(4)] for i in range(self.n)]
+        self.c3 = [[0 for j in range(4)] for i in range(self.n_arcs+1)]
         self.er = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_arcs+1)]
         self.c4 = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_arcs+1)]
         self.rm = [[0 for j in range(self.n_regs+1)] for i in range(self.n_regs+1)]
-        self.kf = [[0 for j in range(self.n+1)] for i in range(self.n_regs+1)]
+        self.kf = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_regs+1)]
         self.opp = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_regs+1)]
     
     def calc_incidence(self):
+        print "nc = %d" % (self.n)
+        print "nr = %d" % (self.n_regs)
+        print "np = %d" % (self.n_arcs)
+        self.printmatrix("orientations", [[self.orient(i) for i in range(1,self.n_arcs+1)]])
+        self.printmatrix("f", [[self.f(i) for i in range(1,self.n_arcs+1)]])
+        self.printmatrix("g", [[self.g(i) for i in range(1,self.n_arcs+1)]])
+        self.printmatrix("sign", [[self.sign(i) for i in range(1,self.n_arcs+1)]])
+        self.printmatrix("phi", [[self.adt.phi(i,r) for i in range(1,self.n_arcs+1)] for r in range(self.n_arcs+1)])
         self.calc_incidence_c2()
         self.calc_incidence_c3()
         self.calc_incidence_er()
@@ -35,22 +43,22 @@ class ADTComplex:
     # C2[i,j] says whether region i is incident to edge j.
     def calc_incidence_c2(self):
         adt = self.adt
-        b1 = [[0 for j in range(2)] for i in range(self.n_arcs+1)]
+        b1 = [[0,0] for i in range(self.n_arcs+1)]
         r = 0
         for i in range(1, self.n_arcs + 1):
             if b1[i][0] == 0:
                 k = i
                 r += 1
-                self.c2[r][i-1] = 1
+                self.c2[r][i] = 1
                 b1[i][0] = 1
                 dd = 1
                 while adt.jump(adt.wrap(k+(dd+1)/2)) != i:
                     if dd == 1:
-                        dd1 = adt.quad(adt.wrap(k+1))[3]
+                        dd1 = self.f(adt.wrap(k+1))
                         k = adt.wrap(adt.jump(adt.wrap(k+1)) + (dd1-1)/2)
                     else:
-                        dd1 = -adt.quad(k)[3]
-                        k = adt.wrap(adt.jump(k) + (dd1-1/2))
+                        dd1 = -self.f(k)
+                        k = adt.wrap(adt.jump(k) + ((dd1-1)/2))
                     dd = dd1
                     self.c2[r][k] = 1
                     if dd == 1:
@@ -66,10 +74,10 @@ class ADTComplex:
                 b1[i][1] = 1
                 while adt.jump(adt.wrap(k+(dd+1)/2)) != adt.wrap(i+1):
                     if dd == 1:
-                        dd1 = adt.quad(adt.wrap(k+1))[3]
+                        dd1 = self.f(adt.wrap(k+1))
                         k = adt.wrap(adt.jump(adt.wrap(k+1)) + (dd1-1)/2)
                     else:
-                        dd1 = -adt.quad(k)[3]
+                        dd1 = -self.f(k)
                         k = adt.wrap(adt.jump(k) + (dd1-1/2))
                     dd = dd1
                     self.c2[r][k] = 1
@@ -77,24 +85,28 @@ class ADTComplex:
                         b1[k][0] = 1
                     else:
                         b1[k][1] = 1
+        self.printmatrix("c2", self.c2)
         return
 
     # C3: Incidence of regions to crossings.
     # C3[i,0-3] lists the regions around crossing i, clockwise.
     def calc_incidence_c3(self):
         adt = self.adt
+        c2 = self.c2
         for i in range(1,self.n_regs+1):
             for j in range(1,self.n_arcs+1):
-                if self.c2[i][j] == 1:
-                    if self.c2[i][adt.wrap(adt.jump(j)-1)] == 1:
+                if c2[i][j] == 1:
+                    if c2[i][adt.wrap(adt.jump(j)-1)] == 1:
                         self.c3[j][0] = i
-                    if self.c2[i][adt.jump(j)] == 1:
+                    if c2[i][adt.jump(j)] == 1:
                         self.c3[j][1] = i
-                if self.c2[i][adt.wrap(j-2)] == 1:
-                    if self.c2[i][adt.jump(j)] == 1:
+            for j in range(1,self.n_arcs+1):
+                if c2[i][adt.wrap(j-1)] == 1:
+                    if c2[i][adt.jump(j)] == 1:
                         self.c3[j][2] = i
-                    if self.c2[i][adt.wrap(adt.jump(j)-1)] == 1:
+                    if c2[i][adt.wrap(adt.jump(j)-1)] == 1:
                         self.c3[j][3] = i
+        self.printmatrix("c3", self.c3)
         return
     
     # ER: Incidence of edges to regions.
@@ -107,6 +119,7 @@ class ADTComplex:
                     if self.c2[reg1][j] == 1:
                         self.er[i][j] = reg1
                         self.er[j][i] = reg1
+        self.printmatrix("er", self.er)
         return
 
     # C4: Edges meeting at crossing.
@@ -114,10 +127,11 @@ class ADTComplex:
     def calc_incidence_c4(self):
         adt = self.adt
         for i in range(1,self.n_arcs+1):
-            self.c4[i][adt.jump(j)] = 1
+            self.c4[i][adt.jump(i)] = 1
             self.c4[i][adt.wrap(adt.jump(i)-1)] = 1
             self.c4[i][adt.jump(adt.wrap(i+1))] = 1
             self.c4[i][adt.wrap(adt.jump(adt.wrap(i+1))-1)] = 1
+        self.printmatrix("c4", self.c4)
         return
     
     # RM: Edges shared by adjacent regions
@@ -129,25 +143,29 @@ class ADTComplex:
             self.rm[c3[i][2]][c3[i][1]] = i
             self.rm[c3[i][2]][c3[i][3]] = adt.jump(i)
             self.rm[c3[i][3]][c3[i][2]] = adt.jump(i)
+        self.printmatrix("rm", self.rm)
         return
     
     def calc_incidence_kf(self):
         adt = self.adt
         c3 = self.c3
-        odd,even,sign,orient = adt.quad(i)
         for i in range(1,self.n_arcs+1):
+            odd,even,sign,orient = adt.quad(i)
             self.kf[c3[i][0]][i] = -orient * sign
             self.kf[c3[i][1]][i] = orient * sign
             self.kf[c3[i][2]][i] = -orient * sign
             self.kf[c3[i][3]][i] = orient * sign
+        self.printmatrix("kf", self.kf)
         return
     
     def calc_incidence_opp(self):
+        rm = self.rm
         for i in range(1,self.n_regs):
             for j in range(i+1,self.n_regs+1):
-                if (self.rm[i][j] == 0):
+                if (rm[i][j] == 0):
                     self.opp[i][rm[i][j]] = j
                     self.opp[j][rm[i][j]] = i
+        self.printmatrix("opp", self.opp)
         return
     
     def init_neighbours(self):
@@ -181,8 +199,17 @@ class ADTComplex:
     def sign(self,i):
         return self.adt.quad(i)[2]
     
+        return -self.adt.quad(i)[3]
+        return -self.adt.quad(i)[3]
     def orient(self,i):
-        return self.adt.quad(i)[3]
+        return -self.adt.quad(i)[3]
+        return -self.adt.quad(i)[3]
+    
+    def f(self,i):
+        return -self.adt.f(i)
+    
+    def g(self,i):
+        return (1 if i % 2 == 1 else -1)
     
     def calc_neighbours(self):
         self.calc_neighbours_ccr()
@@ -198,12 +225,15 @@ class ADTComplex:
         adt = self.adt
         for reg in range(1,self.n_regs+1):
             cedge = 0
+            #print "c2[%d][%d] = %d" % (reg,cedge,c2[reg][cedge])
             while (c2[reg][cedge] == 0):
+                #print "c2[%d][%d] = %d" % (reg,cedge,c2[reg][cedge])
                 cedge += 1
             fedge = cedge
             self.ccr[reg].append(cedge)
             dir = self.sign(cedge) * kf[reg][cedge]
             while True:
+                #print "eb(%d,%d)" % (cedge,dir)
                 node = self.eb(cedge,dir)
                 if (c2[reg][adt.jump(node)] == 1):
                     cedge = adt.jump(node)
@@ -375,4 +405,11 @@ class ADTComplex:
             valence = nb[i][0]
             if nb[i][valence+1] == 0:
                 nb[i][valence+1] = nb[i][1]
+        return
+    
+    def printmatrix(self,name,m):
+        print name
+        for row in m:
+            print row
+        print ""
         return
