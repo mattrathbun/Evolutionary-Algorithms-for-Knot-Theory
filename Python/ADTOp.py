@@ -1,5 +1,6 @@
 from math import *
 import random, re
+import AllDiagrams
 
 moves = ['R1Up', 'R1Down', 'R2Up', 'R2Down', 'R3', 'Shift']
 coarse_up_moves = ['R1Up', 'R2Up']
@@ -260,42 +261,45 @@ class ADTMove(ADTOp):
                 self.fillData(random.choice(possible_data))
 
     def apply(self, knot):
-        K = knot.copy()
-        if not self.checkFullData():
-            self.simpleRandomData(knot)
+        if (knot, self) in AllDiagrams.allDiagrams:
+            K = AllDiagrams.allDiagrams[(knot, self)]
+        else:
+            K = knot.copy()
             if not self.checkFullData():
-                return False
-        # print "Trying to apply move: ", self.toString(), " ", self.number," ", self.direction
-        # print "to diagram: ", knot.to_string()
-        if self.number == 0 and self.direction == "H":
-            knot.shiftLabel()
-        elif self.number == 1 and self.direction == "U":
-            knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
-        elif self.number == 1 and self.direction == "D":
-            knot.R1Down(arc=self.data['arc'])
-        elif self.number == 2 and self.direction == "U":
-            knot.R2Up(arc=self.data['arc'], side=self.data['side'], target=self.data['target'])
-        elif self.number == 2 and self.direction == "D":
-            knot.R2Down(arc=self.data['arc'])
-        elif self.number == 3:
-            if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
-#                 print "This is where the False is coming from (0)"
-                return False
-        else:
-            raise TypeError(
-                'What kind of move are you, and how did you get this far?')
-
-        if knot.isrealisable():
-            if knot != K:
-                return knot
+                self.simpleRandomData(knot)
+                if not self.checkFullData():
+                    return False
+            # print "Trying to apply move: ", self.toString(), " ", self.number," ", self.direction
+            # print "to diagram: ", knot.to_string()
+            if self.number == 0 and self.direction == "H":
+                knot.shiftLabel()
+            elif self.number == 1 and self.direction == "U":
+                knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
+            elif self.number == 1 and self.direction == "D":
+                knot.R1Down(arc=self.data['arc'])
+            elif self.number == 2 and self.direction == "U":
+                knot.R2Up(arc=self.data['arc'], side=self.data['side'], target=self.data['target'])
+            elif self.number == 2 and self.direction == "D":
+                knot.R2Down(arc=self.data['arc'])
+            elif self.number == 3:
+                if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
+#                     print "This is where the False is coming from (0)"
+                    return False
             else:
-                return False
-        else:
-            print "We have a problem."
-            print "Starting with: ", K.to_string()
-            print "Applying move: ", self.toString()
-            print "Became: ", knot.to_string()
-            raise TypeError("We have a problem!!!")
+                raise TypeError(
+                    'What kind of move are you, and how did you get this far?')
+
+            if knot.isrealisable():
+                if knot != K:
+                    return knot
+                else:
+                    return False
+            else:
+                print "We have a problem."
+                print "Starting with: ", K.to_string()
+                print "Applying move: ", self.toString()
+                print "Became: ", knot.to_string()
+                raise TypeError("We have a problem!!!")
             
 
 #     def apply(self, knot):
@@ -456,17 +460,21 @@ class ADTCC(ADTOp):
             raise TypeError(
                 'What kind of change are you, and how did you get this far?')
 
-        if knot.isrealisable():
-            if knot != K:
-                return knot
-            else:
-                return False
-        else:
-            print "We have a problem."
-            print "Starting with: ", K.to_string()
-            print "Applying move: ", self.toString()
-            print "Became: ", knot.to_string()
-            raise TypeError("We have a problem!!!")
+
+##### IS THIS STILL NECESSARY, OR WAS THIS JUST FOR TESTING? ####
+#         if knot.isrealisable():
+#             if knot != K:
+#                 return knot
+#             else:
+#                 return False
+#         else:
+#             print "We have a problem."
+#             print "Starting with: ", K.to_string()
+#             print "Applying move: ", self.toString()
+#             print "Became: ", knot.to_string()
+#             raise TypeError("We have a problem!!!")
+            
+############
 
 def simpleCoarseRandomCC():
     return ADTCC()
