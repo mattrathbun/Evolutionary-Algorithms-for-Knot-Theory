@@ -1,4 +1,4 @@
-fileName = "../../../../../../Dropbox (CSU Fullerton)/allDiagrams3"
+fileName = "../../../../allDiagrams3"
 
 allDiagramsSet = set()
 counter = 0

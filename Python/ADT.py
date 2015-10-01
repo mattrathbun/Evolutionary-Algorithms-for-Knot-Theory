@@ -1,5 +1,6 @@
 import ADTOp
 import sys
+import AllDiagrams
 
 
 fileName = "../../../../../../Dropbox (CSU Fullerton)/allDiagrams3"
@@ -90,13 +91,13 @@ class ADT(object):
         return not self.__eq__(other)
         
         
-    def writeDiagram(self):
-        myfile = open(fileName, 'a')
-        myfile.write(str(self.to_string()))
-        myfile.write("\n")
-        myfile.close()
-    
-
+#     def writeDiagram(self):
+#         myfile = open(fileName, 'a')
+#         myfile.write(str(self.to_string()))
+#         myfile.write("\n")
+#         myfile.close()
+        
+        
     def to_list(self):
         return self.code, self.orientations
 
@@ -264,7 +265,7 @@ class ADT(object):
             new_orients.append(i[3])
         self.code = new_code
         self.orientations = new_orients
-        self.writeDiagram()
+#        self.writeDiagram()
         return True
     
     # Method which tests whether two codes correspond to the same diagram by testing all
@@ -326,7 +327,7 @@ class ADT(object):
             new_or.insert(arc / 2, sign)
         self.code = new_dt
         self.orientations = new_or
-        self.writeDiagram()
+#        self.writeDiagram()
         return True
 
     # Methods that perform a Reidemeister 1 Move, eliminating a single
@@ -365,7 +366,7 @@ class ADT(object):
                     new_dt.append(i)
             self.code = new_dt
             self.orientations.pop(((arc - 1) / 2) % n)
-            self.writeDiagram()
+#            self.writeDiagram()
             return True
         elif arc % 2 == 0:
             temp_dt.pop((arc / 2) % n)
@@ -378,7 +379,7 @@ class ADT(object):
 #            print "new_dt has become: ", new_dt
             self.code = new_dt
             self.orientations.pop((arc / 2) % n)
-            self.writeDiagram()
+#            self.writeDiagram()
             return True
 
     # Methods that perform a Reidemeister 2 Move, introducing two
@@ -461,7 +462,7 @@ class ADT(object):
 #             print "new_code, new_orientations: ", new_code, new_orientations
         self.code = new_code
         self.orientations = new_orientations
-        self.writeDiagram()
+#        self.writeDiagram()
         return True
 
 
@@ -646,7 +647,7 @@ class ADT(object):
         elif n == 2:
             self.code = []
             self.orientations = []
-            self.writeDiagram()
+#            self.writeDiagram()
             return True
         new_code = []
         tail, head = candidates[0]
@@ -681,7 +682,7 @@ class ADT(object):
             new_code.insert(0, new_code.pop())
             self.orientations.insert(0, self.orientations.pop())
         self.code = new_code
-        self.writeDiagram()
+#        self.writeDiagram()
         return True
 
     # helper
@@ -865,7 +866,7 @@ class ADT(object):
              self.orientations[(p-1)/2] = rewriteOri[p]
         # print "*************************"
 
-        self.writeDiagram()
+#        self.writeDiagram()
         return True
         
 # Generates a list of all possible moves (with data) that can be performed at strand 1

@@ -2,10 +2,14 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, Fit
+import AllDiagrams
 from datetime import datetime
 
+AllDiagrams.init()
+
 #fileName = "TestFile"
-fileName = "../../../../../../Dropbox (CSU Fullerton)/TestFileMemory"
+#fileName = "../../../../../../Dropbox (CSU Fullerton)/TestFileMemory"
+fileName = "dump"
 
 #myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
 
@@ -15,7 +19,7 @@ start = datetime.now()
 
 
 
-length = 15 #length of test/target unknot diagrams
+length = 8 #length of test/target unknot diagrams
 attempts = 5 #the number of times we attempt to test the algorithm's effectiveness
 popsize = 10*length #the number of sequences in the population during each attempt
 numiterations = 4*length #the maximum number of iterations used in each attempt at the algorithm

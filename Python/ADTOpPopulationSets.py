@@ -57,14 +57,23 @@ class Population(object):
         fcmp = lambda x, y: cmp(fit(x), fit(y))
         print "Starting to sort"
         startsort = datetime.now()
-        pop1.sort(cmp=fcmp)
+###        pop1.sort(cmp=fcmp)
         print "Finished sorting. Took this long: ", datetime.now() - startsort
         possible_survivors = set()
         tfv = 0
         # maxf = 0
         # minf = 1000000
-        maxf = fit(pop1[-1])
-        minf = fit(pop1[0])
+        startMax = datetime.now()
+        print "Starting attempt at max and min."
+        maxlist = max(pop1, key = lambda x: fit(x))
+        maxf = maxlist.checkFitness()
+        minlist = min(pop1, key = lambda x: fit(x))
+        minf = minlist.checkFitness()
+        print "Finished finding max and min. Took this long:", datetime.now() - startMax
+        print "\n"
+        
+###        maxf = fit(pop1[-1])
+###        minf = fit(pop1[0])
         for ol in pop1:
             fv = fit(ol)
             if fv > 2:
