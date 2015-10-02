@@ -15,7 +15,7 @@ class ADTComplex:
     
     def init_incidence(self):
         self.c2 = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_regs+1)]
-        self.c3 = [[0 for j in range(4)] for i in range(self.n_arcs+1)]
+        self.c3 = [[0 for j in range(5)] for i in range(self.n_arcs+1)]
         self.er = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_arcs+1)]
         self.c4 = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_arcs+1)]
         self.rm = [[0 for j in range(self.n_regs+1)] for i in range(self.n_regs+1)]
@@ -97,15 +97,15 @@ class ADTComplex:
             for j in range(1,self.n_arcs+1):
                 if c2[i][j] == 1:
                     if c2[i][adt.wrap(adt.jump(j)-1)] == 1:
-                        self.c3[j][0] = i
-                    if c2[i][adt.jump(j)] == 1:
                         self.c3[j][1] = i
+                    if c2[i][adt.jump(j)] == 1:
+                        self.c3[j][2] = i
             for j in range(1,self.n_arcs+1):
                 if c2[i][adt.wrap(j-1)] == 1:
                     if c2[i][adt.jump(j)] == 1:
-                        self.c3[j][2] = i
-                    if c2[i][adt.wrap(adt.jump(j)-1)] == 1:
                         self.c3[j][3] = i
+                    if c2[i][adt.wrap(adt.jump(j)-1)] == 1:
+                        self.c3[j][4] = i
         self.printmatrix("c3", self.c3)
         return
     
@@ -138,7 +138,7 @@ class ADTComplex:
     def calc_incidence_rm(self):
         adt = self.adt
         c3 = self.c3
-        for i in range(1,self.n+1,2):
+        for i in range(1,self.n_arcs,2):
             self.rm[c3[i][1]][c3[i][2]] = i
             self.rm[c3[i][2]][c3[i][1]] = i
             self.rm[c3[i][2]][c3[i][3]] = adt.jump(i)
@@ -150,11 +150,12 @@ class ADTComplex:
         adt = self.adt
         c3 = self.c3
         for i in range(1,self.n_arcs+1):
-            odd,even,sign,orient = adt.quad(i)
-            self.kf[c3[i][0]][i] = -orient * sign
-            self.kf[c3[i][1]][i] = orient * sign
-            self.kf[c3[i][2]][i] = -orient * sign
-            self.kf[c3[i][3]][i] = orient * sign
+            f = self.f(i)
+            g = self.g(i)
+            self.kf[c3[i][1]][i] = -f * g
+            self.kf[c3[i][2]][i] = f * g
+            self.kf[c3[i][3]][i] = -f * g
+            self.kf[c3[i][4]][i] = f * g
         self.printmatrix("kf", self.kf)
         return
     
@@ -162,7 +163,7 @@ class ADTComplex:
         rm = self.rm
         for i in range(1,self.n_regs):
             for j in range(i+1,self.n_regs+1):
-                if (rm[i][j] == 0):
+                if (rm[i][j] != 0):
                     self.opp[i][rm[i][j]] = j
                     self.opp[j][rm[i][j]] = i
         self.printmatrix("opp", self.opp)
@@ -409,7 +410,9 @@ class ADTComplex:
     
     def printmatrix(self,name,m):
         print name
-        for row in m:
-            print row
+        for row in m[1:]:
+            for el in row[1:]:
+                print "%2d" % (el),
+            print ""
         print ""
         return
