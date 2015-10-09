@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/bin/gcc $1 -O2 -fomit-frame-pointer -s -ISnapPea/headers -L. -lsnappea -lm -o $2
+

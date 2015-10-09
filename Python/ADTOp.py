@@ -261,8 +261,17 @@ class ADTMove(ADTOp):
                 self.fillData(random.choice(possible_data))
 
     def apply(self, knot):
-        if (knot, self) in AllDiagrams.allDiagrams:
-            K = AllDiagrams.allDiagrams[(knot, self)]
+        print "ABOUT TO CHECK ALLDIAGRAMS"
+        print "Length of allDiagrams: ", len(AllDiagrams.allDiagrams)
+        AllDiagrams.lookupCount += 1
+        print "lookupCount: ", AllDiagrams.lookupCount
+        if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
+            print "LOOKUP"
+            K = AllDiagrams.allDiagrams[(knot.to_string(), self.toString())]
+            if K == knot:
+                return False
+            else:
+                return True
         else:
             K = knot.copy()
             if not self.checkFullData():
@@ -273,17 +282,23 @@ class ADTMove(ADTOp):
             # print "to diagram: ", knot.to_string()
             if self.number == 0 and self.direction == "H":
                 knot.shiftLabel()
+                AllDiagrams.allDiagrams[(K, self)] = K
             elif self.number == 1 and self.direction == "U":
                 knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
+                AllDiagrams.allDiagrams[(K, self)] = K
             elif self.number == 1 and self.direction == "D":
                 knot.R1Down(arc=self.data['arc'])
+                AllDiagrams.allDiagrams[(K, self)] = K
             elif self.number == 2 and self.direction == "U":
                 knot.R2Up(arc=self.data['arc'], side=self.data['side'], target=self.data['target'])
+                AllDiagrams.allDiagrams[(K, self)] = K
             elif self.number == 2 and self.direction == "D":
                 knot.R2Down(arc=self.data['arc'])
+                AllDiagrams.allDiagrams[(K, self)] = K
             elif self.number == 3:
                 if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
 #                     print "This is where the False is coming from (0)"
+                    AllDiagrams.allDiagrams[(K, self)] = K
                     return False
             else:
                 raise TypeError(
@@ -447,18 +462,26 @@ class ADTCC(ADTOp):
                 self.fillData(random.choice(possible_data))
 
     def apply(self, knot):
-        K = knot.copy()
-        if not self.checkFullData():
-            self.simpleRandomData(knot)
-            if not self.checkFullData():
+        if (knot, self) in AllDiagrams.allDiagrams:
+            K = AllDiagrams.allDiagrams[(knot, self)]
+            if K == knot:
                 return False
+            else:
+                return True
+        else:
+            K = knot.copy()
+            if not self.checkFullData():
+                self.simpleRandomData(knot)
+                if not self.checkFullData():
+                    return False
 #         print "Trying to apply change: ", self.toString()
 #         print "to diagram: ", knot.to_string()
-        if self.opType == "CC":
-            knot.crossing_change(arc=self.data['arc'])
-        else:
-            raise TypeError(
-                'What kind of change are you, and how did you get this far?')
+            if self.opType == "CC":
+                knot.crossing_change(arc=self.data['arc'])
+                AllDiagrams.allDiagrams[(K, self)] = K
+            else:
+                raise TypeError(
+                    'What kind of change are you, and how did you get this far?')
 
 
 ##### IS THIS STILL NECESSARY, OR WAS THIS JUST FOR TESTING? ####

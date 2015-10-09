@@ -1,0 +1,10 @@
+rm ken2snap knotscape_hyp knotscape_canonical symmetry_fix_info libsnappea.a
+cd SnapPea/code
+make clean
+make lib
+mv libsnappea.a ../..
+cd ../..
+compile ken2snap.c ken2snap
+compile knotscape_hyp.c knotscape_hyp
+compile knotscape_canonical.c knotscape_canonical
+compile symmetry_fix_info.c symmetry_fix_info
