@@ -266,13 +266,15 @@ class ADTMove(ADTOp):
         AllDiagrams.lookupCount += 1
         print "lookupCount: ", AllDiagrams.lookupCount
         if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
-            print "LOOKUP"
+            print "LOOKUP SUCCESS"
             K = AllDiagrams.allDiagrams[(knot.to_string(), self.toString())]
             if K == knot:
                 return False
             else:
                 return True
         else:
+            print "LOOKUP FAILURE"
+            print "\n"
             K = knot.copy()
             if not self.checkFullData():
                 self.simpleRandomData(knot)
