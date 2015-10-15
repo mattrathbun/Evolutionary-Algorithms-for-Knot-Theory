@@ -24,9 +24,9 @@ class ADTComplex:
         self.opp = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_regs+1)]
     
     def calc_incidence(self):
-        print "nc = %d" % (self.n)
-        print "nr = %d" % (self.n_regs)
-        print "np = %d" % (self.n_arcs)
+        # print "nc = %d" % (self.n)
+        # print "nr = %d" % (self.n_regs)
+        # print "np = %d" % (self.n_arcs)
         # self.printmatrix("orientations", [[self.orient(i) for i in range(1,self.n_arcs+1)]])
         # self.printmatrix("f", [[self.f(i) for i in range(1,self.n_arcs+1)]])
         # self.printmatrix("g", [[self.g(i) for i in range(1,self.n_arcs+1)]])
@@ -413,8 +413,6 @@ class ADTComplex:
                 for i in range(1,nedge+1):
                     # print "nb[%d] = " % (node), nb[node]
                     nb[node][nedge+1-i] = n + ccr[reg][i]
-        
-        print ""
         
         for i in range(1,self.n_nodes+1):
             valence = nb[i][0]
