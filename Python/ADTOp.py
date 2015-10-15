@@ -265,8 +265,7 @@ class ADTMove(ADTOp):
         print "Length of allDiagrams: ", len(AllDiagrams.allDiagrams)
         AllDiagrams.lookupCount += 1
         print "lookupCount: ", AllDiagrams.lookupCount
-#        if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
-        if False:
+        if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
             print "LOOKUP SUCCESS"
             AllDiagrams.lookupSuccess += 1
             print "{} of {}".format(AllDiagrams.lookupSuccess, AllDiagrams.lookupCount)
@@ -275,7 +274,8 @@ class ADTMove(ADTOp):
             if K == knot:
                 return False
             else:
-                return True
+                knot = K.copy()
+                return knot
         else:
             print "LOOKUP FAILURE"
             AllDiagrams.lookupFailure += 1
@@ -298,23 +298,23 @@ class ADTMove(ADTOp):
             # print "to diagram: ", knot.to_string()
             if self.number == 0 and self.direction == "H":
                 knot.shiftLabel()
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = K
+                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot
             elif self.number == 1 and self.direction == "U":
                 knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = K
+                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot
             elif self.number == 1 and self.direction == "D":
                 knot.R1Down(arc=self.data['arc'])
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = K
+                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot
             elif self.number == 2 and self.direction == "U":
                 knot.R2Up(arc=self.data['arc'], side=self.data['side'], target=self.data['target'])
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = K
+                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot
             elif self.number == 2 and self.direction == "D":
                 knot.R2Down(arc=self.data['arc'])
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = K
+                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot
             elif self.number == 3:
                 if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
 #                     print "This is where the False is coming from (0)"
-                    AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = K
+##                    AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot
                     return False
             else:
                 raise TypeError(
