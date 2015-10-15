@@ -4205,3 +4205,1481 @@ The resulting diagram has 8 crossings.
 0 successes so far, out of 5 attempts.
 We had 0.0% success!
 Finished script. Took: 0:00:58.150189
+Starting attempt 1 of 5.
+K is ('-2, -14, 6, 12, -8, 10, 4', '1, 1, 1, 1, 1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 1 attempts.
+Starting attempt 2 of 5.
+K is ('-8, -2, 4, -14, -10, -12, 6', '1, -1, 1, 1, 1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 2 attempts.
+Starting attempt 3 of 5.
+K is ('-14, 2, -12, 6, -8, 10, 4', '1, 1, -1, 1, 1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 3 attempts.
+Starting attempt 4 of 5.
+K is ('-4, 2, -6, -14, -12, -10, 8', '-1, 1, 1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2D(pos=1)
+
+It has fitness 1.03571428571
+The resulting diagram has 7 crossings.
+0 successes so far, out of 4 attempts.
+Starting attempt 5 of 5.
+K is ('-2, 4, -12, -16, -14, 10, 6, 8', '1, -1, 1, 1, 1, -1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1.01886792453
+The resulting diagram has 8 crossings.
+0 successes so far, out of 5 attempts.
+We had 0.0% success!
+Finished script. Took: 0:00:49.431348
+Starting attempt 1 of 5.
+K is ('-12, -2, -14, 4, -8, 10, 6', '-1, -1, 1, 1, 1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 1 attempts.
+Starting attempt 2 of 5.
+K is ('-10, -2, -16, 14, -12, -4, 8, 6', '-1, 1, -1, 1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2U(pos=1, side=L, target=[3, 4])
+
+It has fitness 1.01492537313
+The resulting diagram has 8 crossings.
+0 successes so far, out of 2 attempts.
+Starting attempt 3 of 5.
+K is ('12, -2, -10, 6, -14, 4, 8', '-1, 1, 1, 1, 1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+3H(pos=1, side=L)
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 3 attempts.
+Starting attempt 4 of 5.
+K is ('-10, 2, -8, 6, 4, -12, 14', '-1, 1, -1, -1, 1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 4 attempts.
+Starting attempt 5 of 5.
+K is ('-6, -4, 2, -12, -16, 14, 8, 10', '1, 1, -1, -1, -1, 1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2D(pos=1)
+
+It has fitness 1.02564102564
+The resulting diagram has 8 crossings.
+0 successes so far, out of 5 attempts.
+We had 0.0% success!
+Finished script. Took: 0:00:51.411223
+Starting attempt 1 of 5.
+K is ('4, 2, -12, 6, 10, -8, 14', '1, 1, -1, 1, -1, 1, 1')
+Iteration 1 of 28
+Starting attempt 1 of 5.
+K is ('-10, -2, -12, 6, -14, 4, 8', '-1, -1, -1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1U(pos=1, side=R, sign=1)
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 1 attempts.
+Starting attempt 2 of 5.
+K is ('2, -4, -16, 14, -12, 10, 8, 6', '1, -1, -1, -1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+
+It has fitness 1.01923076923
+The resulting diagram has 8 crossings.
+0 successes so far, out of 2 attempts.
+Starting attempt 3 of 5.
+K is ('12, -2, -10, -14, -8, 4, 6', '1, -1, -1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 3 attempts.
+Starting attempt 4 of 5.
+K is ('2, 4, 12, 8, 6, -14, 10', '-1, -1, -1, -1, 1, 1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+
+It has fitness 1.02564102564
+The resulting diagram has 7 crossings.
+0 successes so far, out of 4 attempts.
+Starting attempt 5 of 5.
+K is ('2, -16, -14, -6, -12, -10, 8, 4', '-1, -1, 1, -1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+
+It has fitness 1.01923076923
+The resulting diagram has 8 crossings.
+0 successes so far, out of 5 attempts.
+We had 0.0% success!
+Finished script. Took: 0:00:58.262035
+Starting attempt 1 of 5.
+K is ('12, 2, -14, -10, -6, 8, 4', '-1, 1, 1, -1, -1, 1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1U(pos=1, side=L, sign=-1)
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 1 attempts.
+Starting attempt 2 of 5.
+K is ('8, 2, 4, -6, -14, -12, 10', '1, 1, -1, 1, -1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1U(pos=1, side=R, sign=1)
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 2 attempts.
+Starting attempt 3 of 5.
+K is ('-12, -10, 6, 4, -16, 14, 2, 8', '1, -1, 1, 1, -1, -1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2D(pos=1)
+
+It has fitness 1.02564102564
+The resulting diagram has 8 crossings.
+0 successes so far, out of 3 attempts.
+Starting attempt 4 of 5.
+K is ('-10, -2, -6, 14, -12, 4, 8', '1, -1, -1, -1, 1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2U(pos=1, side=L, target=[3, 4])
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 4 attempts.
+Starting attempt 5 of 5.
+K is ('2, -4, 6, -14, 10, -12, 8', '1, -1, -1, 1, -1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+
+It has fitness 1.02564102564
+The resulting diagram has 7 crossings.
+0 successes so far, out of 5 attempts.
+We had 0.0% success!
+Finished script. Took: 0:02:33.051770
+Starting attempt 1 of 5.
+K is ('-12, -2, -4, -14, -8, -10, 6', '-1, -1, 1, -1, 1, -1, 1')
+Iteration 1 of 28
+Starting attempt 1 of 5.
+K is ('-2, 4, -6, -16, -10, -12, -14, 8', '-1, -1, 1, -1, 1, 1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+
+It has fitness 1.01923076923
+The resulting diagram has 8 crossings.
+0 successes so far, out of 1 attempts.
+Starting attempt 2 of 5.
+K is ('-2, -4, -6, -14, 12, 10, 8', '-1, 1, 1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1.025
+The resulting diagram has 7 crossings.
+0 successes so far, out of 2 attempts.
+Starting attempt 3 of 5.
+K is ('4, 2, 6, -14, -12, -10, 8', '1, -1, -1, 1, 1, 1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1U(pos=1, side=L, sign=-1)
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 3 attempts.
+Starting attempt 4 of 5.
+K is ('-12, -14, -10, -8, 4, 6, 2', '1, 1, 1, 1, -1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 4 attempts.
+Starting attempt 5 of 5.
+K is ('-8, -16, 6, 4, -12, 14, 10, 2', '-1, -1, -1, 1, 1, -1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01492537313
+The resulting diagram has 8 crossings.
+0 successes so far, out of 5 attempts.
+We had 0.0% success!
+Finished script. Took: 0:07:10.175538
+Starting attempt 1 of 5.
+K is ('-6, -10, 8, 2, 4, -16, -14, 12', '-1, -1, 1, 1, 1, -1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2D(pos=1)
+
+It has fitness 1.01492537313
+The resulting diagram has 8 crossings.
+0 successes so far, out of 1 attempts.
+Starting attempt 2 of 5.
+K is ('-2, -14, 12, -10, -8, 6, 4', '-1, 1, 1, 1, -1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1.0243902439
+The resulting diagram has 7 crossings.
+0 successes so far, out of 2 attempts.
+Starting attempt 3 of 5.
+K is ('14, -2, 4, -6, -12, -10, 8', '1, 1, 1, 1, 1, 1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2U(pos=1, side=R, target=[9, 8])
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 3 attempts.
+Starting attempt 4 of 5.
+K is ('2, 4, -12, 6, -14, -8, 10', '-1, 1, -1, 1, 1, -1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1.025
+The resulting diagram has 7 crossings.
+0 successes so far, out of 4 attempts.
+Starting attempt 5 of 5.
+K is ('2, 4, -16, -12, 8, 14, -10, 6', '-1, -1, -1, 1, -1, -1, 1, 1')
+Iteration 1 of 28
+Starting attempt 1 of 5.
+K is ('-8, -4, 2, -16, -12, 14, 10, 6', '-1, 1, 1, -1, 1, -1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01492537313
+The resulting diagram has 8 crossings.
+0 successes so far, out of 1 attempts.
+Starting attempt 2 of 5.
+K is ('2, -10, -14, -12, -8, 4, 6', '1, -1, -1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 4 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 8 of 28
+Iteration 7 of 28
+Iteration 9 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 11 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 12 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 13 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 14 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 15 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 16 of 28
+Iteration 28 of 28
+Iteration 17 of 28
+The best sequence we found is:
+1D(pos=1)
+
+It has fitness 1.02564102564
+The resulting diagram has 7 crossings.
+0 successes so far, out of 2 attempts.
+Starting attempt 3 of 5.
+K is ('12, -14, -10, 4, -8, 6, 2', '-1, 1, 1, -1, -1, -1, -1')
+Iteration 1 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1.01851851852
+The resulting diagram has 8 crossings.
+0 successes so far, out of 5 attempts.
+We had 0.0% success!
+Finished script. Took: 0:06:56.400913
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2U(pos=1, side=L, target=[3, 4])
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 3 attempts.
+Starting attempt 4 of 5.
+K is ('2, -12, 6, 8, 4, -16, -14, 10', '-1, -1, -1, -1, 1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+
+It has fitness 1.01923076923
+The resulting diagram has 8 crossings.
+0 successes so far, out of 4 attempts.
+Starting attempt 5 of 5.
+K is ('-2, -8, -14, -10, 4, -12, 6', '-1, -1, -1, -1, 1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1D(pos=1)
+
+It has fitness 1.02564102564
+The resulting diagram has 7 crossings.
+0 successes so far, out of 5 attempts.
+We had 0.0% success!
+Finished script. Took: 0:06:20.453697
+Starting attempt 1 of 5.
+K is ('12, -2, -10, -14, -4, 8, 6', '1, -1, 1, -1, 1, -1, 1')
+Iteration 1 of 28
+Starting attempt 1 of 5.
+Starting attempt 1 of 5.
+K is ('-12, -14, -2, -10, 8, 6, 4', '-1, 1, -1, 1, -1, -1, -1')
+Iteration 1 of 28
+Starting attempt 1 of 5.
+Starting attempt 1 of 5.
+Starting attempt 1 of 5.
+Starting attempt 1 of 5.
+K is ('12, -2, -10, 4, -14, 6, 8', '-1, -1, -1, 1, 1, 1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2U(pos=1, side=L, target=[11, 12])
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 1 attempts.
+Starting attempt 2 of 5.
+K is ('12, 2, -14, -10, 8, 4, 6', '1, 1, 1, -1, -1, 1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 2 attempts.
+Starting attempt 3 of 5.
+K is ('-8, -2, 6, 4, -12, 14, 10', '1, 1, 1, -1, -1, 1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+2U(pos=1, side=R, target=[3, 2])
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 3 attempts.
+Starting attempt 4 of 5.
+K is ('8, 2, 4, -6, 10, -12, -14', '1, -1, -1, 1, 1, -1, 1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+1U(pos=1, side=L, sign=1)
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 4 attempts.
+Starting attempt 5 of 5.
+K is ('8, -2, -4, -6, 10, -12, -14', '-1, 1, 1, 1, -1, 1, -1')
+Iteration 1 of 28
+Iteration 2 of 28
+Iteration 3 of 28
+Iteration 4 of 28
+Iteration 5 of 28
+Iteration 6 of 28
+Iteration 7 of 28
+Iteration 8 of 28
+Iteration 9 of 28
+Iteration 10 of 28
+Iteration 11 of 28
+Iteration 12 of 28
+Iteration 13 of 28
+Iteration 14 of 28
+Iteration 15 of 28
+Iteration 16 of 28
+Iteration 17 of 28
+Iteration 18 of 28
+Iteration 19 of 28
+Iteration 20 of 28
+Iteration 21 of 28
+Iteration 22 of 28
+Iteration 23 of 28
+Iteration 24 of 28
+Iteration 25 of 28
+Iteration 26 of 28
+Iteration 27 of 28
+Iteration 28 of 28
+The best sequence we found is:
+Shift
+
+It has fitness 1.01923076923
+The resulting diagram has 7 crossings.
+0 successes so far, out of 5 attempts.
+We had 0.0% success!
+Finished script. Took: 0:05:57.661474
