@@ -265,21 +265,28 @@ class ADTMove(ADTOp):
         print "Length of allDiagrams: ", len(AllDiagrams.allDiagrams)
         AllDiagrams.lookupCount += 1
         print "lookupCount: ", AllDiagrams.lookupCount
-        if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
+        if False:
+##        if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
             print "LOOKUP SUCCESS"
             AllDiagrams.lookupSuccess += 1
-            print "{} of {}".format(AllDiagrams.lookupSuccess, AllDiagrams.lookupCount)
-            print "Which is: ", float(AllDiagrams.lookupSuccess)/float(AllDiagrams.lookupCount)
-            K = AllDiagrams.allDiagrams[(knot.to_string(), self.toString())]
-            print "op is "+self.toString()
-            print "knot is ",knot.to_string()
-            print "K is ",K.to_string()
-            if K == knot:
+#             print "{} of {}".format(AllDiagrams.lookupSuccess, AllDiagrams.lookupCount)
+#             print "Which is: ", float(AllDiagrams.lookupSuccess)/float(AllDiagrams.lookupCount)
+            L = AllDiagrams.allDiagrams[(knot.to_string(), self.toString())].copy()
+            
+#             print "op is "+self.toString()
+#             print "knot is ",knot.to_string()
+#             print "L is ",L.to_string()
+            if L == knot:
                 return False
             else:
-                knot = K.copy()
+                knot = L.copy()
                 return knot
         else:
+            shouldBeSuccess = False
+            if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
+                print "\nThis ***SHOULD*** be a success!!!\n"
+                shouldBeSuccess = True
+                J = AllDiagrams.allDiagrams[(knot.to_string(), self.toString())].copy()
             print "LOOKUP FAILURE"
             AllDiagrams.lookupFailure += 1
             print "{} of {}".format(AllDiagrams.lookupFailure, AllDiagrams.lookupCount)
@@ -301,54 +308,54 @@ class ADTMove(ADTOp):
             # print "Trying to apply move: ", self.toString(), " ", self.number," ", self.direction
             # print "to diagram: ", knot.to_string()
             if self.number == 0 and self.direction == "H":
-                print "Here is knot before shiftLabel() applied to knot: ", knot.to_string()
-                print "Here is K before shiftLabel() applied to knot: ", K.to_string()
-                print "Here is self before shiftLabel() applied to knot: ", self.toString()
+#                 print "Here is knot before shiftLabel() applied to knot: ", knot.to_string()
+#                 print "Here is K before shiftLabel() applied to knot: ", K.to_string()
+#                 print "Here is self before shiftLabel() applied to knot: ", self.toString()
                 knot.shiftLabel()
-                print "Here is knot after shiftLabel() applied to knot: ", knot.to_string()
-                print "Here is K after shiftLabel() applied to knot: ", K.to_string()
-                print "Here is self after shiftLabel() applied to knot: ", self.toString()
+#                 print "Here is knot after shiftLabel() applied to knot: ", knot.to_string()
+#                 print "Here is K after shiftLabel() applied to knot: ", K.to_string()
+#                 print "Here is self after shiftLabel() applied to knot: ", self.toString()
                 
-                print "Here is allDiagrams before addition: \n"
-                for diag in AllDiagrams.allDiagrams:
-                    print "({}, {})".format(diag, AllDiagrams.allDiagrams[diag].to_string())
-                print "\n"
+#                 print "Here is allDiagrams before addition: \n"
+#                 for diag in AllDiagrams.allDiagrams:
+#                     print "({}, {})".format(diag, AllDiagrams.allDiagrams[diag].to_string())
+#                 print "\n"
                 
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot.copy()
+#                 print "Here is allDiagrams after addition: \n"
+#                 for diag in AllDiagrams.allDiagrams:
+#                     print "({}, {})".format(diag, AllDiagrams.allDiagrams[diag].to_string())
+#                 print "\n"
                 
-                print "Here is allDiagrams after addition: \n"
-                for diag in AllDiagrams.allDiagrams:
-                    print "({}, {})".format(diag, AllDiagrams.allDiagrams[diag].to_string())
-                print "\n"
-                
-                print "Remember K is {} and knot is {}".format(K.to_string(), knot.to_string())
-                print "Now, as a check, we will copy K and then shift the label of K."
-                L = K.copy()
-                K.shiftLabel()
-                print "Now L is {}, K is {}, and knot is {}".format(L.to_string(), K.to_string(), knot.to_string())
-                if AllDiagrams.allDiagrams[(L.to_string(), self.toString())] != K:
-                    raise TypeError("\n\nPROBLEM!\n\n")
+#                 print "Remember K is {} and knot is {}".format(K.to_string(), knot.to_string())
+#                 print "Now, as a check, we will copy K and then shift the label of K."
+#                L = K.copy()
+#                K.shiftLabel()
+#                print "Now L is {}, K is {}, and knot is {}".format(L.to_string(), K.to_string(), knot.to_string())
             elif self.number == 1 and self.direction == "U":
                 knot.R1Up(arc=self.data['arc'], side=self.data['side'], sign=self.data['sign'])
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot.copy()
             elif self.number == 1 and self.direction == "D":
                 knot.R1Down(arc=self.data['arc'])
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot.copy()
             elif self.number == 2 and self.direction == "U":
                 knot.R2Up(arc=self.data['arc'], side=self.data['side'], target=self.data['target'])
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot.copy()
             elif self.number == 2 and self.direction == "D":
                 knot.R2Down(arc=self.data['arc'])
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot.copy()
             elif self.number == 3:
-                if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
+                knot.R3(arc=self.data['arc'], side=self.data['side'])
+##                if knot.R3(arc=self.data['arc'], side=self.data['side'])==False:
 #                     print "This is where the False is coming from (0)"
-                    return False
-                AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = knot.copy()
+##                    return False
             else:
                 raise TypeError(
                     'What kind of move are you, and how did you get this far?')
 
+            L = knot.copy()
+            AllDiagrams.allDiagrams[(K.to_string(), self.toString())] = L
+            
+            if shouldBeSuccess == True:
+                print "\n\nBig Test:\n\n"
+                if J !=L:
+                    raise TypeError("HUH?)")
+                            
             if knot.isrealisable():
                 if knot != K:
                     return knot
