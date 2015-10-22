@@ -21,7 +21,8 @@ start = datetime.now()
 
 length = 5 #length of test/target unknot diagrams
 attempts = 5 #the number of times we attempt to test the algorithm's effectiveness
-popsize = 10*length #the number of sequences in the population during each attempt
+#popsize = 10*length #the number of sequences in the population during each attempt
+popsize = 5*length #the number of sequences in the population during each attempt
 numiterations = 4*length #the maximum number of iterations used in each attempt at the algorithm
 
 def testSimplification():
@@ -92,6 +93,7 @@ successes = 0
 
 
 for j in range(attempts):
+    AllDiagrams.init()
     myfile = open(fileName, 'a')
     print "\n"
     myfile.write("Starting attempt {} of {}.".format(j+1, attempts))
