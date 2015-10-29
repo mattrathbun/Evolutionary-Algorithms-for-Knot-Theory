@@ -284,7 +284,11 @@ class ADTMove(ADTOp):
             else:
                 print "We want to apply {} to {}.".format(self.toString(), knot.to_string())
                 print "Our lookup is {}".format(lookupResult.to_string())
-                return lookupResult.copy()
+                knot.code = lookupResult.copy().code
+                knot.orientations = lookupResult.copy().orientations
+                print knot.to_string()
+                return knot
+#                return lookupResult.copy()
         else:
             print "LOOKUP FAILURE"
             AllDiagrams.lookupFailure += 1
@@ -295,6 +299,8 @@ class ADTMove(ADTOp):
 #             print "\n"
 #             print "apparently not in"
 #             print "\n"
+            print "\n"
+            print "All Diagrams dictionary:"
             for diag in AllDiagrams.allDiagrams:
                 print diag, AllDiagrams.allDiagrams[diag].to_string()
             print "\n"
@@ -350,6 +356,12 @@ class ADTMove(ADTOp):
             moveApplied = knot.copy()
             AllDiagrams.allDiagrams[(originalKnot.to_string(), self.toString())] = moveApplied.copy()
             
+            print "\n"
+            print "All Diagrams dictionary:"
+            for diag in AllDiagrams.allDiagrams:
+                print diag, AllDiagrams.allDiagrams[diag].to_string()
+                print "\n"
+
             
             J = AllDiagrams.allDiagrams[(originalKnot.to_string(), self.toString())].copy()
             
