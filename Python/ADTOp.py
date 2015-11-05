@@ -158,6 +158,7 @@ class ADTMove(ADTOp):
         else:
             print "This is strange."
             return self.number, self.direction
+            raise TypeError("This is not a recognized direction.")
 
     def copy(self):
         return ADTMove(number=self.number, direction=self.direction, data=self.data)
@@ -261,13 +262,10 @@ class ADTMove(ADTOp):
                 self.fillData(random.choice(possible_data))
 
     def apply(self, knot):
-        print "ABOUT TO CHECK ALLDIAGRAMS"
-        print "Length of allDiagrams: ", len(AllDiagrams.allDiagrams)
         AllDiagrams.lookupCount += 1
-        print "lookupCount: ", AllDiagrams.lookupCount
+#        print "lookupCount: ", AllDiagrams.lookupCount
 ##        if False:
         if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
-            print "LOOKUP SUCCESS"
             AllDiagrams.lookupSuccess += 1
 #             print "{} of {}".format(AllDiagrams.lookupSuccess, AllDiagrams.lookupCount)
 #             print "Which is: ", float(AllDiagrams.lookupSuccess)/float(AllDiagrams.lookupCount)
@@ -277,33 +275,19 @@ class ADTMove(ADTOp):
 #             print "knot is ",knot.to_string()
 #             print "L is ",L.to_string()
             if lookupResult == knot:
-                print "Lookup is returning False."
-                print "{} is the lookup result.".format(lookupResult.to_string())
-                print "{} is the knot.".format(knot.to_string())
                 return False
             else:
-                print "We want to apply {} to {}.".format(self.toString(), knot.to_string())
-                print "Our lookup is {}".format(lookupResult.to_string())
-                knot.code = lookupResult.copy().code
-                knot.orientations = lookupResult.copy().orientations
-                print knot.to_string()
+                knot.code = lookupResult.code
+                knot.orientations = lookupResult.orientations
                 return knot
 #                return lookupResult.copy()
         else:
-            print "LOOKUP FAILURE"
             AllDiagrams.lookupFailure += 1
-            print "{} of {}".format(AllDiagrams.lookupFailure, AllDiagrams.lookupCount)
-            print "Which is: ", float(AllDiagrams.lookupFailure)/float(AllDiagrams.lookupCount)
 #             print "\n"
 #             print knot.to_string(), self.toString()
 #             print "\n"
 #             print "apparently not in"
 #             print "\n"
-            print "\n"
-            print "All Diagrams dictionary:"
-            for diag in AllDiagrams.allDiagrams:
-                print diag, AllDiagrams.allDiagrams[diag].to_string()
-            print "\n"
 #            K = knot.copy()
             if not self.checkFullData():
                 self.simpleRandomData(knot)
@@ -353,42 +337,20 @@ class ADTMove(ADTOp):
                 raise TypeError(
                     'What kind of move are you, and how did you get this far?')
 
-            moveApplied = knot.copy()
-            AllDiagrams.allDiagrams[(originalKnot.to_string(), self.toString())] = moveApplied.copy()
+            AllDiagrams.allDiagrams[(originalKnot.to_string(), self.toString())] = knot.copy()
             
-            print "\n"
-            print "All Diagrams dictionary:"
-            for diag in AllDiagrams.allDiagrams:
-                print diag, AllDiagrams.allDiagrams[diag].to_string()
-                print "\n"
-
-            
-            J = AllDiagrams.allDiagrams[(originalKnot.to_string(), self.toString())].copy()
-            
-            print "\n\nBig Test:\n\n"
-            if J == moveApplied:
-                print "Looks right."
-                print "{} is now the lookupvalue.".format(J.to_string())
-                print "{} is the result of applying the move.".format(moveApplied.to_string())
-            elif J != moveApplied:
-                print "Here's a problem."
-                print "{} is now the lookupvalue.".format(J.to_string())
-                print "{} is the result of applying the move.".format(moveApplied.to_string())
-                raise TypeError("HUH?)")
-            else:
-                raise TypeError("Those should be exhaustive!")
                             
-            if knot.isrealisable():
-                if knot != originalKnot:
-                    return knot
-                else:
-                    return False
+#            if knot.isrealisable():
+            if knot != originalKnot:
+                return knot
             else:
-                print "We have a problem."
-                print "Starting with: ", originalKnot.to_string()
-                print "Applying move: ", self.toString()
-                print "Became: ", knot.to_string()
-                raise TypeError("We have a problem!!!")
+                return False
+#             else:
+#                 print "We have a problem."
+#                 print "Starting with: ", originalKnot.to_string()
+#                 print "Applying move: ", self.toString()
+#                 print "Became: ", knot.to_string()
+#                 raise TypeError("We have a problem!!!")
             
 
 #     def apply(self, knot):

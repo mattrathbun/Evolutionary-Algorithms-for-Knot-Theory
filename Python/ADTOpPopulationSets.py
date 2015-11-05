@@ -198,9 +198,9 @@ class Population(object):
 #         print "    Survivors:"
 #         for l in survivors:
 #             print l.toString()
-        print "    Population:"
-        for l in pop3:
-            print "    ", l.toString()
+#         print "    Population:"
+#         for l in pop3:
+#             print "    ", l.toString()
 
  ##       pop3 = list(pop3)
         
