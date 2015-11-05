@@ -22,8 +22,8 @@ start = datetime.now()
 length = 20 #length of test/target unknot diagrams
 attempts = 10 #the number of times we attempt to test the algorithm's effectiveness
 #popsize = 10*length #the number of sequences in the population during each attempt
-popsize = 5*length #the number of sequences in the population during each attempt
-numiterations = 5*length #the maximum number of iterations used in each attempt at the algorithm
+popsize = 8*length #the number of sequences in the population during each attempt
+numiterations = 7*length #the maximum number of iterations used in each attempt at the algorithm
 
 def testSimplification():
     fit = Fit.Fit(2, 0, 1, 1, K)
