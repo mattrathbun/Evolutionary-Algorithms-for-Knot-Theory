@@ -10,11 +10,13 @@ class ADTComplex:
         self.inf_reg = 0
         
         self.init_incidence()
+        self.init_regions()
         self.calc_incidence()
         self.init_neighbours()
         self.calc_neighbours()
     
     def init_incidence(self):
+        self.regs = [[0,'']]
         self.c2 = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_regs+1)]
         self.c3 = [[0 for j in range(5)] for i in range(self.n_arcs+1)]
         self.er = [[0 for j in range(self.n_arcs+1)] for i in range(self.n_arcs+1)]
@@ -32,14 +34,41 @@ class ADTComplex:
         # self.printmatrix("g", [[self.g(i) for i in range(1,self.n_arcs+1)]])
         # self.printmatrix("sign", [[self.sign(i) for i in range(1,self.n_arcs+1)]])
         # self.printmatrix("phi", [[self.adt.phi(i,r) for i in range(1,self.n_arcs+1)] for r in range(self.n_arcs+1)])
-        self.calc_incidence_c2()
+        self.calc_incidence_c2_new()
+        #self.calc_incidence_c2()
         self.calc_incidence_c3()
         self.calc_incidence_er()
         self.calc_incidence_c4()
         self.calc_incidence_rm()
         self.calc_incidence_kf()
         self.calc_incidence_opp()
-        
+    
+    def init_regions(self):
+        for i in range(1,self.n_arcs+1):
+            for s in ['L', 'R']:
+                rnames = self.region_names(i,s)
+                if rnames not in self.regs:
+                    self.regs.append(rnames)
+    
+    def calc_incidence_c2_new(self):
+        for i in range(1,self.n_regs+1):
+            for r in self.regs[i]:
+                self.c2[i][r[0]] = 1
+        self.printmatrix("c2", self.c2)
+        return
+
+    def region_names(self,n,s):
+        regs = self.adt.regions(n,s)
+        rnames = []
+        for arc in regs:
+            if arc[1] == self.adt.wrap(arc[0]+1):
+                rnames.append([arc[0],s])
+            else:
+                t = 'L' if s == 'R' else 'R'
+                rnames.append([arc[1],t])
+        return sorted(rnames)
+                
+    
     # C2: Incidence matrix of regions to edges.
     # C2[i,j] says whether region i is incident to edge j.
     def calc_incidence_c2(self):
@@ -86,7 +115,7 @@ class ADTComplex:
                         b1[k][0] = 1
                     else:
                         b1[k][1] = 1
-        # self.printmatrix("c2", self.c2)
+        self.printmatrix("c2", self.c2)
         return
 
     # C3: Incidence of regions to crossings.
@@ -107,7 +136,7 @@ class ADTComplex:
                         self.c3[j][3] = i
                     if c2[i][adt.wrap(adt.jump(j)-1)] == 1:
                         self.c3[j][4] = i
-        # self.printmatrix("c3", self.c3)
+        self.printmatrix("c3", self.c3)
         return
     
     # ER: Incidence of edges to regions.
@@ -120,7 +149,7 @@ class ADTComplex:
                     if self.c2[reg1][j] == 1:
                         self.er[i][j] = reg1
                         self.er[j][i] = reg1
-        # self.printmatrix("er", self.er)
+        self.printmatrix("er", self.er)
         return
 
     # C4: Edges meeting at crossing.
@@ -132,7 +161,7 @@ class ADTComplex:
             self.c4[i][adt.wrap(adt.jump(i)-1)] = 1
             self.c4[i][adt.jump(adt.wrap(i+1))] = 1
             self.c4[i][adt.wrap(adt.jump(adt.wrap(i+1))-1)] = 1
-        # self.printmatrix("c4", self.c4)
+        self.printmatrix("c4", self.c4)
         return
     
     # RM: Edges shared by adjacent regions
