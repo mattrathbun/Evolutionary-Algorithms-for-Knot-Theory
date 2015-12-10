@@ -10,8 +10,9 @@ AllDiagrams.init()
 
 up = input("How many up moves should be performed? ")
 down = input("How many down moves should be performed? ")
+num = input("How many examples do you want? ")
 
-storageFile = "Up"+str(up)+"Down"+str(down)
+storageFile = "CandidateUp"+str(up)+"Down"+str(down)
 
 def createCandidateExample():
     K = ADT.ADT([], [])
@@ -38,3 +39,12 @@ def createCandidateExample():
         random.choice(simpleFinePossibleDownMoves).apply(K)
         downs += 1
     return K
+    
+
+current = 0
+while current < num:
+    L = createCandidateExample()
+    myfile = open(storageFile, 'a')
+    myfile.write(L.to_string())
+    myfile.write('\n')
+    myfile.close()
