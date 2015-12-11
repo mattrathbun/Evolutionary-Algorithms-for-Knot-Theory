@@ -19,7 +19,7 @@ start = datetime.now()
 
 
 
-length = 10 #length of test/target unknot diagrams
+length = 20 #length of test/target unknot diagrams
 attempts = 10 #the number of times we attempt to test the algorithm's effectiveness
 #popsize = 10*length #the number of sequences in the population during each attempt
 popsize = 10*length #the number of sequences in the population during each attempt

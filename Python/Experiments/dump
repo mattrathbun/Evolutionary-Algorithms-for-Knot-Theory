@@ -4659,3 +4659,4312 @@ Iteration 40 of 40
 The best sequence we found is:
 1D1D1U(pos=1, side=L, sign=-1)1U(pos=1, side=R, sign=1)2D1U(pos=1, side=R, sign=-1)1D1U(pos=1, side=L, sign=1)1D1D3H1U(pos=1, side=R, sign=-1)3H1U(pos=1, side=R, sign=1)2D3H2D1U(pos=1, side=L, sign=-1)1D2U(pos=1, side=R, target=[17, 18])Shift1U(pos=1, side=R, sign=-1)Simplificaiton had 70.0% success!    With speed 168.Random had 20.0% success!    With speed 343.Greedy Genetic Simplification had 90.0% success!    With speed 108.Greedy Simplification had 0.0% success!    With speed 400.
 Finished script. Took: 0:04:40.606865
+Starting attempt 1 of 10.
+K is ('-2, -6, -10, 8, 4', '1, -1, -1, 1, 1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+1D(pos=1)
+Shift
+2D(pos=1)
+Shift
+
+It has fitness 1001.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Success on iteration 8.
+1D(pos=1)Shift2D(pos=1)1DShiftShift1D
+The resulting diagram is:
+('-4, 2', '1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+3H
+1D(pos=1)
+Shift
+2D(pos=1)
+Shift
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+2U(pos=1, side=R, target=[1, 10])3H2D2DShift2U(pos=1, side=R, target=[7, 8])1U(pos=1, side=L, sign=1)1U(pos=1, side=R, sign=1)Shift2U(pos=1, side=L, target=[3, 2])2D(pos=1)2U(pos=1, side=L, target=[21, 22])Starting attempt 2 of 10.
+K is ('6, -8, -4, 2', '1, -1, 1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+1D
+Shift
+2D(pos=1)
+
+It has fitness 1001.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+2D3H2DShift2D(pos=1)2D3H(pos=1, side=L)2D
+The resulting diagram is:
+('2, -4', '1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+2D(pos=1)
+2D(pos=1)
+3H(pos=1, side=L)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+2U(pos=1, side=L, target=[7, 6])1D2D(pos=1)1D(pos=1)2D(pos=1)2U1D(pos=1)Starting attempt 3 of 10.
+K is ('2, -8, -6, 4', '1, 1, 1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+
+It has fitness 2001.0
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+2D3H(pos=1, side=L)1D(pos=1)2D(pos=1)3H2D3H2U2U1D(pos=1)Shift1U(pos=1, side=R, sign=1)
+The resulting diagram is:
+('2', '1')
+Iteration 1 of 16
+The best sequence we found is:
+2U(pos=1, side=L, target=[3, 2])
+Shift
+2D(pos=1)
+2U(pos=1, side=R, target=[1, 4])
+2D(pos=1)
+1D(pos=1)
+Shift
+2D
+1D(pos=1)
+3H(pos=1, side=L)
+1D
+2U(pos=1, side=L, target=[3, 2])
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)1D1D2D(pos=1)Starting attempt 4 of 10.
+K is ('-8, -2, -4, 6', '1, -1, -1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+3H
+Shift
+1D(pos=1)
+3H
+1D(pos=1)
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 910.090909091
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+3H1DShift1D(pos=1)1U(pos=1, side=R, sign=1)1D2D(pos=1)
+The resulting diagram is:
+('-2, 4', '1, 1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1U(pos=1, side=R, sign=1)
+3H
+2D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1U(pos=1, side=L, sign=1)
+Shift
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+1D2U(pos=1, side=L, target=[3, 4])1D(pos=1)2U(pos=1, side=R, target=[9, 10])3H3HStarting attempt 5 of 10.
+K is ('4, -8, -6, 2', '-1, 1, -1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D
+Shift
+2D(pos=1)
+
+It has fitness 1001.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D3H(pos=1, side=R)3H(pos=1, side=L)ShiftShift2D(pos=1)
+The resulting diagram is:
+('-2, 4', '-1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+2U(pos=1, side=R, target=[7, 6])
+2D(pos=1)
+Shift
+3H
+1D(pos=1)
+1D
+2D(pos=1)
+2U(pos=1, side=R, target=[3, 4])
+1D(pos=1)
+1D
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D2U(pos=1, side=R, target=[5, 4])3H2D(pos=1)3H2D(pos=1)3H(pos=1, side=R)1DShift1U(pos=1, side=L, sign=1)2D(pos=1)ShiftStarting attempt 6 of 10.
+K is ('8, -2, 4, -6', '1, 1, -1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1D(pos=1)
+2D
+
+It has fitness 910.090909091
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+3H1DShift1D(pos=1)ShiftShift1D(pos=1)1D(pos=1)2U1U(pos=1, side=L, sign=-1)2D
+The resulting diagram is:
+('-4, -2', '-1, -1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1D(pos=1)
+3H(pos=1, side=L)
+2U(pos=1, side=R, target=[5, 6])
+1D(pos=1)
+3H(pos=1, side=L)
+2U(pos=1, side=R, target=[3, 4])
+3H(pos=1, side=L)
+
+It has fitness 2001.0
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+Shift3H2D2D2D1D(pos=1)1D(pos=1)2DStarting attempt 7 of 10.
+K is ('2, -8, -6, 4', '-1, 1, -1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)3H2D(pos=1)
+The resulting diagram is:
+('-2', '-1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+Shift
+2U
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+Shift
+1D
+2D
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+3H1D(pos=1)1D2D(pos=1)1D(pos=1)2D2U3H3H2DStarting attempt 8 of 10.
+K is ('-2, -10, 6, 8, 4', '1, -1, 1, -1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+
+It has fitness 1667.66666667
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)2D(pos=1)Shift1D2D1D
+The resulting diagram is:
+('-4, -2', '1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+3H(pos=1, side=R)
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+2U(pos=1, side=L, target=[9, 10])
+1D(pos=1)
+3H
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+ShiftShift3H3H2D(pos=1)1D(pos=1)2DShift2D(pos=1)Starting attempt 9 of 10.
+K is ('-4, -8, -6, 2', '1, 1, -1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+2D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1DShift1D3H2D(pos=1)1D
+The resulting diagram is:
+('4, 2', '1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D
+Shift
+3H
+2D(pos=1)
+Shift
+1D(pos=1)
+1D(pos=1)
+2U
+3H
+1U(pos=1, side=R, sign=-1)
+2D
+
+It has fitness 2001.0
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+Shift2D(pos=1)3H(pos=1, side=L)Starting attempt 10 of 10.
+K is ('2, -6, -8, 4', '-1, 1, 1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+2D
+1D(pos=1)
+2D(pos=1)
+1U(pos=1, side=R, sign=-1)
+
+It has fitness 910.090909091
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)2D(pos=1)2D2D3H1D(pos=1)3H
+The resulting diagram is:
+('', '')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+Shift
+1D
+Shift
+2D(pos=1)
+2D(pos=1)
+1U(pos=1, side=R, sign=-1)
+2D
+
+It has fitness 2001.0
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+2D3H1D(pos=1)2D(pos=1)ShiftSimplificaiton had 100.0% success!    With speed 11.Random had 100.0% success!    With speed 17.Greedy Genetic Simplification had 100.0% success!    With speed 12.Greedy Simplification had 80.0% success!    With speed 40.
+Finished script. Took: 0:00:03.492614
+Starting attempt 1 of 10.
+K is ('-2, -8, 6, 4', '-1, 1, 1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+3H
+
+It has fitness 1429.57142857
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)2D(pos=1)
+The resulting diagram is:
+('2', '1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+2D
+Shift
+2D(pos=1)
+
+It has fitness 2001.0
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)2D(pos=1)2UStarting attempt 2 of 10.
+K is ('2, -8, 6, 4', '1, 1, -1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+3H(pos=1, side=L)
+3H(pos=1, side=L)
+1D(pos=1)
+2D(pos=1)
+
+It has fitness 1112.11111111
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)2D(pos=1)2UShift1D(pos=1)2D
+The resulting diagram is:
+('', '')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+2D
+1D(pos=1)
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)2D(pos=1)1D(pos=1)Starting attempt 3 of 10.
+K is ('-8, 2, 4, 6', '1, -1, 1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1U(pos=1, side=R, sign=-1)
+Shift
+Shift
+2D(pos=1)
+
+It has fitness 834.333333333
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Success on iteration 2.
+Shift1D(pos=1)Shift2U(pos=1, side=R, target=[5, 4])2D3H1D(pos=1)Shift2D(pos=1)3H(pos=1, side=R)3H(pos=1, side=R)Shift
+The resulting diagram is:
+('-2, 4', '1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1D(pos=1)
+2D
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1U(pos=1, side=R, sign=-1)2DShift1D(pos=1)1D(pos=1)1D(pos=1)2D2D3H(pos=1, side=R)1D(pos=1)Starting attempt 4 of 10.
+K is ('6, -2, -4, 8', '1, -1, 1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+1D
+2D
+Shift
+1D(pos=1)
+1D(pos=1)
+Shift
+
+It has fitness 715.285714286
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1DShift2D1D(pos=1)1D(pos=1)
+The resulting diagram is:
+('-4, -2', '1, 1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+Shift
+2D(pos=1)
+Shift
+3H
+Shift
+1D(pos=1)
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+1U(pos=1, side=R, sign=1)Shift2U(pos=1, side=L, target=[5, 4])Starting attempt 5 of 10.
+K is ('-2, -8, -6, 4', '1, 1, -1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+3H(pos=1, side=L)
+
+It has fitness 1429.57142857
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)2D(pos=1)3H1D(pos=1)2U2D1D
+The resulting diagram is:
+('', '')
+Iteration 1 of 16
+The best sequence we found is:
+3H
+1D(pos=1)
+2D(pos=1)
+Shift
+2D
+1D(pos=1)
+3H
+2U
+3H
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)2D(pos=1)1D(pos=1)Shift3H2D1U(pos=1, side=R, sign=-1)3H3HStarting attempt 6 of 10.
+K is ('6, -2, 4, 8', '1, 1, 1, -1')
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1112.11111111
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+Shift1D(pos=1)1U(pos=1, side=R, sign=-1)2D(pos=1)2D3H(pos=1, side=R)3H(pos=1, side=L)
+The resulting diagram is:
+('-4, -2', '1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+3H
+Shift
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+3HShift1U(pos=1, side=L, sign=-1)3H2D(pos=1)2D3H1U(pos=1, side=R, sign=-1)2D(pos=1)2DStarting attempt 7 of 10.
+K is ('-4, -2, -6, 8', '-1, -1, -1, -1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1D
+Shift
+1D(pos=1)
+2D
+1U(pos=1, side=L, sign=1)
+Shift
+1D(pos=1)
+
+It has fitness 589.235294118
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Success on iteration 2.
+3H1D2U(pos=1, side=L, target=[3, 4])3H(pos=1, side=R)3H(pos=1, side=R)1D(pos=1)2D(pos=1)2DShift1D(pos=1)Shift
+The resulting diagram is:
+('-4, 2', '-1, -1')
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+3H
+2D
+Shift
+1D(pos=1)
+3H(pos=1, side=R)
+1D(pos=1)
+Shift
+
+It has fitness 2001.0
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+Shift2DShift2D3HShift2U(pos=1, side=R, target=[3, 2])Starting attempt 8 of 10.
+K is ('-2, -8, -6, 4', '-1, 1, -1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1U(pos=1, side=L, sign=1)
+2D(pos=1)
+2D(pos=1)
+2D
+Shift
+
+It has fitness 1112.11111111
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)2D(pos=1)Shift1D(pos=1)3H2U1U(pos=1, side=R, sign=-1)
+The resulting diagram is:
+('-2', '-1')
+Iteration 1 of 16
+The best sequence we found is:
+3H(pos=1, side=L)
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1D
+2D
+1D
+1D
+1D
+3H(pos=1, side=R)
+Shift
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)2D(pos=1)2DShift2D2DStarting attempt 9 of 10.
+K is ('6, 2, -4, 8', '-1, -1, 1, -1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+2D
+1D
+1D
+Shift
+3H
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 589.235294118
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+3H(pos=1, side=L)3H(pos=1, side=L)3H(pos=1, side=L)2D3H(pos=1, side=L)Shift2D3H1D(pos=1)1D(pos=1)3H2D
+The resulting diagram is:
+('-4, -2', '-1, -1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+1D
+Shift
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+3H(pos=1, side=L)2U(pos=1, side=L, target=[3, 4])1D(pos=1)3H1D2D(pos=1)3H1D(pos=1)2DShift2D2DStarting attempt 10 of 10.
+K is ('-8, 2, 4, -6', '-1, -1, -1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+2D
+1D(pos=1)
+3H
+1D(pos=1)
+3H
+
+It has fitness 667.666666667
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1DShift3H3H1D(pos=1)3H1D(pos=1)Shift2D1U(pos=1, side=R, sign=-1)Shift1D(pos=1)
+The resulting diagram is:
+('2, 4', '-1, -1')
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+2D
+1D(pos=1)
+2D
+Shift
+1D
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+1U(pos=1, side=L, sign=1)1D2U(pos=1, side=R, target=[7, 8])1U(pos=1, side=R, sign=1)Simplificaiton had 100.0% success!    With speed 21.Random had 100.0% success!    With speed 12.Greedy Genetic Simplification had 100.0% success!    With speed 16.Greedy Simplification had 70.0% success!    With speed 55.
+Finished script. Took: 0:00:04.284788
+Starting attempt 1 of 10.
+K is ('4, 2, -8, -6', '1, 1, -1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+2U(pos=1, side=L, target=[7, 8])
+3H
+1D(pos=1)
+2D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+
+It has fitness 834.333333333
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Success on iteration 2.
+2D3H3H2U(pos=1, side=L, target=[5, 4])1D(pos=1)2D(pos=1)2D(pos=1)2D
+The resulting diagram is:
+('2', '1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+2U(pos=1, side=R, target=[5, 4])
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D1DShift3H3H1D(pos=1)2D(pos=1)Starting attempt 2 of 10.
+K is ('8, -2, -4, 6', '-1, -1, -1, 1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+2D
+3H
+Shift
+1D(pos=1)
+3H
+2D
+3H
+1D(pos=1)
+Shift
+2D
+
+It has fitness 455.545454545
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Success on iteration 10.
+2U(pos=1, side=L, target=[5, 6])1D(pos=1)3H(pos=1, side=R)1D(pos=1)2D(pos=1)
+The resulting diagram is:
+('-2, -4', '1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1D(pos=1)
+Shift
+Shift
+Shift
+1D
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+2U(pos=1, side=L, target=[3, 2])3H(pos=1, side=L)1U(pos=1, side=L, sign=-1)2D2DStarting attempt 3 of 10.
+K is ('-8, 2, -4, 6', '1, 1, 1, 1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+1D(pos=1)
+2D
+
+It has fitness 910.090909091
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+Shift1D(pos=1)ShiftShift3H1D(pos=1)Shift2D3H
+The resulting diagram is:
+('-4, -2', '1, 1')
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+3H
+2U(pos=1, side=L, target=[1, 8])
+1D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+2DShift2U(pos=1, side=R, target=[5, 6])Starting attempt 4 of 10.
+K is ('-2, 6, -10, 8, 4', '1, -1, 1, 1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+Shift
+2D(pos=1)
+
+It has fitness 1112.11111111
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)ShiftShift2D(pos=1)
+The resulting diagram is:
+('2, 4', '1, -1')
+Iteration 1 of 16
+Iteration 2 of 16
+The best sequence we found is:
+1U(pos=1, side=R, sign=-1)
+2U(pos=1, side=R, target=[1, 10])
+2D(pos=1)
+Shift
+2D(pos=1)
+1D
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+1D(pos=1)1U(pos=1, side=L, sign=1)3H2U(pos=1, side=L, target=[5, 6])1U(pos=1, side=R, sign=-1)2U(pos=1, side=R, target=[1, 16])3HShift1D2U(pos=1, side=R, target=[19, 20])2U(pos=1, side=R, target=[15, 16])Starting attempt 5 of 10.
+K is ('-2, -8, 6, 4', '1, -1, 1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+3H(pos=1, side=R)
+1D(pos=1)
+2D(pos=1)
+2D
+1D(pos=1)
+2U(pos=1, side=L, target=[9, 10])
+
+It has fitness 910.090909091
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Success on iteration 2.
+1D(pos=1)2D(pos=1)Shift2UShift1U(pos=1, side=L, sign=1)
+The resulting diagram is:
+('4, 2', '1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+2U(pos=1, side=R, target=[5, 4])
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)1D2D(pos=1)1D(pos=1)2D1U(pos=1, side=R, sign=1)1D(pos=1)2DStarting attempt 6 of 10.
+K is ('2, -8, 6, 4', '1, -1, 1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2U(pos=1, side=R, target=[1, 8])
+2D(pos=1)
+
+It has fitness 1429.57142857
+The resulting diagram has 1 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+2U(pos=1, side=L, target=[5, 6])2D(pos=1)ShiftShift1D2D(pos=1)1DShiftShift
+The resulting diagram is:
+('-4, -2', '1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+3H
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)3H2D(pos=1)2U1D(pos=1)2UShift2DShift2UStarting attempt 7 of 10.
+K is ('-8, 2, 4, -6', '1, -1, 1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+3H
+1D(pos=1)
+
+It has fitness 910.090909091
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+Shift1D(pos=1)3H3H2D1D(pos=1)3H(pos=1, side=R)1D(pos=1)1D(pos=1)2U2U
+The resulting diagram is:
+('', '')
+Iteration 1 of 16
+The best sequence we found is:
+Shift
+1D(pos=1)
+3H
+1D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+Shift2D2U(pos=1, side=L, target=[5, 4])2D3H(pos=1, side=R)2U(pos=1, side=R, target=[3, 4])2U(pos=1, side=R, target=[9, 8])Starting attempt 8 of 10.
+K is ('-2, -8, -6, 4', '-1, 1, 1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+3H
+
+It has fitness 1429.57142857
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)Shift2D(pos=1)Shift2U2U3H1D(pos=1)
+The resulting diagram is:
+('', '')
+Iteration 1 of 16
+The best sequence we found is:
+3H(pos=1, side=L)
+3H(pos=1, side=L)
+1D(pos=1)
+Shift
+Shift
+1D(pos=1)
+2D(pos=1)
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)3H2D(pos=1)Starting attempt 9 of 10.
+K is ('-2, -10, 6, -8, 4', '1, -1, 1, 1, 1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+1D
+2D(pos=1)
+
+It has fitness 1001.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+Shift1DShift2D(pos=1)1D(pos=1)2D1D(pos=1)Shift1D(pos=1)
+The resulting diagram is:
+('', '')
+Iteration 1 of 16
+The best sequence we found is:
+2D
+Shift
+1D
+1D
+2D
+Shift
+2D(pos=1)
+1D(pos=1)
+Shift
+Shift
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+Iteration 2 of 16
+Iteration 3 of 16
+Iteration 4 of 16
+Iteration 5 of 16
+Iteration 6 of 16
+Iteration 7 of 16
+Iteration 8 of 16
+Iteration 9 of 16
+Iteration 10 of 16
+Iteration 11 of 16
+Iteration 12 of 16
+Iteration 13 of 16
+Iteration 14 of 16
+Iteration 15 of 16
+Iteration 16 of 16
+The best sequence we found is:
+1D(pos=1)3H1D1D1DShiftStarting attempt 10 of 10.
+K is ('2, -6, -8, 4', '1, 1, 1, -1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+
+It has fitness 2001.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+Success on iteration 1.
+1D(pos=1)2D(pos=1)2UShift3H
+The resulting diagram is:
+('2', '1')
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)
+Shift
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+3H(pos=1, side=L)
+3H(pos=1, side=R)
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 16
+The best sequence we found is:
+1D(pos=1)Shift1D2D(pos=1)1D(pos=1)2U1U(pos=1, side=R, sign=1)1D(pos=1)2D3H2D1U(pos=1, side=L, sign=1)Simplificaiton had 100.0% success!    With speed 12.Random had 100.0% success!    With speed 21.Greedy Genetic Simplification had 100.0% success!    With speed 14.Greedy Simplification had 50.0% success!    With speed 85.
+Finished script. Took: 0:00:05.830890
+Starting attempt 1 of 10.
+K is ('4, -2, -40, 30, -12, -28, 8, -26, -16, -24, -32, 18, 22, 14, -10, 20, -36, -38, 34, 6', '1, 1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, -1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+The best sequence we found is:
+3H(pos=1, side=R)
+Shift
+1D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+Shift
+2D(pos=1)
+Shift
+2D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+Shift
+3H
+Shift
+2D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+Shift
+Shift
+1D
+1D
+3H(pos=1, side=L)
+2D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2U(pos=1, side=R, target=[31, 30])
+
+It has fitness 233.558139535
+The resulting diagram has 1 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+The best sequence we found is:
+Shift
+1D(pos=1)
+Shift
+2D(pos=1)
+3H
+Shift
+2D(pos=1)
+2U(pos=1, side=R, target=[27, 26])
+Shift
+2D(pos=1)
+Shift
+2D(pos=1)
+1D(pos=1)
+2U(pos=1, side=R, target=[3, 4])
+2D(pos=1)
+2D(pos=1)
+2D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1D
+Shift
+2D(pos=1)
+2U(pos=1, side=L, target=[11, 12])
+2D(pos=1)
+2U(pos=1, side=R, target=[13, 12])
+2D(pos=1)
+1D(pos=1)
+1D(pos=1)
+3H
+1D(pos=1)
+
+It has fitness 2501.0
+The resulting diagram has 0 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+2U(pos=1, side=L, target=[1, 40])2U(pos=1, side=L, target=[43, 42])1U(pos=1, side=R, sign=1)2U(pos=1, side=R, target=[3, 2])2D1U(pos=1, side=R, sign=-1)1D2D1U(pos=1, side=L, sign=-1)1D2D1U(pos=1, side=R, sign=1)2U(pos=1, side=L, target=[11, 10])Shift2U(pos=1, side=L, target=[11, 10])Shift3H1U(pos=1, side=L, sign=1)1D1U(pos=1, side=L, sign=-1)2D2D1DShift2D1U(pos=1, side=R, sign=-1)2U(pos=1, side=R, target=[5, 4])1D(pos=1)3H2D(pos=1)2U(pos=1, side=R, target=[63, 64])Shift1DShift1U(pos=1, side=L, sign=1)2U(pos=1, side=L, target=[1, 78])Shift2D1U(pos=1, side=R, sign=1)3H1D1U(pos=1, side=L, sign=1)3H1U(pos=1, side=L, sign=-1)1DStarting attempt 2 of 10.
+K is ('4, 2, 40, -18, 16, -28, -20, 32, 8, -12, -38, 14, -30, 10, 26, 24, -34, -42, 22, -6, 36', '1, 1, -1, 1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, 1, 1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+Shift
+1D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+
+It has fitness 1.00487804878
+The resulting diagram has 14 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+The best sequence we found is:
+2D(pos=1)
+1U(pos=1, side=L, sign=-1)
+3H(pos=1, side=R)
+1D
+2D(pos=1)
+2D
+1D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+1D
+Shift
+2D(pos=1)
+2D(pos=1)
+1D
+2D(pos=1)
+Shift
+Shift
+3H(pos=1, side=L)
+1D(pos=1)
+Shift
+Shift
+2D(pos=1)
+1U(pos=1, side=R, sign=1)
+Shift
+2D(pos=1)
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2U(pos=1, side=R, target=[5, 4])
+2U(pos=1, side=L, target=[45, 44])
+Shift
+1D(pos=1)
+1D
+1D
+3H(pos=1, side=R)
+2D(pos=1)
+Shift
+Shift
+Shift
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+2D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+2DShift1U(pos=1, side=R, sign=1)1U(pos=1, side=L, sign=1)Shift1U(pos=1, side=R, sign=-1)1D2U(pos=1, side=R, target=[3, 4])3H(pos=1, side=L)1D(pos=1)1D2D(pos=1)1D1D1D2U(pos=1, side=R, target=[41, 42])3H1U(pos=1, side=R, sign=-1)Shift1U(pos=1, side=L, sign=1)2U(pos=1, side=L, target=[1, 54])1U(pos=1, side=L, sign=-1)2U(pos=1, side=R, target=[3, 4])ShiftShiftShift2U(pos=1, side=R, target=[59, 58])3H2D1U(pos=1, side=L, sign=1)Shift1U(pos=1, side=L, sign=1)1U(pos=1, side=L, sign=-1)3H3H1D3H2D1U(pos=1, side=R, sign=1)1D2D2DStarting attempt 3 of 10.
+K is ('-4, -40, 38, 8, 26, -28, -10, -36, -14, -18, -24, -20, 22, 12, -32, -34, 30, 16, -6, 2', '1, 1, 1, -1, 1, 1, -1, 1, -1, 1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+Shift
+2D(pos=1)
+Shift
+Shift
+Shift
+1D(pos=1)
+Shift
+Shift
+2D(pos=1)
+
+It has fitness 1.00423728814
+The resulting diagram has 15 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+Shift
+1D
+2D(pos=1)
+Shift
+2D(pos=1)
+Shift
+1D
+Shift
+1D(pos=1)
+1D(pos=1)
+Shift
+Shift
+2D(pos=1)
+Shift
+Shift
+2D(pos=1)
+Shift
+1D(pos=1)
+Shift
+1D
+3H(pos=1, side=L)
+2D(pos=1)
+Shift
+Shift
+2D(pos=1)
+1D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+
+It has fitness 1.025
+The resulting diagram has 6 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+Shift1D2D(pos=1)Shift1D2D2D1D1D1U(pos=1, side=R, sign=-1)Shift2U(pos=1, side=L, target=[27, 28])1D2U(pos=1, side=L, target=[39, 38])1U(pos=1, side=L, sign=-1)1U(pos=1, side=R, sign=-1)1U(pos=1, side=R, sign=-1)1DShift1U(pos=1, side=R, sign=-1)Shift2U(pos=1, side=L, target=[1, 54])2DShift2U(pos=1, side=R, target=[3, 2])3H(pos=1, side=R)3H(pos=1, side=L)2U(pos=1, side=L, target=[59, 60])2D(pos=1)Shift3H2D1U(pos=1, side=R, sign=1)1U(pos=1, side=R, sign=1)1U(pos=1, side=L, sign=-1)3H2D3HShift1D(pos=1)1U(pos=1, side=L, sign=-1)1U(pos=1, side=R, sign=-1)2U(pos=1, side=L, target=[5, 6])3HShiftShift2D3HShiftShift2D(pos=1)2U(pos=1, side=R, target=[27, 26])2U(pos=1, side=L, target=[47, 48])1D1DShift1DStarting attempt 4 of 10.
+K is ('-36, -2, -6, 10, -32, -12, -30, 14, 16, 20, -28, -26, 24, 22, 18, 8, -40, -38, 4, 34', '-1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+Shift
+1D(pos=1)
+Shift
+1D(pos=1)
+Shift
+2D(pos=1)
+Shift
+1D(pos=1)
+Shift
+1D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+Shift
+1D(pos=1)
+
+It has fitness 1.0101010101
+The resulting diagram has 9 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+3H(pos=1, side=L)
+Shift
+1D(pos=1)
+1D(pos=1)
+2U(pos=1, side=R, target=[3, 4])
+1D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+3H
+2U(pos=1, side=L, target=[1, 50])
+2D(pos=1)
+2D(pos=1)
+2D
+2U(pos=1, side=R, target=[7, 6])
+1D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1D(pos=1)
+Shift
+3H
+3H
+2D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+Shift
+Shift
+2D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+3H(pos=1, side=L)
+Shift
+Shift
+2D(pos=1)
+2D(pos=1)
+Shift
+Shift
+
+It has fitness 1.07692307692
+The resulting diagram has 3 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+Shift2U(pos=1, side=R, target=[1, 40])1DShift1U(pos=1, side=L, sign=1)1U(pos=1, side=R, sign=1)1U(pos=1, side=L, sign=1)2DShift2D3H1U(pos=1, side=L, sign=-1)2D2D1D1D3H(pos=1, side=L)Shift2U(pos=1, side=R, target=[3, 2])Shift1DShift1DShift3H3H1D1U(pos=1, side=R, sign=1)1D1U(pos=1, side=R, sign=-1)1U(pos=1, side=R, sign=-1)2DShift1D(pos=1)2D1D(pos=1)1D(pos=1)Shift1D1U(pos=1, side=L, sign=1)1U(pos=1, side=R, sign=1)2U(pos=1, side=R, target=[51, 52])1D(pos=1)1U(pos=1, side=L, sign=-1)1D2D3H(pos=1, side=L)1DStarting attempt 5 of 10.
+K is ('-2, 4, -40, -26, 24, -16, -18, -32, 12, 10, -36, 34, 8, -30, 38, -20, 14, 22, -28, 6', '-1, -1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, 1, 1, 1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+Shift
+1U(pos=1, side=R, sign=-1)
+Shift
+1D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+
+It has fitness 1.01923076923
+The resulting diagram has 6 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+Shift
+2D
+Shift
+3H
+2D(pos=1)
+Shift
+3H
+2D(pos=1)
+2D(pos=1)
+1D
+3H(pos=1, side=L)
+2D(pos=1)
+1D
+1D
+Shift
+2D(pos=1)
+Shift
+Shift
+Shift
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+1D
+Shift
+2D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+2DShift2D1D1DShift3H2U(pos=1, side=R, target=[1, 40])2U(pos=1, side=R, target=[39, 40])2D(pos=1)1D1U(pos=1, side=L, sign=-1)1U(pos=1, side=R, sign=1)Shift3H1D(pos=1)Shift2U(pos=1, side=R, target=[19, 20])1D1U(pos=1, side=L, sign=-1)Shift1D(pos=1)2U(pos=1, side=L, target=[49, 50])1U(pos=1, side=L, sign=-1)1U(pos=1, side=R, sign=-1)3H2D1U(pos=1, side=L, sign=1)Starting attempt 6 of 10.
+K is ('2, 4, -38, -6, -20, 12, 34, -36, -30, -22, 10, -40, 18, -32, 16, -26, 28, 14, -8, 24', '-1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, 1, -1, 1, -1, -1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+The best sequence we found is:
+2D
+1D(pos=1)
+1D(pos=1)
+1D(pos=1)
+2D
+2D
+Shift
+2D
+2D
+2D
+1D(pos=1)
+2D
+Shift
+2D(pos=1)
+2D
+1D(pos=1)
+2D
+2D
+Shift
+2D(pos=1)
+3H
+2D(pos=1)
+Shift
+Shift
+Shift
+2D(pos=1)
+Shift
+Shift
+2D(pos=1)
+2U(pos=1, side=L, target=[13, 12])
+1U(pos=1, side=L, sign=1)
+2D
+1D
+Shift
+1D(pos=1)
+1D(pos=1)
+1D
+3H(pos=1, side=R)
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+
+It has fitness 162.290322581
+The resulting diagram has 1 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+1D
+Shift
+Shift
+3H
+Shift
+1D(pos=1)
+1U(pos=1, side=L, sign=-1)
+Shift
+1D(pos=1)
+2D(pos=1)
+2U(pos=1, side=L, target=[11, 12])
+2D(pos=1)
+1D(pos=1)
+Shift
+3H(pos=1, side=R)
+2D(pos=1)
+2D
+Shift
+2D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+3H(pos=1, side=L)
+1D(pos=1)
+Shift
+1D(pos=1)
+3H(pos=1, side=L)
+2D(pos=1)
+2D(pos=1)
+2U(pos=1, side=L, target=[1, 48])
+Shift
+2D(pos=1)
+2D(pos=1)
+Shift
+Shift
+3H(pos=1, side=R)
+1D
+2D(pos=1)
+1U(pos=1, side=L, sign=1)
+Shift
+1U(pos=1, side=R, sign=-1)
+2D(pos=1)
+1U(pos=1, side=R, sign=1)
+Shift
+1D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+ShiftShift1U(pos=1, side=L, sign=1)1U(pos=1, side=L, sign=-1)1U(pos=1, side=L, sign=1)3H3H2D1U(pos=1, side=R, sign=-1)1D2U(pos=1, side=L, target=[9, 8])3H1D(pos=1)1U(pos=1, side=R, sign=-1)2U(pos=1, side=R, target=[1, 52])1D(pos=1)1U(pos=1, side=R, sign=-1)Shift1D(pos=1)1D(pos=1)2D2D2U(pos=1, side=R, target=[5, 4])3H1DShift3H1U(pos=1, side=R, sign=1)ShiftShift1U(pos=1, side=L, sign=1)2U(pos=1, side=L, target=[55, 56])2DShiftShiftShift1D3HStarting attempt 7 of 10.
+K is ('-4, -2, 32, -36, -30, -10, -20, -24, 16, -28, 12, 14, -26, 18, -22, 8, -40, 6, -38, 34', '-1, 1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, -1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+The best sequence we found is:
+2D(pos=1)
+Shift
+2D
+1D(pos=1)
+Shift
+Shift
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1D
+2D(pos=1)
+2D(pos=1)
+2U(pos=1, side=R, target=[35, 36])
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+2D(pos=1)
+2U(pos=1, side=R, target=[13, 14])
+Shift
+3H(pos=1, side=L)
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+Shift
+3H
+2D(pos=1)
+
+It has fitness 218.391304348
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+The best sequence we found is:
+Shift
+1D(pos=1)
+Shift
+1D(pos=1)
+1D
+3H(pos=1, side=L)
+Shift
+1D
+2D(pos=1)
+2D(pos=1)
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+Shift
+2U(pos=1, side=R, target=[49, 50])
+3H(pos=1, side=L)
+2D
+1D
+Shift
+2D(pos=1)
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+3H(pos=1, side=L)
+1D(pos=1)
+2D(pos=1)
+3H(pos=1, side=R)
+2D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+Shift3H(pos=1, side=L)Shift2U(pos=1, side=L, target=[3, 2])3H(pos=1, side=R)1U(pos=1, side=L, sign=1)2U(pos=1, side=L, target=[3, 4])2D2U(pos=1, side=R, target=[1, 50])Shift2U(pos=1, side=L, target=[3, 2])1U(pos=1, side=R, sign=-1)1U(pos=1, side=R, sign=-1)Shift1D(pos=1)1U(pos=1, side=R, sign=-1)2DShift3H(pos=1, side=L)1D(pos=1)2D2D3H2U(pos=1, side=L, target=[59, 60])2U(pos=1, side=R, target=[47, 48])2D2D2U(pos=1, side=R, target=[45, 46])Shift1D2U(pos=1, side=L, target=[35, 36])2DShift1U(pos=1, side=L, sign=-1)1D2U(pos=1, side=R, target=[33, 34])3H3H3H1U(pos=1, side=L, sign=1)2D2DShiftShift1D2D2D1DStarting attempt 8 of 10.
+K is ('-34, -2, -4, -6, -38, 32, -18, -22, -16, 24, -20, 14, -30, 12, -28, 26, 10, -40, 8, 36', '-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+The best sequence we found is:
+1D(pos=1)
+Shift
+1U(pos=1, side=L, sign=-1)
+2D(pos=1)
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1U(pos=1, side=L, sign=-1)
+Shift
+1D(pos=1)
+Shift
+Shift
+Shift
+2D(pos=1)
+1D(pos=1)
+3H(pos=1, side=L)
+3H(pos=1, side=L)
+Shift
+Shift
+1D(pos=1)
+Shift
+2D(pos=1)
+Shift
+1D(pos=1)
+Shift
+2D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+
+It has fitness 218.391304348
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+Shift
+Shift
+Shift
+Shift
+1D(pos=1)
+1D
+2D(pos=1)
+1D(pos=1)
+Shift
+Shift
+2D
+1D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+3H(pos=1, side=R)
+3H(pos=1, side=R)
+3H(pos=1, side=L)
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+Shift
+1D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+1D(pos=1)
+1D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+ShiftShift3H1D1U(pos=1, side=L, sign=1)2D3H2D1DShift1D(pos=1)1D(pos=1)2DShift2DShift2D(pos=1)Starting attempt 9 of 10.
+K is ('4, -2, -40, -38, -16, -26, -14, 8, -20, -22, 18, -24, 10, -32, -34, 36, 28, -30, -12, 6', '-1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, 1, 1, -1, -1, -1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+Shift
+1D(pos=1)
+Shift
+Shift
+2D(pos=1)
+2D(pos=1)
+2D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+
+It has fitness 1.0303030303
+The resulting diagram has 4 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+The best sequence we found is:
+2D(pos=1)
+2U(pos=1, side=R, target=[3, 4])
+2D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+Shift
+Shift
+2D(pos=1)
+3H(pos=1, side=L)
+1D
+2D(pos=1)
+2D(pos=1)
+1D
+3H(pos=1, side=R)
+2D(pos=1)
+1D(pos=1)
+Shift
+3H
+1D(pos=1)
+3H(pos=1, side=L)
+Shift
+2U(pos=1, side=R, target=[53, 54])
+1D(pos=1)
+Shift
+2D(pos=1)
+3H
+3H(pos=1, side=L)
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+2U(pos=1, side=R, target=[9, 10])
+Shift
+3H(pos=1, side=L)
+2D(pos=1)
+2D
+Shift
+2D(pos=1)
+Shift
+Shift
+2U(pos=1, side=R, target=[39, 38])
+1D(pos=1)
+1D
+3H(pos=1, side=R)
+Shift
+Shift
+3H(pos=1, side=R)
+1D(pos=1)
+3H
+2D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+1U(pos=1, side=R, sign=1)1D1U(pos=1, side=R, sign=1)2U(pos=1, side=R, target=[5, 4])2D1U(pos=1, side=L, sign=-1)Shift1D(pos=1)2U(pos=1, side=R, target=[5, 4])2U(pos=1, side=R, target=[3, 4])2D(pos=1)2U(pos=1, side=R, target=[5, 6])2D1U(pos=1, side=L, sign=1)1DShift2D2D1D(pos=1)2D(pos=1)Shift1U(pos=1, side=L, sign=-1)2U(pos=1, side=R, target=[51, 50])Shift1U(pos=1, side=L, sign=1)Starting attempt 10 of 10.
+K is ('2, -4, -6, -40, 10, 38, -36, -16, -24, 32, -30, 26, 18, -34, -20, 22, 28, 14, 12, 8', '-1, 1, 1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, 1, 1')
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+1D(pos=1)
+2U(pos=1, side=R, target=[1, 38])
+3H(pos=1, side=R)
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+1D(pos=1)
+Shift
+1D(pos=1)
+2D(pos=1)
+3H(pos=1, side=L)
+1D
+2U(pos=1, side=R, target=[1, 40])
+2D
+2D(pos=1)
+Shift
+2D
+Shift
+2D(pos=1)
+3H
+2D
+2D
+3H
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+2D(pos=1)
+
+It has fitness 193.307692308
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+The best sequence we found is:
+1D(pos=1)
+1D(pos=1)
+2U(pos=1, side=L, target=[3, 4])
+1D(pos=1)
+1D(pos=1)
+2D(pos=1)
+1D(pos=1)
+Shift
+2D(pos=1)
+2D(pos=1)
+3H(pos=1, side=L)
+2U(pos=1, side=R, target=[41, 42])
+Shift
+Shift
+2D
+2U(pos=1, side=R, target=[1, 58])
+Shift
+2U(pos=1, side=R, target=[39, 38])
+3H(pos=1, side=L)
+2D(pos=1)
+3H(pos=1, side=L)
+1D(pos=1)
+1D(pos=1)
+1D
+3H(pos=1, side=R)
+2D(pos=1)
+Shift
+3H
+2D(pos=1)
+2D
+3H
+1D(pos=1)
+2U(pos=1, side=R, target=[43, 44])
+3H(pos=1, side=L)
+Shift
+2D(pos=1)
+1U(pos=1, side=R, sign=1)
+2D(pos=1)
+2D(pos=1)
+2D(pos=1)
+Shift
+1D(pos=1)
+
+It has fitness 1251.0
+The resulting diagram has 2 crossings.
+Iteration 1 of 80
+Iteration 2 of 80
+Iteration 3 of 80
+Iteration 4 of 80
+Iteration 5 of 80
+Iteration 6 of 80
+Iteration 7 of 80
+Iteration 8 of 80
+Iteration 9 of 80
+Iteration 10 of 80
+Iteration 11 of 80
+Iteration 12 of 80
+Iteration 13 of 80
+Iteration 14 of 80
+Iteration 15 of 80
+Iteration 16 of 80
+Iteration 17 of 80
+Iteration 18 of 80
+Iteration 19 of 80
+Iteration 20 of 80
+Iteration 21 of 80
+Iteration 22 of 80
+Iteration 23 of 80
+Iteration 24 of 80
+Iteration 25 of 80
+Iteration 26 of 80
+Iteration 27 of 80
+Iteration 28 of 80
+Iteration 29 of 80
+Iteration 30 of 80
+Iteration 31 of 80
+Iteration 32 of 80
+Iteration 33 of 80
+Iteration 34 of 80
+Iteration 35 of 80
+Iteration 36 of 80
+Iteration 37 of 80
+Iteration 38 of 80
+Iteration 39 of 80
+Iteration 40 of 80
+Iteration 41 of 80
+Iteration 42 of 80
+Iteration 43 of 80
+Iteration 44 of 80
+Iteration 45 of 80
+Iteration 46 of 80
+Iteration 47 of 80
+Iteration 48 of 80
+Iteration 49 of 80
+Iteration 50 of 80
+Iteration 51 of 80
+Iteration 52 of 80
+Iteration 53 of 80
+Iteration 54 of 80
+Iteration 55 of 80
+Iteration 56 of 80
+Iteration 57 of 80
+Iteration 58 of 80
+Iteration 59 of 80
+Iteration 60 of 80
+Iteration 61 of 80
+Iteration 62 of 80
+Iteration 63 of 80
+Iteration 64 of 80
+Iteration 65 of 80
+Iteration 66 of 80
+Iteration 67 of 80
+Iteration 68 of 80
+Iteration 69 of 80
+Iteration 70 of 80
+Iteration 71 of 80
+Iteration 72 of 80
+Iteration 73 of 80
+Iteration 74 of 80
+Iteration 75 of 80
+Iteration 76 of 80
+Iteration 77 of 80
+Iteration 78 of 80
+Iteration 79 of 80
+Iteration 80 of 80
+The best sequence we found is:
+1U(pos=1, side=R, sign=-1)2U(pos=1, side=R, target=[5, 4])1D(pos=1)Shift1D1U(pos=1, side=R, sign=-1)3HShift2D2D1D(pos=1)3H1U(pos=1, side=L, sign=-1)2D2U(pos=1, side=R, target=[9, 10])1D(pos=1)1U(pos=1, side=L, sign=1)Shift1U(pos=1, side=L, sign=-1)1U(pos=1, side=L, sign=-1)1U(pos=1, side=R, sign=-1)1DShift1D(pos=1)1D(pos=1)3H(pos=1, side=R)1D(pos=1)Shift3H1U(pos=1, side=L, sign=-1)2U(pos=1, side=L, target=[51, 50])1U(pos=1, side=R, sign=1)2U(pos=1, side=R, target=[49, 48])2U(pos=1, side=L, target=[59, 60])3H(pos=1, side=R)1U(pos=1, side=R, sign=1)3H2U(pos=1, side=R, target=[3, 2])2D1DSimplificaiton had 50.0% success!    With speed 524.Random had 0.0% success!    With speed 800.Greedy Genetic Simplification had 80.0% success!    With speed 321.Greedy Simplification had 0.0% success!    With speed 800.
+Finished script. Took: 1:00:24.824714

@@ -915,7 +915,7 @@ class ADT(object):
             if left_reg == 3:
                 if self.quad(1)[2] == -self.quad(2)[2]:
                     possible_moves.append(
-                        ADTOp.ADTMove(3, 'H', {'arc': i, 'side': 'L'}))
+                        ADTOp.ADTMove(3, 'H', {'arc': 1, 'side': 'L'}))
             if right_reg == 3:
                 if self.quad(1)[2] == -self.quad(2)[2]:
                     possible_moves.append(
