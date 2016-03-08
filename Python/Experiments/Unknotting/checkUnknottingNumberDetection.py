@@ -9,7 +9,7 @@ AllDiagrams.init()
 
 def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
     startApply = datetime.now()
-    pop = ADTOpPopulationSets.Population(100,150,50, model='original')
+    pop = ADTOpPopulationSets.Population(100,10,1, model='original')
 
     print "pop.size() = %d\n" % (pop.size())
 
@@ -46,7 +46,8 @@ def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
         maxfvs.append(pop.maxFitness)
         diffs = [abs(maxfvs[j+1] - maxfvs[j]) for j in range(len(maxfvs)-1)]
         x = sum(diffs)/float(len(diffs))
-        mu = 0.35*math.exp(-x) + 0.25
+        mu = 0.45*math.exp(-x) + 0.25
+        
 #        y = math.floor(2*mu) + 1.0
 #        upMoveBias = int(y)
 #        horizontalMoveBias = int(y)
@@ -87,4 +88,4 @@ K.setInvariant('unknottingNumber', 2)
 fit = Fit.Fit(2, 1, 1, 2, K)
 ## So far the BEST parameters have been fit = Fit.Fit(2, 1, 1, 2, K)    
 
-success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 10000, up = 1, hor = 1, down = 5, cc = 10)
+success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 4000, up = 1, hor = 1, down = 5, cc = 10)

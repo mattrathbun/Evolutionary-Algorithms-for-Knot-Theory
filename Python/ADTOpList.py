@@ -86,8 +86,8 @@ class ADTOpList(object):
         n = self.length()
         ol = self.toList()
         if model=='original':
-            mutationType = randint(0, 4)
-#            mutationType = choice([0, 3, 4])
+#            mutationType = randint(0, 4)
+            mutationType = choice([0, 1, 2, 3, 4, 4, 4, 4, 4, 4])
             if mutationType == 0:  # Randomly change one of the operations
                 if self.opListType == 'Move':
 #                     print "MUTATE SHOULD ONLY BE PRODUCING MOVES"

@@ -26,7 +26,7 @@ class Population(object):
         if self.opPopulationType == 'Move':
             for i in range(num):
                 self.oplists.add(ADTOpList.randomMoveList(maxl, minl))
-        elif opPopulationType == 'CC':
+        elif self.opPopulationType == 'CC':
             for i in range(num):
                 self.oplists.add(ADTOpList.randomCCList(maxl, minl))
         else:
@@ -96,8 +96,8 @@ class Population(object):
 
         # persistence is a parameter to check for a proportion of the population that succeeds in the goal
         #   and will be forced to survive (without mutation) into the next generation
-#        persistence = max(1, self.size()/10)
-        persistence = 0
+        persistence = max(1, self.size()/50)
+#        persistence = 0
 
         # takes the highest (persistence) many members of the possible_survivors in order to force
         #   them through to the next generation
@@ -190,6 +190,17 @@ class Population(object):
 #            print "(mu is currently {})".format(mu)
             if (random.random() < mu):
                 pop3[i].mutate(self.model, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
+        if mu > .55:
+            print "\n THIS IS HAPPENING \n"
+            kill = random.choice(range(len(pop3)))
+            dead = pop3[kill]
+            del pop3[kill]
+            if self.opPopulationType == 'Move':
+                pop3.append(ADTOpList.randomMoveList(len(dead.toList()), len(dead.toList())))
+            elif self.opPopulationType == 'CC':
+                pop3.append(ADTOpList.randomCCList(len(dead.toList()), len(dead.toList())))
+            else:
+                pop3.append(ADTOpList.randomOpList(len(dead.toList()), len(dead.toList())))
         print "    Finished mutation. Took this long: ", datetime.now() - startmut
         
         pop3 = set(pop3)
