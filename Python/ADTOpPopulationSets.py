@@ -191,16 +191,17 @@ class Population(object):
             if (random.random() < mu):
                 pop3[i].mutate(self.model, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
         if mu > .55:
-            print "\n THIS IS HAPPENING \n"
-            kill = random.choice(range(len(pop3)))
-            dead = pop3[kill]
-            del pop3[kill]
-            if self.opPopulationType == 'Move':
-                pop3.append(ADTOpList.randomMoveList(len(dead.toList()), len(dead.toList())))
-            elif self.opPopulationType == 'CC':
-                pop3.append(ADTOpList.randomCCList(len(dead.toList()), len(dead.toList())))
-            else:
-                pop3.append(ADTOpList.randomOpList(len(dead.toList()), len(dead.toList())))
+            for j in range(persistence):
+                print "\n THIS IS HAPPENING \n"
+                kill = random.choice(range(len(pop3)))
+                dead = pop3[kill]
+                del pop3[kill]
+                if self.opPopulationType == 'Move':
+                    pop3.append(ADTOpList.randomMoveList(len(dead.toList()), len(dead.toList())))
+                elif self.opPopulationType == 'CC':
+                    pop3.append(ADTOpList.randomCCList(len(dead.toList()), len(dead.toList())))
+                else:
+                    pop3.append(ADTOpList.randomOpList(len(dead.toList()), len(dead.toList())))
         print "    Finished mutation. Took this long: ", datetime.now() - startmut
         
         pop3 = set(pop3)

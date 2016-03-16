@@ -9,7 +9,7 @@ AllDiagrams.init()
 
 def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
     startApply = datetime.now()
-    pop = ADTOpPopulationSets.Population(100,10,1, model='original')
+    pop = ADTOpPopulationSets.Population(100,100,10, model='original')
 
     print "pop.size() = %d\n" % (pop.size())
 
@@ -79,13 +79,28 @@ def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
             print "Finished applyUnknottingAlgorithm. Took: ", datetime.now() - startApply
             return success, i, numiterations, pop, best_opList, min_ol, d
 
-## 12n_{0744}
+## 9_{48}
+## Non-alternating
 ## Unknotting number = 2
-## Original DT code: [6, -10, 14, 16, -22, 20, 18, 24, 2, 12, -4, -8]
-K = ADT.ADT([10,12,22,-14,-18,16,-20,24,2,-8,6,4],[-1,1,1,1,1,1,1,1,-1,1,1,1])
+## Original DT code: [4, 10, -14, -12, 16, 2, -6, 18, 8]
+#K = ADT.ADT([4, 10, -14, -12, 16, 2, -6, 18, 8], [1, -1, -1, -1, -1, -1, -1, 1, -1])
+#K.setInvariant('unknottingNumber', 2)
+
+## 10_{165}
+## Non-alternating
+## Unknotting number = 2
+## Original DT code: [6, 8, 14, 18, 16, 4, -20, 10, 2, -12]
+K = ADT.ADT([6, 8, 14, 18, 16, 4, -20, 10, 2, -12], [1, -1, -1, 1, -1, -1, -1, -1, -1, -1])
 K.setInvariant('unknottingNumber', 2)
+
+
+### 12n_{0744}
+### Unknotting number = 2
+### Original DT code: [6, -10, 14, 16, -22, 20, 18, 24, 2, 12, -4, -8]
+#K = ADT.ADT([10,12,22,-14,-18,16,-20,24,2,-8,6,4],[-1,1,1,1,1,1,1,1,-1,1,1,1])
+#K.setInvariant('unknottingNumber', 2)
 
 fit = Fit.Fit(2, 1, 1, 2, K)
 ## So far the BEST parameters have been fit = Fit.Fit(2, 1, 1, 2, K)    
 
-success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 4000, up = 1, hor = 1, down = 5, cc = 10)
+success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 10000, up = 1, hor = 1, down = 5, cc = 10)
