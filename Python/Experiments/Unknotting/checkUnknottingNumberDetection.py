@@ -103,4 +103,4 @@ K.setInvariant('unknottingNumber', 2)
 fit = Fit.Fit(2, 1, 1, 2, K)
 ## So far the BEST parameters have been fit = Fit.Fit(2, 1, 1, 2, K)    
 
-success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 10000, up = 1, hor = 1, down = 5, cc = 10)
+success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 2000, up = 1, hor = 1, down = 5, cc = 10)
