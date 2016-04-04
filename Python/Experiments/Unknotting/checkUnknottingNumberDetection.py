@@ -7,7 +7,7 @@ from datetime import datetime
 
 AllDiagrams.init()
 
-def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
+def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc, opChange, opPerm, opRevPerm, opDel, opIns):
     startApply = datetime.now()
     pop = ADTOpPopulationSets.Population(100,100,10, model='original')
 
@@ -23,6 +23,11 @@ def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
     horizontalMoveBias = hor
     downMoveBias = down
     CCBias = cc
+    opChangeBias=opChange
+    opPermuteBias=opPerm
+    opReversePermuteBias=opRevPerm
+    opDeletionBias=opDel
+    opInsertionBias=opIns
     
     maxfvs = [1, 100, 1, 100, 1, 100, 1, 100, 1, 100, 1]
     while True:
@@ -35,7 +40,7 @@ def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
         print "\n"
         print "\n"
         print "\n"
-        best_opList = pop.iterate(fit, mu = mu, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
+        best_opList = pop.iterate(fit, mu=mu, upMoveBias=upMoveBias, downMoveBias=downMoveBias, horizontalMoveBias=horizontalMoveBias, CCBias=CCBias, opChangeBias=opChangeBias, opPermuteBias=opPermuteBias, opReversePermuteBias=opReversePermuteBias, opDeletionBias=opDeletionBias, opInsertionBias=opInsertionBias)
 #        for l in pop.toList():
 #            print [op.toString() for op in l.toList()]
         L = K.copy()
@@ -103,4 +108,4 @@ K.setInvariant('unknottingNumber', 2)
 fit = Fit.Fit(2, 1, 1, 2, K)
 ## So far the BEST parameters have been fit = Fit.Fit(2, 1, 1, 2, K)    
 
-success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 2000, up = 1, hor = 1, down = 5, cc = 10)
+success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 2000, up = 1, hor = 1, down = 5, cc = 10, opChange=1, opPerm=1, opRevPerm=1, opDel=1, opIns=6)

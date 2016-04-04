@@ -81,13 +81,13 @@ class ADTOpList(object):
         curr = self.opList
         self.opList = list_of_ops + curr
 
-    def mutate(self, model='original', upMoveBias=1, downMoveBias=1, horizontalMoveBias = 1, CCBias = 1):
+    def mutate(self, model='original', upMoveBias=1, downMoveBias=1, horizontalMoveBias=1, CCBias=1, opChangeBias=1, opPermuteBias=1, opReversePermuteBias=1, opDeletionBias=1, opInsertionBias=1):
         # print "Starting mutation"
         n = self.length()
         ol = self.toList()
         if model=='original':
 #            mutationType = randint(0, 4)
-            mutationType = choice([0, 1, 2, 3, 4, 4, 4, 4, 4, 4])
+            mutationType = choice(opChangeBias*[0]+opPermuteBias*[1]+opReversePermuteBias*[2]+opDeletionBias*[3]+opInsertionBias*[4])
             if mutationType == 0:  # Randomly change one of the operations
                 if self.opListType == 'Move':
 #                     print "MUTATE SHOULD ONLY BE PRODUCING MOVES"

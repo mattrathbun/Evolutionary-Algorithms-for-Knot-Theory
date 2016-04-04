@@ -1207,6 +1207,32 @@ class ADT(object):
                             return False
         return True
 
+    def orient(self,pm):
+        n = self.number_crossings()
+        orient = [0 for i in range(n)]
+        orient[0] = pm
+        for i in range(1, 2*n+1):
+            # print "i = %d" % i
+            for s in range(i+1, 2*n+1):
+                # print "  s = %d" % s
+                a_i = self.jump(i)
+                a_s = self.jump(s)
+                if (i < a_i) and (a_i < s) and (a_s < s):
+                    phisa = self.phi(i,s) * self.phi(i,a_s)
+                    if (i <= a_s) and (a_s <= a_i):
+                        sign_i = self.quad(i)[2]
+                        par_i = (1 if (i%2) else -1)
+                        sign_s = self.quad(s)[2]
+                        par_s = (1 if (s%2) else -1)
+                        idx_i = ((i-1)/2 if (i%2==1) else (a_i-1)/2)
+                        fi = orient[idx_i] * sign_i * par_i
+                        idx_s = ((s-1)/2 if (s%2==1) else (a_s-1)/2)
+                        orient[idx_s] = par_s * sign_s * phisa * fi
+                        # print orient
+        self.orientations = orient
+
+
+
     def crossing_change(self, arc):
         n = self.number_crossings()
         if n == 0:

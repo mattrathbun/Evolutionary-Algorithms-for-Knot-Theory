@@ -44,7 +44,7 @@ class Population(object):
     def size(self):
         return len(self.oplists)
 
-    def iterate(self, fit, mu=0.30, upMoveBias=1, downMoveBias=1, horizontalMoveBias = 1, CCBias = 1):
+    def iterate(self, fit, mu=0.30, upMoveBias=1, downMoveBias=1, horizontalMoveBias = 1, CCBias = 1, opChangeBias=1, opPermuteBias=1, opReversePermuteBias=1, opDeletionBias=1, opInsertionBias=1):
         print "Starting to iterate"
         startiter = datetime.now()
         n = self.size()
@@ -189,7 +189,7 @@ class Population(object):
         for i in range(len(pop3)):
 #            print "(mu is currently {})".format(mu)
             if (random.random() < mu):
-                pop3[i].mutate(self.model, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
+                pop3[i].mutate(self.model, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias, opChangeBias=opChangeBias, opPermuteBias=opPermuteBias, opReversePermuteBias=opReversePermuteBias, opDeletionBias=opDeletionBias, opInsertionBias=opInsertionBias)
         if mu > .55:
             for j in range(persistence):
                 print "\n THIS IS HAPPENING \n"
