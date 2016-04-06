@@ -210,24 +210,32 @@ class ADTComplex:
     
     # CCR: For each region, list of incident edges in anticlockwise order.
     def calc_neighbours_ccr(self):
+        print "calc_neighbours_ccr"
         c2 = self.c2
         kf = self.kf
         adt = self.adt
         for reg in range(1,self.n_regs+1):
+            print "  region %d" % (reg), self.regs[reg]
+            print "  ", adt.regions(self.regs[reg][0][0], self.regs[reg][0][1])
             cedge = 0
             while (c2[reg][cedge] == 0):
                 cedge += 1
             fedge = cedge
+            print "    append %d" % (cedge)
             self.ccr[reg].append(cedge)
             dir = self.g(cedge) * kf[reg][cedge]
+            print "    dir = %d" % (dir)
             while True:
                 node = self.eb(cedge,dir)
+                print "    node = %d" % (node)
                 if (c2[reg][adt.jump(node)] == 1):
                     cedge = adt.jump(node)
                 else:
                     cedge = adt.wrap(adt.jump(node) - 1)
+                print "    append %d" % (cedge)
                 self.ccr[reg].append(cedge)
                 dir = self.g(cedge) * kf[reg][cedge]
+                print "    dir = %d" % (dir)
                 if (cedge == fedge):
                     break
             self.ccr[reg][0] = len(self.ccr[reg]) - 2
