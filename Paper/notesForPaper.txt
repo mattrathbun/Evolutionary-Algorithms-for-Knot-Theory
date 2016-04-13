@@ -1,0 +1,21 @@
+Existing Related Projects
++++++++++++++++++++++++++
+
+
+Behavioral Program Synthesis - introduces the idea of a "search
+driver" which could be useful to us.
+http://www.cs.put.poznan.pl/kkrawiec/wiki/uploads/Research/2015GPTP.pdf
+
+Paper by Jerry Swan and others about the shape of fitness landscapes
+for an algebraic problem; an attempt to understand *why* certain
+search methods do better than others
+http://www.worldscientific.com/doi/abs/10.1142/S0218196711006753
+
+Machine learning and automated theorem proving - James Bridge PhD
+thesis - focused more on proofs of properties of programs than
+traditional mathematical concepts, but some good ideas.
+https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-792.pdf
+
+
+https://acmes.org - relevant conference
+
