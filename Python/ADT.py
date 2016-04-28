@@ -1231,8 +1231,6 @@ class ADT(object):
                         # print orient
         self.orientations = orient
 
-
-
     def crossing_change(self, arc):
         n = self.number_crossings()
         if n == 0:
@@ -1243,3 +1241,12 @@ class ADT(object):
         self.code[i] *= -1
         self.orientations[i] *= -1
         return True
+
+    def TOK_energy(self, weight):
+        count_nonalts = 0;
+        for c in self.code:
+            if (c<0):
+                count_nonalts++
+        energy = self.number_crossings()*weight + count_nonalts;
+        return energy
+
