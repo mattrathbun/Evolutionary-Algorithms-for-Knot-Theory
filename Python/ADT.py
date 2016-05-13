@@ -1231,6 +1231,17 @@ class ADT(object):
                         # print orient
         self.orientations = orient
 
+    def force_orient(self,pm):
+        n = self.number_crossings()
+        for j in range(n):
+            print "j = {}".format(j)
+            print "orientations are {}".format(self.orientations)
+            if self.orientations[j] not in [1, -1]:
+                ors = self.orientations
+                ors[j] = pm
+                self.orientations = ors
+                self.orient(pm)
+
     def crossing_change(self, arc):
         n = self.number_crossings()
         if n == 0:
@@ -1246,7 +1257,7 @@ class ADT(object):
         count_nonalts = 0;
         for c in self.code:
             if (c<0):
-                count_nonalts++
+                count_nonalts += 1
         energy = self.number_crossings()*weight + count_nonalts;
         return energy
 
