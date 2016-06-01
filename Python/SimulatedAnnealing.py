@@ -17,11 +17,12 @@ while True:
     L = K.copy()
     if move.apply(L):
         wildness = k.number_crossings() - l.number_crossings()
+        energy_change = k.energy() - l.energy()
         print "wildness: %n"
-        if (wildness<temperature):
+        if (energy_change<temperature): 
             K = L
         else:
-            if random.random() < (1.0/(1.0+exp(energyChange/k*temperature))):
+            if random.random() < (1.0/(1.0+exp(energy_change/k*temperature))):
                 K = L
     print "%s : %s\n" % (Kname, K.to_string())
     temperature = temperature/math.log1p(n)
