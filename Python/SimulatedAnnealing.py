@@ -12,7 +12,7 @@ temperature = 2
 k = 1.0
 n = 0
 
-while true:
+while True:
     move = ADTOp.simpleCoarseRandomOp()
     L = K.copy()
     if move.apply(L):
