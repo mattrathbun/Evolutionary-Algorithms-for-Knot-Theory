@@ -8,6 +8,8 @@ Kname = "7_6"
 
 print "%s : %s\n" % (Kname, K.to_string())
 
+AllDiagrams.init()
+
 temperature = 2
 k = 1.0
 n = 0
