@@ -1253,10 +1253,11 @@ class ADT(object):
         self.orientations[i] *= -1
         return True
 
-    def TOK_energy(self, weight):
+        def TOK_energy(self, weight):
         count_nonalts = 0;
         for c in self.code:
             if (c<0):
-                count_nonalts += 1
-        energy = self.number_crossings()*weight + count_nonalts;
+                count_nonalts++
+        amount_of_alternation = self.number_crossings()/2 - abs(self.number_crossings()/2 - count_nonalts)
+        energy = self.number_crossings()*weight + amount_of_alternation
         return energy
