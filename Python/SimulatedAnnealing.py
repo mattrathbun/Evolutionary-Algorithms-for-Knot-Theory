@@ -8,27 +8,22 @@ Kname = "7_6"
 
 print "%s : %s\n" % (Kname, K.to_string())
 
+temperature = 2
+k = 1.0
+n = 0
+
 while true:
-    move = ADTOp.simpleCoarseRandomOp();
-    if (move.apply(k)
-
-###############
-############### still being worked on
-###############
-
-        
-n = 1
-moves = ADTOpList.randomMoveList(n, n).toList()
-print "We have a list of moves."
-for i in moves:
-    print i.toString()
-print "***** applying moves"
-for i in moves:
-    print " ** applying move "
+    move = ADTOp.simpleCoarseRandomOp()
     L = K.copy()
-    if i.apply(L):
-        print "  successful application of move"
-        K = L
-        print " ",K.to_string()
-    else:
-        print "  unsuccessful application of move"
+    if move.apply(L):
+        wildness = k.number_crossings() - l.number_crossings()
+        print "wildness: %n"
+        if (wildness<temperature):
+            K = L
+        else:
+            if random.random() < (1.0/(1.0+exp(energyChange/k*temperature))):
+                K = L
+    print "%s : %s\n" % (Kname, K.to_string())
+    temperature = temperature/math.log1p(n)
+    n = n+1
+    
