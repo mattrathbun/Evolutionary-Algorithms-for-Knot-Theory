@@ -1247,6 +1247,7 @@ class ADT(object):
         for c in self.code:
             if (c<0):
                 count_nonalts++
-        energy = self.number_crossings()*weight + count_nonalts;
+        amount_of_alternation = self.number_crossings()/2 - abs(self.number_crossings()/2 - count_nonalts)
+        energy = self.number_crossings()*weight + amount_of_alternation
         return energy
 
