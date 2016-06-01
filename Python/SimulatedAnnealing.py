@@ -19,7 +19,7 @@ while True:
         wildness = k.number_crossings() - l.number_crossings()
         energy_change = k.energy() - l.energy()
         print "wildness: %n"
-        if (wildness<temperature):
+        if (energy_change<temperature): 
             K = L
         else:
             if random.random() < (1.0/(1.0+exp(energy_change/k*temperature))):
