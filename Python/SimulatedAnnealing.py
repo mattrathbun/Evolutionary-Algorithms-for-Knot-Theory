@@ -12,7 +12,7 @@ print "%s : %s\n" % (Kname, K.to_string())
 
 AllDiagrams.init()
 
-temperature = 2
+temperature = 1
 k_param = 1.0
 n = 2
 
@@ -20,15 +20,16 @@ while True:
     move = ADTOp.simpleCoarseRandomOp()
     L = K.copy()
     if move.apply(L):
-        wildness = K.number_crossings() - L.number_crossings()
+        wildness = L.number_crossings() - K.number_crossings()
         energy_change = K.TOK_energy(2.0) - L.TOK_energy(2.0)
         print "wildness: %d" % wildness
         if (energy_change<temperature): 
-            K = L
+            K = L.copy()
         else:
-            if random() < (1.0/(1.0+exp(energy_change/k_param*temperature))):
-                K = L
+            if random() < (1.0/(1.0+exp(energy_change/(k_param*temperature)))):
+                K = L.copy()
     print "%s \n".format(K.to_string())
-    temperature = temperature/log(n)
     n = n+1
+    temperature = temperature/log(n)
+
     
