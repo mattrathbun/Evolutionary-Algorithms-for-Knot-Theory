@@ -1,14 +1,16 @@
 import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
-import ADT, ADTOpPopulation, ADTOpPopulationSets, Fit
+import ADT, ADTOpPopulation, ADTOpPopulationSets, Fit, AllDiagrams
 import math
 from datetime import datetime
 
 
-def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
+AllDiagrams.init()
+
+def applyUnknottingAlgorithm(fit, K, numiterations, up=1, hor=5, down=1, cc=2, unknotting_number_known=False):
     startApply = datetime.now()
-    pop = ADTOpPopulationSets.Population(60,60,5, model='original')
+    pop = ADTOpPopulationSets.Population(10*K.number_crossings(),3*K.number_crossings(),K.number_crossings()/2, model='original')
 
     print "pop.size() = %d\n" % (pop.size())
 
@@ -52,8 +54,9 @@ def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
 #        CCBias = int(y)
         
         success = False
-        if (min_ol.ccCount() == K.getInvariant('unknottingNumber')) and (d.number_crossings() < 3):
-            success = True
+        if unknotting_number_known:
+            if (min_ol.ccCount() == K.getInvariant('unknottingNumber')) and (d.number_crossings() < 3):
+                success = True
         
         if (i == numiterations) or success:
             print "***************************************"
@@ -80,9 +83,6 @@ def applyUnknottingAlgorithm(fit, K, numiterations, up, hor, down, cc):
 
 #K = ADT.ADT([6, -2, -10, -14, 4, 12, 8, 16], [-1, -1, 1, 1, -1, 1, -1, -1])
 
-# The knot 7_6
-K = ADT.ADT([10, 8, 14, 4, 12, 2, 6], [1, -1, 1, -1, 1, 1, 1])
-K.setInvariant('unknottingNumber', 1)
 
 #K = ADT.ADT([-4, -18, -22, -14, -6, -20, -8, -10, -2, -12, -16], [1, 1, 1, -1, 1, -1, -1, 1, 1, -1, 1])
 #K = ADT.ADT([
@@ -161,29 +161,7 @@ K.setInvariant('unknottingNumber', 1)
 # print "They give us an efficiency of: ", choice_efficiency
 
 
-fit = Fit.Fit(3, 4, 2, 1, K)
 
-param_choice = []
-choice_efficiency = float('inf')
-for cc in [1, 2, 3]:
-    for down in [1, 2, 3]:
-        for hor in [1, 2, 3]:
-            for up in [1, 2, 3]:
-                print "\n"
-                print "Attempting applyUnknottingAlgorithm with parameters up = {}, hor = {}, down = {}, and cc = {}".format(up, hor, down, cc)
-                print "\n"
-                success, j, numiterations, pop, best_opList, min_ol, d = applyUnknottingAlgorithm(fit = fit, K = K, numiterations = 100, up = up, hor = hor, down = down, cc = cc)
-                if success and float(j)/float(numiterations) < choice_efficiency :
-                    param_choice = [up, hor, down, cc]
-                    choice_efficiency = float(j)/float(numiterations)
-                print "\n"
-                print "So far, the best choice of parameters is: ", param_choice
-                print "And it has an efficiency of: ", choice_efficiency
-                print "\n"
-print "\n"
-print "*****************************************"
-print "The best choice of parameters is: ", param_choice
-print "They give us an efficiency of: ", choice_efficiency
 
 
 # fit = Fit.Fit(4, 4, 2, 1, K)
