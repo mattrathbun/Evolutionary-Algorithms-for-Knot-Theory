@@ -7,10 +7,10 @@ from datetime import datetime
 
 
 
-def adjustFitnessParameters(K, ran):
+def adjustFitnessParameters(K, parameter_range):
     choice_efficiency = float('inf')
     param_choice = []
-    params = tuple([a,b,c,d] for a in range(ran) for b in range(ran) for c in range(ran) for d in range(ran))
+    params = tuple([a,b,c,d] for a in range(parameter_range) for b in range(parameter_range) for c in range(parameter_range) for d in range(parameter_range))
     for param in params:
         fit = Fit.Fit(param[0], param[1], param[2], param[3], K)
         print "\n"
@@ -31,6 +31,12 @@ def adjustFitnessParameters(K, ran):
     return param_choice, choice_efficiency
     
     
-K = ADT.ADT([4,6,2],[1,1,1])
-K.setInvariant('unknottingNumber', 1)
-adjustFitnessParameters(K, 2)
+# The knot 7_6
+# K = ADT.ADT([10, 8, 14, 4, 12, 2, 6], [1, -1, 1, -1, 1, 1, 1])
+# K.setInvariant('unknottingNumber', 1)
+# adjustFitnessParameters(K, 3)
+
+# The trefoil
+# K = ADT.ADT([4,6,2], [1,1,1])
+# K.setInvariant('unknottingNumber', 1)
+# adjustFitnessParameters(K, 5)
