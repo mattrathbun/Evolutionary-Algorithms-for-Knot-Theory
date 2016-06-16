@@ -1,8 +1,11 @@
 import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
-import ADT, ADTOpPopulation, ADTOpPopulationSets
+import ADT, ADTOpPopulation, ADTOpPopulationSets, AllDiagrams
 from datetime import datetime
+
+AllDiagrams.init()
+
 
 print "Starting script."
 start = datetime.now()

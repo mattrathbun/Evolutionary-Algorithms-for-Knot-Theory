@@ -1244,6 +1244,17 @@ class ADT(object):
                 self.orient(pm)
             
 
+    def force_orient(self,pm):
+        n = self.number_crossings()
+        for j in range(n):
+            print "j = {}".format(j)
+            print "orientations are {}".format(self.orientations)
+            if self.orientations[j] not in [1, -1]:
+                ors = self.orientations
+                ors[j] = pm
+                self.orientations = ors
+                self.orient(pm)
+
     def crossing_change(self, arc):
         n = self.number_crossings()
         if n == 0:
@@ -1256,11 +1267,10 @@ class ADT(object):
         return True
 
     def TOK_energy(self, weight):
-        count_nonalts = 0;
+        count_nonalts = 0
         for c in self.code:
             if (c<0):
-                count_nonalts += 1
-#                count_nonalts++
-        energy = self.number_crossings()*weight + count_nonalts;
+                count_nonalts = count_nonalts+1
+        amount_of_alternation = self.number_crossings()/2 - abs(self.number_crossings()/2 - count_nonalts)
+        energy = self.number_crossings()*weight + amount_of_alternation
         return energy
-
