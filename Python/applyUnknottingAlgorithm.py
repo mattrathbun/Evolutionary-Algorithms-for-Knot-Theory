@@ -6,7 +6,7 @@ import math
 from datetime import datetime
 
 
-AllDiagrams.init()
+#AllDiagrams.init()
 
 def applyUnknottingAlgorithm(fit, K, numiterations, up=1, hor=5, down=1, cc=2, unknotting_number_known=False):
     startApply = datetime.now()
