@@ -43,31 +43,13 @@ for param in params:
     print "Finished cycling through knots. Had {} out of 2978 successes.".format(successes)
     performance[tuple(param)] = successes
 print "\nFinished cycling through all the different parameters."
+print "Here are the results:"
+print "\n"
+print performance
 print "\nThe best performing parameters are \n"
 print max(performance.iteritems(), key=operator.itemgetter(1))[0]
 print "\nThey resulted in successfully efficient unknotting for"
 print max(performance.iteritems(), key=operator.itemgetter(1))[1]
 print "\n of the 2978 knots up to 12 crossings!!"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
