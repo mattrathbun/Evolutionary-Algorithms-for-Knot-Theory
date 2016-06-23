@@ -76,8 +76,9 @@ class Population(object):
 ###        minf = fit(pop1[0])
         for ol in pop1:
             fv = fit(ol)
-            if fv > 2:
-                possible_survivors.add(ol.copy())
+            possible_survivors.add(ol.copy())
+#             if fv > 2:
+#                 possible_survivors.add(ol.copy())
 #                 print "     Look! We have a possible survivor: {}".format(ol.toString())
             # maxf = (fv if fv > maxf else maxf)
             # minf = (fv if fv < maxf else minf)
@@ -233,9 +234,14 @@ class Population(object):
             tfv += fv
         afv = tfv / len(self.oplists)
         best_opList = max(self.oplists, key = attrgetter('fitness'))
-        fit(best_opList)
+        if best_opList in survivors:
+            self.f.write("It's there.\n")
+        else:
+            pass
+        current_fit = fit(best_opList)
         # self.f.write("mu = " + str(mu) + "\n")
         self.f.write(fit.factors)
+        self.f.write("Fitness is " + str(current_fit) + "\n")
         self.f.flush()
         worst_opList = min(self.oplists, key = attrgetter('fitness'))
         
