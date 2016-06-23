@@ -32,7 +32,7 @@ class Population(object):
         else:
             for i in range(num):
                 self.oplists.add(ADTOpList.randomOpList(maxl, minl))
-                
+        self.f = open("factors.txt", "a")
 
     def toList(self):
         return list(self.oplists)
@@ -233,6 +233,10 @@ class Population(object):
             tfv += fv
         afv = tfv / len(self.oplists)
         best_opList = max(self.oplists, key = attrgetter('fitness'))
+        fit(best_opList)
+        # self.f.write("mu = " + str(mu) + "\n")
+        self.f.write(fit.factors)
+        self.f.flush()
         worst_opList = min(self.oplists, key = attrgetter('fitness'))
         
         

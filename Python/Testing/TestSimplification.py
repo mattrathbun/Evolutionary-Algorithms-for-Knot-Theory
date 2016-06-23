@@ -20,13 +20,14 @@ start = datetime.now()
 
 
 length = 25 #length of test/target unknot diagrams
-attempts = 10 #the number of times we attempt to test the algorithm's effectiveness
+#attempts = 10 #the number of times we attempt to test the algorithm's effectiveness
+attempts = 1
 #popsize = 10*length #the number of sequences in the population during each attempt
 popsize = 10*length #the number of sequences in the population during each attempt
 numiterations = 4*length #the maximum number of iterations used in each attempt at the algorithm
 
 def testSimplification():
-    fit = Fit.Fit(2, 0, 1, 1, K)
+    fit = Fit.Fit(3, 0, 1, 1, K)
     
 #    pop = ADTOpPopulationSets.Population(50,30,15, opPopulationType='Move', model='original')
     pop = ADTOpPopulationSets.Population(popsize,3*length, length/2, opPopulationType='Move', model='original') 
