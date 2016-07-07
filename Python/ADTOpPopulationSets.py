@@ -238,9 +238,9 @@ class Population(object):
             self.f.write("It's there.\n")
         else:
             pass
-        current_fit = fit(best_opList)
+        current_fit = best_opList.fitness
         # self.f.write("mu = " + str(mu) + "\n")
-        self.f.write(fit.factors)
+        self.f.write(best_opList.factors)
         self.f.write("Fitness is " + str(current_fit) + "\n")
         self.f.flush()
         worst_opList = min(self.oplists, key = attrgetter('fitness'))

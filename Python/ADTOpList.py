@@ -12,6 +12,7 @@ class ADTOpList(object):
         self.minl = minl
         self.maxl = maxl
         self.fitness = -float('inf')
+        self.factors = ""
 
     def toList(self):
         return self.opList
