@@ -242,6 +242,9 @@ class Population(object):
         # self.f.write("mu = " + str(mu) + "\n")
         self.f.write(best_opList.factors)
         self.f.write("Fitness is " + str(current_fit) + "\n")
+        diag = best_opList.diagram.to_string()
+        self.f.write("Diagram is [" + diag[0] + "] , [" + diag[1] + "]\n")
+        self.f.write("\n")
         self.f.flush()
         worst_opList = min(self.oplists, key = attrgetter('fitness'))
         

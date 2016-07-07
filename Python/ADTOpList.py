@@ -1,4 +1,5 @@
 import ADTOp
+import ADT
 from random import *
 
 
@@ -13,6 +14,7 @@ class ADTOpList(object):
         self.maxl = maxl
         self.fitness = -float('inf')
         self.factors = ""
+        self.diagram = ADT.ADT([],[])
 
     def toList(self):
         return self.opList

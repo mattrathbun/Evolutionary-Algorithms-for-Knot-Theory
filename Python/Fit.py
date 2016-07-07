@@ -41,6 +41,7 @@ class Fit(object):
             di, min_ol = ol.apply(L)
             ccCount = min_ol.ccCount()
             ol.factors = str(di.number_crossings()) + ", " + str(ccCount) + ", " + str(ol.length()) + ", " + str(ol.length() - min_ol.length()) + "\n"
+            ol.diagram = di
             if di.number_crossings() < 3:
                 bonus = 10000
                 fitness = 1.0 + bonus/(di.number_crossings()**float(self.a) + ccCount**float(self.b+2) + ol.length()**float(self.c) + (ol.length() - min_ol.length())**float(self.d) + 1.0)
