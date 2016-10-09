@@ -1,0 +1,8 @@
+1, 0, 8, 0
+Fitness is 152.515151515
+Diagram is [2] , [1]
+
+It's there.
+Fitness is 152.515151515
+Diagram is [] , []
+

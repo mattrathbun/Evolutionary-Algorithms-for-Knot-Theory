@@ -5,7 +5,7 @@ import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, Fit
 import AllDiagrams
 from datetime import datetime
 
-AllDiagrams.init()
+#AllDiagrams.init()
 
 #fileName = "TestFile"
 #fileName = "../../../../../../Dropbox (CSU Fullerton)/TestFileMemory"
@@ -19,12 +19,15 @@ start = datetime.now()
 
 
 
-length = 35 #length of test/target unknot diagrams
+#length = 35 #length of test/target unknot diagrams
+length = 10 #length of test/target unknot diagrams
+
 #attempts = 10 #the number of times we attempt to test the algorithm's effectiveness
 attempts = 1
 #popsize = 10*length #the number of sequences in the population during each attempt
 popsize = 10*length #the number of sequences in the population during each attempt
-numiterations = 4*length #the maximum number of iterations used in each attempt at the algorithm
+#numiterations = 4*length #the maximum number of iterations used in each attempt at the algorithm
+numiterations = 2 #the maximum number of iterations used in each attempt at the algorithm
 
 def testSimplification():
     fit = Fit.Fit(2, 0, 2, 1, K)
@@ -94,7 +97,7 @@ successes = 0
 
 
 for j in range(attempts):
-    AllDiagrams.init()
+#    AllDiagrams.init()
     myfile = open(fileName, 'a')
     print "\n"
     myfile.write("Starting attempt {} of {}.".format(j+1, attempts))
@@ -106,7 +109,7 @@ for j in range(attempts):
     K = ADT.ADT([],[])
 #    length = 10, set above
     while K.number_crossings() < length:
-        M = ADTOp.simpleCoarseRandomMove(upBias=3)
+        M = ADTOp.coarseRandomMove(upBias=3)
         M.apply(K)
     myfile = open(fileName, 'a')
     myfile.write("K is {}".format(K.to_string()))
