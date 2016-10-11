@@ -163,47 +163,47 @@ class ADTMove(ADTOp):
     def copy(self):
         return ADTMove(number=self.number, direction=self.direction, data=self.data)
 
-#     def checkFullData(self):
-#         if self.number == 0:
-#             return True
-#         if not self.data:
-#             return False
-#         if self.number == 1:
-#             if self.direction == 'U':
-#                 if len(self.data) == 3 and all(k in self.data for k in ('arc', 'side', 'sign')):
-#                     return True
-#                 else:
-#                     return False
-#             elif self.direction == 'D':
-#                 if len(self.data) == 1 and 'arc' in self.data:
-#                     return True
-#                 else:
-#                     return False
-#             else:
-#                 return False
-#         elif self.number == 2:
-#             if self.direction == 'U':
-#                 if len(self.data) == 3 and all(k in self.data for k in ('arc', 'side', 'target')):
-#                     return True
-#                 else:
-#                     return False
-#             elif self.direction == 'D':
-#                 if len(self.data) == 1 and 'arc' in self.data:
-#                     return True
-#                 else:
-#                     return False
-#             else:
-#                 return False
-#         elif self.number == 3:
-#             if self.direction == 'H':
-#                 if len(self.data) == 2 and all(k in self.data for k in ('arc', 'side')):
-#                     return True
-#                 else:
-#                     return False
-#             else:
-#                 return False
-#         else:
-#             return False
+    def checkFullData(self):
+        if self.number == 0:
+            return True
+        if not self.data:
+            return False
+        if self.number == 1:
+            if self.direction == 'U':
+                if len(self.data) == 3 and all(k in self.data for k in ('arc', 'side', 'sign')):
+                    return True
+                else:
+                    return False
+            elif self.direction == 'D':
+                if len(self.data) == 1 and 'arc' in self.data:
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        elif self.number == 2:
+            if self.direction == 'U':
+                if len(self.data) == 3 and all(k in self.data for k in ('arc', 'side', 'target')):
+                    return True
+                else:
+                    return False
+            elif self.direction == 'D':
+                if len(self.data) == 1 and 'arc' in self.data:
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        elif self.number == 3:
+            if self.direction == 'H':
+                if len(self.data) == 2 and all(k in self.data for k in ('arc', 'side')):
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        else:
+            return False
 
 #     def simpleFinePossibleMoveRequest(self, diagram):
 #         return diagram.simpleFinePossibleMoves()

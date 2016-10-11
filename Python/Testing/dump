@@ -16,3 +16,72 @@ Starting attempt 1 of 1.
 K is ('10, -16, -6, -22, -4, -12, 14, -20, 2, 18, 8', '1, 1, -1, 1, -1, 1, 1, -1, -1, 1, -1')
 Iteration 1 of 2
 Iteration 2 of 2
+Starting attempt 1 of 1.
+K is ('-20, -10, 8, 6, -18, 2, -12, -22, 16, 4, 14', '-1, 1, -1, 1, -1, -1, -1, -1, 1, 1, 1')
+Iteration 1 of 2
+Iteration 2 of 2
+Starting attempt 1 of 1.
+K is ('20, -18, -22, 16, 8, -10, 12, 14, 6, 2, 4', '-1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1')
+Iteration 1 of 2
+The best sequence we found is:
+1D
+1U
+1D
+1U
+1D
+2D
+2D
+1D
+1D
+1D
+1D
+2D
+1U
+2D
+1D
+1D
+3H
+3H
+3H
+1D
+1D
+
+It has fitness 23.271714922
+The resulting diagram has 0 crossings.
+1 successes so far, out of 1 attempts.
+We had 100.0% success!
+Finished script. Took: 0:00:05.521287
+Starting attempt 1 of 1.
+K is ('4, 2, -18, 8, 10, 12, -16, -14, 6, -20', '-1, 1, 1, -1, -1, -1, -1, -1, -1, 1')
+Iteration 1 of 2
+Iteration 2 of 2
+The best sequence we found is:
+1D
+2D
+2U
+1D
+2D
+1D
+2D
+1D
+2D
+3H
+1D
+1D
+2U
+2D
+3H
+3H
+2D
+3H
+2U
+2D
+3H
+3H
+3H
+
+It has fitness 19.3823529412
+The resulting diagram has 2 crossings.
+1 successes so far, out of 1 attempts.
+We had 100.0% success!
+Finished script. Took: 0:00:08.511528
