@@ -26,3 +26,39 @@ Diagram is [-4, -2] , [-1, -1]
 Fitness is 19.3823529412
 Diagram is [-2, 4] , [-1, -1]
 
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+

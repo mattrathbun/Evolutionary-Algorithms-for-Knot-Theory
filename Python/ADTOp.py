@@ -73,7 +73,7 @@ def coarseRandomOp(upMoveBias=1, horizontalMoveBias=1, downMoveBias=1, CCBias=1)
     elif randOp == 'R3':
         return ADTMove(number=3, direction='H', data=None)
     elif randOp == 'CC':
-        raise TypeError("HOW IS THIS HAPPENING??")
+#        raise TypeError("HOW IS THIS HAPPENING??")
         return ADTCC()
     else:
         raise TypeError('Unknown kind of Op.')
@@ -449,19 +449,30 @@ class ADTCC(ADTOp):
             else:
                 return random.choice(possible_data)
 
+#  originalKnot = knot.copy()
+#         possible_data = self.coarsePossibleDataRequest(originalKnot)
+#         if possible_data == []:
+#             return False
+#         data = random.choice(possible_data)
+#         if self.number == 0 and self.direction == "H":
+#             knot.shiftLabel()
+#         elif self.number == 1 and self.direction == "U":
+#             knot.R1Up(arc=data['arc'], side=data['side'], sign=data['sign'])
+
+
     def apply(self, knot):
-        K = knot.copy()
-        if not self.checkFullData():
-            data = self.randomData(knot)
-            if data == []:
-                pass
-            else:
-                if self.opType == "CC":
-                    knot.crossing_change(arc=data['arc'])
+        if self.opType == "CC":
+            possible_data = knot.finePossibleCC()
+            if possible_data != []:
+                data = random.choice(possible_data)
+                knot.crossing_change(arc=data['arc'])
 ##                AllDiagrams.allDiagrams[(K, self)] = K
-                else:
-                    raise TypeError(
-                        'What kind of change are you, and how did you get this far?')
+            else:
+                pass
+        else:
+            raise TypeError(
+                'What kind of change are you, and how did you get this far?')
+
 
 
 ##### IS THIS STILL NECESSARY, OR WAS THIS JUST FOR TESTING? ####
