@@ -8,12 +8,17 @@ Diagram is [] , []
 
 2, 0, 9, 1
 Fitness is 115.942528736
+<<<<<<< HEAD
 Diagram is [2, 4] , [-1, 1]
+=======
+Diagram is [2, 4] , [-1, -1]
+>>>>>>> c9a64fb79f7d899b5c21cd79f563ae88d6f2667b
 
 It's there.
 Fitness is 115.942528736
 Diagram is [] , []
 
+<<<<<<< HEAD
 1, 0, 7, 1
 Fitness is 193.307692308
 Diagram is [-2] , [-1]
@@ -32,5 +37,53 @@ Diagram is [-4, 6, 2, -8] , [-1, 1, 1, -1]
 
 0, 0, 46, 10
 Fitness is 5.70145745181
+=======
+0, 0, 21, 7
+Fitness is 23.271714922
+Diagram is [] , []
+
+2, 0, 30, 7
+Fitness is 11.9649122807
+Diagram is [-4, -2] , [-1, -1]
+
+2, 0, 23, 10
+Fitness is 19.3823529412
+Diagram is [-2, 4] , [-1, -1]
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+>>>>>>> c9a64fb79f7d899b5c21cd79f563ae88d6f2667b
 Diagram is [] , []
 
