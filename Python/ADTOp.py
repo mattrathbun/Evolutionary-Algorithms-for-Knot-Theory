@@ -93,11 +93,12 @@ def fineRandomOp(diagram):
 
 class ADTMove(ADTOp):
 
-    def __init__(self, number, direction, data=None):
+    def __init__(self, number, direction, data=None, lastData=None):
         self.opType = 'Move'
         self.number = number
         self.direction = direction
         self.data = data # data is meant to be a dictionary
+        self.lastData = lastData # lastData is meant to be a dictionary, storing the data of the last application of the move.
 
     def __eq__(self, other):
         if type(other) == type(self):
@@ -116,6 +117,9 @@ class ADTMove(ADTOp):
 
     def getData(self):
         return self.data
+        
+    def getLastData(self):
+        return self.lastData
 
     def getMove(self):
         return self.number, self.direction
@@ -161,7 +165,7 @@ class ADTMove(ADTOp):
             raise TypeError("This is not a recognized direction.")
 
     def copy(self):
-        return ADTMove(number=self.number, direction=self.direction, data=self.data)
+        return ADTMove(number=self.number, direction=self.direction, data=self.data, lastData=self.lastData)
 
     def checkFullData(self):
         if self.number == 0:
@@ -205,6 +209,49 @@ class ADTMove(ADTOp):
         else:
             return False
 
+    def checkLastData(self):
+        if self.number == 0:
+            return True
+        if not self.lastData:
+            return False
+        if self.number == 1:
+            if self.direction == 'U':
+                if len(self.lastData) == 3 and all(k in self.lastData for k in ('arc', 'side', 'sign')):
+                    return True
+                else:
+                    return False
+            elif self.direction == 'D':
+                if len(self.lastData) == 1 and 'arc' in self.lastData:
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        elif self.number == 2:
+            if self.direction == 'U':
+                if len(self.lastData) == 3 and all(k in self.lastData for k in ('arc', 'side', 'target')):
+                    return True
+                else:
+                    return False
+            elif self.direction == 'D':
+                if len(self.lastData) == 1 and 'arc' in self.lastData:
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        elif self.number == 3:
+            if self.direction == 'H':
+                if len(self.lastData) == 2 and all(k in self.lastData for k in ('arc', 'side')):
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        else:
+            return False
+
+
 #     def simpleFinePossibleMoveRequest(self, diagram):
 #         return diagram.simpleFinePossibleMoves()
 
@@ -243,9 +290,12 @@ class ADTMove(ADTOp):
         else:
             raise TypeError('Unknown kind of Move.')
 
-    def fillData(self, data):
-        if not self.checkFullData():
-            self.data = data
+#    def fillData(self, data):
+#        if not self.checkFullData():
+#            self.data = data
+
+    def fillLastData(self, lastData):
+        self.lastData = lastData
 
 #     def simpleRandomData(self, knot):
 #         if not self.checkFullData():
@@ -255,13 +305,13 @@ class ADTMove(ADTOp):
 #             else:
 #                 self.fillData(random.choice(possible_data))
 
-    def randomData(self, knot):
-        if not self.checkFullData():
-            possible_data = self.coarsePossibleDataRequest(knot)
-            if possible_data == []:
-                pass
-            else:
-                self.fillData(random.choice(possible_data))
+#    def randomData(self, knot):
+#        if not self.checkFullData():
+#            possible_data = self.coarsePossibleDataRequest(knot)
+#            if possible_data == []:
+#                pass
+#            else:
+#                self.fillData(random.choice(possible_data))
 
     def apply(self, knot):
 ##        AllDiagrams.lookupCount += 1
@@ -298,6 +348,7 @@ class ADTMove(ADTOp):
         if possible_data == []:
             return False
         data = random.choice(possible_data)
+        self.fillLastData(data)
         if self.number == 0 and self.direction == "H":
             knot.shiftLabel()
         elif self.number == 1 and self.direction == "U":
