@@ -19,8 +19,8 @@ start = datetime.now()
 
 
 
-#length = 35 #length of test/target unknot diagrams
-length = 10 #length of test/target unknot diagrams
+length = 35 #length of test/target unknot diagrams
+#length = 10 #length of test/target unknot diagrams
 
 #attempts = 10 #the number of times we attempt to test the algorithm's effectiveness
 attempts = 1

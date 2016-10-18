@@ -16,3 +16,217 @@ Starting attempt 1 of 1.
 K is ('10, -16, -6, -22, -4, -12, 14, -20, 2, 18, 8', '1, 1, -1, 1, -1, 1, 1, -1, -1, 1, -1')
 Iteration 1 of 2
 Iteration 2 of 2
+Starting attempt 1 of 1.
+K is ('-8, -4, 2, -6, 10, -22, -14, 16, -20, 18, 12', '1, -1, -1, 1, -1, 1, 1, 1, -1, 1, -1')
+Iteration 1 of 2
+Iteration 2 of 2
+Starting attempt 1 of 1.
+K is ('-8, -4, 10, -16, 2, -20, -6, -14, -18, 12', '-1, -1, 1, -1, 1, -1, -1, 1, -1, 1')
+Iteration 1 of 2
+The best sequence we found is:
+2D
+1D
+1D
+2D
+1D
+1D
+2D
+
+It has fitness 193.307692308
+The resulting diagram has 1 crossings.
+1 successes so far, out of 1 attempts.
+We had 100.0% success!
+Finished script. Took: 0:00:05.375920
+Starting attempt 1 of 1.
+K is ('8, -2, 6, -20, 16, 12, -14, -10, 18, 4', '1, 1, -1, -1, -1, -1, -1, 1, 1, 1')
+Iteration 1 of 2
+The best sequence we found is:
+1D
+2D
+2D
+1D
+1D
+3H
+1D
+1D
+2D
+1U
+3H
+1D
+1U
+1D
+2D
+
+It has fitness 44.29004329
+The resulting diagram has 1 crossings.
+1 successes so far, out of 1 attempts.
+We had 100.0% success!
+Finished script. Took: 0:00:06.972319
+Starting attempt 1 of 1.
+K is ('56, -58, 6, 36, -20, -10, -52, 48, 18, 14, 8, 54, -24, -34, 32, -4, -26, 28, -46, -44, 38, 40, 42, -22, -16, 12, 50, -30, -2, 62, 68, -70, 66, -60, 64', '1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, 1, -1, -1, -1, 1, -1, 1, -1')
+Iteration 1 of 2
+The best sequence we found is:
+3H
+1U
+1D
+2D
+1D
+2D
+2U
+2U
+1D
+1D
+1D
+1U
+2D
+1U
+1D
+1D
+1U
+2U
+1D
+2U
+1U
+2D
+2D
+2D
+3H
+1D
+1U
+3H
+1U
+2D
+3H
+2D
+1D
+3H
+2D
+1D
+3H
+1U
+1D
+3H
+3H
+1D
+3H
+1U
+1U
+3H
+1D
+2D
+3H
+2U
+1D
+2D
+2D
+3H
+2U
+3H
+2D
+2D
+1U
+2D
+1D
+2U
+2U
+2D
+3H
+1U
+3H
+1U
+2D
+1D
+2D
+1D
+3H
+2U
+2D
+2D
+2D
+1D
+1D
+2D
+2D
+1D
+1D
+2D
+1D
+1U
+1D
+1D
+1U
+2U
+3H
+2U
+2D
+3H
+1U
+
+It has fitness 2.10521662246
+The resulting diagram has 2 crossings.
+1 successes so far, out of 1 attempts.
+We had 100.0% success!
+Finished script. Took: 0:08:00.180498
+Starting attempt 1 of 1.
+K is ('68, -24, -6, -26, 58, -54, -10, -52, -18, -14, 2, -70, -4, 28, 32, 48, -44, 40, -38, -36, 34, -42, -30, 46, -64, 16, 50, 12, -8, 60, 56, 62, 20, 66, 22', '-1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, 1, -1, 1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, 1, -1, -1')
+Iteration 1 of 2
+Starting attempt 1 of 1.
+K is ('-42, 4, 28, -8, 10, -12, 30, -14, -44, 48, -20, 24, -56, -6, 2, -16, 32, 62, 38, 64, 34, 60, -26, 18, -22, 54, -52, -50, 58, 46, -40, -36, -70, 68, 66', '-1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, 1, -1, -1')
+Iteration 1 of 2
+Starting attempt 1 of 1.
+K is ('-26, -6, -70, 36, 24, -62, 14, 16, 12, 18, -20, -10, 2, 66, 44, 46, -32, -68, -8, -48, -50, -30, -28, 38, 42, 40, 54, -56, -64, -58, -52, -22, 60, 34, 4', '-1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1')
+Iteration 1 of 2
+Iteration 2 of 2
+The best sequence we found is:
+1D
+2D
+1D
+1D
+1D
+2D
+2U
+2D
+2D
+1D
+1D
+1D
+2D
+1D
+2D
+1U
+2D
+1D
+2D
+2D
+2D
+3H
+1U
+2D
+2D
+1D
+1U
+3H
+2D
+1U
+1D
+3H
+3H
+2U
+1D
+2D
+1D
+3H
+1D
+2U
+3H
+2D
+1D
+2D
+2D
+2D
+
+It has fitness 5.70145745181
+The resulting diagram has 4 crossings.
+0 successes so far, out of 1 attempts.
+We had 0.0% success!
+Finished script. Took: 0:12:37.208242

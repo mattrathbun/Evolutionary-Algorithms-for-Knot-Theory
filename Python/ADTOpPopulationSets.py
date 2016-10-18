@@ -55,10 +55,10 @@ class Population(object):
 #         print "\n\n\n\n"
         
         fcmp = lambda x, y: cmp(fit(x), fit(y))
-        print "Starting to sort"
-        startsort = datetime.now()
-###        pop1.sort(cmp=fcmp)
-        print "Finished sorting. Took this long: ", datetime.now() - startsort
+#         print "Starting to sort"
+#         startsort = datetime.now()
+# ###        pop1.sort(cmp=fcmp)
+#         print "Finished sorting. Took this long: ", datetime.now() - startsort
         possible_survivors = set()
         tfv = 0
         # maxf = 0

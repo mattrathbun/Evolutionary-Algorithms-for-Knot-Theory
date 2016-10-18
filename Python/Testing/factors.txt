@@ -6,3 +6,31 @@ It's there.
 Fitness is 152.515151515
 Diagram is [] , []
 
+2, 0, 9, 1
+Fitness is 115.942528736
+Diagram is [2, 4] , [-1, 1]
+
+It's there.
+Fitness is 115.942528736
+Diagram is [] , []
+
+1, 0, 7, 1
+Fitness is 193.307692308
+Diagram is [-2] , [-1]
+
+1, 0, 15, 4
+Fitness is 44.29004329
+Diagram is [-2] , [-1]
+
+2, 0, 95, 18
+Fitness is 2.10521662246
+Diagram is [4, -2] , [1, -1]
+
+4, 0, 92, 14
+Fitness is 1.00581395349
+Diagram is [-4, 6, 2, -8] , [-1, 1, 1, -1]
+
+0, 0, 46, 10
+Fitness is 5.70145745181
+Diagram is [] , []
+
