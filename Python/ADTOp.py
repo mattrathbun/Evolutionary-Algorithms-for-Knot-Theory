@@ -265,11 +265,13 @@ class ADTMove(ADTOp):
         AllDiagrams.lookupCount += 1
 #        print "lookupCount: ", AllDiagrams.lookupCount
 ##        if False:
-        if (knot.to_string(), self.toString()) in AllDiagrams.allDiagrams:
+        kts = knot.to_string()
+        sts = self.toString()
+        if (kts, sts) in AllDiagrams.allDiagrams:
             AllDiagrams.lookupSuccess += 1
 #             print "{} of {}".format(AllDiagrams.lookupSuccess, AllDiagrams.lookupCount)
 #             print "Which is: ", float(AllDiagrams.lookupSuccess)/float(AllDiagrams.lookupCount)
-            lookupResult = AllDiagrams.allDiagrams[(knot.to_string(), self.toString())].copy()
+            lookupResult = AllDiagrams.allDiagrams[(kts, sts)].copy()
             
 #             print "op is "+self.toString()
 #             print "knot is ",knot.to_string()
