@@ -61,21 +61,31 @@ class Population(object):
 #         print "Finished sorting. Took this long: ", datetime.now() - startsort
         possible_survivors = set()
         tfv = 0
+        maxf = float("-inf")
+        minf = float("inf")
         # maxf = 0
         # minf = 1000000
-        startMax = datetime.now()
-        print "Starting attempt at max and min."
-        maxlist = max(pop1, key = lambda x: fit(x))
-        maxf = maxlist.checkFitness()
-        minlist = min(pop1, key = lambda x: fit(x))
-        minf = minlist.checkFitness()
-        print "Finished finding max and min. Took this long:", datetime.now() - startMax
-        print "\n"
+#        startMax = datetime.now()
+#        print "Starting THIS 1 attempt at max and min."
+#        maxlist = max(pop1, key = lambda x: fit(x))
+#        maxf = maxlist.checkFitness()
+#        minlist = min(pop1, key = lambda x: fit(x))
+#        minf = minlist.checkFitness()
+#        print "Finished finding THIS 1 max and min. Took this long:", datetime.now() - startMax
+#        print "\n"
         
 ###        maxf = fit(pop1[-1])
 ###        minf = fit(pop1[0])
+        print "NOW we are going through the pop."
+        startThroughPop = datetime.now()
         for ol in pop1:
             fv = fit(ol)
+            if fv > maxf:
+                maxf = fv
+                maxlist = ol
+            if fv < minf:
+                minf = fv
+                minlist = ol
             possible_survivors.add(ol.copy())
 #             if fv > 2:
 #                 possible_survivors.add(ol.copy())
@@ -94,6 +104,8 @@ class Population(object):
         print "max fitness     = ", maxf
         print "min fitness     = ", minf
         print ""
+        
+        print "NOW done going through pop: ", datetime.now() - startThroughPop
 
         # persistence is a parameter to check for a proportion of the population that succeeds in the goal
         #   and will be forced to survive (without mutation) into the next generation

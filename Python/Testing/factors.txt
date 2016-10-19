@@ -87,3 +87,327 @@ Fitness is -inf
 >>>>>>> c9a64fb79f7d899b5c21cd79f563ae88d6f2667b
 Diagram is [] , []
 
+3, 0, 100, 15
+Fitness is 1.00694444444
+Diagram is [6, 2, 4] , [1, -1, 1]
+
+2, 0, 77, 6
+Fitness is 2.6835016835
+Diagram is [2, -4] , [1, 1]
+
+2, 0, 7, 2
+Fitness is 179.571428571
+Diagram is [-4, -2] , [-1, -1]
+
+2, 0, 15, 0
+Fitness is 44.4782608696
+Diagram is [4, 2] , [-1, -1]
+
+It's there.
+Fitness is 78.519379845
+Diagram is [] , []
+
+1, 0, 29, 15
+Fitness is 12.655011655
+Diagram is [2] , [-1]
+
+0, 0, 15, 4
+Fitness is 44.4782608696
+Diagram is [] , []
+
+2, 0, 11, 4
+Fitness is 77.9230769231
+Diagram is [-2, -4] , [-1, -1]
+
+2, 0, 8, 1
+Fitness is 143.857142857
+Diagram is [-4, 2] , [-1, -1]
+
+1, 0, 8, 1
+Fitness is 150.253731343
+Diagram is [-2] , [-1]
+
+1, 0, 11, 3
+Fitness is 80.3650793651
+Diagram is [-2] , [1]
+
+It's there.
+Fitness is 80.3650793651
+Diagram is [] , []
+
+1, 0, 24, 1
+Fitness is 18.2711571675
+Diagram is [-2] , [1]
+
+It's there.
+Fitness is 18.2711571675
+Diagram is [] , []
+
+0, 0, 14, 3
+Fitness is 51.0
+Diagram is [] , []
+
+5, 0, 34, 1
+Fitness is 1.00617283951
+Diagram is [-8, -10, 6, 4, 2] , [-1, -1, -1, -1, 1]
+
+4, 0, 34, 4
+Fitness is 1.00961538462
+Diagram is [-8, 6, 4, 2] , [-1, 1, -1, 1]
+
+2, 0, 27, 7
+Fitness is 14.4952766532
+Diagram is [-2, -4] , [1, 1]
+
+It's there.
+Fitness is 14.4952766532
+Diagram is [] , []
+
+1, 0, 45, 14
+Fitness is 5.89955903969
+Diagram is [2] , [-1]
+
+2, 0, 25, 4
+Fitness is 16.7728706625
+Diagram is [4, 2] , [1, -1]
+
+1, 0, 27, 11
+Fitness is 14.4770889488
+Diagram is [2] , [-1]
+
+1, 0, 35, 7
+Fitness is 9.10372771475
+Diagram is [-2] , [-1]
+
+0, 0, 59, 13
+Fitness is 3.86123032904
+Diagram is [] , []
+
+2, 0, 39, 6
+Fitness is 7.5274151436
+Diagram is [-4, -2] , [-1, 1]
+
+It's there.
+Fitness is 7.5274151436
+Diagram is [] , []
+
+1, 0, 53, 7
+Fitness is 4.54861603974
+Diagram is [2] , [-1]
+
+1, 0, 26, 3
+Fitness is 15.684287812
+Diagram is [2] , [1]
+
+4, 0, 73, 10
+Fitness is 1.0067114094
+Diagram is [-4, -2, -8, 6] , [1, 1, 1, 1]
+
+It's there.
+Fitness is 1.0067114094
+Diagram is [] , []
+
+4, 0, 57, 11
+Fitness is 1.00746268657
+Diagram is [-4, -2, 6, 8] , [-1, 1, -1, -1]
+
+1, 0, 69, 6
+Fitness is 3.09687565527
+Diagram is [2] , [-1]
+
+9, 0, 44, 8
+Fitness is 1.00127713921
+Diagram is [8, 2, -10, 6, -4, -18, -16, -14, 12] , [-1, 1, 1, -1, 1, -1, 1, 1, -1]
+
+1, 0, 62, 16
+Fitness is 3.58933195236
+Diagram is [-2] , [1]
+
+3, 0, 52, 7
+Fitness is 1.01136363636
+Diagram is [6, -2, 4] , [1, -1, -1]
+
+It's there.
+Fitness is 1.01136363636
+Diagram is [] , []
+
+It's there.
+Fitness is 1.00179533214
+Diagram is [] , []
+
+5, 0, 61, 10
+Fitness is 1.00505050505
+Diagram is [-4, -2, -10, 8, 6] , [1, -1, -1, 1, 1]
+
+It's there.
+Fitness is 6.13347022587
+Diagram is [] , []
+
+1, 0, 20, 4
+Fitness is 25.6305418719
+Diagram is [2] , [1]
+
+1, 0, 45, 13
+Fitness is 5.90196078431
+Diagram is [2] , [1]
+
+1, 0, 28, 5
+Fitness is 13.6422250316
+Diagram is [-2] , [-1]
+
+3, 0, 41, 11
+Fitness is 1.01234567901
+Diagram is [6, -2, 4] , [1, -1, -1]
+
+1, 0, 53, 7
+Fitness is 4.54861603974
+Diagram is [2] , [-1]
+
+2, 0, 52, 13
+Fitness is 4.67376928729
+Diagram is [4, -2] , [1, -1]
+
+3, 0, 52, 8
+Fitness is 1.01123595506
+Diagram is [4, -6, 2] , [-1, 1, -1]
+
+1, 0, 53, 7
+Fitness is 4.54861603974
+Diagram is [2] , [1]
+
+It's there.
+Fitness is 4.54861603974
+Diagram is [] , []
+
+1, 0, 37, 6
+Fitness is 8.26216412491
+Diagram is [-2] , [1]
+
+It's there.
+Fitness is 8.26216412491
+Diagram is [] , []
+
+It's there.
+Fitness is 2.81983621474
+Diagram is [] , []
+
+1, 0, 74, 8
+Fitness is 2.82282172803
+Diagram is [2] , [-1]
+
+2, 0, 43, 8
+Fitness is 6.37056928034
+Diagram is [-4, 2] , [1, -1]
+
+4, 0, 137, 9
+Fitness is 1.00471698113
+Diagram is [-6, -8, -2, 4] , [1, -1, 1, 1]
+
+It's there.
+Fitness is 1.00471698113
+Diagram is [] , []
+
+1, 0, 103, 9
+Fitness is 1.94161958569
+Diagram is [-2] , [1]
+
+It's there.
+Fitness is 1.94161958569
+Diagram is [] , []
+
+2, 0, 95, 7
+Fitness is 2.10656191214
+Diagram is [-4, -2] , [1, -1]
+
+It's there.
+Fitness is 2.10656191214
+Diagram is [] , []
+
+It's there.
+Fitness is 2.10656191214
+Diagram is [] , []
+
+It's there.
+Fitness is 2.10656191214
+Diagram is [] , []
+
+It's there.
+Fitness is 2.10656191214
+Diagram is [] , []
+
+It's there.
+Fitness is 2.10656191214
+Diagram is [] , []
+
+It's there.
+Fitness is 1.0027173913
+Diagram is [] , []
+
+It's there.
+Fitness is 1.0027173913
+Diagram is [] , []
+
+1, 0, 99, 19
+Fitness is 2.01812258196
+Diagram is [2] , [-1]
+
+2, 0, 83, 15
+Fitness is 2.44738746562
+Diagram is [-4, -2] , [-1, 1]
+
+6, 0, 104, 14
+Fitness is 1.00297619048
+Diagram is [-2, -4, 12, -10, -8, 6] , [-1, 1, 1, -1, -1, -1]
+
+5, 0, 104, 16
+Fitness is 1.004048583
+Diagram is [10, -2, -4, 8, 6] , [-1, 1, -1, 1, -1]
+
+0, 0, 111, 22
+Fitness is 1.81011017498
+Diagram is [] , []
+
+2, 0, 103, 10
+Fitness is 1.94126506024
+Diagram is [-2, 4] , [1, -1]
+
+2, 0, 95, 16
+Fitness is 2.10546097723
+Diagram is [-4, 2] , [-1, -1]
+
+1, 0, 95, 16
+Fitness is 2.10582771204
+Diagram is [2] , [1]
+
+0, 0, 25, 2
+Fitness is 16.923566879
+Diagram is [] , []
+
+3, 0, 59, 9
+Fitness is 1.01030927835
+Diagram is [2, 6, -4] , [1, -1, 1]
+
+0, 0, 40, 10
+Fitness is 7.20732464308
+Diagram is [] , []
+
+0, 0, 40, 7
+Fitness is 7.21890547264
+Diagram is [] , []
+
+1, 0, 26, 3
+Fitness is 15.684287812
+Diagram is [2] , [-1]
+
+It's there.
+Fitness is 15.684287812
+Diagram is [] , []
+
+It's there.
+Fitness is 15.684287812
+Diagram is [] , []
+
+0, 0, 25, 6
+Fitness is 16.8227848101
+Diagram is [] , []
+

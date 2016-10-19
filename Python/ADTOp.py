@@ -137,26 +137,37 @@ class ADTMove(ADTOp):
         if self.number == 1 and self.direction == 'U':
             if self.checkFullData():
                 return "1U(pos={}, side={}, sign={})".format(str(self.data['arc']), str(self.data['side']), str(self.data['sign']))
+            elif self.checkLastData():
+                return "1U(pos={}, side={}, sign={})".format(str(self.lastData['arc']), str(self.lastData['side']), str(self.lastData['sign']))
+
             else:
                 return "1U"
         elif self.number == 1 and self.direction == "D":
             if self.checkFullData():
                 return "1D(pos={})".format(str(self.data['arc']))
+            elif self.checkLastData():
+                return "1D(pos={})".format(str(self.lastData['arc']))
             else:
                 return "1D"
         elif self.number == 2 and self.direction == "U":
             if self.checkFullData():
                 return "2U(pos={}, side={}, target={})".format(str(self.data['arc']), str(self.data['side']), str(self.data['target']))
+            elif self.checkLastData():
+                return "2U(pos={}, side={}, target={})".format(str(self.lastData['arc']), str(self.lastData['side']), str(self.lastData['target']))
             else:
                 return "2U"
         elif self.number == 2 and self.direction == "D":
             if self.checkFullData():
                 return "2D(pos={})".format(str(self.data['arc']))
+            elif self.checkLastData():
+                return "2D(pos={})".format(str(self.lastData['arc']))
             else:
                 return "2D"
         elif self.number == 3:
             if self.checkFullData():
                 return "3H(pos={}, side={})".format(str(self.data['arc']), str(self.data['side']))
+            elif self.checkLastData():
+                return "3H(pos={}, side={})".format(str(self.lastData['arc']), str(self.lastData['side']))
             else:
                 return "3H"
         else:
