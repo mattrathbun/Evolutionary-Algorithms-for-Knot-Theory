@@ -1,5 +1,5 @@
 import ADTOp
-import sys
+import sys, random
 import AllDiagrams
 
 
@@ -79,6 +79,7 @@ class ADT(object):
         if len(self.code) != len(self.orientations):
             raise TypeError("Code and Orientations must have the same length.")
             
+        self.restring = True
         self.invariants = {}
 
     def __eq__(self, other):
@@ -116,9 +117,11 @@ class ADT(object):
         return ADT(new_dt, new_or)
 
     def to_string(self):
-        codeString = ", ".join(str(x) for x in self.code)
-        orientationsString = ", ".join(str(x) for x in self.orientations)
-        return codeString, orientationsString
+        if self.restring:
+            self.codeString = ", ".join(str(x) for x in self.code)
+            self.orientationsString = ", ".join(str(x) for x in self.orientations)
+            self.restring = False
+        return self.codeString, self.orientationsString
         
     # Methods to let us store known invariant values for a knot type (e.g. unknotting number, alternating, bridge number, etc.)
         
@@ -265,6 +268,7 @@ class ADT(object):
             new_orients.append(i[3])
         self.code = new_code
         self.orientations = new_orients
+        self.restring = True
 #        self.writeDiagram()
         return True
     
@@ -327,6 +331,7 @@ class ADT(object):
             new_or.insert(arc / 2, sign)
         self.code = new_dt
         self.orientations = new_or
+        self.restring = True
 #        self.writeDiagram()
         return True
 
@@ -353,6 +358,7 @@ class ADT(object):
             K.shiftLabel()
             self.code = K.code
             self.orientations = K.orientations
+            self.restring = True
             arc = self.wrap(arc - 1)
         new_dt = []
         temp_dt = list(self.code)
@@ -366,6 +372,7 @@ class ADT(object):
                     new_dt.append(i)
             self.code = new_dt
             self.orientations.pop(((arc - 1) / 2) % n)
+            self.restring = True
 #            self.writeDiagram()
             return True
         elif arc % 2 == 0:
@@ -379,6 +386,7 @@ class ADT(object):
 #            print "new_dt has become: ", new_dt
             self.code = new_dt
             self.orientations.pop((arc / 2) % n)
+            self.restring = True
 #            self.writeDiagram()
             return True
 
@@ -462,6 +470,7 @@ class ADT(object):
 #             print "new_code, new_orientations: ", new_code, new_orientations
         self.code = new_code
         self.orientations = new_orientations
+        self.restring = True
 #        self.writeDiagram()
         return True
 
@@ -682,6 +691,7 @@ class ADT(object):
             new_code.insert(0, new_code.pop())
             self.orientations.insert(0, self.orientations.pop())
         self.code = new_code
+        self.restring = True
 #        self.writeDiagram()
         return True
 
@@ -864,6 +874,7 @@ class ADT(object):
         for p in rewrite:
              self.code[(p-1)/2] = rewrite[p]
              self.orientations[(p-1)/2] = rewriteOri[p]
+             self.restring = True
         # print "*************************"
 
 #        self.writeDiagram()
@@ -985,7 +996,7 @@ class ADT(object):
 
     def simpleFineRandomMove(self):
         possible_moves = self.simpleFinePossibleMoves()
-        move - random.choice(possible_moves)
+        move = random.choice(possible_moves)
 
     def fineRandomMove(self):
         possible_moves = self.finePossibleMoves()
@@ -1231,6 +1242,7 @@ class ADT(object):
                         orient[idx_s] = par_s * sign_s * phisa * fi
                         # print orient
         self.orientations = orient
+        self.restring = True
         
     def force_orient(self,pm):
         n = self.number_crossings()
@@ -1264,6 +1276,7 @@ class ADT(object):
         i = (odd - 1) / 2
         self.code[i] *= -1
         self.orientations[i] *= -1
+        self.restring = True
         return True
 
     def TOK_energy(self, weight):
