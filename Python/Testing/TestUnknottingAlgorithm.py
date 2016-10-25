@@ -13,12 +13,13 @@ start = datetime.now()
 #K = ADT.ADT([6, -2, -10, -14, 4, 12, 8, 16], [-1, -1, 1, 1, -1, 1, -1, -1])
 
 # The knot 7_6
-K = ADT.ADT([10, 8, 14, 4, 12, 2, 6], [1, -1, 1, -1, 1, 1, 1])
+#K = ADT.ADT([10, 8, 14, 4, 12, 2, 6], [1, -1, 1, -1, 1, 1, 1])
 
-#K = ADT.ADT([-4, -18, -22, -14, -6, -20, -8, -10, -2, -12, -16], [1, 1, 1, -1, 1, -1, -1, 1, 1, -1, 1])
+K = ADT.ADT([-4, -18, -22, -14, -6, -20, -8, -10, -2, -12, -16], [1, 1, 1, -1, 1, -1, -1, 1, 1, -1, 1])
+
+K# = ADT.ADT([-10,-8,-2,-4,-6], [1,-1,1,-1,1])
+
 #K = ADT.ADT([
-
-
 
 
 def fit(ol):
@@ -51,7 +52,8 @@ pl = pop.toList()
 for l in pl:
     print [op.toString() for op in l.toList()]
 
-numiterations = 200
+sizeFile = open('sizeFile.csv', 'w')
+numiterations = 100
 
 for i in range(1,numiterations):
     print "\n"
@@ -65,7 +67,18 @@ for i in range(1,numiterations):
     best = pop.iterate(fit)
     for l in pop.toList():
         print [op.toString() for op in l.toList()]
+        L = K.copy()
+        
+        d, min_ol = l.apply(L)
+        sizeFile.write('{}, '.format(len(d.code)))
 
+    sizeFile.write('\n')
+    L = K.copy()
+    d, min_ol = best.apply(L)
+    print "The bestest resulting diagram is: {}".format(d.to_string())    
+    print "The bestest resulting diagram is: {}".format(len(d.code))    
+
+sizeFile.close()
 print "***************************************"
 print "\n"
 print "\n"
