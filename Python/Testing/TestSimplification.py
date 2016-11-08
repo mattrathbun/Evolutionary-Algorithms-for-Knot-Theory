@@ -19,7 +19,7 @@ start = datetime.now()
 
 
 
-length = 101 #length of test/target unknot diagrams
+length = 100 #length of test/target unknot diagrams
 #length = 10 #length of test/target unknot diagrams
 
 #attempts = 10 #the number of times we attempt to test the algorithm's effectiveness
@@ -50,7 +50,8 @@ def testSimplification():
     	myfile.close()
         print "Iteration {} of {}".format(iteration+1, numiterations)
         iteration += 1
-        best = pop.iterate(fit)
+        pop.iterate(fit)
+        best = pop.getFittestMember(fit)[1]
         L = K.copy()
         d, min_ol = best.apply(L)
         if d.number_crossings() < 3 or iteration == numiterations:
