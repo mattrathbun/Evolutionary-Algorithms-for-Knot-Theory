@@ -5,7 +5,7 @@ import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, Fit
 import AllDiagrams
 from datetime import datetime
 
-AllDiagrams.init()
+#AllDiagrams.init()
 
 #fileName = "TestFile"
 #fileName = "../../../../../../Dropbox (CSU Fullerton)/TestFileMemory"
@@ -45,7 +45,8 @@ def testSimplification():
     	myfile.close()
         print "Iteration {} of {}".format(iteration+1, numiterations)
         iteration += 1
-        best = pop.iterate(fit)
+        pop.iterate(fit)
+        best = pop.getFittestMember(fit)[1]
         L = K.copy()
         d, min_ol = best.apply(L)
         if d.number_crossings() < 3 or iteration == numiterations:
@@ -85,7 +86,7 @@ def testSimplification():
             else:
                 return 0
         
-AllDiagrams.init()
+#AllDiagrams.init()
 print "\n"
 K = ADT.ADT([-102, 162, -58, 188, 42, -94, 50, 118, -110, -222, 112, 114, 218, 208, -134, -202, -70, -78, -66, -82, -168, -96, 120, 16, -116, -194, 10, 40, -6, -84, -140, -182, 184, -80, 196, 214, -150, -210, -146, -92, 170, 186, -104, 178, 176, 36, 68, 52, -122, 190, 158, -86, 4, 164, -100, 156, -130, -154, -126, -192, 98, -44, -14, 48, 22, 206, 26, 74, 76, -88, 174, 64, -90, 198, 200, 30, 204, -128, 18, 108, -106, -2, -160, -8, -54, -38, -180, -62, 138, 60, 142, -144, 172, -56, -166, -46, 124, 12, 34, -212, -72, -216, 24, 220, -28, -136, -148, 32, -152, -132, -20], [1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, -1])
 print "K is ", K.to_string()

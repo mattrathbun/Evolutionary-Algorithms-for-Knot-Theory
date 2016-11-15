@@ -4,7 +4,7 @@ sys.path.append(lib_path)
 import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, Fit, AllDiagrams
 from datetime import datetime
 
-AllDiagrams.init()
+#AllDiagrams.init()
 
 #myfile = open("../../../../../../Dropbox (CSU Fullerton)/TestFile", 'a')
 fileName = "dump"

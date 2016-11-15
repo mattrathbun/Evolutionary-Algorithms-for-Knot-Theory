@@ -4,7 +4,7 @@ sys.path.append(lib_path)
 import ADT, ADTOp, ADTOpPopulation, ADTOpPopulationSets, Fit, AllDiagrams
 from datetime import datetime
 
-AllDiagrams.init()
+#AllDiagrams.init()
 
 fileName = "dump"
 
@@ -40,7 +40,8 @@ def testSimplification():
         myfile.close()
         print "Iteration {} of {}".format(iteration+1, numiterations)
         iteration += 1
-        best = pop.iterate(fit)
+        pop.iterate(fit)
+        best = pop.getFittestMember(fit)[1]
         L = K.copy()
         d, min_ol = best.apply(L)
         if d.number_crossings() < 3 or iteration == numiterations:

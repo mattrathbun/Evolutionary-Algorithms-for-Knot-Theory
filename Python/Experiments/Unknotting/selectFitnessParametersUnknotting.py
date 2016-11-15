@@ -5,7 +5,7 @@ import ADT, ADTOpPopulation, ADTOpPopulationSets, Fit, AllDiagrams, applyUnknott
 import math, operator
 from datetime import datetime
 
-AllDiagrams.init()
+#AllDiagrams.init()
 
 parameter_range = 4
 

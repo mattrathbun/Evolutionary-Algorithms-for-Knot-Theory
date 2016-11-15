@@ -4,7 +4,7 @@ sys.path.append(lib_path)
 import ADT, ADTOpPopulation, ADTOpPopulationSets, AllDiagrams
 from datetime import datetime
 
-AllDiagrams.init()
+#AllDiagrams.init()
 
 
 print "Starting script."
@@ -62,7 +62,8 @@ for i in range(1,numiterations):
     print "\n"
     print "\n"
     print "\n"
-    best = pop.iterate(fit)
+    pop.iterate(fit)
+    best = pop.getFittestMember(fit)[1]
     for l in pop.toList():
         print [op.toString() for op in l.toList()]
 

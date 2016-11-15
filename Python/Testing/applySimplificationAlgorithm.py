@@ -30,8 +30,9 @@ def applySimplificationAlgorithm(fit, K, numiterations, up=1, hor=1, down=1):
         print "Iteration {} of {}".format(i, numiterations)
         print "\n"
         print "\n"
-        best_opList = pop.iterate(fit, mu = mu, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = 0)
-#        for l in pop.toList():
+        pop.iterate(fit, mu = mu, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = 0)
+        best_opList = pop.getFittestMember(fit)[1]
+        #        for l in pop.toList():
 #            print [op.toString() for op in l.toList()]
         L = K.copy()
         d, min_ol = best_opList.apply(L)

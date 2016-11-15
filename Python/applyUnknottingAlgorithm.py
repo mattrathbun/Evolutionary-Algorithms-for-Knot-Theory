@@ -36,7 +36,8 @@ def applyUnknottingAlgorithm(fit, K, numiterations, up=1, hor=5, down=1, cc=2, u
         print "\n"
         print "\n"
         print "\n"
-        best_opList = pop.iterate(fit, mu = mu, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
+        pop.iterate(fit, mu = mu, upMoveBias = upMoveBias, downMoveBias = downMoveBias, horizontalMoveBias = horizontalMoveBias, CCBias = CCBias)
+        best_opList = pop.getFittestMember(fit)[1]
 #        for l in pop.toList():
 #            print [op.toString() for op in l.toList()]
         L = K.copy()

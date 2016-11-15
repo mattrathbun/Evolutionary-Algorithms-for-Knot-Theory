@@ -6,7 +6,7 @@ import AllDiagrams
 from datetime import datetime
 import random
 
-AllDiagrams.init()
+#AllDiagrams.init()
 
 
 def createCandidateExample(height=5, drop=1):
