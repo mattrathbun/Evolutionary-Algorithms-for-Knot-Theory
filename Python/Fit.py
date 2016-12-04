@@ -44,7 +44,7 @@ class Fit(object):
             ol.diagram = di
             if di.number_crossings() < 3:
                 bonus = 10000
-                fitness = 1.0 + bonus/(di.number_crossings()**float(self.a) + ccCount**float(self.b+2) + ol.length()**float(self.c) + (ol.length() - min_ol.length())**float(self.d) + 1.0)
+                fitness = 1.0 + bonus/(di.number_crossings()**float(self.a) + ccCount**float(self.b+5) + ol.length()**float(self.c) + (ol.length() - min_ol.length())**float(self.d) + 1.0)
             else:
                 bonus = 1
                 fitness = 1.0 + bonus/(di.number_crossings()**float(self.a+1) + ccCount**float(self.b) + ol.length()**float(self.c-1) + (ol.length() - min_ol.length())**float(self.d) + 1.0)
