@@ -36,7 +36,7 @@ def createCandidateExample(height=15, drop=1):
 #    ups = 0
     print "Starting to increase complexity. \n"
     while K.number_crossings() < height:
-        M = ADTOp.simpleCoarseRandomOp(upMoveBias=2, horizontalMoveBias=3, downMoveBias=1, CCBias=0)
+        M = ADTOp.simpleCoarseRandomOp(upMoveBias=3, horizontalMoveBias=3, downMoveBias=1, CCBias=0)
 #        if M.getDirection() == "U":
 #            ups += 1
 #            print "ups is {}".format(ups)
@@ -67,7 +67,7 @@ def createCandidateExample(height=15, drop=1):
             print reductions[0].toString()
     print "Found {} hard unknot diagrams.".format(hardUnknotCount)
 
-for i in range(5000):
+for i in range(1000):
     p = random.randint(10, 30)
     print "On iteration {}.\n".format(i)
     createCandidateExample(height=p, drop=1) 
