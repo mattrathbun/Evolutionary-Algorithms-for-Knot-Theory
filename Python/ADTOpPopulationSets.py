@@ -44,7 +44,7 @@ class Population(object):
     def size(self):
         return len(self.oplists)
         
-    def getMaxFitness(self):
+    def getMaxFitness(self, fit):
         maxf = float("-inf")
         for ol in self.oplists:
             fv = fit(ol)
