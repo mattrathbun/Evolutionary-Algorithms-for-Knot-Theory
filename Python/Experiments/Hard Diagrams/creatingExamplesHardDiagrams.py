@@ -27,47 +27,83 @@ def resultDownHorizontalMoves(knot):
             results.append(K)
     return results
 
+def cascadeDownResults(knot):
+    K = knot.copy()
+    print "Investigating diagrams with {} crossings. \n".format(K.number_crossings())
+    below = resultDownMoves(K)
+    if below == []:
+        return K
+    elif K.number_crossings() < 9:
+        return K
+    else:
+        for L in below:
+            print "There are {} diagrams below the current diagram. \n".format(len(below))
+            return cascadeDownResults(L)
+
+def resultDownMoves(knot):
+    all_possible_down_moves = fetchDownMoves(knot)
+    results = []
+    for move in all_possible_down_moves:
+        K = knot.copy()
+        if move.apply(K):
+            results.append(K)
+    return results
+
 def createCandidateExample(height=15, drop=1):
+    candidates = []
     hardUnknotCount = 0
     code = random.choice([[2], [-2]])
     orient = random.choice([[1], [-1]])
-    K = ADT.ADT(code, orient)
+    top = ADT.ADT(code, orient)
     upSequence = []
 #    ups = 0
     print "Starting to increase complexity. \n"
-    while K.number_crossings() < height:
+    while top.number_crossings() < height:
         M = ADTOp.simpleCoarseRandomOp(upMoveBias=2, horizontalMoveBias=3, downMoveBias=1, CCBias=0)
 #        if M.getDirection() == "U":
 #            ups += 1
 #            print "ups is {}".format(ups)
 #        upSequence.append(M)
 #        print "Applying {} to {}.".format(M.toString(), L.to_string())
-        M.apply(K)
-        print "K has {} crossings. \n".format(K.number_crossings())
+        M.apply(top)
+        print "Top Knot has {} crossings. \n".format(top.number_crossings())
 #        print "K has become: ", L.to_string()
 #    print "K has been built up, and now has {} crossings.".format(L.number_crossings())
     dropped = 0
-    L = K.copy()
-    for i in range(1):
-        results = resultDownHorizontalMoves(L)
-        print "There are {} possible reductions in complexity. \n".format(len(results))
-    counter = 1
-    for diag in results:
-        print "Checking {} out of {}.".format(counter, len(results))
-        counter += 1
-        reductions = fetchDownMoves(diag)
-        if len(reductions) == 0:
-            hardUnknotCount += 1
-            myfile = open(storageFile, 'a')
-            myfile.write(str(diag.to_string()))
+    L = top.copy()
+    for i in range(drop):
+        dropped = resultDownHorizontalMoves(L)
+    initial_counter = 1
+    for diag in dropped:
+        print "Checking {} out of {}.".format(initial_counter, len(dropped))
+        initial_counter += 1
+        candidates.append(cascadeDownResults(diag))
+    print "There are {} candidates for hard unknot diagrams.\n".format(len(candidates))
+#     for d in candidates:
+#         print d.to_string()
+    print "Now checking for False Positives.\n"
+    hard_diagrams = [d for d in candidates if d.number_crossings() > 9]
+    l = len(hard_diagrams)
+    print "Found {} hard unknot diagrams.".format(l)
+    if l > 0:
+        myfile = open(storageFile, 'a')
+        for d in hard_diagrams:
+            myfile.write(str(d.to_string()))
             myfile.write('\n')
-            myfile.close()
-        else:
-            print "Has a reduction. \n"
-            print reductions[0].toString()
-    print "Found {} hard unknot diagrams.".format(hardUnknotCount)
+        myfile.close()
+        # reductions = fetchDownMoves(diag)
+#         if len(reductions) == 0:
+#             hardUnknotCount += 1
+#             myfile = open(storageFile, 'a')
+#             myfile.write(str(diag.to_string()))
+#             myfile.write('\n')
+#             myfile.close()
+#         else:
+#             print "Has a reduction. \n"
+#             print reductions[0].toString()
+#     print "Found {} hard unknot diagrams.".format(hardUnknotCount)
 
-for i in range(5000):
+for i in range(1000):
     p = random.randint(10, 30)
     print "On iteration {}.\n".format(i)
     createCandidateExample(height=p, drop=1) 
