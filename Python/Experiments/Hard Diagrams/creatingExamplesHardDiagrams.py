@@ -103,7 +103,7 @@ def createCandidateExample(height=15, drop=1):
 #             print reductions[0].toString()
 #     print "Found {} hard unknot diagrams.".format(hardUnknotCount)
 
-iterations = 1000
+iterations = 10000
 for i in range(iterations):
     p = random.randint(10, 30)
     print "On iteration {} of {}.\n".format(i, iterations)
