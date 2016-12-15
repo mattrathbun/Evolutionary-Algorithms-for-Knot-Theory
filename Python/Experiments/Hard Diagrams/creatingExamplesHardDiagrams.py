@@ -103,9 +103,10 @@ def createCandidateExample(height=15, drop=1):
 #             print reductions[0].toString()
 #     print "Found {} hard unknot diagrams.".format(hardUnknotCount)
 
-for i in range(1000):
+iterations = 1000
+for i in range(iterations):
     p = random.randint(10, 30)
-    print "On iteration {}.\n".format(i)
+    print "On iteration {} of {}.\n".format(i, iterations)
     createCandidateExample(height=p, drop=1) 
         
 #     all_possible_moves = peak.finePossibleMoves()
