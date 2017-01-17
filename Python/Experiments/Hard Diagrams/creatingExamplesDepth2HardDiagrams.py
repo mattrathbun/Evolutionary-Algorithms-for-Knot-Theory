@@ -10,13 +10,53 @@ AllDiagrams.init()
 
 storageFile = "Depth2HardDiagrams"
 
+def fetchUpMoves(knot):
+    all_possible_moves = knot.finePossibleMoves()
+    return [move for move in all_possible_moves if move.direction in ["U"]]
+
+def fetchDownMoves(knot):
+    all_possible_moves = knot.finePossibleMoves()
+    return [move for move in all_possible_moves if move.direction in ["D"]]
+    
+def fetchHorizontalMoves(knot):
+    all_possible_moves = knot.finePossibleMoves()
+    return [move for move in all_possible_moves if move.direction in ["H"]]
+        
 def fetchDownHorizontalMoves(knot):
     all_possible_moves = knot.finePossibleMoves()
     return [move for move in all_possible_moves if move.direction in ["D", "H"]]
     
-def fetchDownMoves(knot):
+def fetchUpHorizontalMoves(knot):
     all_possible_moves = knot.finePossibleMoves()
-    return [move for move in all_possible_moves if move.direction in ["D"]]
+    return [move for move in all_possible_moves if move.direction in ["U", "H"]]
+
+def resultDownMoves(knot):
+    all_possible_down_moves = fetchDownMoves(knot)
+    results = []
+    for move in all_possible_down_moves:
+        K = knot.copy()
+        if move.apply(K):
+            results.append(K)
+    return results
+
+def resultUpMoves(knot):
+    all_possible_up_moves = fetchUpMoves(knot)
+    results = []
+    for move in all_possible_up_moves:
+        K = knot.copy()
+        if move.apply(K):
+            results.append(K)
+    return results
+
+def resultHorizontalMoves(knot):
+    all_possible_horizontal_moves = fetchHorizontalMoves(knot)
+    results = []
+    for move in all_possible_horizontal_moves:
+        K = knot.copy()
+        if move.apply(K):
+            results.append(K)
+    return results
+
     
 def resultDownHorizontalMoves(knot):
     all_possible_down_or_horizontal_moves = fetchDownHorizontalMoves(knot)
@@ -27,35 +67,49 @@ def resultDownHorizontalMoves(knot):
             results.append(K)
     return results
 
-def cascadeTwoDownResults(knot):
-    K = knot.copy()
-    print "Investigating diagrams with {} crossings. \n".format(K.number_crossings())
-    below = resultDownMoves(K)
-    two_below = []
-    if below == []:
-        pass
-    else:
-        for L in below:
-            C = L.copy()
-            two_below.append(resultDownMoves(C))
-        if two_below == []:
-            return K
-        elif K.number_crossings() < 9:
-            return K
-        else:
-            for L in below:
-                return cascadeTwoDownResults(L)
-            
-def resultDownMoves(knot):
-    all_possible_down_moves = fetchDownMoves(knot)
+def resultUpHorizontalMoves(knot):
+    all_possible_up_or_horizontal_moves = fetchUpHorizontalMoves(knot)
     results = []
-    for move in all_possible_down_moves:
+    for move in all_possible_up_or_horizontal_moves:
         K = knot.copy()
         if move.apply(K):
             results.append(K)
     return results
 
-def createCandidateExample(height=15, drop=1):
+
+def cascadeDownResults(knot):
+    K = knot.copy()
+#    print "Investigating diagrams with {} crossings. \n".format(K.number_crossings())
+    below = resultDownMoves(K)
+    if below == []:
+        return K
+    elif K.number_crossings() < 9:
+        return K
+    else:
+        for L in below:
+#            print "There are {} diagrams below the current diagram. \n".format(len(below))
+            return cascadeDownResults(L)
+
+# def cascadeTwoDownResults(knot):
+#     K = knot.copy()
+#     print "Investigating diagrams with {} crossings. \n".format(K.number_crossings())
+#     below = resultDownMoves(K)
+#     two_below = []
+#     if below == []:
+#         pass
+#     else:
+#         for L in below:
+#             C = L.copy()
+#             two_below.append(resultDownMoves(C))
+#         if two_below == []:
+#             return K
+#         elif K.number_crossings() < 9:
+#             return K
+#         else:
+#             for L in below:
+#                 return cascadeTwoDownResults(L)
+            
+def createCandidateExample(height=15, drop=2):
     candidates = []
     hardUnknotCount = 0
     code = random.choice([[2], [-2]])
@@ -90,7 +144,19 @@ def createCandidateExample(height=15, drop=1):
     print "Now checking for False Positives.\n"
     hard_diagrams = [d for d in candidates if d.number_crossings() > 9]
     l = len(hard_diagrams)
-    print "Found {} hard unknot diagrams.".format(l)
+    print "Found {} depth 1 hard unknot diagrams.".format(l)
+    for d in hard_diagrams:
+        e = d.copy()
+        backUp = resultUpMoves(e)
+        over = resultHorizontalMoves(e)
+        if len(over) > 0:
+            for k in over:
+                ##Check that there are NO down moves
+        if len(backUp) > 0:
+            for k in backUp:
+                ##Check that nothing BELOW has ANY down moves
+        
+    
     if l > 0:
         myfile = open(storageFile, 'a')
         for d in hard_diagrams:
