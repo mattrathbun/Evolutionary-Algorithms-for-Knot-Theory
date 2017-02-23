@@ -101,6 +101,9 @@ class ADT(object):
         
     def to_list(self):
         return self.code, self.orientations
+        
+    def to_tuple(self):
+        return tuple(self.code), tuple(self.orientations)
 
     # Number of crossings in the diagram is the length of the code.
 

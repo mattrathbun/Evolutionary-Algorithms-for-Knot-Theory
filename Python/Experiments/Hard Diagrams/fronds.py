@@ -68,7 +68,7 @@ def frond(knot, depth=1):
         return
     else:
         explored = set()
-        exploring = [(knot, 0, True)] ## [diagram, depth_counter, leaf or not]
+        exploring = [(knot.to_tuple(), 0, True)] ## [diagram, depth_counter, leaf or not]
         for diagram in exploring:
             print "Explored is currently: \n"
             print explored
@@ -76,28 +76,29 @@ def frond(knot, depth=1):
             print "Exploring is currently: \n"
             print exploring
             print "\n"
-            down_or_horizontal_adjacent = resultDownHorizontalMoves(diagram[0])
+            K = ADT.ADT(list(diagram[0][0]), list(diagram[0][1]))
+            down_or_horizontal_adjacent = resultDownHorizontalMoves(K)
             for d in down_or_horizontal_adjacent:
                 l = len(fetchDownMoves(d))
                 if l == 0:
-                    if (d.to_string(), diagram[1], True) not in explored:
-                        exploring.append((d, diagram[1], True))
+                    if (d.to_tuple(), diagram[1], True) not in explored and (d.to_tuple(), diagram[1], True) not in exploring:
+                        exploring.append((d.to_tuple(), diagram[1], True))
                 else:
-                    if (d.to_string(), diagram[1], False) not in explored:
-                        exploring.append((d, diagram[1], False))
+                    if (d.to_tuple(), diagram[1], False) not in explored and (d.to_tuple(), diagram[1], False) not in exploring:
+                        exploring.append((d.to_tuple(), diagram[1], False))
             if diagram[1] < depth:
-                up_adjacent = resultUpMoves(diagram[0])
+                up_adjacent = resultUpMoves(K)
                 for d in up_adjacent:
-                    if (d.to_string(), diagram[1] + 1, False) not in explored:
-                        exploring.append((d, diagram[1] + 1, False))
+                    if (d.to_tuple(), diagram[1] + 1, False) not in explored and (d.to_tuple(), diagram[1] + 1, False) not in exploring:
+                        exploring.append((d.to_tuple(), diagram[1] + 1, False))
             (a, b, c) = exploring.pop(0)
-            explored.add((a.to_string(), b, c))
+            explored.add((a, b, c))
         print "There are {} diagrams in the frond.\n".format(len(explored))
         leaves = set()
         for item in explored:
             print item[0]
             if item[2]:
-                leaves.append(item)
+                leaves.add(item)
         print "There are {} leaves in the frond.\n".format(len(leaves))
         for leaf in leaves:
             print leaf[0]
