@@ -77,6 +77,9 @@ def frond(knot, depth=1):
             print exploring
             print "\n"
             K = ADT.ADT(list(diagram[0][0]), list(diagram[0][1]))
+            if K.number_crossings() < 4:
+                print "The frond contains the trivial diagram."
+                return explored
             down_or_horizontal_adjacent = resultDownHorizontalMoves(K)
             for d in down_or_horizontal_adjacent:
                 l = len(fetchDownMoves(d))
