@@ -300,6 +300,22 @@ class ADT(object):
                     #                   print "    Let's try shifting labels."
                     around.shiftLabel()
             return False
+            
+    def standardize(self):
+        print "0"
+        minimal = self.copy()
+        n = self.number_crossings()
+        for i in range(2*n + 1):
+            print "1"
+            self.shiftLabel()
+            print "2"
+            if self.to_list()[0] < minimal.to_list()[0]:
+                print 'resetting'
+                minimal = self.copy()
+        self.code = minimal.code
+        self.orientations = minimal.orientations
+             
+        
 
     # Methods that perform a Reidemeister 1 Move, introducing a single
     # twist at the location arc.  arc is an integer corresponding to a
