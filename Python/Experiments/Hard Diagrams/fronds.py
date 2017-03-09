@@ -114,7 +114,8 @@ def frond(knot, depth=0):
             print "\n"
         return explored, leaves
     
-    
+culprit = ADT.ADT([-14, -12, -8, -18, -16, -4, -20, -2, -6, 10], [-1, -1, 1, 1, -1, -1, -1, -1, 1, 1])
+
                 
                 
                 
