@@ -32,6 +32,7 @@ def resultDownMoves(knot):
     for move in all_possible_down_moves:
         K = knot.copy()
         if move.apply(K):
+            K.standardize()
             results.append(K)
     return results
 
@@ -41,6 +42,7 @@ def resultUpMoves(knot):
     for move in all_possible_up_moves:
         K = knot.copy()
         if move.apply(K):
+            K.standardize()
             results.append(K)
     return results
     
@@ -50,6 +52,7 @@ def resultDownHorizontalMoves(knot):
     for move in all_possible_down_or_horizontal_moves:
         K = knot.copy()
         if move.apply(K):
+            K.standardize()
             results.append(K)
     return results
 
@@ -59,10 +62,12 @@ def resultDownHorizontalUpMoves(knot):
     for move in all_possible_down_or_horizontal_or_up_moves:
         K = knot.copy()
         if move.apply(K):
+            K.standardize()
             results.append(K)
     return results
 
-def frond(knot, depth=1):
+def frond(knot, depth=0):
+    knot.standardize()
     if fetchDownMoves(knot) != []:
         print "This is not a leaf."
         return
@@ -79,7 +84,7 @@ def frond(knot, depth=1):
             K = ADT.ADT(list(diagram[0][0]), list(diagram[0][1]))
             if K.number_crossings() < 4:
                 print "The frond contains the trivial diagram."
-                return explored
+                return explored, "Trivial"
             down_or_horizontal_adjacent = resultDownHorizontalMoves(K)
             for d in down_or_horizontal_adjacent:
                 l = len(fetchDownMoves(d))

@@ -8,7 +8,7 @@ import random
 
 AllDiagrams.init()
 
-storageFile = "SimpleHardDiagrams"
+storageFile = "SimpleHardDiagramsMessy"
 
 def fetchDownHorizontalMoves(knot):
     all_possible_moves = knot.finePossibleMoves()
