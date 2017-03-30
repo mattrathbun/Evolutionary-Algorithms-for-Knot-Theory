@@ -70,7 +70,7 @@ def frond(knot, depth=0):
     knot.standardize()
     if fetchDownMoves(knot) != []:
         print "This is not a leaf."
-        return
+        return None, None
     else:
         explored = set()
         exploring = [(knot.to_tuple(), 0, True)] ## [diagram, depth_counter, leaf or not]
