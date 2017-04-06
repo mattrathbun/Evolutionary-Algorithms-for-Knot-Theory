@@ -6468,3 +6468,1091 @@ Diagram is [] , []
 Fitness is -inf
 Diagram is [] , []
 
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+It's there.
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+It's there.
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
+Fitness is -inf
+Diagram is [] , []
+
