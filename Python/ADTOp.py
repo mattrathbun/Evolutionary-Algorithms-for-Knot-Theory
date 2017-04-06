@@ -281,6 +281,7 @@ class ADTMove(ADTOp):
             else:
                 knot.code = lookupResult.code
                 knot.orientations = lookupResult.orientations
+                knot.restring = True
                 return knot
 #                return lookupResult.copy()
         else:
